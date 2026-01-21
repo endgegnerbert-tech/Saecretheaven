@@ -546,12 +546,14 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
         {
             id: "photos-app",
             label: "Fotos-App",
-            description: "Alle Fotos aus der iOS Foto-Bibliothek"
+            description: "Alle Fotos aus der iOS Foto-Bibliothek",
+            details: "Empfohlen für die meisten Nutzer"
         },
         {
             id: "files-app",
             label: "Dateien-App",
-            description: "Fotos aus einem bestimmten Ordner"
+            description: "Fotos aus einem bestimmten Ordner",
+            details: "Für fortgeschrittene Nutzer"
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -568,12 +570,12 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                                 className: "w-10 h-10 text-[#007AFF]"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 293,
+                                lineNumber: 295,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 292,
+                            lineNumber: 294,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -581,7 +583,7 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                             children: "Wähle Backup-Quelle"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 295,
+                            lineNumber: 297,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -589,31 +591,57 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                             children: "Wo sind deine Fotos gespeichert?"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 298,
+                            lineNumber: 300,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 291,
+                    lineNumber: 293,
+                    columnNumber: 9
+                }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                    className: "bg-[#F2F2F7] rounded-xl p-4 mb-6",
+                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                        className: "text-[15px] text-[#6E6E73] text-center",
+                        children: [
+                            "💡 ",
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                children: "Tipp:"
+                            }, void 0, false, {
+                                fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
+                                lineNumber: 308,
+                                columnNumber: 16
+                            }, this),
+                            ' Die meisten Nutzer wählen "Fotos-App". Du kannst dies später in den Einstellungen ändern.'
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
+                        lineNumber: 307,
+                        columnNumber: 11
+                    }, this)
+                }, void 0, false, {
+                    fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
+                    lineNumber: 306,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "space-y-3",
                     children: sources.map((source)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                             onClick: ()=>onSelect(source.id),
-                            className: `w-full p-4 rounded-xl bg-white text-left ios-tap-target ${selectedSource === source.id ? "ring-2 ring-[#007AFF]" : ""}`,
+                            className: `w-full p-4 rounded-xl bg-white text-left ios-tap-target transition-all ${selectedSource === source.id ? "ring-2 ring-[#007AFF] shadow-lg" : ""}`,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "flex items-center justify-between",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "flex-1",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                                 className: "text-[17px] font-medium text-[#1D1D1F]",
                                                 children: source.label
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                lineNumber: 314,
+                                                lineNumber: 324,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -621,54 +649,62 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                                                 children: source.description
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                lineNumber: 315,
+                                                lineNumber: 325,
+                                                columnNumber: 19
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "text-[13px] text-[#8E8E93] mt-1",
+                                                children: source.details
+                                            }, void 0, false, {
+                                                fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
+                                                lineNumber: 326,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 313,
+                                        lineNumber: 323,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: `w-6 h-6 rounded-full border-2 flex items-center justify-center ${selectedSource === source.id ? "border-[#007AFF] bg-[#007AFF]" : "border-[#C7C7CC]"}`,
+                                        className: `w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${selectedSource === source.id ? "border-[#007AFF] bg-[#007AFF]" : "border-[#C7C7CC]"}`,
                                         children: selectedSource === source.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "w-2.5 h-2.5 rounded-full bg-white"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                            lineNumber: 325,
+                                            lineNumber: 336,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 317,
+                                        lineNumber: 328,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 312,
+                                lineNumber: 322,
                                 columnNumber: 15
                             }, this)
                         }, source.id, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 305,
+                            lineNumber: 315,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 303,
+                    lineNumber: 313,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-            lineNumber: 290,
+            lineNumber: 292,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-        lineNumber: 289,
+        lineNumber: 291,
         columnNumber: 5
     }, this);
 }
@@ -684,7 +720,8 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                 "Unbegrenzte Fotos",
                 "Zero-Knowledge Verschlüsselung",
                 "Multi-Device Sync"
-            ]
+            ],
+            description: "Perfekt für den Start"
         },
         {
             id: "backup-plus",
@@ -696,7 +733,8 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                 "200 GB Cloud-Backup",
                 "Schnellere Synchronisierung"
             ],
-            recommended: true
+            recommended: true,
+            description: "Maximale Sicherheit"
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -714,12 +752,12 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                     className: "w-10 h-10 text-[#007AFF]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                    lineNumber: 371,
+                                    lineNumber: 384,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 370,
+                                lineNumber: 383,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -727,7 +765,7 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                 children: "Wähle Speicherplan"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 373,
+                                lineNumber: 386,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -735,27 +773,52 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                 children: "Du kannst das später jederzeit ändern"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 376,
+                                lineNumber: 389,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 369,
+                        lineNumber: 382,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "bg-[#F2F2F7] rounded-xl p-4 mb-4",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                            className: "text-[13px] text-[#6E6E73] text-center",
+                            children: [
+                                "🎯 ",
+                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("strong", {
+                                    children: "Empfehlung:"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
+                                    lineNumber: 397,
+                                    columnNumber: 16
+                                }, this),
+                                " Starte mit FREE und upgrade später, wenn du mehr Speicher brauchst."
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
+                            lineNumber: 396,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
+                        lineNumber: 395,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "space-y-3",
                         children: plans.map((plan)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                 onClick: ()=>setTempSelected(plan.id),
-                                className: `w-full p-4 rounded-xl bg-white text-left ios-tap-target relative ${tempSelected === plan.id ? "ring-2 ring-[#007AFF]" : ""}`,
+                                className: `w-full p-4 rounded-xl bg-white text-left ios-tap-target relative transition-all ${tempSelected === plan.id ? "ring-2 ring-[#007AFF] shadow-lg" : ""}`,
                                 children: [
                                     plan.recommended && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                         className: "absolute -top-2 left-4 px-2 py-0.5 bg-[#30D158] text-white text-[11px] font-semibold rounded-full",
                                         children: "EMPFOHLEN"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 391,
+                                        lineNumber: 412,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -769,7 +832,7 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                         children: plan.label
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                        lineNumber: 397,
+                                                        lineNumber: 418,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -777,7 +840,15 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                         children: plan.subtitle
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                        lineNumber: 400,
+                                                        lineNumber: 421,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "text-[13px] text-[#8E8E93] mt-1",
+                                                        children: plan.description
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
+                                                        lineNumber: 424,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -790,7 +861,7 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                                         children: "✓"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                                        lineNumber: 406,
+                                                                        lineNumber: 430,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     " ",
@@ -798,12 +869,12 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                                 ]
                                                             }, feature, true, {
                                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                                lineNumber: 405,
+                                                                lineNumber: 429,
                                                                 columnNumber: 23
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                        lineNumber: 403,
+                                                        lineNumber: 427,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -811,50 +882,50 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                         children: plan.price
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                        lineNumber: 410,
+                                                        lineNumber: 434,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                lineNumber: 396,
+                                                lineNumber: 417,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: `w-6 h-6 rounded-full border-2 flex items-center justify-center ${tempSelected === plan.id ? "border-[#007AFF] bg-[#007AFF]" : "border-[#C7C7CC]"}`,
+                                                className: `w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${tempSelected === plan.id ? "border-[#007AFF] bg-[#007AFF]" : "border-[#C7C7CC]"}`,
                                                 children: tempSelected === plan.id && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "w-2.5 h-2.5 rounded-full bg-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                    lineNumber: 422,
+                                                    lineNumber: 446,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                lineNumber: 414,
+                                                lineNumber: 438,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 395,
+                                        lineNumber: 416,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, plan.id, true, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 383,
+                                lineNumber: 404,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 381,
+                        lineNumber: 402,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 368,
+                lineNumber: 381,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -863,13 +934,13 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                 children: "PhotoVault starten"
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 431,
+                lineNumber: 455,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-        lineNumber: 367,
+        lineNumber: 380,
         columnNumber: 5
     }, this);
 }
@@ -885,7 +956,7 @@ function ImportKeyDialog({ onClose }) {
                     children: "Schlüssel importieren"
                 }, void 0, false, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 447,
+                    lineNumber: 471,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -893,7 +964,7 @@ function ImportKeyDialog({ onClose }) {
                     children: "Gib deine 12-Wort Backup-Phrase ein"
                 }, void 0, false, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 450,
+                    lineNumber: 474,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -903,7 +974,7 @@ function ImportKeyDialog({ onClose }) {
                     className: "w-full h-[100px] bg-[#F2F2F7] rounded-xl p-4 text-[15px] text-[#1D1D1F] resize-none mb-4"
                 }, void 0, false, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 453,
+                    lineNumber: 477,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -918,7 +989,7 @@ function ImportKeyDialog({ onClose }) {
                             children: "Importieren"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 460,
+                            lineNumber: 484,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -927,24 +998,24 @@ function ImportKeyDialog({ onClose }) {
                             children: "Abbrechen"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 469,
+                            lineNumber: 493,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 459,
+                    lineNumber: 483,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-            lineNumber: 446,
+            lineNumber: 470,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-        lineNumber: 445,
+        lineNumber: 469,
         columnNumber: 5
     }, this);
 }
@@ -3003,7 +3074,8 @@ const generatePhotos = (count)=>{
             cid: `Qm${Math.random().toString(36).substring(2, 15)}${Math.random().toString(36).substring(2, 15)}`,
             placeholderUrl: `https://picsum.photos/seed/${i + 100}/400/400`,
             category: categories[i % categories.length],
-            date: date.toISOString().split('T')[0]
+            date: date.toISOString().split('T')[0],
+            metadata: undefined
         };
     });
 };
@@ -3147,7 +3219,7 @@ function PhotoGallery({ photosCount }) {
                                     className: "w-4 h-4 text-[#8E8E93]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 163,
+                                    lineNumber: 164,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -3159,13 +3231,13 @@ function PhotoGallery({ photosCount }) {
                                     autoFocus: true
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 164,
+                                    lineNumber: 165,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 162,
+                            lineNumber: 163,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3177,13 +3249,13 @@ function PhotoGallery({ photosCount }) {
                             children: "Abbrechen"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 173,
+                            lineNumber: 174,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                    lineNumber: 161,
+                    lineNumber: 162,
                     columnNumber: 11
                 }, this) : selectMode ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                     children: [
@@ -3196,7 +3268,7 @@ function PhotoGallery({ photosCount }) {
                             children: "Abbrechen"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 185,
+                            lineNumber: 186,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3207,7 +3279,7 @@ function PhotoGallery({ photosCount }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 194,
+                            lineNumber: 195,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3218,7 +3290,7 @@ function PhotoGallery({ photosCount }) {
                             children: "Löschen"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 197,
+                            lineNumber: 198,
                             columnNumber: 13
                         }, this)
                     ]
@@ -3231,7 +3303,7 @@ function PhotoGallery({ photosCount }) {
                                     className: "w-5 h-5 text-[#30D158]"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 209,
+                                    lineNumber: 210,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -3239,13 +3311,13 @@ function PhotoGallery({ photosCount }) {
                                     children: "Galerie"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 210,
+                                    lineNumber: 211,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 208,
+                            lineNumber: 209,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3258,7 +3330,7 @@ function PhotoGallery({ photosCount }) {
                                             className: `w-6 h-6 ${isUploading ? 'text-[#8E8E93] animate-pulse' : 'text-[#007AFF]'}`
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                            lineNumber: 215,
+                                            lineNumber: 216,
                                             columnNumber: 17
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
@@ -3270,13 +3342,13 @@ function PhotoGallery({ photosCount }) {
                                             disabled: isUploading
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                            lineNumber: 216,
+                                            lineNumber: 217,
                                             columnNumber: 17
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 214,
+                                    lineNumber: 215,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3286,12 +3358,12 @@ function PhotoGallery({ photosCount }) {
                                         className: "w-6 h-6 text-[#007AFF]"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                        lineNumber: 229,
+                                        lineNumber: 230,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 225,
+                                    lineNumber: 226,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3301,25 +3373,25 @@ function PhotoGallery({ photosCount }) {
                                         className: `w-6 h-6 ${selectedFilter ? "text-[#30D158]" : "text-[#007AFF]"}`
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                        lineNumber: 235,
+                                        lineNumber: 236,
                                         columnNumber: 17
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 231,
+                                    lineNumber: 232,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 212,
+                            lineNumber: 213,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true)
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                lineNumber: 159,
+                lineNumber: 160,
                 columnNumber: 7
             }, this),
             showFilter && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3333,7 +3405,7 @@ function PhotoGallery({ photosCount }) {
                             children: "Alle"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 246,
+                            lineNumber: 247,
                             columnNumber: 13
                         }, this),
                         categories.map((cat)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -3342,18 +3414,18 @@ function PhotoGallery({ photosCount }) {
                                 children: cat.label
                             }, cat.id, false, {
                                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                lineNumber: 257,
+                                lineNumber: 258,
                                 columnNumber: 15
                             }, this))
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                    lineNumber: 245,
+                    lineNumber: 246,
                     columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                lineNumber: 244,
+                lineNumber: 245,
                 columnNumber: 9
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3369,17 +3441,20 @@ function PhotoGallery({ photosCount }) {
                                         children: group.label
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                        lineNumber: 279,
+                                        lineNumber: 280,
                                         columnNumber: 15
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 278,
+                                    lineNumber: 279,
                                     columnNumber: 13
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "grid grid-cols-3 gap-[2px] px-[2px]",
-                                    children: group.photos.map((photo)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
+                                    children: group.photos.map((photo)=>{
+                                        // For real encrypted photos, we need to decrypt them
+                                        const isRealPhoto = photo.metadata !== undefined;
+                                        return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             onClick: ()=>handlePhotoTap(photo.id, photo.cid),
                                             onTouchStart: ()=>handleTouchStart(photo.id),
                                             onTouchEnd: handleTouchEnd,
@@ -3393,6 +3468,21 @@ function PhotoGallery({ photosCount }) {
                                             },
                                             className: "relative aspect-square overflow-hidden bg-[#E5E5EA]",
                                             children: [
+                                                isRealPhoto ? // Real encrypted photo - show placeholder until decryption
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "w-full h-full flex items-center justify-center bg-gradient-to-br from-[#E5E5EA] to-[#C7C7CC]",
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$lock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Lock$3e$__["Lock"], {
+                                                        className: "w-8 h-8 text-[#8E8E93]"
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
+                                                        lineNumber: 306,
+                                                        columnNumber: 25
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
+                                                    lineNumber: 305,
+                                                    columnNumber: 23
+                                                }, this) : photo.placeholderUrl ? // Placeholder photo (demo data)
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
                                                     src: photo.placeholderUrl,
                                                     alt: "",
@@ -3400,9 +3490,9 @@ function PhotoGallery({ photosCount }) {
                                                     loading: "lazy"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                                    lineNumber: 298,
-                                                    columnNumber: 19
-                                                }, this),
+                                                    lineNumber: 310,
+                                                    columnNumber: 23
+                                                }, this) : null,
                                                 selectMode && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "absolute inset-0 bg-black/20",
                                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3411,34 +3501,35 @@ function PhotoGallery({ photosCount }) {
                                                             className: "w-4 h-4 text-white"
                                                         }, void 0, false, {
                                                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                                            lineNumber: 314,
-                                                            columnNumber: 27
+                                                            lineNumber: 328,
+                                                            columnNumber: 29
                                                         }, this)
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                                        lineNumber: 306,
-                                                        columnNumber: 23
+                                                        lineNumber: 320,
+                                                        columnNumber: 25
                                                     }, this)
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                                    lineNumber: 305,
-                                                    columnNumber: 21
+                                                    lineNumber: 319,
+                                                    columnNumber: 23
                                                 }, this)
                                             ]
                                         }, photo.id, true, {
                                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                            lineNumber: 285,
-                                            columnNumber: 17
-                                        }, this))
+                                            lineNumber: 290,
+                                            columnNumber: 19
+                                        }, this);
+                                    })
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 283,
+                                    lineNumber: 284,
                                     columnNumber: 13
                                 }, this)
                             ]
                         }, group.date, true, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 276,
+                            lineNumber: 277,
                             columnNumber: 11
                         }, this)),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3449,7 +3540,7 @@ function PhotoGallery({ photosCount }) {
                                 children: "Lange drücken zum Auswählen • Tippen zum Öffnen"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                lineNumber: 327,
+                                lineNumber: 342,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -3460,19 +3551,19 @@ function PhotoGallery({ photosCount }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                lineNumber: 330,
+                                lineNumber: 345,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                        lineNumber: 326,
+                        lineNumber: 341,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                lineNumber: 274,
+                lineNumber: 275,
                 columnNumber: 7
             }, this),
             fullscreenPhoto && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -3488,12 +3579,12 @@ function PhotoGallery({ photosCount }) {
                                     className: "w-6 h-6 text-white"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 344,
+                                    lineNumber: 359,
                                     columnNumber: 15
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                lineNumber: 340,
+                                lineNumber: 355,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -3506,36 +3597,71 @@ function PhotoGallery({ photosCount }) {
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                lineNumber: 346,
+                                lineNumber: 361,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "w-10"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                lineNumber: 349,
+                                lineNumber: 364,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                        lineNumber: 339,
+                        lineNumber: 354,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         className: "flex-1 flex items-center justify-center p-4",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
-                            src: photos.find((p)=>p.id === fullscreenPhoto)?.placeholderUrl,
-                            alt: "",
-                            className: "max-w-full max-h-full object-contain rounded-lg"
-                        }, void 0, false, {
-                            fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 352,
-                            columnNumber: 13
-                        }, this)
+                        children: (()=>{
+                            const photo = photos.find((p)=>p.id === fullscreenPhoto);
+                            if (!photo) return null;
+                            // Real encrypted photo
+                            if (photo.metadata) {
+                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "flex flex-col items-center gap-4",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$lock$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Lock$3e$__["Lock"], {
+                                            className: "w-16 h-16 text-white/60"
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
+                                            lineNumber: 375,
+                                            columnNumber: 21
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "text-white/80 text-center",
+                                            children: "Entschlüsselung wird implementiert..."
+                                        }, void 0, false, {
+                                            fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
+                                            lineNumber: 376,
+                                            columnNumber: 21
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
+                                    lineNumber: 374,
+                                    columnNumber: 19
+                                }, this);
+                            }
+                            // Placeholder photo
+                            if (photo.placeholderUrl) {
+                                return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("img", {
+                                    src: photo.placeholderUrl,
+                                    alt: "",
+                                    className: "max-w-full max-h-full object-contain rounded-lg"
+                                }, void 0, false, {
+                                    fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
+                                    lineNumber: 386,
+                                    columnNumber: 19
+                                }, this);
+                            }
+                            return null;
+                        })()
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                        lineNumber: 351,
+                        lineNumber: 366,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -3547,37 +3673,37 @@ function PhotoGallery({ photosCount }) {
                                     className: "w-4 h-4"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 360,
+                                    lineNumber: 399,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: "Ende-zu-Ende verschlüsselt"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                                    lineNumber: 361,
+                                    lineNumber: 400,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                            lineNumber: 359,
+                            lineNumber: 398,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                        lineNumber: 358,
+                        lineNumber: 397,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-                lineNumber: 338,
+                lineNumber: 353,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/photovault/PhotoGallery.tsx",
-        lineNumber: 157,
+        lineNumber: 158,
         columnNumber: 5
     }, this);
 }

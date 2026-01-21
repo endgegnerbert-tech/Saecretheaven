@@ -277,11 +277,13 @@ function SourceSelectionStep({
       id: "photos-app" as const,
       label: "Fotos-App",
       description: "Alle Fotos aus der iOS Foto-Bibliothek",
+      details: "Empfohlen für die meisten Nutzer",
     },
     {
       id: "files-app" as const,
       label: "Dateien-App",
       description: "Fotos aus einem bestimmten Ordner",
+      details: "Für fortgeschrittene Nutzer",
     },
   ];
 
@@ -300,22 +302,31 @@ function SourceSelectionStep({
           </p>
         </div>
 
+        {/* Help Text */}
+        <div className="bg-[#F2F2F7] rounded-xl p-4 mb-6">
+          <p className="text-[15px] text-[#6E6E73] text-center">
+            💡 <strong>Tipp:</strong> Die meisten Nutzer wählen "Fotos-App". 
+            Du kannst dies später in den Einstellungen ändern.
+          </p>
+        </div>
+
         <div className="space-y-3">
           {sources.map((source) => (
             <button
               key={source.id}
               onClick={() => onSelect(source.id)}
-              className={`w-full p-4 rounded-xl bg-white text-left ios-tap-target ${
-                selectedSource === source.id ? "ring-2 ring-[#007AFF]" : ""
+              className={`w-full p-4 rounded-xl bg-white text-left ios-tap-target transition-all ${
+                selectedSource === source.id ? "ring-2 ring-[#007AFF] shadow-lg" : ""
               }`}
             >
               <div className="flex items-center justify-between">
-                <div>
+                <div className="flex-1">
                   <p className="text-[17px] font-medium text-[#1D1D1F]">{source.label}</p>
                   <p className="text-[15px] text-[#6E6E73] mt-0.5">{source.description}</p>
+                  <p className="text-[13px] text-[#8E8E93] mt-1">{source.details}</p>
                 </div>
                 <div
-                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                     selectedSource === source.id
                       ? "border-[#007AFF] bg-[#007AFF]"
                       : "border-[#C7C7CC]"
@@ -352,6 +363,7 @@ function PlanSelectionStep({
       subtitle: "Auf deinen Geräten",
       price: "0€/Monat",
       features: ["Unbegrenzte Fotos", "Zero-Knowledge Verschlüsselung", "Multi-Device Sync"],
+      description: "Perfekt für den Start",
     },
     {
       id: "backup-plus" as const,
@@ -360,6 +372,7 @@ function PlanSelectionStep({
       price: "2,99€/Monat",
       features: ["Alles von Free", "200 GB Cloud-Backup", "Schnellere Synchronisierung"],
       recommended: true,
+      description: "Maximale Sicherheit",
     },
   ];
 
@@ -378,13 +391,21 @@ function PlanSelectionStep({
           </p>
         </div>
 
+        {/* Help Text */}
+        <div className="bg-[#F2F2F7] rounded-xl p-4 mb-4">
+          <p className="text-[13px] text-[#6E6E73] text-center">
+            🎯 <strong>Empfehlung:</strong> Starte mit FREE und upgrade später, 
+            wenn du mehr Speicher brauchst.
+          </p>
+        </div>
+
         <div className="space-y-3">
           {plans.map((plan) => (
             <button
               key={plan.id}
               onClick={() => setTempSelected(plan.id)}
-              className={`w-full p-4 rounded-xl bg-white text-left ios-tap-target relative ${
-                tempSelected === plan.id ? "ring-2 ring-[#007AFF]" : ""
+              className={`w-full p-4 rounded-xl bg-white text-left ios-tap-target relative transition-all ${
+                tempSelected === plan.id ? "ring-2 ring-[#007AFF] shadow-lg" : ""
               }`}
             >
               {plan.recommended && (
@@ -400,6 +421,9 @@ function PlanSelectionStep({
                   <p className="text-[17px] font-semibold text-[#1D1D1F] mt-0.5">
                     {plan.subtitle}
                   </p>
+                  <p className="text-[13px] text-[#8E8E93] mt-1">
+                    {plan.description}
+                  </p>
                   <ul className="mt-3 space-y-1.5">
                     {plan.features.map((feature) => (
                       <li key={feature} className="text-[15px] text-[#6E6E73] flex items-center gap-2">
@@ -412,7 +436,7 @@ function PlanSelectionStep({
                   </p>
                 </div>
                 <div
-                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                  className={`w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
                     tempSelected === plan.id
                       ? "border-[#007AFF] bg-[#007AFF]"
                       : "border-[#C7C7CC]"

@@ -28,6 +28,7 @@ const generatePhotos = (count: number) => {
       placeholderUrl: `https://picsum.photos/seed/${i + 100}/400/400`,
       category: categories[i % categories.length],
       date: date.toISOString().split('T')[0],
+      metadata: undefined as any, // Placeholder photos don't have metadata
     };
   });
 };
@@ -92,7 +93,7 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
         placeholderUrl: '', // Will be decrypted on-demand
         category: 'photo',
         date: p.uploadedAt.toISOString().split('T')[0],
-        metadata: p,
+        metadata: p, // Add metadata to identify real photos
       }))
     : generatePhotos(Math.min(photosCount, 50));
   
@@ -281,43 +282,57 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
             
             {/* Photos Grid */}
             <div className="grid grid-cols-3 gap-[2px] px-[2px]">
-              {group.photos.map((photo) => (
-                <button
-                  key={photo.id}
-                  onClick={() => handlePhotoTap(photo.id, photo.cid)}
-                  onTouchStart={() => handleTouchStart(photo.id)}
-                  onTouchEnd={handleTouchEnd}
-                  onTouchCancel={handleTouchEnd}
-                  onContextMenu={(e) => {
-                    e.preventDefault();
-                    setSelectMode(true);
-                    setSelectedPhotos(new Set([photo.id]));
-                  }}
-                  className="relative aspect-square overflow-hidden bg-[#E5E5EA]"
-                >
-                  <img
-                    src={photo.placeholderUrl}
-                    alt=""
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                  />
-                  {selectMode && (
-                    <div className="absolute inset-0 bg-black/20">
-                      <div
-                        className={`absolute top-2 right-2 w-6 h-6 rounded-full border-2 flex items-center justify-center ${
-                          selectedPhotos.has(photo.id)
-                            ? "bg-[#007AFF] border-[#007AFF]"
-                            : "border-white bg-black/30"
-                        }`}
-                      >
-                        {selectedPhotos.has(photo.id) && (
-                          <Check className="w-4 h-4 text-white" />
-                        )}
+              {group.photos.map((photo) => {
+                // For real encrypted photos, we need to decrypt them
+                const isRealPhoto = photo.metadata !== undefined;
+                
+                return (
+                  <button
+                    key={photo.id}
+                    onClick={() => handlePhotoTap(photo.id, photo.cid)}
+                    onTouchStart={() => handleTouchStart(photo.id)}
+                    onTouchEnd={handleTouchEnd}
+                    onTouchCancel={handleTouchEnd}
+                    onContextMenu={(e) => {
+                      e.preventDefault();
+                      setSelectMode(true);
+                      setSelectedPhotos(new Set([photo.id]));
+                    }}
+                    className="relative aspect-square overflow-hidden bg-[#E5E5EA]"
+                  >
+                    {isRealPhoto ? (
+                      // Real encrypted photo - show placeholder until decryption
+                      <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#E5E5EA] to-[#C7C7CC]">
+                        <Lock className="w-8 h-8 text-[#8E8E93]" />
                       </div>
-                    </div>
-                  )}
-                </button>
-              ))}
+                    ) : photo.placeholderUrl ? (
+                      // Placeholder photo (demo data)
+                      <img
+                        src={photo.placeholderUrl}
+                        alt=""
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : null}
+                    
+                    {selectMode && (
+                      <div className="absolute inset-0 bg-black/20">
+                        <div
+                          className={`absolute top-2 right-2 w-6 h-6 rounded-full border-2 flex items-center justify-center ${
+                            selectedPhotos.has(photo.id)
+                              ? "bg-[#007AFF] border-[#007AFF]"
+                              : "border-white bg-black/30"
+                          }`}
+                        >
+                          {selectedPhotos.has(photo.id) && (
+                            <Check className="w-4 h-4 text-white" />
+                          )}
+                        </div>
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
             </div>
           </div>
         ))}
@@ -349,11 +364,35 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
             <div className="w-10" />
           </header>
           <div className="flex-1 flex items-center justify-center p-4">
-            <img
-              src={photos.find(p => p.id === fullscreenPhoto)?.placeholderUrl}
-              alt=""
-              className="max-w-full max-h-full object-contain rounded-lg"
-            />
+            {(() => {
+              const photo = photos.find(p => p.id === fullscreenPhoto);
+              if (!photo) return null;
+              
+              // Real encrypted photo
+              if (photo.metadata) {
+                return (
+                  <div className="flex flex-col items-center gap-4">
+                    <Lock className="w-16 h-16 text-white/60" />
+                    <p className="text-white/80 text-center">
+                      Entschlüsselung wird implementiert...
+                    </p>
+                  </div>
+                );
+              }
+              
+              // Placeholder photo
+              if (photo.placeholderUrl) {
+                return (
+                  <img
+                    src={photo.placeholderUrl}
+                    alt=""
+                    className="max-w-full max-h-full object-contain rounded-lg"
+                  />
+                );
+              }
+              
+              return null;
+            })()}
           </div>
           <footer className="h-[80px] flex items-center justify-center bg-black/80">
             <div className="flex items-center gap-2 text-[13px] text-white/60">

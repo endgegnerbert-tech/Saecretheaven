@@ -128,3 +128,489 @@ It can also happen if the client has a browser extension installed which messes 
 [00:27:18.076] Server  LOG     ✓ Compiled in 378ms
 [00:27:23.706] Server  LOG     ✓ Compiled in 199ms
 [00:27:31.645] Server  LOG     ✓ Compiled in 121ms
+[00:29:31.122] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:29:40.185] Browser LOG     Selected photo source: files-app
+[00:29:46.244] Browser LOG     Set Free Plan
+[00:29:46.244] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["qmzKG+ML","rr9nrAmz","cnQ05ig3","/huD9wh2","6Pe94HQQ","QH0="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"qmzKG+ML-rr9nrAmz-cnQ05ig3-/huD9wh2-6Pe94HQQ-QH0=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"files-app","photosCount":2847,"selectedPlan":"free"}
+[00:29:53.462] Browser LOG     TODO: Toggle backup with confirmation dialog
+[00:30:12.661] Browser LOG     TODO: Update backup source preference: photos-app
+[00:30:43.379] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:30:43.379] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:30:43.379] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:30:43.379] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:30:46.360] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769004297184_aqsoxhl9jfh
+[00:30:46.360] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:30:58.299] Browser LOG     TODO: Navigate to onboarding screen 1
+[00:30:58.299] Browser LOG     TODO: Navigate to onboarding screen 1
+[00:36:38.282] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:38.685] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:47.432] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:47.781] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:48.657] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:36:49.195] Browser LOG     Selected photo source: photos-app
+[00:36:49.816] Browser LOG     Set Free Plan
+[00:36:49.816] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["KbVtupKx","Ghd0B2SE","p5O25S4b","5loi/tfm","A+wDiP2e","JiI="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"KbVtupKx-Ghd0B2SE-p5O25S4b-5loi/tfm-A+wDiP2e-JiI=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:36:51.743] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:52.004] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:52.907] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:36:53.444] Browser LOG     Selected photo source: photos-app
+[00:36:54.040] Browser LOG     Set Free Plan
+[00:36:54.040] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["nkYhlwCu","m5yh89+A","Ch6Iwizs","9/ndwTL8","Nm7hGVez","PZw="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"nkYhlwCu-m5yh89+A-Ch6Iwizs-9/ndwTL8-Nm7hGVez-PZw=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:36:55.213] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:36:57.749] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:57.946] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:58.780] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:36:59.330] Browser LOG     Selected photo source: photos-app
+[00:36:59.938] Browser LOG     Set Free Plan
+[00:36:59.938] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["dXMu3isg","Lnv48j4V","UacEUKxx","gz0pGTdq","9wedTJCK","PC4="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"dXMu3isg-Lnv48j4V-UacEUKxx-gz0pGTdq-9wedTJCK-PC4=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:37:01.108] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:37:03.619] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:03.839] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:04.692] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:37:05.228] Browser LOG     Selected photo source: photos-app
+[00:37:05.846] Browser LOG     Set Free Plan
+[00:37:05.846] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["/TdZoFoF","aGg00GMn","fvonUp+5","CaNl6q36","TMxfidqk","Zqg="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"/TdZoFoF-aGg00GMn-fvonUp+5-CaNl6q36-TMxfidqk-Zqg=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:37:07.012] Browser LOG     TODO: Toggle backup with confirmation dialog
+[00:37:36.837] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:37.062] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:37.872] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:37:38.404] Browser LOG     Selected photo source: photos-app
+[00:37:38.978] Browser LOG     Set Free Plan
+[00:37:38.978] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["OCuNa95V","KQQG2PPB","YWknY1iT","QiUiUBVr","7cDX2UAa","YF4="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"OCuNa95V-KQQG2PPB-YWknY1iT-QiUiUBVr-7cDX2UAa-YF4=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:37:47.169] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:47.489] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:48.339] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:37:48.874] Browser LOG     Selected photo source: photos-app
+[00:37:49.470] Browser LOG     Set Free Plan
+[00:37:49.470] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["YdfOZn8k","xh2ZWoXU","fCo45VNR","TXk5j78H","ijUB77Lm","4tg="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"YdfOZn8k-xh2ZWoXU-fCo45VNR-TXk5j78H-ijUB77Lm-4tg=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:37:57.531] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:57.747] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:37:58.572] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:37:59.108] Browser LOG     Selected photo source: photos-app
+[00:37:59.700] Browser LOG     Set Free Plan
+[00:37:59.700] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["4fnErdmK","p5KBaCB6","YJxyxtCC","pxPkQEuM","vQZ+krKW","1yM="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"4fnErdmK-p5KBaCB6-YJxyxtCC-pxPkQEuM-vQZ+krKW-1yM=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:38:01.941] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:38:02.238] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:38:03.088] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:38:03.624] Browser LOG     Selected photo source: photos-app
+[00:38:04.234] Browser LOG     Set Free Plan
+[00:38:04.234] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["nB7lxjbe","SmuGv1R+","rwwvU8j3","pgrF/ZsR","pD7wTZGD","29E="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"nB7lxjbe-SmuGv1R+-rwwvU8j3-pgrF/ZsR-pD7wTZGD-29E=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:38:05.406] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:38:07.445] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:38:07.706] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:38:08.197] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:38:08.412] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:38:09.204] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:38:09.737] Browser LOG     Selected photo source: photos-app
+[00:38:10.316] Browser LOG     Set Free Plan
+[00:38:10.317] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["seETca54","E4aoWDwE","sxuhGPAv","PG9Pxt6n","90I3yyM4","Svg="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"seETca54-E4aoWDwE-sxuhGPAv-PG9Pxt6n-90I3yyM4-Svg=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:40:20.490] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:40:21.607] Browser LOG     Selected photo source: files-app
+[00:40:29.528] Browser LOG     Set Free Plan
+[00:40:29.528] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["r/UtjhPZ","cmtWGSBm","rbhvG37P","tGOZVgJF","WmiXGb9m","HMM="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"r/UtjhPZ-cmtWGSBm-rbhvG37P-tGOZVgJF-WmiXGb9m-HMM=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"files-app","photosCount":2847,"selectedPlan":"free"}
+[00:40:29.865] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:40:29.865] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:40:29.865] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:40:29.865] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:40:32.783] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:40:32.783] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:40:32.783] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:40:32.783] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:40:46.056] Browser LOG     Update Background Preference: true
+[00:40:46.838] Browser LOG     Update Background Preference: false
+[00:41:00.722] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:41:00.722] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:41:00.722] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:41:00.722] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:41:02.007] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769004297184_aqsoxhl9jfh
+[00:41:02.007] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:41:12.106] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:41:12.106] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:41:12.106] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:41:12.106] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:43:39.437] Server  LOG     ✓ Compiled in 789ms
+[00:44:27.258] Server  LOG     ✓ Compiled in 393ms
+[00:44:36.650] Server  LOG     ✓ Compiled in 142ms
+[00:45:37.281] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:45:37.625] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:45:44.943] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:45:45.211] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:45:46.052] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:45:46.608] Browser LOG     Selected photo source: photos-app
+[00:45:47.243] Browser LOG     Set Free Plan
+[00:45:47.244] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["0A/Ir2CK","NXTqEUDh","c6QaLbGV","Gp3vHqy6","e2ZymGxP","s70="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"0A/Ir2CK-NXTqEUDh-c6QaLbGV-Gp3vHqy6-e2ZymGxP-s70=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:46:19.018] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:46:19.390] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:46:19.390] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769004298914_uebumqll8z
+[00:46:19.390] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:46:20.303] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:46:20.855] Browser LOG     Selected photo source: photos-app
+[00:46:21.461] Browser LOG     Set Free Plan
+[00:46:21.461] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["GsU032n7","bOxVNs8j","5iJZzt6J","Dei8NvwU","XSDvDoVP","cyQ="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"GsU032n7-bOxVNs8j-5iJZzt6J-Dei8NvwU-XSDvDoVP-cyQ=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:46:24.845] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769004297184_aqsoxhl9jfh
+[00:46:24.845] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:46:25.349] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:46:25.544] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:46:26.352] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:46:26.906] Browser LOG     Selected photo source: photos-app
+[00:46:27.535] Browser LOG     Set Free Plan
+[00:46:27.535] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["3GAeT+Zn","albucuBS","NCTeseh9","o7iMTftb","Rc27kAXE","Wog="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"3GAeT+Zn-albucuBS-NCTeseh9-o7iMTftb-Rc27kAXE-Wog=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:46:31.344] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:46:31.660] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:46:32.468] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:46:33.004] Browser LOG     Selected photo source: photos-app
+[00:46:33.622] Browser LOG     Set Free Plan
+[00:46:33.623] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["Kz+ZBZ6w","C0ATcmGV","QDVood54","1CnJGhnh","sx/MY7rq","KY8="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"Kz+ZBZ6w-C0ATcmGV-QDVood54-1CnJGhnh-sx/MY7rq-KY8=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:46:35.450] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769004297184_aqsoxhl9jfh
+[00:46:35.450] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:46:50.742] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769004297184_aqsoxhl9jfh
+[00:46:50.743] Browser ERROR   An empty string ("") was passed to the %s attribute. This may cause the browser to download the whole page again over the network. To fix this, either do not render the element at all or pass null to %s instead of an empty string. src src
+[00:47:04.653] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:04.959] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:05.783] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:47:06.317] Browser LOG     Selected photo source: photos-app
+[00:47:06.915] Browser LOG     Set Free Plan
+[00:47:06.915] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["WzjAxSJs","K1V7aE9U","iK3dHON3","RJubMQ3d","5YPGvxJC","nKE="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"WzjAxSJs-K1V7aE9U-iK3dHON3-RJubMQ3d-5YPGvxJC-nKE=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:47:14.894] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:15.111] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:15.949] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:47:16.487] Browser LOG     Selected photo source: photos-app
+[00:47:17.091] Browser LOG     Set Free Plan
+[00:47:17.091] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["q2L00U6Y","3Emyrsxp","Rq5MxdVy","aPaHK7VX","M8ZkjBpL","knw="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"q2L00U6Y-3Emyrsxp-Rq5MxdVy-aPaHK7VX-M8ZkjBpL-knw=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:47:47.658] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:47.870] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:47:48.681] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:47:49.237] Browser LOG     Selected photo source: photos-app
+[00:47:49.832] Browser LOG     Set Free Plan
+[00:47:49.832] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["nMZ7meNX","GrOD/grZ","CHtebSRK","KB2ZvBtw","TJYh7Ld9","o08="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"nMZ7meNX-GrOD/grZ-CHtebSRK-KB2ZvBtw-TJYh7Ld9-o08=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:48:20.645] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:20.854] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:21.680] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:48:22.218] Browser LOG     Selected photo source: photos-app
+[00:48:22.831] Browser LOG     Set Free Plan
+[00:48:22.831] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["HGOj8sm+","YIIsTS4P","u7X3kvYE","O4qHr34R","GvSdfiza","kiQ="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"HGOj8sm+-YIIsTS4P-u7X3kvYE-O4qHr34R-GvSdfiza-kiQ=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:48:26.096] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:26.827] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:27.081] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:48:27.881] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:48:28.435] Browser LOG     Selected photo source: photos-app
+[00:48:29.046] Browser LOG     Set Free Plan
+[00:48:29.046] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["80XGb5ck","0wCaviId","fTVHKyot","Jhc47oDR","6+Kr8kZM","xQM="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"80XGb5ck-0wCaviId-fTVHKyot-Jhc47oDR-6+Kr8kZM-xQM=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:51:54.313] Server  LOG     ✓ Compiled in 230ms
+[00:52:04.373] Server  LOG     ✓ Compiled in 140ms
+[00:52:16.392] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:16.675] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:23.995] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:24.241] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:25.069] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:52:25.608] Browser LOG     Selected photo source: photos-app
+[00:52:26.212] Browser LOG     Set Free Plan
+[00:52:26.212] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["ILuY3OwR","+A5i0KH+","LrIjluIi","dBhXvXLj","SG9/1ffl","ZwE="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"ILuY3OwR-+A5i0KH+-LrIjluIi-dBhXvXLj-SG9/1ffl-ZwE=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:52:56.912] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:57.223] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:52:58.086] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:52:58.638] Browser LOG     Selected photo source: photos-app
+[00:52:59.242] Browser LOG     Set Free Plan
+[00:52:59.242] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["DnaJZW5P","Y4WFoEk1","IPf9pkQ0","L/42JCkH","jTVJpqY7","01M="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"DnaJZW5P-Y4WFoEk1-IPf9pkQ0-L/42JCkH-jTVJpqY7-01M=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:53:02.970] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:03.185] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:04.000] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:53:04.538] Browser LOG     Selected photo source: photos-app
+[00:53:05.156] Browser LOG     Set Free Plan
+[00:53:05.156] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["q6WQB8B7","kxdyVxT0","Ln/MtwSI","lkr49XN5","ktVkBHCy","9cY="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"q6WQB8B7-kxdyVxT0-Ln/MtwSI-lkr49XN5-ktVkBHCy-9cY=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:53:08.900] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:09.120] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:09.937] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:53:10.468] Browser LOG     Selected photo source: photos-app
+[00:53:11.070] Browser LOG     Set Free Plan
+[00:53:11.070] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["Wo7QtVcg","61xeL2PC","o+u3rXaE","v7U5rCsz","tO77SteE","sas="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"Wo7QtVcg-61xeL2PC-o+u3rXaE-v7U5rCsz-tO77SteE-sas=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:53:42.119] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:42.390] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:43.216] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:53:43.753] Browser LOG     Selected photo source: photos-app
+[00:53:44.353] Browser LOG     Set Free Plan
+[00:53:44.353] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["qZSpTPPF","LoASiH7U","ErtZthdk","d33IKZe5","ExXoI/3j","ExQ="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"qZSpTPPF-LoASiH7U-ErtZthdk-d33IKZe5-ExXoI/3j-ExQ=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:53:52.358] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:52.555] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:53:53.350] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:53:53.905] Browser LOG     Selected photo source: photos-app
+[00:53:54.501] Browser LOG     Set Free Plan
+[00:53:54.501] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["rQsIKrnX","7q1xkEH+","hgM0hy0v","baencpmt","EDfe7kVE","h74="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"rQsIKrnX-7q1xkEH+-hgM0hy0v-baencpmt-EDfe7kVE-h74=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:54:25.428] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:25.674] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:26.500] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:54:27.054] Browser LOG     Selected photo source: photos-app
+[00:54:27.664] Browser LOG     Set Free Plan
+[00:54:27.664] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["zxBmZfsM","H0PZsfcS","30I9vzi2","Uw+OG50v","LO552/kg","IlY="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"zxBmZfsM-H0PZsfcS-30I9vzi2-Uw+OG50v-LO552/kg-IlY=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:54:58.187] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:58.409] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:54:59.231] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:54:59.786] Browser LOG     Selected photo source: photos-app
+[00:55:00.400] Browser LOG     Set Free Plan
+[00:55:00.400] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["El4amkr2","Is8BusO5","MAJSkqT2","gv37P3m8","6nMOKQ/g","F1o="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"El4amkr2-Is8BusO5-MAJSkqT2-gv37P3m8-6nMOKQ/g-F1o=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[00:55:03.637] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:04.366] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:04.547] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:55:05.346] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:55:05.883] Browser LOG     Selected photo source: photos-app
+[00:55:06.500] Browser LOG     Set Free Plan
+[00:55:06.500] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["wt24vR2E","hw8phUUA","jR3P2kPk","mL/0o0rO","vUbWCQ4y","qmI="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"wt24vR2E-hw8phUUA-jR3P2kPk-mL/0o0rO-vUbWCQ4y-qmI=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:33:33.923] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:33:34.315] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:33:41.955] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:33:42.312] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:33:43.161] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:33:43.694] Browser LOG     Selected photo source: photos-app
+[02:33:44.281] Browser LOG     Set Free Plan
+[02:33:44.281] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["N98QqYIf","JQ4Epy+r","nnY7HnE2","Z4XjudPX","fMCs9tLf","+KI="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"N98QqYIf-JQ4Epy+r-nnY7HnE2-Z4XjudPX-fMCs9tLf-+KI=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:34:14.722] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:34:14.941] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:34:15.776] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:34:16.310] Browser LOG     Selected photo source: photos-app
+[02:34:16.914] Browser LOG     Set Free Plan
+[02:34:16.914] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["pbtQ58PF","M1oevSa4","P5B6+kx3","Z6NeFD92","/5KFLGUY","iQI="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"pbtQ58PF-M1oevSa4-P5B6+kx3-Z6NeFD92-/5KFLGUY-iQI=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:34:20.622] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:34:20.871] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:34:21.691] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:34:22.227] Browser LOG     Selected photo source: photos-app
+[02:34:22.826] Browser LOG     Set Free Plan
+[02:34:22.826] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["8q8F8Pxm","/b/f1UXS","8WPMraYD","LME5Rh2c","OL5MRgw+","tRE="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"8q8F8Pxm-/b/f1UXS-8WPMraYD-LME5Rh2c-OL5MRgw+-tRE=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:34:26.553] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:34:26.780] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:34:27.603] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:34:28.144] Browser LOG     Selected photo source: photos-app
+[02:34:28.755] Browser LOG     Set Free Plan
+[02:34:28.755] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["ZL4X563X","n8NL6FkG","1x8dGC8I","qo+uivv/","Yly+59Xe","v6s="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"ZL4X563X-n8NL6FkG-1x8dGC8I-qo+uivv/-Yly+59Xe-v6s=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:34:59.998] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:00.333] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:01.231] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:01.798] Browser LOG     Selected photo source: photos-app
+[02:35:02.428] Browser LOG     Set Free Plan
+[02:35:02.428] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["yFodb6pF","keeiNHM0","31Atf38p","DcVoI49W","tnW3CIVR","8Xo="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"yFodb6pF-keeiNHM0-31Atf38p-DcVoI49W-tnW3CIVR-8Xo=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:08.289] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:08.835] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:11.203] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:11.504] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:12.358] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:12.891] Browser LOG     Selected photo source: photos-app
+[02:35:13.468] Browser LOG     Set Free Plan
+[02:35:13.468] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["FR/MfEYg","ZAdf12Pb","rV8NcYtP","bk5KwPmn","kLhJ90Wg","jNM="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"FR/MfEYg-ZAdf12Pb-rV8NcYtP-bk5KwPmn-kLhJ90Wg-jNM=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:15.372] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:15.738] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:16.575] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:17.134] Browser LOG     Selected photo source: photos-app
+[02:35:17.377] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:17.753] Browser LOG     Set Free Plan
+[02:35:17.753] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["jPOJmcld","JPz/Coyi","JSdsca3n","5n6o0hBi","q3UtPVoH","e1c="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"jPOJmcld-JPz/Coyi-JSdsca3n-5n6o0hBi-q3UtPVoH-e1c=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:17.769] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:18.623] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:19.157] Browser LOG     Selected photo source: photos-app
+[02:35:19.775] Browser LOG     Set Free Plan
+[02:35:19.775] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["hjUHPvh5","HS4G2CFp","FwGC25bi","o6VqglLy","vL1peVsP","IZ0="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"hjUHPvh5-HS4G2CFp-FwGC25bi-o6VqglLy-vL1peVsP-IZ0=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:26.005] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:26.381] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:27.256] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:27.805] Browser LOG     Selected photo source: photos-app
+[02:35:28.397] Browser LOG     Set Free Plan
+[02:35:28.397] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["9qatLPqO","Zg1OLqsX","dSNnt9zm","QgBCJ56R","YRSXCkrW","1qA="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"9qatLPqO-Zg1OLqsX-dSNnt9zm-QgBCJ56R-YRSXCkrW-1qA=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:28.785] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:29.222] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:30.072] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:30.606] Browser LOG     Selected photo source: photos-app
+[02:35:31.206] Browser LOG     Set Free Plan
+[02:35:31.206] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["dUaFJdT5","3kF+nKu5","IKRTbMeR","Kw2N5l38","sPnL4kNI","BG8="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"dUaFJdT5-3kF+nKu5-IKRTbMeR-Kw2N5l38-sPnL4kNI-BG8=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:31.783] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:32.734] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:33.001] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:33.805] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:34.340] Browser LOG     Selected photo source: photos-app
+[02:35:34.961] Browser LOG     Set Free Plan
+[02:35:34.962] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["Fg7uznBi","ZCMPcJN2","fYOqMNjE","/NIdgsGx","I+KcumeU","S7Q="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"Fg7uznBi-ZCMPcJN2-fYOqMNjE-/NIdgsGx-I+KcumeU-S7Q=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:35.052] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:35.397] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:36.225] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:36.794] Browser LOG     Selected photo source: photos-app
+[02:35:37.383] Browser LOG     Set Free Plan
+[02:35:37.383] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["SM66xL3m","uTB7CauQ","qKGShmfk","72dIJ0Fj","jtVdL/Yj","en0="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"SM66xL3m-uTB7CauQ-qKGShmfk-72dIJ0Fj-jtVdL/Yj-en0=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:41.091] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:41.312] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:42.106] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:42.639] Browser LOG     Selected photo source: photos-app
+[02:35:43.250] Browser LOG     Set Free Plan
+[02:35:43.250] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["y7LShr5p","AxCBnEcX","mhUBW2as","JWxWqMEy","CvprPqrd","hlI="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"y7LShr5p-AxCBnEcX-mhUBW2as-JWxWqMEy-CvprPqrd-hlI=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:51.323] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:51.541] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:52.371] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:52.905] Browser LOG     Selected photo source: photos-app
+[02:35:53.503] Browser LOG     Set Free Plan
+[02:35:53.503] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["kfsAnKAz","teBiEbe7","xdnoNfqq","K2YMprkF","5ka830LJ","Xgs="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"kfsAnKAz-teBiEbe7-xdnoNfqq-K2YMprkF-5ka830LJ-Xgs=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:55.312] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:55.536] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:56.338] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:35:56.891] Browser LOG     Selected photo source: photos-app
+[02:35:57.485] Browser LOG     Set Free Plan
+[02:35:57.485] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["B3g049Ad","C4XNEYwG","nz3pEo1b","K/OJlA4C","RpRwiWzm","+zQ="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"B3g049Ad-C4XNEYwG-nz3pEo1b-K/OJlA4C-RpRwiWzm-+zQ=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:35:59.188] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:35:59.407] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:36:00.205] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:36:00.738] Browser LOG     Selected photo source: photos-app
+[02:36:01.365] Browser LOG     Set Free Plan
+[02:36:01.365] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["tYqG0gxs","nDav387J","s3r4b+YT","O0y2gu+u","jflrOsUw","gvw="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"tYqG0gxs-nDav387J-s3r4b+YT-O0y2gu+u-jflrOsUw-gvw=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:36:09.684] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:36:09.900] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:36:10.722] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:36:11.256] Browser LOG     Selected photo source: photos-app
+[02:36:11.840] Browser LOG     Set Free Plan
+[02:36:11.840] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["vsME54in","hMCcxVLS","qNj0YziE","RbUCyEgQ","SfAZqDlE","a1E="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"vsME54in-hMCcxVLS-qNj0YziE-RbUCyEgQ-SfAZqDlE-a1E=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:36:15.111] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:36:15.951] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:36:16.170] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:36:16.988] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:36:17.523] Browser LOG     Selected photo source: photos-app
+[02:36:18.115] Browser LOG     Set Free Plan
+[02:36:18.115] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["7pkdy0GQ","c7JZ8X4q","c1C/ba7I","mo27DlTg","1A6k9Tkv","VY4="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"7pkdy0GQ-c7JZ8X4q-c1C/ba7I-mo27DlTg-1A6k9Tkv-VY4=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:01.419] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:01.702] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:09.033] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:09.295] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:10.117] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:38:10.651] Browser LOG     Selected photo source: photos-app
+[02:38:11.265] Browser LOG     Set Free Plan
+[02:38:11.265] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["CAopuzp+","+7zOA98m","ejhramgK","uFsUFew8","BQCgNDaj","7Tc="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"CAopuzp+-+7zOA98m-ejhramgK-uFsUFew8-BQCgNDaj-7Tc=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:19.318] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:19.526] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:20.349] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:38:20.904] Browser LOG     Selected photo source: photos-app
+[02:38:21.499] Browser LOG     Set Free Plan
+[02:38:21.499] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["xc563O22","it6zSV06","YlfPGk9U","ls/Fry5q","5ii4k+O/","RoE="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"xc563O22-it6zSV06-YlfPGk9U-ls/Fry5q-5ii4k+O/-RoE=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:25.214] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:25.465] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:26.266] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:38:26.800] Browser LOG     Selected photo source: photos-app
+[02:38:27.429] Browser LOG     Set Free Plan
+[02:38:27.429] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["k19qihs5","5Ru/7Exe","YOpbsJBy","0Q0avywS","I8sr31XF","gu4="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"k19qihs5-5Ru/7Exe-YOpbsJBy-0Q0avywS-I8sr31XF-gu4=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:31.144] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:31.393] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:32.199] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:38:32.754] Browser LOG     Selected photo source: photos-app
+[02:38:33.344] Browser LOG     Set Free Plan
+[02:38:33.344] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["Veti5UBn","akV0d91T","HsQQiocW","pi1H4ABZ","FAZ3w8b9","GYs="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"Veti5UBn-akV0d91T-HsQQiocW-pi1H4ABZ-FAZ3w8b9-GYs=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:42.699] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:43.125] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:44.081] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:38:44.613] Browser LOG     Selected photo source: photos-app
+[02:38:45.196] Browser LOG     Set Free Plan
+[02:38:45.196] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["z2pN0Hcy","RAvTyIq1","nc7J2L+e","galqF/yT","8QPc8kEU","Opc="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"z2pN0Hcy-RAvTyIq1-nc7J2L+e-galqF/yT-8QPc8kEU-Opc=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:47.002] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:47.713] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:48.149] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:48.439] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:48.750] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:38:48.952] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:38:48.952] Browser LOG     Selected photo source: photos-app
+[02:38:48.952] Browser LOG     Set Free Plan
+[02:38:48.952] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["4XYV0pQV","g8ItZnf+","a0ABZFt8","j5g9F7Jd","c65PdVNB","sU4="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"4XYV0pQV-g8ItZnf+-a0ABZFt8-j5g9F7Jd-c65PdVNB-sU4=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:49.282] Browser LOG     Selected photo source: photos-app
+[02:38:49.524] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:49.745] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:49.898] Browser LOG     Set Free Plan
+[02:38:49.898] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["DKJqlNDo","GlA/9j0F","/cNyoDoS","yYsD/FAN","8auQyAd7","3+8="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"DKJqlNDo-GlA/9j0F-/cNyoDoS-yYsD/FAN-8auQyAd7-3+8=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:50.601] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:38:51.140] Browser LOG     Selected photo source: photos-app
+[02:38:51.651] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:51.753] Browser LOG     Set Free Plan
+[02:38:51.753] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["DRUHMM8A","rZ00EIJ4","DyNdGKK5","ilEGOkyG","sSulwNx+","qjE="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"DRUHMM8A-rZ00EIJ4-DyNdGKK5-ilEGOkyG-sSulwNx+-qjE=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:51.933] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:38:52.849] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:38:53.381] Browser LOG     Selected photo source: photos-app
+[02:38:53.979] Browser LOG     Set Free Plan
+[02:38:53.979] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["FgNZqihC","e1NwUDX+","+/YubZxm","GyL3PBWj","qJxQudK3","g0g="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"FgNZqihC-e1NwUDX+-+/YubZxm-GyL3PBWj-qJxQudK3-g0g=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:38:59.907] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:00.236] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:01.063] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:01.597] Browser LOG     Selected photo source: photos-app
+[02:39:02.198] Browser LOG     Set Free Plan
+[02:39:02.198] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["gqPlLvXe","8MHP6gkQ","ZysG2IM4","fFg+UFmS","5161BTNp","eOQ="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"gqPlLvXe-8MHP6gkQ-ZysG2IM4-fFg+UFmS-5161BTNp-eOQ=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:39:02.460] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:02.807] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:03.731] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:04.268] Browser LOG     Selected photo source: photos-app
+[02:39:04.870] Browser LOG     Set Free Plan
+[02:39:04.870] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["kazEVePo","l6yII4FX","bJAwV1I0","fKoTITzT","W2lMU0a1","9n8="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"kazEVePo-l6yII4FX-bJAwV1I0-fKoTITzT-W2lMU0a1-9n8=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:39:05.901] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:06.159] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:06.948] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:07.511] Browser LOG     Selected photo source: photos-app
+[02:39:07.818] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:08.059] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:08.095] Browser LOG     Set Free Plan
+[02:39:08.095] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["Ks6qvI6O","7ApTm9oM","o3UO+rfX","JfZrwDT5","i+MM7DcO","q8k="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"Ks6qvI6O-7ApTm9oM-o3UO+rfX-JfZrwDT5-i+MM7DcO-q8k=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:39:09.048] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:09.583] Browser LOG     Selected photo source: photos-app
+[02:39:10.149] Browser LOG     Set Free Plan
+[02:39:10.149] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["cZA2QPSu","UzO0EwAW","rEZHCcxU","98mwQ9QH","SWoW8ADy","1dI="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"cZA2QPSu-UzO0EwAW-rEZHCcxU-98mwQ9QH-SWoW8ADy-1dI=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:39:11.090] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:11.456] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:12.297] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:12.852] Browser LOG     Selected photo source: photos-app
+[02:39:13.440] Browser LOG     Set Free Plan
+[02:39:13.440] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["89tBzXCE","HQkZ/WUA","67BNRHjJ","azTaRdMd","///ICKQT","+RA="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"89tBzXCE-HQkZ/WUA-67BNRHjJ-azTaRdMd-///ICKQT-+RA=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:39:21.754] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:21.979] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:22.831] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:23.364] Browser LOG     Selected photo source: photos-app
+[02:39:23.971] Browser LOG     Set Free Plan
+[02:39:23.971] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["QVFS/qhS","dG9D7nhS","jErdHMxy","0O6wveMc","otUHsaLi","ytg="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"QVFS/qhS-dG9D7nhS-jErdHMxy-0O6wveMc-otUHsaLi-ytg=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:39:25.791] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:26.063] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:26.913] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:27.446] Browser LOG     Selected photo source: photos-app
+[02:39:28.070] Browser LOG     Set Free Plan
+[02:39:28.070] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["DnvG7byv","ycFDNOuJ","d8uk5A0S","Knrgk+na","vNqVVYeS","ChA="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"DnvG7byv-ycFDNOuJ-d8uk5A0S-Knrgk+na-vNqVVYeS-ChA=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:39:29.776] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:30.013] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:30.915] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:31.464] Browser LOG     Selected photo source: photos-app
+[02:39:32.069] Browser LOG     Set Free Plan
+[02:39:32.069] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["Xsre38z6","ZbrBx/qd","nNWbyQp4","yyezyfd8","IufSOczx","OjY="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"Xsre38z6-ZbrBx/qd-nNWbyQp4-yyezyfd8-IufSOczx-OjY=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:39:40.395] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:40.636] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:41.463] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:42.019] Browser LOG     Selected photo source: photos-app
+[02:39:42.615] Browser LOG     Set Free Plan
+[02:39:42.615] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["e1uEbjBA","2ox76Cf2","8OtkDhPt","vaiv3MSM","FpTTs3hJ","qsM="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"e1uEbjBA-2ox76Cf2-8OtkDhPt-vaiv3MSM-FpTTs3hJ-qsM=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:39:45.348] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:45.570] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[02:39:46.381] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:39:46.931] Browser LOG     Selected photo source: photos-app
+[02:39:47.533] Browser LOG     Set Free Plan
+[02:39:47.533] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["dkZWjh4t","fCXn/ILs","IgePVNKL","zB+7zSY0","M3Rpt+iJ","nP4="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"dkZWjh4t-fCXn/ILs-IgePVNKL-zB+7zSY0-M3Rpt+iJ-nP4=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[02:45:25.484] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769004298914_uebumqll8z
+[02:45:39.552] Browser LOG     TODO: Toggle backup with confirmation dialog
+[02:45:40.823] Browser LOG     Activate Backup
+[02:45:56.590] Browser LOG     TODO: Start backup with progress bar
+[02:45:56.590] Browser LOG     Trigger Backup Process
+[02:45:56.593] Browser LOG     Update Backup Metadata
+[02:45:58.131] Browser LOG     TODO: Start backup with progress bar
+[02:45:58.131] Browser LOG     Trigger Backup Process
+[02:45:58.132] Browser LOG     Update Backup Metadata
+[02:45:58.299] Browser LOG     TODO: Start backup with progress bar
+[02:45:58.300] Browser LOG     Trigger Backup Process
+[02:45:58.300] Browser LOG     Update Backup Metadata
+[02:45:58.447] Browser LOG     TODO: Start backup with progress bar
+[02:45:58.448] Browser LOG     Trigger Backup Process
+[02:45:58.448] Browser LOG     Update Backup Metadata
+[02:46:07.431] Browser LOG     Update Background Preference: true
+[02:46:08.159] Browser LOG     Update Background Preference: false
+[02:46:09.952] Browser LOG     TODO: Update backup source preference: files-app
+[02:46:12.223] Browser LOG     TODO: Update backup source preference: photos-app
+[02:46:34.887] Browser LOG     Display Backup Phrase
+[02:46:51.474] Browser LOG     TODO: Navigate to onboarding screen 1
+[02:46:51.474] Browser LOG     TODO: Navigate to onboarding screen 1
+[02:46:53.270] Browser LOG     Show import dialog
+[02:46:58.685] Browser LOG     Show import dialog
+[02:47:04.875] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[02:47:07.793] Browser LOG     Selected photo source: photos-app
+[02:47:10.807] Browser LOG     Set Free Plan
+[02:47:10.813] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":true,"backupPhrase":["ONEtFM21","oGDpl1Jx","sWd6A4Dn","7wnwvfvU","ZDQrrRQk","fec="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"ONEtFM21-oGDpl1Jx-sWd6A4Dn-7wnwvfvU-ZDQrrRQk-fec=","isOnboarded":false,"lastBackup":"Gerade eben","permanence":99.9,"photoSource":"photos-app","photosCount":2879,"selectedPlan":"free"}
+[02:47:12.441] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769004297184_aqsoxhl9jfh
