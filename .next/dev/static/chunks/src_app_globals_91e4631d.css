@@ -293,48 +293,6 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-:root {
-  --background: 240 5% 96%;
-  --foreground: 0 0% 11%;
-  --card: 0 0% 100%;
-  --card-foreground: 0 0% 11%;
-  --popover: 0 0% 100%;
-  --popover-foreground: 0 0% 11%;
-  --primary: 211 100% 50%;
-  --primary-foreground: 0 0% 100%;
-  --secondary: 240 5% 96%;
-  --secondary-foreground: 0 0% 11%;
-  --muted: 240 5% 96%;
-  --muted-foreground: 240 2% 44%;
-  --accent: 240 5% 96%;
-  --accent-foreground: 0 0% 11%;
-  --destructive: 4 87% 59%;
-  --destructive-foreground: 0 0% 100%;
-  --success: 142 69% 50%;
-  --success-foreground: 0 0% 100%;
-  --border: 240 6% 90%;
-  --input: 240 6% 90%;
-  --ring: 211 100% 50%;
-  --radius: .75rem;
-}
-
-* {
-  border-color: hsl(var(--border));
-  -webkit-tap-highlight-color: transparent;
-}
-
-html {
-  -webkit-text-size-adjust: 100%;
-}
-
-body {
-  background-color: hsl(var(--background));
-  color: hsl(var(--foreground));
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-family: -apple-system, BlinkMacSystemFont, SF Pro Text, SF Pro Display, Helvetica Neue, sans-serif;
-}
-
 .sr-only {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
@@ -2169,20 +2127,6 @@ body {
   50% {
     box-shadow: 0 0 20px #0f89;
   }
-}
-
-.ios-bg-gray {
-  background-color: #f2f2f7;
-}
-
-.sf-pro-display {
-  font-family: -apple-system, BlinkMacSystemFont, SF Pro Display, Helvetica Neue, sans-serif;
-  font-weight: 700;
-}
-
-.ios-tap-target {
-  min-width: 44px;
-  min-height: 44px;
 }
 
 .file\:border-0::file-selector-button {
