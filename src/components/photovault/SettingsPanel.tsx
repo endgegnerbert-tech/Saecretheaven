@@ -1,15 +1,41 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Plus, Loader2, Check } from "lucide-react";
 import { CustomIcon } from "@/components/ui/custom-icon";
 import type { AppState } from "./PhotoVaultApp";
-import { dummyBackupPhrase } from "./PhotoVaultApp";
+import { useEncryption } from "@/hooks/use-encryption";
+import { supabase } from "@/lib/supabase";
+import { getDeviceId } from "@/lib/deviceId";
+
+// Helper to format date
+function formatDate(dateStr?: string): string {
+  if (!dateStr) return "Unbekannt";
+  const date = new Date(dateStr);
+  const now = new Date();
+  const diffMs = now.getTime() - date.getTime();
+  const diffMins = Math.floor(diffMs / 60000);
+  const diffHours = Math.floor(diffMs / 3600000);
+  const diffDays = Math.floor(diffMs / 86400000);
+
+  if (diffMins < 1) return "Gerade eben";
+  if (diffMins < 60) return `vor ${diffMins} Min.`;
+  if (diffHours < 24) return `vor ${diffHours} Std.`;
+  if (diffDays < 7) return `vor ${diffDays} Tagen`;
+  return date.toLocaleDateString("de-DE");
+}
 
 interface SettingsPanelProps {
   state: AppState;
   setState: React.Dispatch<React.SetStateAction<AppState>>;
   onRestartOnboarding: () => void;
+}
+
+interface Device {
+  id: string;
+  device_name: string;
+  device_type?: string;
+  created_at?: string;
 }
 
 export function SettingsPanel({
@@ -23,6 +49,37 @@ export function SettingsPanel({
   const [showBackupPhrase, setShowBackupPhrase] = useState(false);
   const [showSourceSelector, setShowSourceSelector] = useState(false);
   const [showPlanSelector, setShowPlanSelector] = useState(false);
+  const [realDevices, setRealDevices] = useState<Device[]>([]);
+  const [loadingDevices, setLoadingDevices] = useState(false);
+
+  const { recoveryPhrase, generateNewKey, clearKey } = useEncryption();
+  const currentDeviceId = typeof window !== "undefined" ? getDeviceId() : "";
+
+  // Fetch real devices from Supabase
+  useEffect(() => {
+    const fetchDevices = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("devices")
+          .select("*")
+          .order("created_at", { ascending: false });
+
+        if (error) {
+          console.error("Error fetching devices:", error);
+          return;
+        }
+
+        setRealDevices(data || []);
+      } catch (err) {
+        console.error("Failed to fetch devices:", err);
+      }
+    };
+
+    fetchDevices();
+  }, []);
+
+  // Get the real backup phrase words
+  const realBackupPhraseWords = recoveryPhrase?.split("-").slice(0, 12) || [];
 
   const toggleAutoBackup = () => {
     const newValue = !state.autoBackupEnabled;
@@ -42,30 +99,24 @@ export function SettingsPanel({
     setShowBackupPhrase(true);
   };
 
-  const generateNewKey = () => {
+  const handleGenerateNewKey = async () => {
     console.log("Generate New Encryption Key");
     console.log("Clear Existing Backup Data");
-    const words = [
-      "mango",
-      "noble",
-      "ocean",
-      "prime",
-      "quest",
-      "royal",
-      "solar",
-      "titan",
-      "ultra",
-      "vivid",
-      "world",
-      "xenon",
-    ];
-    const key = words.join(" ");
-    setState((prev) => ({
-      ...prev,
-      encryptionKey: key,
-      backupPhrase: words,
-      photosCount: 0,
-    }));
+
+    // Clear existing key and generate new one
+    clearKey();
+    const newPhrase = await generateNewKey();
+
+    if (newPhrase) {
+      const words = newPhrase.split("-").slice(0, 12);
+      setState((prev) => ({
+        ...prev,
+        encryptionKey: newPhrase,
+        backupPhrase: words,
+        photosCount: 0,
+      }));
+    }
+
     setShowNewKeyWarning(false);
   };
 
@@ -86,9 +137,27 @@ export function SettingsPanel({
   };
 
   if (showDevices) {
+    // Transform real devices into the format expected by DevicesView
+    const displayDevices = realDevices.map((device) => ({
+      id: device.id,
+      name: device.device_name || "Unbekanntes Gerät",
+      lastActive: device.id === currentDeviceId ? "Aktiv" : formatDate(device.created_at),
+      syncing: false,
+    }));
+
+    // If no devices in DB, show current device
+    if (displayDevices.length === 0) {
+      displayDevices.push({
+        id: currentDeviceId,
+        name: "Dieses Gerät",
+        lastActive: "Aktiv",
+        syncing: false,
+      });
+    }
+
     return (
       <DevicesView
-        devices={state.devices}
+        devices={displayDevices}
         onBack={() => setShowDevices(false)}
         onAddDevice={addDevice}
       />
@@ -213,7 +282,7 @@ export function SettingsPanel({
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-[15px] text-[#6E6E73]">
-                  {state.devices.length}
+                  {realDevices.length || 1}
                 </span>
                 <CustomIcon name="chevronRight" size={16} />
               </div>
@@ -303,25 +372,40 @@ export function SettingsPanel({
               Notiere diese Wörter und bewahre sie sicher auf.
             </p>
 
-            {/* 12 words in grid */}
-            <div className="grid grid-cols-3 gap-2 mb-4">
-              {(state.backupPhrase.length > 0
-                ? state.backupPhrase
-                : dummyBackupPhrase
-              ).map((word, index) => (
-                <div
-                  key={index}
-                  className="bg-[#F2F2F7] rounded-lg p-2 text-center"
-                >
-                  <span className="text-[11px] text-[#8E8E93] block">
-                    {index + 1}
-                  </span>
-                  <span className="text-[14px] text-[#1D1D1F] font-mono">
-                    {word}
-                  </span>
+            {realBackupPhraseWords.length > 0 ? (
+              <>
+                {/* Real phrase in grid */}
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  {realBackupPhraseWords.map((word, index) => (
+                    <div
+                      key={index}
+                      className="bg-[#F2F2F7] rounded-lg p-2 text-center"
+                    >
+                      <span className="text-[11px] text-[#8E8E93] block">
+                        {index + 1}
+                      </span>
+                      <span className="text-[14px] text-[#1D1D1F] font-mono">
+                        {word}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+
+                {/* Full key for copy */}
+                <div className="bg-[#F2F2F7] rounded-xl p-3 mb-4">
+                  <p className="text-[11px] text-[#6E6E73] mb-1">Vollständiger Schlüssel:</p>
+                  <p className="text-[12px] font-mono text-[#1D1D1F] break-all">
+                    {recoveryPhrase}
+                  </p>
+                </div>
+              </>
+            ) : (
+              <div className="bg-[#FF9500]/10 rounded-xl p-4 mb-4">
+                <p className="text-[13px] text-[#FF9500] text-center">
+                  Kein Schlüssel gefunden. Bitte erstelle einen neuen Schlüssel.
+                </p>
+              </div>
+            )}
 
             {/* Warning */}
             <div className="bg-[#FF3B30]/10 rounded-xl p-3 mb-4">
@@ -347,7 +431,7 @@ export function SettingsPanel({
           message="Das Erstellen eines neuen Schlüssels löscht alle vorhandenen Backup-Daten permanent. Diese Aktion kann nicht rückgängig gemacht werden."
           confirmLabel="Neuen Schlüssel erstellen"
           confirmDestructive={true}
-          onConfirm={generateNewKey}
+          onConfirm={handleGenerateNewKey}
           onCancel={() => setShowNewKeyWarning(false)}
         />
       )}

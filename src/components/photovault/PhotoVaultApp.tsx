@@ -29,41 +29,18 @@ export interface AppState {
   photoSource: "photos-app" | "files-app";
 }
 
-export const dummyBackupPhrase = [
-  "beach",
-  "ocean",
-  "sunset",
-  "cloud",
-  "tree",
-  "river",
-  "mountain",
-  "forest",
-  "valley",
-  "lake",
-  "meadow",
-  "canyon",
-];
-
 const defaultState: AppState = {
   isOnboarded: false,
   backupActive: false,
   selectedPlan: "free",
   autoBackupEnabled: true,
   backgroundBackupEnabled: false,
-  photosCount: 2847,
-  lastBackup: "vor 2 Stunden",
-  permanence: 99.9,
+  photosCount: 0,
+  lastBackup: "Noch nie",
+  permanence: 0,
   encryptionKey: "",
-  backupPhrase: dummyBackupPhrase,
-  devices: [
-    { id: "1", name: "iPhone 14 Pro", lastActive: "Aktiv" },
-    {
-      id: "2",
-      name: "MacBook Pro",
-      lastActive: "Synchronisiert...",
-      syncing: true,
-    },
-  ],
+  backupPhrase: [],
+  devices: [], // Real devices fetched from Supabase in SettingsPanel
   photoSource: "photos-app",
 };
 

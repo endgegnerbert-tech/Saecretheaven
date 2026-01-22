@@ -1499,6 +1499,10 @@ body {
   background-color: #ffffff0d;
 }
 
+.bg-\[\#FF9500\]\/10 {
+  background-color: #ff95001a;
+}
+
 .bg-gradient-to-br {
   background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
 }
@@ -1797,6 +1801,10 @@ body {
 .text-xs {
   font-size: .75rem;
   line-height: 1rem;
+}
+
+.text-\[12px\] {
+  font-size: 12px;
 }
 
 .font-bold {

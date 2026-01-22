@@ -542,7 +542,7 @@ function OnboardingFlow({ state, setState, step, setStep, onComplete }) {
     if (isGeneratingKey) {
         return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$ui$2f$shield$2d$loader$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {}, void 0, false, {
             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-            lineNumber: 80,
+            lineNumber: 81,
             columnNumber: 12
         }, this);
     }
@@ -553,7 +553,7 @@ function OnboardingFlow({ state, setState, step, setStep, onComplete }) {
                 currentStep: visualStep
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 86,
+                lineNumber: 87,
                 columnNumber: 7
             }, this),
             step === 1 && !showPhraseStep && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(KeyCreationStep, {
@@ -561,7 +561,7 @@ function OnboardingFlow({ state, setState, step, setStep, onComplete }) {
                 onImport: importExistingKey
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 89,
+                lineNumber: 90,
                 columnNumber: 9
             }, this),
             step === 1 && showPhraseStep && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(BackupPhraseStep, {
@@ -571,7 +571,7 @@ function OnboardingFlow({ state, setState, step, setStep, onComplete }) {
                 onContinue: confirmPhraseAndContinue
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 96,
+                lineNumber: 97,
                 columnNumber: 9
             }, this),
             step === 2 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(SourceSelectionStep, {
@@ -579,7 +579,7 @@ function OnboardingFlow({ state, setState, step, setStep, onComplete }) {
                 onSelect: selectSource
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 105,
+                lineNumber: 106,
                 columnNumber: 9
             }, this),
             step === 3 && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(PlanSelectionStep, {
@@ -587,20 +587,29 @@ function OnboardingFlow({ state, setState, step, setStep, onComplete }) {
                 onSelect: selectPlan
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 112,
+                lineNumber: 113,
                 columnNumber: 9
             }, this),
             showImportDialog && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(ImportKeyDialog, {
-                onClose: ()=>setShowImportDialog(false)
+                onClose: ()=>setShowImportDialog(false),
+                onSuccess: (phrase, phraseWords)=>{
+                    setState((prev)=>({
+                            ...prev,
+                            encryptionKey: phrase,
+                            backupPhrase: phraseWords
+                        }));
+                    setShowImportDialog(false);
+                    onComplete();
+                }
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 120,
+                lineNumber: 121,
                 columnNumber: 9
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-        lineNumber: 84,
+        lineNumber: 85,
         columnNumber: 5
     }, this);
 }
@@ -618,12 +627,12 @@ function KeyCreationStep({ onContinue, onImport }) {
                             size: 40
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 137,
+                            lineNumber: 149,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 136,
+                        lineNumber: 148,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -631,7 +640,7 @@ function KeyCreationStep({ onContinue, onImport }) {
                         children: "Erstelle deinen Schlüssel"
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 139,
+                        lineNumber: 151,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -639,7 +648,7 @@ function KeyCreationStep({ onContinue, onImport }) {
                         children: "Dieser Schlüssel verschlüsselt alle Fotos. Speichere ihn gut:"
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 142,
+                        lineNumber: 154,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -653,7 +662,7 @@ function KeyCreationStep({ onContinue, onImport }) {
                                         size: 20
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 148,
+                                        lineNumber: 160,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -661,13 +670,13 @@ function KeyCreationStep({ onContinue, onImport }) {
                                         children: "12-Wort Backup-Phrase"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 149,
+                                        lineNumber: 161,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 147,
+                                lineNumber: 159,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -675,19 +684,19 @@ function KeyCreationStep({ onContinue, onImport }) {
                                 children: "Wird im nächsten Schritt erstellt und angezeigt"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 153,
+                                lineNumber: 165,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 146,
+                        lineNumber: 158,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 135,
+                lineNumber: 147,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -699,7 +708,7 @@ function KeyCreationStep({ onContinue, onImport }) {
                         children: "Schlüssel erstellen"
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 160,
+                        lineNumber: 172,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -708,19 +717,19 @@ function KeyCreationStep({ onContinue, onImport }) {
                         children: "Ich habe bereits einen Schlüssel"
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 166,
+                        lineNumber: 178,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 159,
+                lineNumber: 171,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-        lineNumber: 134,
+        lineNumber: 146,
         columnNumber: 5
     }, this);
 }
@@ -739,7 +748,7 @@ function BackupPhraseStep({ phrase, confirmed, onConfirmChange, onContinue }) {
                                 children: "Notiere diese Wörter"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 192,
+                                lineNumber: 204,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -747,13 +756,13 @@ function BackupPhraseStep({ phrase, confirmed, onConfirmChange, onContinue }) {
                                 children: "Speichere sie sicher ab. Du brauchst sie zur Wiederherstellung."
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 195,
+                                lineNumber: 207,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 191,
+                        lineNumber: 203,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -766,7 +775,7 @@ function BackupPhraseStep({ phrase, confirmed, onConfirmChange, onContinue }) {
                                         children: index + 1
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 207,
+                                        lineNumber: 219,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -774,18 +783,18 @@ function BackupPhraseStep({ phrase, confirmed, onConfirmChange, onContinue }) {
                                         children: word
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 210,
+                                        lineNumber: 222,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, index, true, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 203,
+                                lineNumber: 215,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 201,
+                        lineNumber: 213,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -795,12 +804,12 @@ function BackupPhraseStep({ phrase, confirmed, onConfirmChange, onContinue }) {
                             children: "⚠️ Teile diese Wörter niemals mit anderen. Wer sie hat, kann auf deine Fotos zugreifen."
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 219,
+                            lineNumber: 231,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 218,
+                        lineNumber: 230,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -813,12 +822,12 @@ function BackupPhraseStep({ phrase, confirmed, onConfirmChange, onContinue }) {
                                     className: "w-4 h-4 text-white"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                    lineNumber: 235,
+                                    lineNumber: 247,
                                     columnNumber: 27
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 230,
+                                lineNumber: 242,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -826,19 +835,19 @@ function BackupPhraseStep({ phrase, confirmed, onConfirmChange, onContinue }) {
                                 children: "Ich habe die Wörter notiert"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 237,
+                                lineNumber: 249,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 226,
+                        lineNumber: 238,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 190,
+                lineNumber: 202,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -848,13 +857,13 @@ function BackupPhraseStep({ phrase, confirmed, onConfirmChange, onContinue }) {
                 children: "Weiter"
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 243,
+                lineNumber: 255,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-        lineNumber: 189,
+        lineNumber: 201,
         columnNumber: 5
     }, this);
 }
@@ -888,12 +897,12 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                                 size: 40
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 283,
+                                lineNumber: 295,
                                 columnNumber: 13
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 282,
+                            lineNumber: 294,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -901,7 +910,7 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                             children: "Wähle Backup-Quelle"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 285,
+                            lineNumber: 297,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -909,13 +918,13 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                             children: "Wo sind deine Fotos gespeichert?"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 288,
+                            lineNumber: 300,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 281,
+                    lineNumber: 293,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -928,19 +937,19 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                                 children: "Tipp:"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 296,
+                                lineNumber: 308,
                                 columnNumber: 16
                             }, this),
                             ' Die meisten Nutzer wählen "Fotos-App". Du kannst dies später in den Einstellungen ändern.'
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 295,
+                        lineNumber: 307,
                         columnNumber: 11
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 294,
+                    lineNumber: 306,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -959,7 +968,7 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                                                 children: source.label
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                lineNumber: 314,
+                                                lineNumber: 326,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -967,7 +976,7 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                                                 children: source.description
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                lineNumber: 317,
+                                                lineNumber: 329,
                                                 columnNumber: 19
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -975,13 +984,13 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                                                 children: source.details
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                lineNumber: 320,
+                                                lineNumber: 332,
                                                 columnNumber: 19
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 313,
+                                        lineNumber: 325,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -990,39 +999,39 @@ function SourceSelectionStep({ selectedSource, onSelect }) {
                                             className: "w-2.5 h-2.5 rounded-full bg-white"
                                         }, void 0, false, {
                                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                            lineNumber: 332,
+                                            lineNumber: 344,
                                             columnNumber: 21
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 324,
+                                        lineNumber: 336,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 312,
+                                lineNumber: 324,
                                 columnNumber: 15
                             }, this)
                         }, source.id, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 303,
+                            lineNumber: 315,
                             columnNumber: 13
                         }, this))
                 }, void 0, false, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 301,
+                    lineNumber: 313,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-            lineNumber: 280,
+            lineNumber: 292,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-        lineNumber: 279,
+        lineNumber: 291,
         columnNumber: 5
     }, this);
 }
@@ -1071,12 +1080,12 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                     size: 40
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                    lineNumber: 388,
+                                    lineNumber: 400,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 387,
+                                lineNumber: 399,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -1084,7 +1093,7 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                 children: "Wähle Speicherplan"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 390,
+                                lineNumber: 402,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1092,13 +1101,13 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                 children: "Du kannst das später jederzeit ändern"
                             }, void 0, false, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 393,
+                                lineNumber: 405,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 386,
+                        lineNumber: 398,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1111,19 +1120,19 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                     children: "Empfehlung:"
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                    lineNumber: 401,
+                                    lineNumber: 413,
                                     columnNumber: 16
                                 }, this),
                                 " Starte mit FREE und upgrade später, wenn du mehr Speicher brauchst."
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 400,
+                            lineNumber: 412,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 399,
+                        lineNumber: 411,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1137,7 +1146,7 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                         children: "EMPFOHLEN"
                                     }, void 0, false, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 418,
+                                        lineNumber: 430,
                                         columnNumber: 17
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1151,7 +1160,7 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                         children: plan.label
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                        lineNumber: 424,
+                                                        lineNumber: 436,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1159,7 +1168,7 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                         children: plan.subtitle
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                        lineNumber: 427,
+                                                        lineNumber: 439,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1167,7 +1176,7 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                         children: plan.description
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                        lineNumber: 430,
+                                                        lineNumber: 442,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("ul", {
@@ -1180,7 +1189,7 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                                         children: "✓"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                                        lineNumber: 439,
+                                                                        lineNumber: 451,
                                                                         columnNumber: 25
                                                                     }, this),
                                                                     " ",
@@ -1188,12 +1197,12 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                                 ]
                                                             }, feature, true, {
                                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                                lineNumber: 435,
+                                                                lineNumber: 447,
                                                                 columnNumber: 23
                                                             }, this))
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                        lineNumber: 433,
+                                                        lineNumber: 445,
                                                         columnNumber: 19
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1201,13 +1210,13 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                         children: plan.price
                                                     }, void 0, false, {
                                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                        lineNumber: 443,
+                                                        lineNumber: 455,
                                                         columnNumber: 19
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                lineNumber: 423,
+                                                lineNumber: 435,
                                                 columnNumber: 17
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1216,35 +1225,35 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                                                     className: "w-2.5 h-2.5 rounded-full bg-white"
                                                 }, void 0, false, {
                                                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                    lineNumber: 455,
+                                                    lineNumber: 467,
                                                     columnNumber: 21
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                                lineNumber: 447,
+                                                lineNumber: 459,
                                                 columnNumber: 17
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                        lineNumber: 422,
+                                        lineNumber: 434,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, plan.id, true, {
                                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                                lineNumber: 408,
+                                lineNumber: 420,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                        lineNumber: 406,
+                        lineNumber: 418,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 385,
+                lineNumber: 397,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1253,13 +1262,13 @@ function PlanSelectionStep({ selectedPlan, onSelect }) {
                 children: "PhotoVault starten"
             }, void 0, false, {
                 fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                lineNumber: 464,
+                lineNumber: 476,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-        lineNumber: 384,
+        lineNumber: 396,
         columnNumber: 5
     }, this);
 }
@@ -1275,7 +1284,7 @@ function ImportKeyDialog({ onClose }) {
                     children: "Schlüssel importieren"
                 }, void 0, false, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 480,
+                    lineNumber: 492,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -1283,7 +1292,7 @@ function ImportKeyDialog({ onClose }) {
                     children: "Gib deine 12-Wort Backup-Phrase ein"
                 }, void 0, false, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 483,
+                    lineNumber: 495,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("textarea", {
@@ -1293,7 +1302,7 @@ function ImportKeyDialog({ onClose }) {
                     className: "w-full h-[100px] bg-[#F2F2F7] rounded-xl p-4 text-[15px] text-[#1D1D1F] resize-none mb-4"
                 }, void 0, false, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 486,
+                    lineNumber: 498,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -1308,7 +1317,7 @@ function ImportKeyDialog({ onClose }) {
                             children: "Importieren"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 493,
+                            lineNumber: 505,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -1317,24 +1326,24 @@ function ImportKeyDialog({ onClose }) {
                             children: "Abbrechen"
                         }, void 0, false, {
                             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                            lineNumber: 502,
+                            lineNumber: 514,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-                    lineNumber: 492,
+                    lineNumber: 504,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-            lineNumber: 479,
+            lineNumber: 491,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/components/photovault/OnboardingFlow.tsx",
-        lineNumber: 478,
+        lineNumber: 490,
         columnNumber: 5
     }, this);
 }

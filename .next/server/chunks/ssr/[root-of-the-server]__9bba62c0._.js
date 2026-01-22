@@ -1,3 +1,0 @@
-module.exports=[35112,(a,b,c)=>{"use strict";b.exports=a.r(42602).vendored["react-ssr"].ReactDOM},88947,(a,b,c)=>{b.exports=a.x("stream",()=>require("stream"))},21517,(a,b,c)=>{b.exports=a.x("http",()=>require("http"))},92509,(a,b,c)=>{b.exports=a.x("url",()=>require("url"))},24836,(a,b,c)=>{b.exports=a.x("https",()=>require("https"))},6461,(a,b,c)=>{b.exports=a.x("zlib",()=>require("zlib"))},54799,(a,b,c)=>{b.exports=a.x("crypto",()=>require("crypto"))},59789,a=>{a.v(a=>Promise.resolve().then(()=>a(23952)))},12079,a=>{a.v(b=>Promise.all(["server/chunks/ssr/[root-of-the-server]__8c0d3fa9._.js"].map(b=>a.l(b))).then(()=>b(82102)))}];
-
-//# sourceMappingURL=%5Broot-of-the-server%5D__9bba62c0._.js.map

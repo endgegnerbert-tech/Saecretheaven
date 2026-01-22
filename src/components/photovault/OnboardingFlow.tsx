@@ -4,11 +4,11 @@ import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
 import { CustomIcon } from "@/components/ui/custom-icon";
 import type { AppState } from "./PhotoVaultApp";
-import { dummyBackupPhrase } from "./PhotoVaultApp";
 import {
   generateKeyPair,
   keyToRecoveryPhrase,
   saveKeyToStorage,
+  recoveryPhraseToKey,
 } from "@/lib/crypto";
 import ProgressIndicator from "@/components/ui/progress-indicator";
 import ShieldLoader from "@/components/ui/shield-loader";
@@ -38,7 +38,7 @@ export function OnboardingFlow({
 
   const generateEncryptionKey = async () => {
     const phrase = await generateNewKey();
-    const phraseWords = phrase?.split("-").slice(0, 12) || dummyBackupPhrase; // Take first 12 chunks
+    const phraseWords = phrase?.split("-").slice(0, 12) || [];
 
     setState((prev) => ({
       ...prev,
@@ -117,7 +117,18 @@ export function OnboardingFlow({
 
       {/* Import Dialog */}
       {showImportDialog && (
-        <ImportKeyDialog onClose={() => setShowImportDialog(false)} />
+        <ImportKeyDialog
+          onClose={() => setShowImportDialog(false)}
+          onSuccess={(phrase, phraseWords) => {
+            setState((prev) => ({
+              ...prev,
+              encryptionKey: phrase,
+              backupPhrase: phraseWords,
+            }));
+            setShowImportDialog(false);
+            onComplete();
+          }}
+        />
       )}
     </div>
   );
@@ -471,8 +482,57 @@ function PlanSelectionStep({
   );
 }
 
-function ImportKeyDialog({ onClose }: { onClose: () => void }) {
+function ImportKeyDialog({
+  onClose,
+  onSuccess,
+}: {
+  onClose: () => void;
+  onSuccess: (phrase: string, phraseWords: string[]) => void;
+}) {
   const [importedPhrase, setImportedPhrase] = useState("");
+  const [error, setError] = useState<string | null>(null);
+  const [isImporting, setIsImporting] = useState(false);
+
+  const handleImport = () => {
+    setError(null);
+    setIsImporting(true);
+
+    try {
+      // Normalize input: replace spaces/newlines with dashes, trim
+      const normalizedPhrase = importedPhrase
+        .trim()
+        .replace(/[\s\n]+/g, "-")
+        .replace(/-+/g, "-");
+
+      if (!normalizedPhrase) {
+        setError("Bitte gib deinen Schlüssel ein");
+        setIsImporting(false);
+        return;
+      }
+
+      // Try to decode the key
+      const secretKey = recoveryPhraseToKey(normalizedPhrase);
+
+      if (!secretKey || secretKey.length !== 32) {
+        setError("Ungültiger Schlüssel. Bitte überprüfe die Eingabe.");
+        setIsImporting(false);
+        return;
+      }
+
+      // Save to localStorage
+      saveKeyToStorage(secretKey);
+
+      // Generate phrase words for display
+      const phraseWords = normalizedPhrase.split("-").slice(0, 12);
+
+      console.log("Key imported successfully");
+      onSuccess(normalizedPhrase, phraseWords);
+    } catch (err) {
+      console.error("Key import error:", err);
+      setError("Ungültiger Schlüssel. Bitte überprüfe die Eingabe.");
+      setIsImporting(false);
+    }
+  };
 
   return (
     <div className="fixed inset-0 bg-black/40 flex items-end justify-center z-50">
@@ -481,23 +541,29 @@ function ImportKeyDialog({ onClose }: { onClose: () => void }) {
           Schlüssel importieren
         </h3>
         <p className="text-[15px] text-[#6E6E73] text-center mb-6">
-          Gib deine 12-Wort Backup-Phrase ein
+          Gib deine Backup-Phrase ein (mit Bindestrichen oder Leerzeichen)
         </p>
         <textarea
           value={importedPhrase}
-          onChange={(e) => setImportedPhrase(e.target.value)}
-          placeholder="beach ocean sunset cloud tree river..."
-          className="w-full h-[100px] bg-[#F2F2F7] rounded-xl p-4 text-[15px] text-[#1D1D1F] resize-none mb-4"
+          onChange={(e) => {
+            setImportedPhrase(e.target.value);
+            setError(null);
+          }}
+          placeholder="abc123XY-def456AB-ghi789CD-..."
+          className="w-full h-[100px] bg-[#F2F2F7] rounded-xl p-4 text-[15px] text-[#1D1D1F] font-mono resize-none mb-2"
         />
+
+        {error && (
+          <p className="text-[13px] text-[#FF3B30] text-center mb-4">{error}</p>
+        )}
+
         <div className="space-y-3">
           <button
-            onClick={() => {
-              console.log("TODO: Import key:", importedPhrase);
-              onClose();
-            }}
-            className="w-full h-[50px] bg-[#007AFF] text-white text-[17px] font-semibold rounded-xl ios-tap-target"
+            onClick={handleImport}
+            disabled={isImporting || !importedPhrase.trim()}
+            className="w-full h-[50px] bg-[#007AFF] text-white text-[17px] font-semibold rounded-xl ios-tap-target disabled:opacity-50"
           >
-            Importieren
+            {isImporting ? "Importiere..." : "Importieren"}
           </button>
           <button
             onClick={onClose}
