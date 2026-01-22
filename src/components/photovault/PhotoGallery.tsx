@@ -398,10 +398,10 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
             {photos.length} Fotos lokal • {remoteCIDs.length} in der Cloud
           </p>
           {remoteCIDsFromOtherDevices.length > 0 && (
-            <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+            <div className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
               <CustomIcon name="smartphone" size={12} />
               {remoteCIDsFromOtherDevices.length} von anderen Geräten
-            </p>
+            </div>
           )}
         </div>
       </div>

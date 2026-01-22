@@ -922,6 +922,10 @@ body {
   max-width: 300px;
 }
 
+.max-w-\[380px\] {
+  max-width: 380px;
+}
+
 .max-w-\[428px\] {
   max-width: 428px;
 }
@@ -936,10 +940,6 @@ body {
 
 .max-w-max {
   max-width: max-content;
-}
-
-.max-w-\[380px\] {
-  max-width: 380px;
 }
 
 .flex-1 {
@@ -1267,6 +1267,10 @@ body {
   border-bottom-width: 1px;
 }
 
+.border-b-2 {
+  border-bottom-width: 2px;
+}
+
 .border-l {
   border-left-width: 1px;
 }
@@ -1289,10 +1293,6 @@ body {
 
 .border-t-\[6px\] {
   border-top-width: 6px;
-}
-
-.border-b-2 {
-  border-bottom-width: 2px;
 }
 
 .border-dashed {
@@ -1413,6 +1413,10 @@ body {
   background-color: #ff3b301a;
 }
 
+.bg-\[\#FF9500\]\/10 {
+  background-color: #ff95001a;
+}
+
 .bg-accent {
   background-color: hsl(var(--accent));
 }
@@ -1497,10 +1501,6 @@ body {
 
 .bg-white\/5 {
   background-color: #ffffff0d;
-}
-
-.bg-\[\#FF9500\]\/10 {
-  background-color: #ff95001a;
 }
 
 .bg-gradient-to-br {
@@ -1759,6 +1759,10 @@ body {
   font-size: 11px;
 }
 
+.text-\[12px\] {
+  font-size: 12px;
+}
+
 .text-\[13px\] {
   font-size: 13px;
 }
@@ -1801,10 +1805,6 @@ body {
 .text-xs {
   font-size: .75rem;
   line-height: 1rem;
-}
-
-.text-\[12px\] {
-  font-size: 12px;
 }
 
 .font-bold {
@@ -1886,6 +1886,11 @@ body {
   color: rgb(255 59 48 / var(--tw-text-opacity, 1));
 }
 
+.text-\[\#FF9500\] {
+  --tw-text-opacity: 1;
+  color: rgb(255 149 0 / var(--tw-text-opacity, 1));
+}
+
 .text-accent-foreground {
   color: hsl(var(--accent-foreground));
 }
@@ -1958,11 +1963,6 @@ body {
 
 .text-white\/80 {
   color: #fffc;
-}
-
-.text-\[\#FF9500\] {
-  --tw-text-opacity: 1;
-  color: rgb(255 149 0 / var(--tw-text-opacity, 1));
 }
 
 .underline-offset-4 {
@@ -2172,13 +2172,13 @@ body {
   font-weight: 500;
 }
 
-.placeholder\:text-muted-foreground::placeholder {
-  color: hsl(var(--muted-foreground));
-}
-
 .placeholder\:text-\[\#C7C7CC\]::placeholder {
   --tw-text-opacity: 1;
   color: rgb(199 199 204 / var(--tw-text-opacity, 1));
+}
+
+.placeholder\:text-muted-foreground::placeholder {
+  color: hsl(var(--muted-foreground));
 }
 
 .after\:absolute:after {

@@ -5,7 +5,8 @@
 'use client';
 
 import { useEffect, useCallback, useState } from 'react';
-import { supabase, loadCIDsFromSupabase, downloadPhotoBlob } from '@/lib/supabase';
+import { supabase, loadCIDsFromSupabase } from '@/lib/supabase';
+import { remoteStorage } from '@/lib/storage/remote-storage';
 import { getDeviceId } from '@/lib/deviceId';
 import { getPhotoByCID, savePhoto } from '@/lib/storage/local-db';
 import type { RealtimeChannel } from '@supabase/supabase-js';
@@ -53,8 +54,8 @@ export function useRealtimeSync(options: UseRealtimeSyncOptions = {}) {
       console.log('Fetching missing photo from storage:', photo.cid);
       setIsSyncing(true);
 
-      // Download encrypted blob from Supabase Storage
-      const encryptedBlob = await downloadPhotoBlob(photo.storage_path);
+      // Download encrypted blob from Remote Storage (Supabase/IPFS)
+      const encryptedBlob = await remoteStorage.download(photo.storage_path);
 
       // Save to local IndexedDB (still encrypted)
       await savePhoto({

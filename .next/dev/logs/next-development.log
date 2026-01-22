@@ -1634,3 +1634,1924 @@ See this log for the ancestor stack trace. p <div>
 [00:23:52.099] Browser LOG     Generated new device ID: d7731015-069c-4580-b4d2-2848d3ddbaff
 [00:23:52.815] Browser LOG     Realtime subscription status: CLOSED
 [00:23:53.026] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:25:40.502] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:41.247] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:41.964] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:47.216] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:25:47.216] Browser LOG     Selected photo source: photos-app
+[00:25:47.331] Browser LOG     Set Free Plan
+[00:25:47.331] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["4HA2uFVG","OgTp1Mfd","wqf2UWzc","tGtrkp/3","8cAjG32J","D+k="],"devices":[],"encryptionKey":"4HA2uFVG-OgTp1Mfd-wqf2UWzc-tGtrkp/3-8cAjG32J-D+k=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:25:47.331] Browser LOG     Generated new device ID: e3412704-c2fd-40b8-8488-f4f04450b97d
+[00:25:47.331] Browser WARN    Another connection wants to delete database 'PhotoVaultDB'. Closing db now to resume the delete request.
+[00:25:47.630] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:50.416] Browser LOG     Show import dialog
+[00:25:50.416] Browser LOG     Key imported successfully
+[00:25:50.416] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:25:50.416] Browser LOG     Generated new device ID: ff89c9b8-2cc0-49b3-93d5-9d557cc0b513
+[00:25:51.179] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:51.564] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:54.347] Browser LOG     Show import dialog
+[00:25:54.347] Browser ERROR   Key import error: {}
+[00:25:55.080] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:55.464] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:25:55.833] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:26:00.697] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:26:00.697] Browser LOG     Selected photo source: photos-app
+[00:26:00.926] Browser LOG     Set Free Plan
+[00:26:00.926] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["hn9Pm/Vt","6dYynMcL","Nw0HexzH","yXiSKAQA","vjIrBYay","WIc="],"devices":[],"encryptionKey":"hn9Pm/Vt-6dYynMcL-Nw0HexzH-yXiSKAQA-vjIrBYay-WIc=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:26:00.926] Browser LOG     Generated new device ID: e81c6d1c-7aa0-44a1-ad25-fab94e27a1ab
+[00:26:02.701] Browser LOG     Realtime subscription status: CLOSED
+[00:26:02.902] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:27:43.583] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:44.032] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:44.313] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:49.366] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:27:49.366] Browser LOG     Selected photo source: photos-app
+[00:27:49.366] Browser LOG     Set Free Plan
+[00:27:49.366] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["Qp9XIq5C","4E2iDgmw","4SH4K8h9","TQFvy1dk","ApyXXmbt","VCk="],"devices":[],"encryptionKey":"Qp9XIq5C-4E2iDgmw-4SH4K8h9-TQFvy1dk-ApyXXmbt-VCk=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:27:49.366] Browser LOG     Generated new device ID: e8e407aa-e576-40f5-aedd-8cba512ae41c
+[00:27:49.366] Browser WARN    Another connection wants to delete database 'PhotoVaultDB'. Closing db now to resume the delete request.
+[00:27:49.629] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:52.465] Browser LOG     Show import dialog
+[00:27:52.466] Browser LOG     Key imported successfully
+[00:27:52.466] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:27:52.466] Browser LOG     Generated new device ID: 128fe4e5-0e31-4b62-a0db-1bab63ba13b6
+[00:27:53.087] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:53.398] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:56.410] Browser LOG     Show import dialog
+[00:27:56.410] Browser ERROR   Key import error: {}
+[00:27:57.076] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:57.348] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:27:57.660] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:28:02.746] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:28:02.746] Browser LOG     Selected photo source: photos-app
+[00:28:02.746] Browser LOG     Set Free Plan
+[00:28:02.746] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["jaPlMqZH","rkO724sN","7XOBkkss","He+8Y3Fr","s59rZEZT","q0s="],"devices":[],"encryptionKey":"jaPlMqZH-rkO724sN-7XOBkkss-He+8Y3Fr-s59rZEZT-q0s=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:28:02.746] Browser LOG     Generated new device ID: 6afaad9f-254a-4b81-bb46-9749c9634c19
+[00:28:03.526] Browser LOG     Realtime subscription status: CLOSED
+[00:28:03.815] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:29:49.367] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:49.752] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:50.107] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:55.160] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:29:55.160] Browser LOG     Selected photo source: photos-app
+[00:29:55.160] Browser LOG     Set Free Plan
+[00:29:55.160] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["eY5Eb7VP","P67OH0VD","NLQd2S7l","sd1FRN/f","Gs2J7z2N","p+U="],"devices":[],"encryptionKey":"eY5Eb7VP-P67OH0VD-NLQd2S7l-sd1FRN/f-Gs2J7z2N-p+U=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:29:55.160] Browser LOG     Generated new device ID: d11453b4-1e9e-45f7-8eb1-09e168313abf
+[00:29:55.160] Browser WARN    Another connection wants to delete database 'PhotoVaultDB'. Closing db now to resume the delete request.
+[00:29:55.404] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:58.207] Browser LOG     Show import dialog
+[00:29:58.207] Browser LOG     Key imported successfully
+[00:29:58.207] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:29:58.207] Browser LOG     Generated new device ID: d4be7e3c-dccd-482d-919d-b8425cdaaa02
+[00:29:58.881] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:29:59.175] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:30:01.977] Browser LOG     Show import dialog
+[00:30:01.977] Browser ERROR   Key import error: {}
+[00:30:02.627] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:30:02.905] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:30:03.192] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:30:08.036] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:30:08.159] Browser LOG     Selected photo source: photos-app
+[00:30:08.754] Browser LOG     Set Free Plan
+[00:30:08.754] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["l+0oM25k","MU3Kpv+P","yDy7WqOx","S0yMenBd","LfGNvPvT","+K4="],"devices":[],"encryptionKey":"l+0oM25k-MU3Kpv+P-yDy7WqOx-S0yMenBd-LfGNvPvT-+K4=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:30:08.754] Browser LOG     Generated new device ID: 3936a94d-8ff4-44bb-b95d-35701ce43c9c
+[00:30:09.248] Browser LOG     Realtime subscription status: CLOSED
+[00:30:09.534] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:31:55.096] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:55.504] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:55.901] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:00.817] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:32:00.817] Browser LOG     Selected photo source: photos-app
+[00:32:00.923] Browser LOG     Set Free Plan
+[00:32:00.923] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["ZCob84Qm","FmcOx73g","2V92HdcP","dhda8kXP","WsI5ype+","YvQ="],"devices":[],"encryptionKey":"ZCob84Qm-FmcOx73g-2V92HdcP-dhda8kXP-WsI5ype+-YvQ=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:32:00.923] Browser LOG     Generated new device ID: f22712db-4119-4cdb-a04f-1b14e7482dd1
+[00:32:00.923] Browser WARN    Another connection wants to delete database 'PhotoVaultDB'. Closing db now to resume the delete request.
+[00:32:01.144] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:03.975] Browser LOG     Show import dialog
+[00:32:03.975] Browser LOG     Key imported successfully
+[00:32:03.975] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:32:03.975] Browser LOG     Generated new device ID: 94db333e-f8f9-467b-be43-3b3538376d61
+[00:32:04.693] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:04.988] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:07.820] Browser LOG     Show import dialog
+[00:32:07.820] Browser ERROR   Key import error: {}
+[00:32:08.429] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:08.733] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:09.024] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:13.916] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:32:13.916] Browser LOG     Selected photo source: photos-app
+[00:32:14.074] Browser LOG     Set Free Plan
+[00:32:14.074] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["47dL2O1s","gRgc81pl","fYu06xzw","ekKirXP1","0tnXzywa","O0s="],"devices":[],"encryptionKey":"47dL2O1s-gRgc81pl-fYu06xzw-ekKirXP1-0tnXzywa-O0s=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:32:14.074] Browser LOG     Generated new device ID: 96d87a6d-ba74-428e-95ba-a28b0ccde8ee
+[00:32:14.866] Browser LOG     Realtime subscription status: CLOSED
+[00:32:15.348] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:32:43.270] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:43.553] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:43.879] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:48.884] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:32:48.884] Browser LOG     Selected photo source: photos-app
+[00:32:48.884] Browser LOG     Set Free Plan
+[00:32:48.884] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["Qhh66fls","kpN2UYD3","CGb4CQyO","1+2zXuUj","VufyJTWy","o6U="],"devices":[],"encryptionKey":"Qhh66fls-kpN2UYD3-CGb4CQyO-1+2zXuUj-VufyJTWy-o6U=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:32:48.884] Browser LOG     Generated new device ID: a8959c61-4102-430b-b0a1-32532801af4b
+[00:32:48.884] Browser WARN    Another connection wants to delete database 'PhotoVaultDB'. Closing db now to resume the delete request.
+[00:32:49.102] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:51.892] Browser LOG     Show import dialog
+[00:32:51.892] Browser LOG     Key imported successfully
+[00:32:51.892] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:32:51.892] Browser LOG     Generated new device ID: cb4b042a-609e-46e2-93f3-c236230bcb3e
+[00:32:52.538] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:52.759] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:55.568] Browser LOG     Show import dialog
+[00:32:55.568] Browser ERROR   Key import error: {}
+[00:32:56.135] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:56.374] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:32:56.663] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:01.538] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:33:01.538] Browser LOG     Selected photo source: photos-app
+[00:33:01.701] Browser LOG     Set Free Plan
+[00:33:01.701] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["vwdKSS6G","kvH0qXDZ","5IdwTalW","S2a9776M","Updlul2t","h6s="],"devices":[],"encryptionKey":"vwdKSS6G-kvH0qXDZ-5IdwTalW-S2a9776M-Updlul2t-h6s=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:33:01.701] Browser LOG     Generated new device ID: 33af07cf-c411-474a-975c-ec3513b0047b
+[00:33:02.456] Browser LOG     Realtime subscription status: CLOSED
+[00:33:02.792] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:33:27.852] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:28.270] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:28.696] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:33.741] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:33:33.741] Browser LOG     Selected photo source: photos-app
+[00:33:33.850] Browser LOG     Set Free Plan
+[00:33:33.850] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["vrnrptcn","o0bDWqTi","dcYP82d3","xmBE5J/9","YtRGf+t6","69A="],"devices":[],"encryptionKey":"vrnrptcn-o0bDWqTi-dcYP82d3-xmBE5J/9-YtRGf+t6-69A=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:33:33.850] Browser LOG     Generated new device ID: 3868ea6d-6943-4172-b3ea-7d971cc4c6ab
+[00:33:35.948] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:36.217] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:36.515] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:41.423] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:33:41.423] Browser LOG     Selected photo source: photos-app
+[00:33:41.532] Browser LOG     Set Free Plan
+[00:33:41.532] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["at/gdx2r","jgjcWNtf","nk0RiTfu","rE9gcF5r","rN3N52U/","iSA="],"devices":[],"encryptionKey":"at/gdx2r-jgjcWNtf-nk0RiTfu-rE9gcF5r-rN3N52U/-iSA=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:33:41.532] Browser LOG     Generated new device ID: d75c27ec-5ed1-429c-8958-b0e816f1f8d3
+[00:33:42.000] Browser LOG     Photo metadata synced to cloud: cid_1769113075289_9mef1nb76oc
+[00:33:42.000] Browser LOG     Realtime subscription status: CLOSED
+[00:33:42.000] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:33:42.000] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:33:42.486] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:33:42.615] Browser LOG     Photo blob uploaded to storage: d75c27ec-5ed1-429c-8958-b0e816f1f8d3/cid_1769113075289_9mef1nb76oc
+[00:33:45.225] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:45.480] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:45.726] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:50.764] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:33:50.764] Browser LOG     Selected photo source: photos-app
+[00:33:50.764] Browser LOG     Set Free Plan
+[00:33:50.764] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["eCxe3iUS","EqAfQBJD","wM7JLaWq","nK849BSR","spo3Mbps","vVA="],"devices":[],"encryptionKey":"eCxe3iUS-EqAfQBJD-wM7JLaWq-nK849BSR-spo3Mbps-vVA=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:33:50.764] Browser LOG     Generated new device ID: adee3272-3501-458e-b4bf-193aff185121
+[00:33:52.138] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:52.350] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:33:57.350] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:33:57.350] Browser LOG     Selected photo source: photos-app
+[00:33:57.350] Browser LOG     Set Free Plan
+[00:33:57.350] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["fMA/LTT2","xH7WT5nY","DLqY05YN","Bs8vBgtZ","o3VNpeua","/gQ="],"devices":[],"encryptionKey":"fMA/LTT2-xH7WT5nY-DLqY05YN-Bs8vBgtZ-o3VNpeua-/gQ=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:33:57.350] Browser LOG     Generated new device ID: 1212d7b8-4959-4cc9-9460-27c6783cf7ec
+[00:33:57.821] Browser LOG     Photo metadata synced to cloud: cid_1769113091119_7rellgvlcd8
+[00:33:57.821] Browser LOG     Realtime subscription status: CLOSED
+[00:33:57.821] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:33:57.821] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:33:58.782] Browser LOG     Photo blob uploaded to storage: 1212d7b8-4959-4cc9-9460-27c6783cf7ec/cid_1769113091119_7rellgvlcd8
+[00:33:59.087] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:34:02.489] Browser LOG     Realtime subscription status: CLOSED
+[00:34:23.624] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:23.901] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:28.898] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:34:28.898] Browser LOG     Selected photo source: photos-app
+[00:34:28.898] Browser LOG     Set Free Plan
+[00:34:28.898] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["iObvRCMg","jN2TqFNQ","CL4neQox","j0Ty9WYg","VW2UpQKf","YsM="],"devices":[],"encryptionKey":"iObvRCMg-jN2TqFNQ-CL4neQox-j0Ty9WYg-VW2UpQKf-YsM=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:34:28.898] Browser LOG     Generated new device ID: 555c0164-3b7a-4646-854a-c915f5a56619
+[00:34:29.499] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:29.761] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:34.654] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:34:34.654] Browser LOG     Selected photo source: photos-app
+[00:34:34.769] Browser LOG     Set Free Plan
+[00:34:34.769] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["YHbFMC9r","ryXJ5pDK","E6+joh5V","C/jrVpQD","kN1qdcCQ","6p4="],"devices":[],"encryptionKey":"YHbFMC9r-ryXJ5pDK-E6+joh5V-C/jrVpQD-kN1qdcCQ-6p4=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:34:34.769] Browser LOG     Generated new device ID: bcb52c73-9f2a-4ee9-a518-fe0f281dc9da
+[00:34:34.769] Browser WARN    Another connection wants to delete database 'PhotoVaultDB'. Closing db now to resume the delete request.
+[00:34:35.131] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:37.908] Browser LOG     Show import dialog
+[00:34:37.908] Browser LOG     Key imported successfully
+[00:34:37.908] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:34:37.908] Browser LOG     Generated new device ID: 1284b8ed-1ebd-4ab2-8117-1c8570aca672
+[00:34:38.655] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:38.938] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:41.692] Browser LOG     Show import dialog
+[00:34:41.692] Browser ERROR   Key import error: {}
+[00:34:42.271] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:42.565] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:47.429] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:34:47.604] Browser LOG     Selected photo source: photos-app
+[00:34:48.537] Browser LOG     Set Free Plan
+[00:34:48.537] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["Eyb5JTji","UswkqDVT","MSftRPbq","YCQV4lno","DMPkJqjD","shk="],"devices":[],"encryptionKey":"Eyb5JTji-UswkqDVT-MSftRPbq-YCQV4lno-DMPkJqjD-shk=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:34:48.538] Browser LOG     Generated new device ID: f528f1be-b52d-4cc9-8c62-909c63bcee50
+[00:34:49.063] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:34:49.063] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:34:49.067] Browser LOG     Realtime subscription status: CLOSED
+[00:34:49.311] Browser LOG     Realtime subscription status: CLOSED
+[00:34:51.015] Browser LOG     Realtime subscription status: CLOSED
+[00:34:52.096] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:52.553] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:34:57.626] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:34:57.626] Browser LOG     Selected photo source: photos-app
+[00:34:57.867] Browser LOG     Set Free Plan
+[00:34:57.867] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["mon3g+E/","ahvbfLnE","H2VAqF8p","gTS3ShX/","s44CQxT2","Mwo="],"devices":[],"encryptionKey":"mon3g+E/-ahvbfLnE-H2VAqF8p-gTS3ShX/-s44CQxT2-Mwo=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:34:57.867] Browser LOG     Generated new device ID: eb56fde5-42dd-4abf-9a00-0b5a2c819699
+[00:35:01.085] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:35:01.085] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:35:01.085] Browser LOG     Photo metadata synced to cloud: cid_1769113151858_tz1msuztc3d
+[00:35:01.085] Browser LOG     Realtime subscription status: CLOSED
+[00:35:01.491] Browser LOG     Photo blob uploaded to storage: eb56fde5-42dd-4abf-9a00-0b5a2c819699/cid_1769113151858_tz1msuztc3d
+[00:35:02.753] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:03.314] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:08.242] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:35:08.242] Browser LOG     Selected photo source: photos-app
+[00:35:08.456] Browser LOG     Set Free Plan
+[00:35:08.456] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["k0d/Bfzc","IGPGY5rS","JvPZ2xV2","3pWUXmEA","iQclehp0","LlQ="],"devices":[],"encryptionKey":"k0d/Bfzc-IGPGY5rS-JvPZ2xV2-3pWUXmEA-iQclehp0-LlQ=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:35:08.456] Browser LOG     Generated new device ID: d1d31ca2-8fef-470c-b64c-671057374e26
+[00:35:08.676] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:35:08.676] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:35:08.785] Browser LOG     Realtime subscription status: CLOSED
+[00:35:10.170] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:10.545] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:15.410] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:35:15.533] Browser LOG     Selected photo source: photos-app
+[00:35:15.734] Browser LOG     Set Free Plan
+[00:35:15.734] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["vFd/dSRd","jovCu4HD","J1wUKSPu","/lP40RrR","1gHxPsiX","hcY="],"devices":[],"encryptionKey":"vFd/dSRd-jovCu4HD-J1wUKSPu-/lP40RrR-1gHxPsiX-hcY=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:35:15.734] Browser LOG     Generated new device ID: 00e13384-96be-4d20-9296-7ccf7554d602
+[00:35:16.439] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:35:16.439] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:35:16.531] Browser LOG     Realtime subscription status: CLOSED
+[00:35:16.640] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:35:17.524] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:18.011] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:22.875] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:35:23.051] Browser LOG     Selected photo source: photos-app
+[00:35:23.257] Browser LOG     Set Free Plan
+[00:35:23.257] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["W6NPEZIJ","5yGsjhcy","8aMOHClO","hyA46OA/","Ssxgu+G8","K1c="],"devices":[],"encryptionKey":"W6NPEZIJ-5yGsjhcy-8aMOHClO-hyA46OA/-Ssxgu+G8-K1c=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:35:23.257] Browser LOG     Generated new device ID: d8ed1d7a-1d8d-412f-bad3-de61a83e9bab
+[00:35:23.921] Browser LOG     Photo metadata synced to cloud: cid_1769113177037_qcbha9au2z
+[00:35:24.019] Browser LOG     Realtime subscription status: CLOSED
+[00:35:24.019] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:35:24.019] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:35:24.319] Browser LOG     Photo blob uploaded to storage: d8ed1d7a-1d8d-412f-bad3-de61a83e9bab/cid_1769113177037_qcbha9au2z
+[00:35:24.319] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:35:26.484] Browser LOG     Realtime subscription status: CLOSED
+[00:35:27.951] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:28.580] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:33.675] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:35:33.675] Browser LOG     Selected photo source: photos-app
+[00:35:33.874] Browser LOG     Set Free Plan
+[00:35:33.874] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["vHcUwo2M","K0mnMDbI","BR8XE6OF","OLPgeEkZ","HbRWoVfU","tLg="],"devices":[],"encryptionKey":"vHcUwo2M-K0mnMDbI-BR8XE6OF-OLPgeEkZ-HbRWoVfU-tLg=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:35:33.874] Browser LOG     Generated new device ID: 5b2bec72-154a-433f-aa6f-21e3577c4dde
+[00:35:34.128] Browser LOG     TODO: Toggle backup with confirmation dialog
+[00:35:34.128] Browser LOG     Activate Backup
+[00:35:35.393] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:35.945] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:40.951] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:35:40.951] Browser LOG     Selected photo source: photos-app
+[00:35:40.951] Browser LOG     Set Free Plan
+[00:35:40.951] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["DVoSIc4W","gDhY327p","OGSgLtpQ","JZnjvVbc","65zvoy9v","BOY="],"devices":[],"encryptionKey":"DVoSIc4W-gDhY327p-OGSgLtpQ-JZnjvVbc-65zvoy9v-BOY=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:35:40.951] Browser LOG     Generated new device ID: 0271bb66-e6f9-4b55-8e36-827cf3570506
+[00:35:41.892] Browser LOG     Realtime subscription status: CLOSED
+[00:35:41.892] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:35:42.878] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:43.240] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:48.016] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:35:48.191] Browser LOG     Selected photo source: photos-app
+[00:35:48.467] Browser LOG     Set Free Plan
+[00:35:48.467] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["ZwpYrFMt","tMTxgjKi","5FOvhT7X","fqinl36a","XrAMSvLB","w9U="],"devices":[],"encryptionKey":"ZwpYrFMt-tMTxgjKi-5FOvhT7X-fqinl36a-XrAMSvLB-w9U=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:35:48.467] Browser LOG     Generated new device ID: 92ce14ac-5644-4116-a7c4-b48de373ce4d
+[00:35:49.164] Browser LOG     Realtime subscription status: CLOSED
+[00:35:49.164] Browser LOG     Photo metadata synced to cloud: cid_1769113202339_qe1z6wjga8e
+[00:35:49.164] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:35:49.164] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:35:49.492] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:35:50.582] Browser LOG     Photo blob uploaded to storage: 92ce14ac-5644-4116-a7c4-b48de373ce4d/cid_1769113202339_qe1z6wjga8e
+[00:35:51.756] Browser LOG     Realtime subscription status: CLOSED
+[00:35:51.756] Browser LOG     TODO: Toggle backup with confirmation dialog
+[00:35:52.291] Browser LOG     Activate Backup
+[00:35:52.395] Browser LOG     Starting backup to Supabase Storage...
+[00:35:52.685] Browser ERROR   Supabase Storage Upload Error: {"error":"Duplicate","message":"The resource already exists","statusCode":"409"}
+[00:35:52.685] Browser ERROR   Failed to upload cid_1769113202339_qe1z6wjga8e: {"error":"Duplicate","message":"The resource already exists","statusCode":"409"}
+[00:35:52.685] Browser LOG     Backup complete: 0 photos uploaded
+[00:35:55.150] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:35:55.478] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:00.392] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:36:00.392] Browser LOG     Selected photo source: photos-app
+[00:36:00.514] Browser LOG     Set Free Plan
+[00:36:00.514] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["kKkG/lkn","yQKVkAU+","8vrLbFcO","YbFGytNt","RwXHgwz1","NHU="],"devices":[],"encryptionKey":"kKkG/lkn-yQKVkAU+-8vrLbFcO-YbFGytNt-RwXHgwz1-NHU=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:36:00.514] Browser LOG     Generated new device ID: b46552c5-df8e-4129-a676-f5efc837750a
+[00:36:01.108] Browser LOG     Realtime subscription status: CLOSED
+[00:36:01.108] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:36:01.108] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:36:01.108] Browser LOG     Realtime subscription status: CLOSED
+[00:36:01.736] Browser LOG     Display Backup Phrase
+[00:36:02.386] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:02.746] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:07.688] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:36:07.688] Browser LOG     Selected photo source: photos-app
+[00:36:07.870] Browser LOG     Set Free Plan
+[00:36:07.870] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["SBPGYLnt","KJ72OCdc","35fWCdof","+u7aR5ad","UXk6QUZD","aV8="],"devices":[],"encryptionKey":"SBPGYLnt-KJ72OCdc-35fWCdof-+u7aR5ad-UXk6QUZD-aV8=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:36:07.870] Browser LOG     Generated new device ID: e047fffa-149d-4f60-a871-48e78f5cd284
+[00:36:08.752] Browser LOG     Realtime subscription status: CLOSED
+[00:36:08.898] Browser LOG     Fetch Device List
+[00:36:09.576] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:09.843] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:14.691] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:36:14.691] Browser LOG     Selected photo source: photos-app
+[00:36:14.874] Browser LOG     Set Free Plan
+[00:36:14.874] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["h5P8ZN6W","g3mv/V/0","ZbfwgRnI","z1CmwUkU","h9F7LUFM","XiE="],"devices":[],"encryptionKey":"h5P8ZN6W-g3mv/V/0-ZbfwgRnI-z1CmwUkU-h9F7LUFM-XiE=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:36:14.874] Browser LOG     Generated new device ID: 85834373-804d-4dc3-a5cf-69f57b72c03d
+[00:36:15.009] Browser LOG     TODO: Navigate to onboarding screen 1
+[00:36:15.009] Browser LOG     TODO: Navigate to onboarding screen 1
+[00:36:15.605] Browser LOG     Realtime subscription status: CLOSED
+[00:36:15.889] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:36:19.304] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:19.722] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:24.654] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:36:24.773] Browser LOG     Selected photo source: photos-app
+[00:36:25.017] Browser LOG     Set Free Plan
+[00:36:25.017] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["5wB3I9fP","zdKx/gYr","01HAoeUF","7/Zefhd7","ODA2Gmg1","bRU="],"devices":[],"encryptionKey":"5wB3I9fP-zdKx/gYr-01HAoeUF-7/Zefhd7-ODA2Gmg1-bRU=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:36:25.017] Browser LOG     Generated new device ID: 5b31007e-eb3c-4c94-91be-998d97031749
+[00:36:25.521] Browser LOG     Realtime subscription status: CLOSED
+[00:36:25.521] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:36:25.521] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:36:25.809] Browser LOG     Photo metadata synced to cloud: cid_1769113238839_tif961dxl59
+[00:36:25.905] Browser LOG     Realtime subscription status: SUBSCRIBED
+[00:36:26.217] Browser LOG     Photo blob uploaded to storage: 5b31007e-eb3c-4c94-91be-998d97031749/cid_1769113238839_tif961dxl59
+[00:36:28.452] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:30.891] Browser ERROR   In HTML, %s cannot be a descendant of <%s>.
+This will cause a hydration error.%s <div> p 
+
+  ...
+    <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+      <RedirectBoundary>
+        <RedirectErrorBoundary router={{...}}>
+          <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+            <SegmentViewNode type="page" pagePath="page.tsx">
+              <SegmentTrieNode>
+              <HomePage>
+                <PhotoVaultApp>
+                  <div className="min-h-scre...">
+                    <div className="max-w-[428...">
+                      <div className="flex-1 ove...">
+                        <PhotoGallery photosCount={0}>
+                          <div className="flex flex-...">
+                            <header>
+                            <div className="flex-1 ove...">
+                              <div>
+                              <div className="text-cente...">
+                                <p>
+                                <p>
+>                               <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+                                  <CustomIcon name="smartphone" size={12}>
+>                                   <div className="relative inline-block shrink-0" style={{width:12,height:12}}>
+                                  ...
+                      ...
+            ...
+          ...
+
+[00:36:30.891] Browser ERROR   <%s> cannot contain a nested %s.
+See this log for the ancestor stack trace. p <div>
+[00:36:31.013] Browser LOG     Realtime subscription status: CLOSED
+[00:36:32.022] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:32.580] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:36:37.659] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[00:36:37.660] Browser LOG     Selected photo source: photos-app
+[00:36:37.660] Browser LOG     Set Free Plan
+[00:36:37.660] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["SeSSd4R1","KoGhLqBa","lBl12E1k","uladbIYt","7aReSS1R","xUA="],"devices":[],"encryptionKey":"SeSSd4R1-KoGhLqBa-lBl12E1k-uladbIYt-7aReSS1R-xUA=","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[00:36:37.660] Browser LOG     Generated new device ID: e109c90f-4ba5-4b6b-9ff4-efbebbeb1982
+[01:10:18.167] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:10:18.189] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:10:18.196] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:10:18.205] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:10:18.218] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:10:18.228] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:10:18.232] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:10:18.242] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:10:18.247] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:10:18.260] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.765] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.772] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.778] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.794] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.807] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.820] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.825] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.830] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.832] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:11:11.842] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.538] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | export interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.539] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | export interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.541] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | export interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.552] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:1:1
+Module not found: Can't resolve 'zustand'
+> 1 | import { create } from 'zustand';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  2 | import { persist, createJSONStorage } from 'zustand/middleware';
+  3 |
+  4 | export interface SettingsState {
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.568] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.576] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.583] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.586] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.587] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:26.588] Server  ERROR   ⨯ ./src/lib/storage/settings-store.ts:2:1
+Module not found: Can't resolve 'zustand/middleware'
+  1 | import { create } from 'zustand';
+> 2 | import { persist, createJSONStorage } from 'zustand/middleware';
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  3 |
+  4 | export interface SettingsState {
+  5 |     backupActive: boolean;
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:52.975] Server  ERROR   ⨯ ./node_modules/zustand/index.js:4:13
+Module not found: Can't resolve 'zustand/react'
+  2 |
+  3 | var vanilla = require('zustand/vanilla');
+> 4 | var react = require('zustand/react');
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 |
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/zustand/index.js [Client Component Browser]
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/zustand/index.js [Client Component SSR]
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:52.976] Server  ERROR   ⨯ ./node_modules/zustand/index.js:4:13
+Module not found: Can't resolve 'zustand/react'
+  2 |
+  3 | var vanilla = require('zustand/vanilla');
+> 4 | var react = require('zustand/react');
+    |             ^^^^^^^^^^^^^^^^^^^^^^^^
+  5 |
+  6 |
+  7 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/zustand/index.js [Client Component Browser]
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/zustand/index.js [Client Component SSR]
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:52.976] Server  ERROR   ⨯ ./node_modules/zustand/index.js:3:15
+Module not found: Can't resolve 'zustand/vanilla'
+  1 | 'use strict';
+  2 |
+> 3 | var vanilla = require('zustand/vanilla');
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | var react = require('zustand/react');
+  5 |
+  6 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/zustand/index.js [Client Component Browser]
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/zustand/index.js [Client Component SSR]
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:52.977] Server  ERROR   ⨯ ./node_modules/zustand/index.js:3:15
+Module not found: Can't resolve 'zustand/vanilla'
+  1 | 'use strict';
+  2 |
+> 3 | var vanilla = require('zustand/vanilla');
+    |               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  4 | var react = require('zustand/react');
+  5 |
+  6 |
+
+
+
+Import traces:
+  Client Component Browser:
+    ./node_modules/zustand/index.js [Client Component Browser]
+    ./src/lib/storage/settings-store.ts [Client Component Browser]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+  Client Component SSR:
+    ./node_modules/zustand/index.js [Client Component SSR]
+    ./src/lib/storage/settings-store.ts [Client Component SSR]
+    ./src/components/photovault/SettingsPanel.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/page.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[01:12:56.086] Server  LOG     ✓ Compiled in 2.8s
+[01:13:07.392] Server  ERROR   (node:95948) Warning: `--localstorage-file` was provided without a valid path
+(Use `node --trace-warnings ...` to show where the warning was created)
+[01:13:07.817] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:08.272] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:08.950] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:14.311] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:13:14.512] Browser LOG     Selected photo source: photos-app
+[01:13:14.925] Browser LOG     Set Free Plan
+[01:13:14.925] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:13:14.925] Browser LOG     Generated new device ID: 9dbdd258-0b8f-4677-9990-527072f5249d
+[01:13:14.968] Browser WARN    Another connection wants to delete database 'PhotoVaultDB'. Closing db now to resume the delete request.
+[01:13:15.983] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:19.131] Browser LOG     Show import dialog
+[01:13:19.131] Browser LOG     Key imported successfully
+[01:13:19.131] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:13:19.131] Browser LOG     Generated new device ID: bc46f259-6d89-447c-9b25-eb23099c8fb7
+[01:13:20.290] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:20.684] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:23.428] Browser LOG     Show import dialog
+[01:13:23.552] Browser ERROR   Key import error: {}
+[01:13:24.738] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:24.773] Server  LOG     ✓ Finished filesystem cache database compaction in 12.4s
+[01:13:25.338] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:25.840] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:30.919] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:13:30.919] Browser LOG     Selected photo source: photos-app
+[01:13:31.199] Browser LOG     Set Free Plan
+[01:13:31.199] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:13:31.199] Browser LOG     Generated new device ID: 99ff9fe6-696c-44a9-bbc7-f8fc571408b4
+[01:13:32.128] Browser LOG     Realtime subscription status: CLOSED
+[01:13:34.323] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:13:56.240] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:56.606] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:13:56.982] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:01.907] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:14:01.911] Browser LOG     Selected photo source: photos-app
+[01:14:02.784] Browser LOG     Set Free Plan
+[01:14:02.784] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:14:02.784] Browser LOG     Generated new device ID: cb0462da-3d80-497b-81b1-d09bbe53f795
+[01:14:02.784] Browser ERROR   The result of getSnapshot should be cached to avoid an infinite loop
+[01:14:02.784] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+[01:14:02.905] Browser LOG     Realtime subscription status: CLOSED
+[01:14:03.206] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:14:10.259] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:10.615] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:10.883] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:15.831] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:14:15.831] Browser LOG     Selected photo source: photos-app
+[01:14:15.974] Browser LOG     Set Free Plan
+[01:14:15.974] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:14:15.974] Browser LOG     Generated new device ID: a0b4829f-f433-416d-bb16-814218c12ef3
+[01:14:16.560] Browser LOG     Photo metadata synced to cloud: cid_1769115509915_hywdeh4icot
+[01:14:16.560] Browser LOG     Realtime subscription status: CLOSED
+[01:14:16.889] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:14:17.292] Browser LOG     Photo blob uploaded to storage: a0b4829f-f433-416d-bb16-814218c12ef3/cid_1769115509915_hywdeh4icot
+[01:14:19.832] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:20.161] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:20.567] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:25.621] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:14:25.621] Browser LOG     Selected photo source: photos-app
+[01:14:25.621] Browser LOG     Set Free Plan
+[01:14:25.621] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:14:25.621] Browser LOG     Generated new device ID: b2281f2d-7985-4ef7-8535-8edb675378b8
+[01:14:26.442] Browser LOG     Fetch Device List
+[01:14:26.442] Browser LOG     Realtime subscription status: CLOSED
+[01:14:27.208] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:27.509] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:32.545] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:14:32.545] Browser LOG     Selected photo source: photos-app
+[01:14:32.545] Browser LOG     Set Free Plan
+[01:14:32.545] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:14:32.545] Browser LOG     Generated new device ID: 7481b5ff-7d58-4f52-924e-cdd6e44766cc
+[01:14:35.821] Browser LOG     Photo metadata synced to cloud: cid_1769115526535_8qqnppyvu7b
+[01:14:35.821] Browser LOG     Realtime subscription status: CLOSED
+[01:14:36.096] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:14:36.239] Browser LOG     Photo blob uploaded to storage: 7481b5ff-7d58-4f52-924e-cdd6e44766cc/cid_1769115526535_8qqnppyvu7b
+[01:14:38.325] Browser ERROR   The result of getSnapshot should be cached to avoid an infinite loop
+[01:14:38.325] Browser LOG     Realtime subscription status: CLOSED
+[01:14:38.325] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+[01:14:42.383] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[01:14:42.560] Server  LOG     ✓ Compiled in 286ms
+[01:14:43.119] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:45.654] Browser LOG     Realtime subscription status: CLOSED
+[01:14:46.383] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:14:52.363] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:52.768] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:53.175] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:14:58.229] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:14:58.347] Browser LOG     Selected photo source: photos-app
+[01:14:58.714] Browser LOG     Set Free Plan
+[01:14:58.714] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:14:58.714] Browser LOG     Generated new device ID: ad2cf120-60eb-454e-a468-60019a2f8d0a
+[01:14:59.861] Browser WARN    Another connection wants to delete database 'PhotoVaultDB'. Closing db now to resume the delete request.
+[01:14:59.861] Browser LOG     Realtime subscription status: CLOSED
+[01:14:59.861] Browser LOG     Generated new device ID: d85a262f-61be-4716-9c22-c157dd5d6fb5
+[01:14:59.861] Browser LOG     Realtime subscription status: CLOSED
+[01:15:00.278] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:04.244] Browser LOG     Show import dialog
+[01:15:04.504] Browser LOG     Key imported successfully
+[01:15:04.504] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:15:05.349] Browser LOG     Realtime subscription status: CLOSED
+[01:15:05.673] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:15:06.161] Browser LOG     Realtime subscription status: CLOSED
+[01:15:09.768] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:10.446] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:13.516] Browser LOG     Show import dialog
+[01:15:13.941] Browser ERROR   Key import error: {}
+[01:15:15.619] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:17.105] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:17.837] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:25.037] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:15:25.230] Browser LOG     Selected photo source: photos-app
+[01:15:25.640] Browser LOG     Set Free Plan
+[01:15:25.640] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:15:25.640] Browser LOG     Generated new device ID: 36b8378a-c075-4b61-9c66-9492e15fd7d7
+[01:15:26.949] Browser LOG     Realtime subscription status: CLOSED
+[01:15:29.317] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:15:51.415] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:52.486] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:53.033] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:15:58.621] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:15:58.907] Browser LOG     Selected photo source: photos-app
+[01:15:59.597] Browser LOG     Set Free Plan
+[01:15:59.597] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:15:59.597] Browser LOG     Generated new device ID: e4476cc1-ac3b-4ada-bba8-18d67712c24a
+[01:16:02.293] Browser ERROR   The result of getSnapshot should be cached to avoid an infinite loop
+[01:16:02.293] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+[01:16:02.509] Browser LOG     Realtime subscription status: CLOSED
+[01:16:02.669] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:16:16.124] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:17.065] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:17.629] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:22.836] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:16:22.959] Browser LOG     Selected photo source: photos-app
+[01:16:23.350] Browser LOG     Set Free Plan
+[01:16:23.350] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:16:23.350] Browser LOG     Generated new device ID: a2ac9f94-af88-4bdf-bda5-0a46f19ba409
+[01:16:24.343] Browser LOG     Photo metadata synced to cloud: cid_1769115637556_1n0cmwyxqxd
+[01:16:24.343] Browser LOG     Realtime subscription status: CLOSED
+[01:16:24.655] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:16:25.474] Browser LOG     Photo blob uploaded to storage: a2ac9f94-af88-4bdf-bda5-0a46f19ba409/cid_1769115637556_1n0cmwyxqxd
+[01:16:27.729] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:28.200] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:28.741] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:33.786] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:16:33.786] Browser LOG     Selected photo source: photos-app
+[01:16:33.899] Browser LOG     Set Free Plan
+[01:16:33.899] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:16:33.899] Browser LOG     Generated new device ID: b49c19a3-8807-455a-83cd-14fe06c11fac
+[01:16:36.238] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:36.639] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:16:41.732] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:16:41.732] Browser LOG     Selected photo source: photos-app
+[01:16:41.732] Browser LOG     Set Free Plan
+[01:16:41.732] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:16:41.732] Browser LOG     Generated new device ID: bdf17462-a8c6-49f2-aebf-21c65bf207f8
+[01:16:42.389] Browser LOG     Photo metadata synced to cloud: cid_1769115655638_zs4ti6wjdo
+[01:16:42.389] Browser LOG     Realtime subscription status: CLOSED
+[01:16:42.816] Browser LOG     Photo blob uploaded to storage: bdf17462-a8c6-49f2-aebf-21c65bf207f8/cid_1769115655638_zs4ti6wjdo
+[01:16:44.545] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:16:46.522] Server  LOG     ✓ Compiled in 908ms
+[01:16:48.426] Browser ERROR   The result of getSnapshot should be cached to avoid an infinite loop
+[01:16:48.426] Browser LOG     Realtime subscription status: CLOSED
+[01:16:48.426] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+[01:17:03.246] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:04.225] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:04.892] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:10.985] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:17:11.647] Browser LOG     Selected photo source: photos-app
+[01:17:12.258] Browser LOG     Set Free Plan
+[01:17:12.258] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:17:12.258] Browser LOG     Generated new device ID: 8013913d-59e6-45c2-92b4-379b99606e08
+[01:17:12.434] Browser WARN    Another connection wants to delete database 'PhotoVaultDB'. Closing db now to resume the delete request.
+[01:17:12.748] Browser LOG     Generated new device ID: cab1b7d1-7edf-4300-b202-128ddc3c2a17
+[01:17:12.748] Browser LOG     Realtime subscription status: CLOSED
+[01:17:13.261] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:16.254] Browser LOG     Show import dialog
+[01:17:16.655] Browser LOG     Key imported successfully
+[01:17:16.656] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:17:17.304] Browser LOG     Realtime subscription status: CLOSED
+[01:17:17.304] Browser LOG     Realtime subscription status: CLOSED
+[01:17:18.600] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:19.213] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:22.129] Browser LOG     Show import dialog
+[01:17:22.307] Browser ERROR   Key import error: {}
+[01:17:24.035] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:24.675] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:25.313] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:30.409] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:17:30.906] Browser LOG     Selected photo source: photos-app
+[01:17:31.422] Browser LOG     Set Free Plan
+[01:17:31.422] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:17:31.423] Browser LOG     Generated new device ID: 3422515f-6324-4fb8-8b69-f262a028502a
+[01:17:32.954] Browser LOG     Realtime subscription status: CLOSED
+[01:17:33.132] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:17:55.963] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:56.360] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:17:56.974] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:02.124] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:18:02.124] Browser LOG     Selected photo source: photos-app
+[01:18:02.124] Browser LOG     Set Free Plan
+[01:18:02.124] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:18:02.124] Browser LOG     Generated new device ID: 9405e427-1d80-495d-9bf3-7928c96c8769
+[01:18:02.936] Browser ERROR   The result of getSnapshot should be cached to avoid an infinite loop
+[01:18:02.936] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.
+[01:18:03.035] Browser LOG     Realtime subscription status: CLOSED
+[01:18:03.599] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:18:11.494] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:12.156] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:12.570] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:17.608] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:18:17.608] Browser LOG     Selected photo source: photos-app
+[01:18:17.713] Browser LOG     Set Free Plan
+[01:18:17.713] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:18:17.713] Browser LOG     Generated new device ID: 8d3c19c3-d690-4a2e-ab40-aa5340a1df47
+[01:18:18.481] Browser LOG     Photo metadata synced to cloud: cid_1769115751700_i4elq2zqpxo
+[01:18:18.481] Browser LOG     Realtime subscription status: CLOSED
+[01:18:19.079] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:18:19.079] Browser LOG     Photo blob uploaded to storage: 8d3c19c3-d690-4a2e-ab40-aa5340a1df47/cid_1769115751700_i4elq2zqpxo
+[01:18:21.668] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:22.129] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:22.410] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:27.522] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:18:27.522] Browser LOG     Selected photo source: photos-app
+[01:18:27.522] Browser LOG     Set Free Plan
+[01:18:27.522] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:18:27.522] Browser LOG     Generated new device ID: 8deb37cf-e204-4ad5-a1a1-ac95008e9b0e
+[01:18:28.796] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:29.067] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[01:18:33.958] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[01:18:33.958] Browser LOG     Selected photo source: photos-app
+[01:18:34.079] Browser LOG     Set Free Plan
+[01:18:34.079] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":[],"devices":[],"encryptionKey":"","isOnboarded":false,"lastBackup":"Noch nie","permanence":0,"photoSource":"photos-app","photosCount":0,"selectedPlan":"free"}
+[01:18:34.079] Browser LOG     Generated new device ID: bee21cfb-fd62-459b-b09d-ae56848e5bda
+[01:18:34.722] Browser LOG     Photo metadata synced to cloud: cid_1769115768032_qcmff46jnv
+[01:18:34.722] Browser LOG     Realtime subscription status: CLOSED
+[01:18:35.110] Browser LOG     Realtime subscription status: SUBSCRIBED
+[01:18:35.110] Browser LOG     Photo blob uploaded to storage: bee21cfb-fd62-459b-b09d-ae56848e5bda/cid_1769115768032_qcmff46jnv
+[01:18:39.607] Browser ERROR   The result of getSnapshot should be cached to avoid an infinite loop
+[01:18:39.607] Browser LOG     Realtime subscription status: CLOSED
+[01:18:39.607] Browser ERROR   uncaughtError: Error: Maximum update depth exceeded. This can happen when a component repeatedly calls setState inside componentWillUpdate or componentDidUpdate. React limits the number of nested updates to prevent infinite loops.

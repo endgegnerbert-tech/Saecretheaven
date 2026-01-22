@@ -38,6 +38,8 @@ interface Device {
   created_at?: string;
 }
 
+import { useSettingsStore } from "@/lib/storage/settings-store";
+
 export function SettingsPanel({
   state,
   setState,
@@ -50,7 +52,22 @@ export function SettingsPanel({
   const [showSourceSelector, setShowSourceSelector] = useState(false);
   const [showPlanSelector, setShowPlanSelector] = useState(false);
   const [realDevices, setRealDevices] = useState<Device[]>([]);
-  const [loadingDevices, setLoadingDevices] = useState(false);
+  
+  // Persistent Settings
+  const { 
+    autoBackupEnabled, 
+    setAutoBackupEnabled,
+    backgroundBackupEnabled,
+    setBackgroundBackupEnabled,
+    selectedPlan,
+    setSelectedPlan,
+    // Note: photoSource requires extending the store if we want to persist it too. 
+    // For now assuming photoSource is still in AppState or we add it to store.
+    // Let's assume we maintain hybrid until fully refactored, or better:
+    // We should add photoSource to the store if it's not there.
+    // Looking at the create_file for settings-store, it didn't include photoSource.
+    // I will stick to AppState for photoSource for this step, or update store.
+  } = useSettingsStore();
 
   const { recoveryPhrase, generateNewKey, clearKey } = useEncryption();
   const currentDeviceId = typeof window !== "undefined" ? getDeviceId() : "";
@@ -82,15 +99,13 @@ export function SettingsPanel({
   const realBackupPhraseWords = recoveryPhrase?.split("-").slice(0, 12) || [];
 
   const toggleAutoBackup = () => {
-    const newValue = !state.autoBackupEnabled;
-    console.log("Update Auto-Backup Preference:", newValue);
-    setState((prev) => ({ ...prev, autoBackupEnabled: newValue }));
+    console.log("Update Auto-Backup Preference:", !autoBackupEnabled);
+    setAutoBackupEnabled(!autoBackupEnabled);
   };
 
   const toggleBackgroundBackup = () => {
-    const newValue = !state.backgroundBackupEnabled;
-    console.log("Update Background Preference:", newValue);
-    setState((prev) => ({ ...prev, backgroundBackupEnabled: newValue }));
+    console.log("Update Background Preference:", !backgroundBackupEnabled);
+    setBackgroundBackupEnabled(!backgroundBackupEnabled);
   };
 
   const viewBackupPhrase = () => {
@@ -101,18 +116,17 @@ export function SettingsPanel({
 
   const handleGenerateNewKey = async () => {
     console.log("Generate New Encryption Key");
-    console.log("Clear Existing Backup Data");
-
+    
     // Clear existing key and generate new one
     clearKey();
     const newPhrase = await generateNewKey();
 
     if (newPhrase) {
       const words = newPhrase.split("-").slice(0, 12);
+      // We don't need to update State for keys anymore as useEncryption handles it
+      // but we might need to reset 'photosCount' in AppState if that's where it lives
       setState((prev) => ({
         ...prev,
-        encryptionKey: newPhrase,
-        backupPhrase: words,
         photosCount: 0,
       }));
     }
@@ -125,14 +139,14 @@ export function SettingsPanel({
   };
 
   const changeSource = (source: "photos-app" | "files-app") => {
-    console.log("TODO: Update backup source preference:", source);
+    console.log("Update backup source preference:", source);
     setState((prev) => ({ ...prev, photoSource: source }));
     setShowSourceSelector(false);
   };
 
   const changePlan = (plan: "free" | "backup-plus") => {
-    console.log("TODO: Show plan selection modal", plan);
-    setState((prev) => ({ ...prev, selectedPlan: plan }));
+    console.log("Update plan:", plan);
+    setSelectedPlan(plan);
     setShowPlanSelector(false);
   };
 
@@ -183,14 +197,14 @@ export function SettingsPanel({
             <SettingsToggleRow
               label="Automatisches Backup"
               description="Neue Fotos automatisch sichern"
-              enabled={state.autoBackupEnabled}
+              enabled={autoBackupEnabled}
               onToggle={toggleAutoBackup}
             />
             <div className="h-[0.5px] bg-[#E5E5EA] ml-4" />
             <SettingsToggleRow
               label="Hintergrund-Backup"
               description="Weiter sichern wenn App geschlossen"
-              enabled={state.backgroundBackupEnabled}
+              enabled={backgroundBackupEnabled}
               onToggle={toggleBackgroundBackup}
             />
             <div className="h-[0.5px] bg-[#E5E5EA] ml-4" />
@@ -228,11 +242,11 @@ export function SettingsPanel({
                   Aktueller Plan
                 </span>
                 <span className="text-[15px] font-semibold text-[#007AFF]">
-                  {state.selectedPlan === "free" ? "Free" : "Backup+"}
+                  {selectedPlan === "free" ? "Free" : "Backup+"}
                 </span>
               </div>
               <p className="text-[13px] text-[#6E6E73]">
-                {state.selectedPlan === "free"
+                {selectedPlan === "free"
                   ? "Fotos auf deinen Geräten"
                   : "200 GB Cloud-Backup"}
               </p>
@@ -252,7 +266,7 @@ export function SettingsPanel({
               className="w-full flex items-center justify-between p-4 ios-tap-target"
             >
               <span className="text-[17px] text-[#007AFF]">
-                {state.selectedPlan === "free"
+                {selectedPlan === "free"
                   ? "Upgrade zu Backup+"
                   : "Plan verwalten"}
               </span>

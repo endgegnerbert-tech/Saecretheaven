@@ -91,5 +91,5 @@ We need a place to put the encrypted blobs so Device B can download them.
 ---
 **Codebase Verification Notes**:
 -   `src/lib/ipfs.ts` does not exist yet. Needs creation or folding into `remote-storage.ts`.
--   `crypto.ts` is ready.
+-   `crypto.ts` is ready
 -   `useRealtimeSync.ts` handles metadata but needs triggers for content download.

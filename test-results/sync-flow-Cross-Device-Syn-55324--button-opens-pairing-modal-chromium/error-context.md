@@ -1,0 +1,104 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e1]:
+  - generic [active]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]:
+          - navigation [ref=e7]:
+            - button "previous" [disabled] [ref=e8]:
+              - img "previous" [ref=e9]
+            - generic [ref=e11]:
+              - generic [ref=e12]: 1/
+              - text: "2"
+            - button "next" [ref=e13] [cursor=pointer]:
+              - img "next" [ref=e14]
+          - img
+        - generic [ref=e16]:
+          - generic [ref=e17]:
+            - img [ref=e18]
+            - generic "Latest available version is detected (16.1.4)." [ref=e20]: Next.js 16.1.4
+            - generic [ref=e21]: Turbopack
+          - img
+      - generic [ref=e22]:
+        - dialog "Console Error" [ref=e23]:
+          - generic [ref=e26]:
+            - generic [ref=e27]:
+              - generic [ref=e28]:
+                - generic [ref=e30]: Console Error
+                - generic [ref=e31]:
+                  - button "Copy Error Info" [ref=e32] [cursor=pointer]:
+                    - img [ref=e33]
+                  - button "No related documentation found" [disabled] [ref=e35]:
+                    - img [ref=e36]
+                  - button "Attach Node.js inspector" [ref=e38] [cursor=pointer]:
+                    - img [ref=e39]
+              - generic [ref=e48]: The result of getSnapshot should be cached to avoid an infinite loop
+            - generic [ref=e49]:
+              - generic [ref=e50]:
+                - paragraph [ref=e52]:
+                  - img [ref=e54]
+                  - generic [ref=e57]: src/components/photovault/Dashboard.tsx (29:73) @ Dashboard
+                  - button "Open in editor" [ref=e58] [cursor=pointer]:
+                    - img [ref=e60]
+                - generic [ref=e63]:
+                  - generic [ref=e64]: 27 |
+                  - generic [ref=e65]: 28 | // Persistent Settings
+                  - generic [ref=e66]: "> 29 | const { backupActive, setBackupActive, permanence } = useSettingsStore((state: SettingsState) => ({"
+                  - generic [ref=e67]: "| ^"
+                  - generic [ref=e68]: "30 | backupActive: state.backupActive,"
+                  - generic [ref=e69]: "31 | setBackupActive: state.setBackupActive,"
+                  - generic [ref=e70]: "32 | permanence: 0 // TODO: Add permanence to store or calc"
+              - generic [ref=e71]:
+                - generic [ref=e72]:
+                  - paragraph [ref=e73]:
+                    - text: Call Stack
+                    - generic [ref=e74]: "24"
+                  - button "Show 21 ignore-listed frame(s)" [ref=e75] [cursor=pointer]:
+                    - text: Show 21 ignore-listed frame(s)
+                    - img [ref=e76]
+                - generic [ref=e78]:
+                  - generic [ref=e79]:
+                    - text: Dashboard
+                    - button "Open Dashboard in editor" [ref=e80] [cursor=pointer]:
+                      - img [ref=e81]
+                  - text: src/components/photovault/Dashboard.tsx (29:73)
+                - generic [ref=e83]:
+                  - generic [ref=e84]:
+                    - text: PhotoVaultApp
+                    - button "Open PhotoVaultApp in editor" [ref=e85] [cursor=pointer]:
+                      - img [ref=e86]
+                  - text: src/components/photovault/PhotoVaultApp.tsx (120:13)
+                - generic [ref=e88]:
+                  - generic [ref=e89]:
+                    - text: HomePage
+                    - button "Open HomePage in editor" [ref=e90] [cursor=pointer]:
+                      - img [ref=e91]
+                  - text: src/app/page.tsx (8:10)
+          - generic [ref=e93]: "1"
+          - generic [ref=e94]: "2"
+        - contentinfo [ref=e95]:
+          - region "Error feedback" [ref=e96]:
+            - paragraph [ref=e97]:
+              - link "Was this helpful?" [ref=e98] [cursor=pointer]:
+                - /url: https://nextjs.org/telemetry#error-feedback
+            - button "Mark as helpful" [ref=e99] [cursor=pointer]:
+              - img [ref=e100]
+            - button "Mark as not helpful" [ref=e103] [cursor=pointer]:
+              - img [ref=e104]
+    - generic [ref=e110] [cursor=pointer]:
+      - button "Open Next.js Dev Tools" [ref=e111]:
+        - img [ref=e112]
+      - generic [ref=e115]:
+        - button "Open issues overlay" [ref=e116]:
+          - generic [ref=e117]:
+            - generic [ref=e118]: "1"
+            - generic [ref=e119]: "2"
+          - generic [ref=e120]:
+            - text: Issue
+            - generic [ref=e121]: s
+        - button "Collapse issues badge" [ref=e122]:
+          - img [ref=e123]
+  - 'heading "Application error: a client-side exception has occurred while loading localhost (see the browser console for more information)." [level=2] [ref=e127]'
+```

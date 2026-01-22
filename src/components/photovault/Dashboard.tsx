@@ -16,12 +16,21 @@ interface DashboardProps {
   setState: React.Dispatch<React.SetStateAction<AppState>>;
 }
 
+import { useSettingsStore, type SettingsState } from "@/lib/storage/settings-store";
+
 export function Dashboard({ state, setState }: DashboardProps) {
   const [showTooltip, setShowTooltip] = useState<string | null>(null);
   const [showConfirmDialog, setShowConfirmDialog] = useState(false);
   const [showPairing, setShowPairing] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 });
+  
+  // Persistent Settings
+  const { backupActive, setBackupActive, permanence } = useSettingsStore((state: SettingsState) => ({
+    backupActive: state.backupActive,
+    setBackupActive: state.setBackupActive,
+    permanence: 0 // TODO: Add permanence to store or calc
+  }));
 
   // Get real photo count from encryption layer
   const { secretKey } = useEncryption();
@@ -31,14 +40,14 @@ export function Dashboard({ state, setState }: DashboardProps) {
   const displayPhotoCount = photoCount > 0 ? photoCount : state.photosCount;
 
   const toggleBackup = () => {
-    console.log("TODO: Toggle backup with confirmation dialog");
+    // console.log("TODO: Toggle backup with confirmation dialog");
     setShowConfirmDialog(true);
   };
 
   const confirmToggle = () => {
-    const newState = !state.backupActive;
+    const newState = !backupActive;
     console.log(newState ? "Activate Backup" : "Deactivate Backup");
-    setState((prev) => ({ ...prev, backupActive: newState }));
+    setBackupActive(newState);
     setShowConfirmDialog(false);
   };
 
@@ -122,17 +131,17 @@ export function Dashboard({ state, setState }: DashboardProps) {
           <div className="flex items-center gap-4">
             <div
               className={`w-14 h-14 rounded-full flex items-center justify-center ${
-                state.backupActive ? "bg-[#30D158]/10" : "bg-[#E5E5EA]"
+                backupActive ? "bg-[#30D158]/10" : "bg-[#E5E5EA]"
               }`}
             >
               <CustomIcon name="shield" size={28} />
             </div>
             <div className="text-left">
               <p className="text-[17px] font-semibold text-[#1D1D1F]">
-                Backup {state.backupActive ? "Aktiv" : "Aus"}
+                Backup {backupActive ? "Aktiv" : "Aus"}
               </p>
               <p className="text-[15px] text-[#6E6E73]">
-                {state.backupActive
+                {backupActive
                   ? "Deine Fotos werden geschützt"
                   : "Tippe zum Aktivieren"}
               </p>
@@ -140,12 +149,12 @@ export function Dashboard({ state, setState }: DashboardProps) {
           </div>
           <div
             className={`w-[51px] h-[31px] rounded-full p-[2px] ${
-              state.backupActive ? "bg-[#30D158]" : "bg-[#E5E5EA]"
+              backupActive ? "bg-[#30D158]" : "bg-[#E5E5EA]"
             }`}
           >
             <div
               className={`w-[27px] h-[27px] rounded-full bg-white shadow-sm ${
-                state.backupActive ? "ml-auto" : ""
+                backupActive ? "ml-auto" : ""
               }`}
             />
           </div>
@@ -196,7 +205,7 @@ export function Dashboard({ state, setState }: DashboardProps) {
         onClick={triggerManualBackup}
         disabled={isUploading}
         className={`w-full h-[50px] text-[17px] font-semibold rounded-xl mb-3 ios-tap-target ${
-          state.backupActive
+          backupActive
             ? "bg-[#007AFF] text-white"
             : "bg-[#30D158] text-white"
         } disabled:opacity-70`}
@@ -208,7 +217,7 @@ export function Dashboard({ state, setState }: DashboardProps) {
               ? `${uploadProgress.current}/${uploadProgress.total} hochladen...`
               : "Vorbereiten..."}
           </span>
-        ) : state.backupActive ? (
+        ) : backupActive ? (
           "Jetzt sichern"
         ) : (
           "Backup aktivieren"
@@ -239,12 +248,12 @@ export function Dashboard({ state, setState }: DashboardProps) {
           <div className="bg-white w-full max-w-[270px] rounded-2xl overflow-hidden">
             <div className="p-4 text-center">
               <h3 className="sf-pro-display text-[17px] text-[#1D1D1F] mb-1">
-                {state.backupActive
+                {backupActive
                   ? "Backup deaktivieren?"
                   : "Backup aktivieren?"}
               </h3>
               <p className="text-[13px] text-[#6E6E73] leading-relaxed">
-                {state.backupActive
+                {backupActive
                   ? "Neue Fotos werden nicht mehr automatisch gesichert."
                   : "Neue Fotos werden automatisch verschlüsselt und gesichert."}
               </p>
@@ -259,10 +268,10 @@ export function Dashboard({ state, setState }: DashboardProps) {
               <button
                 onClick={confirmToggle}
                 className={`w-full py-3 text-[17px] font-semibold ios-tap-target ${
-                  state.backupActive ? "text-[#FF3B30]" : "text-[#30D158]"
+                  backupActive ? "text-[#FF3B30]" : "text-[#30D158]"
                 }`}
               >
-                {state.backupActive ? "Deaktivieren" : "Aktivieren"}
+                {backupActive ? "Deaktivieren" : "Aktivieren"}
               </button>
             </div>
           </div>

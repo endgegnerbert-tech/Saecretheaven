@@ -14,6 +14,8 @@ import ProgressIndicator from "@/components/ui/progress-indicator";
 import ShieldLoader from "@/components/ui/shield-loader";
 import { useEncryption } from "@/hooks/use-encryption";
 
+import { useSettingsStore } from "@/lib/storage/settings-store";
+
 interface OnboardingFlowProps {
   state: AppState;
   setState: React.Dispatch<React.SetStateAction<AppState>>;
@@ -32,19 +34,20 @@ export function OnboardingFlow({
   const [showPhraseStep, setShowPhraseStep] = useState(false);
   const [phraseConfirmed, setPhraseConfirmed] = useState(false);
   const [showImportDialog, setShowImportDialog] = useState(false);
-  const { isGeneratingKey } = useEncryption();
-
-  const { generateNewKey } = useEncryption();
+  
+  // Persistent Stores
+  const { isGeneratingKey, generateNewKey, recoveryPhrase } = useEncryption();
+  const { setSelectedPlan, setAutoBackupEnabled } = useSettingsStore();
 
   const generateEncryptionKey = async () => {
     const phrase = await generateNewKey();
-    const phraseWords = phrase?.split("-").slice(0, 12) || [];
-
-    setState((prev) => ({
-      ...prev,
-      encryptionKey: phrase || "",
-      backupPhrase: phraseWords,
-    }));
+    // Key is saved automatically by useEncryption hook
+    
+    // We update local AppState just for immediate UI feedback if needed, 
+    // but ideally we rely on hooks. 
+    // For now, keeping AppState update for compatibility with parent component logic
+    // but the real source of truth is the hook/storage.
+    
     setShowPhraseStep(true);
   };
 
@@ -62,18 +65,28 @@ export function OnboardingFlow({
 
   const selectSource = (source: "photos-app" | "files-app") => {
     console.log("Selected photo source:", source);
+    // Source selection might be ephemeral or persistent. 
+    // Let's keep it in AppState for now or assume default.
     setState((prev) => ({ ...prev, photoSource: source }));
     setStep(3);
   };
 
   const selectPlan = (plan: "free" | "backup-plus") => {
     console.log(plan === "free" ? "Set Free Plan" : "Set Backup+ Plan");
+    setSelectedPlan(plan);
+    // Also enable autobackup by default if they select a plan?
+    if (plan === "backup-plus") setAutoBackupEnabled(true);
+    
+    // Update legacy state for compatibility
     setState((prev) => ({ ...prev, selectedPlan: plan }));
     onComplete();
   };
 
   // Calculate visual step for progress indicator (1, 1b, 2, 3 → shows as 1, 1, 2, 3)
   const visualStep = showPhraseStep ? 1 : step;
+  
+  // Get phrase for display
+  const displayPhrase = recoveryPhrase?.split("-").slice(0, 12) || [];
 
   // Show loader during key generation
   if (isGeneratingKey) {
@@ -94,7 +107,7 @@ export function OnboardingFlow({
 
       {step === 1 && showPhraseStep && (
         <BackupPhraseStep
-          phrase={state.backupPhrase}
+          phrase={displayPhrase}
           confirmed={phraseConfirmed}
           onConfirmChange={setPhraseConfirmed}
           onContinue={confirmPhraseAndContinue}
@@ -120,11 +133,8 @@ export function OnboardingFlow({
         <ImportKeyDialog
           onClose={() => setShowImportDialog(false)}
           onSuccess={(phrase, phraseWords) => {
-            setState((prev) => ({
-              ...prev,
-              encryptionKey: phrase,
-              backupPhrase: phraseWords,
-            }));
+            // Key is already saved by ImportKeyDialog -> saveKeyToStorage
+            // Just update UI state
             setShowImportDialog(false);
             onComplete();
           }}
