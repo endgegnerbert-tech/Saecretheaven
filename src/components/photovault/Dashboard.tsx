@@ -1,10 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Image, Clock, HelpCircle, X } from "lucide-react";
-
-// Import custom SVG icons
-import ShieldIcon from "@/components/icons/shield.svg";
+import { HelpCircle } from "lucide-react";
+import { CustomIcon } from "@/components/ui/custom-icon";
 import type { AppState } from "./PhotoVaultApp";
 import { useEncryption } from "@/hooks/use-encryption";
 import { useGalleryData } from "@/hooks/use-gallery-data";
@@ -76,11 +74,7 @@ export function Dashboard({ state, setState }: DashboardProps) {
                 state.backupActive ? "bg-[#30D158]/10" : "bg-[#E5E5EA]"
               }`}
             >
-              <ShieldIcon
-                className={`w-7 h-7 ${
-                  state.backupActive ? "text-[#30D158]" : "text-[#8E8E93]"
-                }`}
-              />
+              <CustomIcon name="shield" size={28} />
             </div>
             <div className="text-left">
               <p className="text-[17px] font-semibold text-[#1D1D1F]">
@@ -115,7 +109,7 @@ export function Dashboard({ state, setState }: DashboardProps) {
       {/* Metrics Grid */}
       <div className="grid grid-cols-3 gap-3 mb-6">
         <MetricCard
-          icon={<Image className="w-5 h-5 text-[#007AFF]" />}
+          icon={<CustomIcon name="image" size={20} />}
           value={displayPhotoCount.toLocaleString()}
           label="Fotos gesichert"
           tooltip={tooltips.photos}
@@ -125,7 +119,7 @@ export function Dashboard({ state, setState }: DashboardProps) {
           }
         />
         <MetricCard
-          icon={<Clock className="w-5 h-5 text-[#007AFF]" />}
+          icon={<CustomIcon name="clock" size={20} />}
           value={state.lastBackup}
           label="Letztes Backup"
           tooltip={tooltips.lastBackup}
@@ -135,7 +129,7 @@ export function Dashboard({ state, setState }: DashboardProps) {
           }
         />
         <MetricCard
-          icon={<ShieldIcon className="w-5 h-5 text-[#007AFF]" />}
+          icon={<CustomIcon name="shield" size={20} />}
           value={`${state.permanence}%`}
           label="Dauerhaft"
           tooltip={tooltips.permanence}

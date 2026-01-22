@@ -5,7 +5,8 @@ import { OnboardingFlow } from "./OnboardingFlow";
 import { Dashboard } from "./Dashboard";
 import { SettingsPanel } from "./SettingsPanel";
 import { PhotoGallery } from "./PhotoGallery";
-import { Images, Shield, Settings } from "lucide-react";
+import { Settings } from "lucide-react";
+import { CustomIcon } from "@/components/ui/custom-icon";
 import ShieldLoader from "@/components/ui/shield-loader";
 
 export interface AppState {
@@ -167,34 +168,48 @@ function BottomNavigation({
   currentScreen: Screen;
   onNavigate: (screen: Screen) => void;
 }) {
-  const tabs = [
-    { id: "gallery" as Screen, label: "Galerie", icon: Images },
-    { id: "dashboard" as Screen, label: "Backup", icon: Shield },
-    { id: "settings" as Screen, label: "Einstellungen", icon: Settings },
-  ];
-
   return (
     <nav className="fixed bottom-0 left-0 right-0 h-[80px] bg-white border-t border-[#E5E5EA] flex items-start justify-around pt-2 pb-6 max-w-[428px] mx-auto">
-      {tabs.map((tab) => {
-        const Icon = tab.icon;
-        const isActive = currentScreen === tab.id;
-        return (
-          <button
-            key={tab.id}
-            onClick={() => onNavigate(tab.id)}
-            className="flex flex-col items-center gap-1 ios-tap-target px-4"
-          >
-            <Icon
-              className={`w-6 h-6 ${isActive ? "text-[#007AFF]" : "text-[#6E6E73]"}`}
-            />
-            <span
-              className={`text-[10px] ${isActive ? "text-[#007AFF]" : "text-[#6E6E73]"}`}
-            >
-              {tab.label}
-            </span>
-          </button>
-        );
-      })}
+      {/* Gallery Tab */}
+      <button
+        onClick={() => onNavigate("gallery")}
+        className="flex flex-col items-center gap-1 ios-tap-target px-4"
+      >
+        <CustomIcon name="image" size={24} />
+        <span
+          className={`text-[10px] ${currentScreen === "gallery" ? "text-[#007AFF]" : "text-[#6E6E73]"}`}
+        >
+          Galerie
+        </span>
+      </button>
+
+      {/* Backup Tab */}
+      <button
+        onClick={() => onNavigate("dashboard")}
+        className="flex flex-col items-center gap-1 ios-tap-target px-4"
+      >
+        <CustomIcon name="shield" size={24} />
+        <span
+          className={`text-[10px] ${currentScreen === "dashboard" ? "text-[#007AFF]" : "text-[#6E6E73]"}`}
+        >
+          Backup
+        </span>
+      </button>
+
+      {/* Settings Tab */}
+      <button
+        onClick={() => onNavigate("settings")}
+        className="flex flex-col items-center gap-1 ios-tap-target px-4"
+      >
+        <Settings
+          className={`w-6 h-6 ${currentScreen === "settings" ? "text-[#007AFF]" : "text-[#6E6E73]"}`}
+        />
+        <span
+          className={`text-[10px] ${currentScreen === "settings" ? "text-[#007AFF]" : "text-[#6E6E73]"}`}
+        >
+          Einstellungen
+        </span>
+      </button>
     </nav>
   );
 }

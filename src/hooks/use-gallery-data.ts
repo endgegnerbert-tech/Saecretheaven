@@ -1,5 +1,5 @@
 /**
- * useGalleryData Hook - Local Photo Gallery Management
+ * useGalleryData Hook - Local Photo Gallery Management with Cloud Sync
  */
 
 'use client';
@@ -14,6 +14,8 @@ import {
     type PhotoMetadata,
 } from '@/lib/storage/local-db';
 import { encryptFile, decryptFile } from '@/lib/crypto';
+import { uploadCIDMetadata, cidExistsInSupabase } from '@/lib/supabase';
+import { getDeviceId } from '@/lib/deviceId';
 
 export function useGalleryData(secretKey: Uint8Array | null) {
     const queryClient = useQueryClient();
@@ -46,7 +48,7 @@ export function useGalleryData(secretKey: Uint8Array | null) {
             // Generate CID (simplified - in production use IPFS)
             const cid = `cid_${Date.now()}_${Math.random().toString(36).slice(2)}`;
 
-            // Save metadata
+            // Save metadata locally
             const metadata: Omit<PhotoMetadata, 'id'> = {
                 cid,
                 nonce,
@@ -58,6 +60,17 @@ export function useGalleryData(secretKey: Uint8Array | null) {
             };
 
             await savePhoto(metadata);
+
+            // Sync to Supabase Cloud
+            try {
+                const deviceId = getDeviceId();
+                await uploadCIDMetadata(cid, file.size, deviceId);
+                console.log('Photo synced to cloud:', cid);
+            } catch (error) {
+                console.error('Cloud sync failed (photo saved locally):', error);
+                // Don't throw - local save succeeded
+            }
+
             return metadata;
         },
         onSuccess: () => {

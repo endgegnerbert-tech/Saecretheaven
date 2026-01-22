@@ -1,3 +1,0 @@
-module.exports=[83367,a=>{a.v("/_next/static/media/key.ff45bbf3.svg")},62609,a=>{a.v("/_next/static/media/Openfolder.40504e58.svg")},57773,a=>{a.v("/_next/static/media/cloud.f2073f73.svg")},31522,a=>{a.v("/_next/static/media/shield.63eb74d8.svg")},97972,a=>{a.v("/_next/static/media/smartphone.f2b21e50.svg")},53294,a=>{a.v("/_next/static/media/RefreshCw.643a5997.svg")},87418,a=>{a.v("/_next/static/media/lock.b0099a5b.svg")}];
-
-//# sourceMappingURL=src_components_icons_58e91622._.js.map

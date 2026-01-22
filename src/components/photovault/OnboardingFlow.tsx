@@ -2,11 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Check } from "lucide-react";
-
-// Import custom SVG icons
-import KeyIcon from "@/components/icons/key.svg";
-import FolderOpenIcon from "@/components/icons/Openfolder.svg";
-import CloudIcon from "@/components/icons/cloud.svg";
+import { CustomIcon } from "@/components/ui/custom-icon";
 import type { AppState } from "./PhotoVaultApp";
 import { dummyBackupPhrase } from "./PhotoVaultApp";
 import {
@@ -138,7 +134,7 @@ function KeyCreationStep({
     <div className="flex-1 flex flex-col">
       <div className="flex-1 flex flex-col items-center justify-center text-center">
         <div className="w-20 h-20 rounded-full bg-[#007AFF]/10 flex items-center justify-center mb-6">
-          <KeyIcon className="w-10 h-10 text-[#007AFF]" />
+          <CustomIcon name="key" size={40} />
         </div>
         <h1 className="sf-pro-display text-[28px] leading-tight text-[#1D1D1F] mb-3">
           Erstelle deinen Schlüssel
@@ -149,7 +145,7 @@ function KeyCreationStep({
 
         <div className="bg-[#F2F2F7] rounded-xl p-4 w-full max-w-[300px]">
           <div className="flex items-center gap-3 mb-2">
-            <KeyIcon className="w-5 h-5 text-[#007AFF]" />
+            <CustomIcon name="key" size={20} />
             <span className="text-[15px] text-[#1D1D1F] font-medium">
               12-Wort Backup-Phrase
             </span>
@@ -284,7 +280,7 @@ function SourceSelectionStep({
       <div className="flex-1">
         <div className="flex flex-col items-center text-center mb-8">
           <div className="w-20 h-20 rounded-full bg-[#007AFF]/10 flex items-center justify-center mb-6">
-            <FolderOpenIcon className="w-10 h-10 text-[#007AFF]" />
+            <CustomIcon name="folder" size={40} />
           </div>
           <h1 className="sf-pro-display text-[28px] leading-tight text-[#1D1D1F] mb-2">
             Wähle Backup-Quelle
@@ -389,7 +385,7 @@ function PlanSelectionStep({
       <div className="flex-1">
         <div className="flex flex-col items-center text-center mb-6">
           <div className="w-20 h-20 rounded-full bg-[#007AFF]/10 flex items-center justify-center mb-6">
-            <CloudIcon className="w-10 h-10 text-[#007AFF]" />
+            <CustomIcon name="cloud" size={40} />
           </div>
           <h1 className="sf-pro-display text-[28px] leading-tight text-[#1D1D1F] mb-2">
             Wähle Speicherplan

@@ -72725,3 +72725,128 @@ Check the render method of `PhotoGallery`.
 [01:04:38.512] Browser ERROR   uncaughtError: Error: Element type is invalid: expected a string (for built-in components) or a class/function (for composite components) but got: object.
 
 Check the render method of `PhotoGallery`.
+[03:32:46.185] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:32:46.461] Server  LOG     ✓ Compiled in 481ms
+[03:32:47.056] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:32:50.162] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:32:52.856] Server  LOG     ✓ Compiled in 49ms
+[03:32:56.418] Browser ERROR   uncaughtError: ReferenceError: LockIcon is not defined
+[03:32:56.471] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:32:56.490] Server  LOG     ✓ Compiled in 367ms
+[03:32:57.786] Server  LOG     ✓ Compiled in 74ms
+[03:33:01.415] Browser ERROR   uncaughtError: ReferenceError: LockIcon is not defined
+[03:33:05.591] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:33:05.741] Server  LOG     ✓ Compiled in 213ms
+[03:33:06.548] Server  LOG     ✓ Compiled in 110ms
+[03:33:07.683] Server  LOG     ✓ Compiled in 190ms
+[03:33:09.415] Browser ERROR   uncaughtError: ReferenceError: LockIcon is not defined
+[03:33:14.989] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:33:15.017] Server  LOG     ✓ Compiled in 194ms
+[03:33:16.121] Server  LOG     ✓ Compiled in 229ms
+[03:33:17.051] Server  LOG     ✓ Compiled in 114ms
+[03:33:18.245] Server  LOG     ✓ Compiled in 279ms
+[03:35:01.537] Server  LOG       Reload env: .env.local
+[03:36:19.759] Server  LOG     ✓ Compiled in 3.3s
+[03:36:56.860] Server  LOG     ✓ Compiled in 323ms
+[03:37:09.222] Server  LOG     ✓ Compiled in 334ms
+[03:37:09.783] Browser LOG     Generated new device ID: 848f5ef8-7c63-4e6f-9a65-4ca9ec3cad56
+[03:37:12.415] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:37:16.981] Server  LOG     ✓ Compiled in 460ms
+[03:37:17.415] Browser LOG     Realtime subscription status: CLOSED
+[03:37:18.415] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:37:26.411] Server  LOG     ✓ Compiled in 202ms
+[03:37:27.416] Browser LOG     Realtime subscription status: CLOSED
+[03:37:27.416] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:40:01.107] Browser LOG     Realtime subscription status: CLOSED
+[03:40:01.107] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:40:13.155] Browser LOG     Realtime subscription status: CLOSED
+[03:40:13.155] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:40:36.003] Browser LOG     Photo synced to cloud: cid_1769099006725_36ju9dtshw
+[03:40:41.425] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769099006725_36ju9dtshw
+[03:40:52.297] Browser LOG     Realtime subscription status: CLOSED
+[03:40:53.858] Browser LOG     Realtime subscription status: CLOSED
+[03:40:53.998] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:40:54.637] Browser LOG     Realtime subscription status: CLOSED
+[03:40:56.311] Browser LOG     Realtime subscription status: CLOSED
+[03:40:56.429] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:41:02.487] Browser LOG     Realtime subscription status: CLOSED
+[03:41:02.687] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:41:03.364] Browser LOG     TODO: Show full photo from IPFS CID: cid_1769099006725_36ju9dtshw
+[03:45:05.424] Browser LOG     Realtime subscription status: CHANNEL_ERROR
+[03:45:10.416] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:45:38.417] Browser LOG     Realtime subscription status: CHANNEL_ERROR
+[03:45:43.415] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:47:34.765] Server  LOG     ✓ Compiled in 1288ms
+[03:47:49.909] Server  LOG     ✓ Compiled in 695ms
+[03:47:59.331] Server  LOG     ✓ Compiled in 3.4s
+[03:48:03.744] Server  LOG     ✓ Compiled in 969ms
+[03:48:05.595] Server  LOG     ✓ Finished filesystem cache database compaction in 12.7s
+[03:48:08.908] Server  LOG     ✓ Compiled in 591ms
+[03:48:13.290] Server  LOG     ✓ Compiled in 84ms
+[03:48:30.530] Server  LOG     ✓ Compiled in 1063ms
+[03:48:36.540] Server  LOG     ✓ Compiled in 294ms
+[03:48:41.853] Server  LOG     ✓ Compiled in 94ms
+[03:48:46.507] Server  LOG     ✓ Compiled in 96ms
+[03:48:51.941] Server  LOG     ✓ Compiled in 113ms
+[03:48:56.614] Server  LOG     ✓ Compiled in 110ms
+[03:49:14.262] Server  LOG     ✓ Compiled in 368ms
+[03:49:15.420] Browser ERROR   uncaughtError: ReferenceError: Cloud is not defined
+[03:49:15.420] Browser LOG     Realtime subscription status: CLOSED
+[03:49:15.420] Browser ERROR   uncaughtError: ReferenceError: Cloud is not defined
+[03:49:15.420] Browser LOG     Realtime subscription status: CLOSED
+[03:49:19.820] Server  LOG     ✓ Compiled in 268ms
+[03:49:19.935] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:49:19.936] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:49:24.485] Browser ERROR   uncaughtError: ReferenceError: Upload is not defined
+[03:49:24.486] Browser ERROR   uncaughtError: ReferenceError: Upload is not defined
+[03:49:31.419] Browser ERROR   uncaughtError: ReferenceError: Upload is not defined
+[03:49:31.420] Browser ERROR   uncaughtError: ReferenceError: Upload is not defined
+[03:49:34.514] Server  LOG     ✓ Finished filesystem cache database compaction in 16.4s
+[03:49:35.116] Server  LOG     ✓ Finished writing to filesystem cache in 12.6s
+[03:49:35.691] Server  LOG     ✓ Compiled in 396ms
+[03:49:35.742] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:49:35.748] Server  WARN    ⚠ Fast Refresh had to perform a full reload due to a runtime error.
+[03:52:33.642] Browser ERROR   uncaughtError: ReferenceError: Upload is not defined
+[03:52:39.122] Browser LOG     Realtime subscription status: CLOSED
+[03:52:39.345] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:52:48.525] Browser LOG     Realtime subscription status: CLOSED
+[03:52:49.852] Browser LOG     Realtime subscription status: CLOSED
+[03:52:49.852] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:52:51.803] Browser LOG     Realtime subscription status: CLOSED
+[03:53:04.394] Browser LOG     Realtime subscription status: CLOSED
+[03:53:04.394] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:53:05.215] Browser LOG     Realtime subscription status: CLOSED
+[03:53:07.082] Browser LOG     Fetch Device List
+[03:53:14.269] Browser LOG     Realtime subscription status: CLOSED
+[03:53:14.269] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:53:16.458] Browser LOG     Realtime subscription status: CLOSED
+[03:53:20.169] Browser LOG     Realtime subscription status: CLOSED
+[03:53:20.169] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:53:20.708] Browser LOG     Realtime subscription status: CLOSED
+[03:53:23.693] Browser LOG     TODO: Navigate to onboarding screen 1
+[03:53:23.693] Browser LOG     TODO: Navigate to onboarding screen 1
+[03:53:31.910] Browser LOG     TODO: Verify checkbox, proceed to step 2
+[03:53:33.755] Browser LOG     Selected photo source: photos-app
+[03:53:36.502] Browser LOG     Set Free Plan
+[03:53:36.502] Browser LOG     Onboarding completed with state: {"autoBackupEnabled":true,"backgroundBackupEnabled":false,"backupActive":false,"backupPhrase":["yEpeG80j","qzeb3jM8","Gv9F2DtG","CsRhm6Jm","iMwgEvR4","L00="],"devices":[{"id":"1","lastActive":"Aktiv","name":"iPhone 14 Pro"},{"id":"2","lastActive":"Synchronisiert...","name":"MacBook Pro","syncing":true}],"encryptionKey":"yEpeG80j-qzeb3jM8-Gv9F2DtG-CsRhm6Jm-iMwgEvR4-L00=","isOnboarded":false,"lastBackup":"vor 2 Stunden","permanence":99.9,"photoSource":"photos-app","photosCount":2847,"selectedPlan":"free"}
+[03:53:36.730] Browser LOG     Realtime subscription status: CLOSED
+[03:53:36.923] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:53:44.349] Browser LOG     Realtime subscription status: CLOSED
+[03:57:10.665] Server  LOG     ✓ Compiled in 583ms
+[03:57:11.066] Server  LOG     ✓ Compiled in 157ms
+[03:57:12.030] Server  LOG     ✓ Compiled in 86ms
+[03:57:13.093] Server  LOG     ✓ Compiled in 100ms
+[03:57:23.828] Server  LOG     ✓ Compiled in 2.8s
+[03:57:24.055] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./src/components/photovault/PhotoVaultApp.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[03:57:34.831] Server  LOG     ✓ Finished filesystem cache database compaction in 19.0s
+[03:57:36.076] Server  LOG     ✓ Finished writing to filesystem cache in 10.4s
+[03:57:37.939] Server  WARN    ⚠ Fast Refresh had to perform a full reload when ./src/components/photovault/PhotoVaultApp.tsx changed. Read more: https://nextjs.org/docs/messages/fast-refresh-reload
+[03:57:37.951] Server  LOG     ✓ Compiled in 609ms
+[03:57:39.681] Browser ERROR   uncaughtError: ReferenceError: Images is not defined
+[03:57:44.897] Browser LOG     Realtime subscription status: CLOSED
+[03:57:46.417] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:57:55.742] Browser LOG     Realtime subscription status: CLOSED
+[03:57:59.049] Browser LOG     Realtime subscription status: CLOSED
+[03:57:59.223] Browser LOG     Realtime subscription status: SUBSCRIBED
+[03:58:09.043] Browser LOG     Realtime subscription status: CLOSED
+[03:58:09.372] Browser LOG     Realtime subscription status: SUBSCRIBED

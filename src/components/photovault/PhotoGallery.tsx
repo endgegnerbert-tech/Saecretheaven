@@ -1,12 +1,11 @@
 "use client";
 
-import { useState, useRef } from "react";
-import { Search, SlidersHorizontal, X, Check, Upload } from "lucide-react";
-
-// Import custom SVG icons
-import LockIcon from "@/components/icons/lock.svg";
+import { useState, useRef, useEffect, useCallback } from "react";
+import { SlidersHorizontal, X, Check, CloudOff } from "lucide-react";
+import { CustomIcon } from "@/components/ui/custom-icon";
 import { useEncryption } from "@/hooks/use-encryption";
 import { useGalleryData } from "@/hooks/use-gallery-data";
+import { useRealtimeSync, type SyncedPhoto } from "@/hooks/useRealtimeSync";
 
 interface PhotoGalleryProps {
   photosCount: number;
@@ -87,6 +86,7 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
   const [selectMode, setSelectMode] = useState(false);
   const [selectedPhotos, setSelectedPhotos] = useState<Set<string>>(new Set());
   const [fullscreenPhoto, setFullscreenPhoto] = useState<string | null>(null);
+  const [syncNotification, setSyncNotification] = useState<string | null>(null);
 
   const longPressTimer = useRef<NodeJS.Timeout | null>(null);
 
@@ -99,6 +99,24 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
     decryptPhoto,
     isUploading,
   } = useGalleryData(secretKey);
+
+  // Realtime Sync - receive photos from other devices
+  const handleNewPhoto = useCallback((photo: SyncedPhoto) => {
+    console.log('New photo from device:', photo.device_id);
+    setSyncNotification(`Neues Foto von anderem Gerät empfangen`);
+    setTimeout(() => setSyncNotification(null), 3000);
+  }, []);
+
+  const {
+    remoteCIDs,
+    remoteCIDsFromOtherDevices,
+    isConnected,
+    deviceId,
+    refresh: refreshSync
+  } = useRealtimeSync({
+    onNewPhoto: handleNewPhoto,
+    enabled: true,
+  });
 
   // Use real photos if available, otherwise use placeholders
   const photos =
@@ -178,7 +196,7 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
         {showSearch ? (
           <div className="flex-1 flex items-center gap-3">
             <div className="flex-1 bg-[#E5E5EA] rounded-lg px-3 py-2 flex items-center gap-2">
-              <Search className="w-4 h-4 text-[#8E8E93]" />
+              <CustomIcon name="search" size={16} />
               <input
                 type="text"
                 placeholder="Suchen..."
@@ -227,17 +245,23 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
         ) : (
           <>
             <div className="flex items-center gap-2">
-              <LockIcon className="w-5 h-5 text-[#30D158]" />
+              <CustomIcon name="lock" size={20} />
               <h1 className="sf-pro-display text-[20px] text-[#1D1D1F]">
                 Galerie
               </h1>
+              {/* Sync Status Indicator */}
+              {isConnected ? (
+                <CustomIcon name="cloud" size={16} />
+              ) : (
+                <CloudOff className="w-4 h-4 text-[#8E8E93]" />
+              )}
             </div>
             <div className="flex items-center gap-4">
               {/* Upload Button */}
               <label className="ios-tap-target cursor-pointer">
-                <Upload
-                  className={`w-6 h-6 ${isUploading ? "text-[#8E8E93] animate-pulse" : "text-[#007AFF]"}`}
-                />
+                <div className={isUploading ? "animate-pulse opacity-50" : ""}>
+                  <CustomIcon name="upload" size={24} />
+                </div>
                 <input
                   type="file"
                   multiple
@@ -251,7 +275,7 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
                 onClick={() => setShowSearch(true)}
                 className="ios-tap-target"
               >
-                <Search className="w-6 h-6 text-[#007AFF]" />
+                <CustomIcon name="search" size={24} />
               </button>
               <button
                 onClick={() => setShowFilter(!showFilter)}
@@ -331,7 +355,7 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
                     {isRealPhoto ? (
                       // Real encrypted photo - show placeholder until decryption
                       <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-[#E5E5EA] to-[#C7C7CC]">
-                        <LockIcon className="w-8 h-8 text-[#8E8E93]" />
+                        <CustomIcon name="lock" size={32} />
                       </div>
                     ) : photo.placeholderUrl ? (
                       // Placeholder photo (demo data)
@@ -371,10 +395,24 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
             Lange drücken zum Auswählen • Tippen zum Öffnen
           </p>
           <p className="text-[11px] text-[#C7C7CC] mt-1">
-            {photos.length} Fotos verschlüsselt gespeichert
+            {photos.length} Fotos lokal • {remoteCIDs.length} in der Cloud
           </p>
+          {remoteCIDsFromOtherDevices.length > 0 && (
+            <p className="text-[11px] text-[#007AFF] mt-1 flex items-center justify-center gap-1">
+              <CustomIcon name="smartphone" size={12} />
+              {remoteCIDsFromOtherDevices.length} von anderen Geräten
+            </p>
+          )}
         </div>
       </div>
+
+      {/* Sync Notification Toast */}
+      {syncNotification && (
+        <div className="fixed top-[70px] left-1/2 -translate-x-1/2 bg-[#1D1D1F] text-white px-4 py-2 rounded-full text-[13px] flex items-center gap-2 z-50 animate-pulse">
+          <CustomIcon name="cloud" size={16} />
+          {syncNotification}
+        </div>
+      )}
 
       {/* Fullscreen Photo View */}
       {fullscreenPhoto && (
@@ -401,7 +439,7 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
               if (photo.metadata) {
                 return (
                   <div className="flex flex-col items-center gap-4">
-                    <LockIcon className="w-16 h-16 text-white/60" />
+                    <CustomIcon name="lock" size={64} />
                     <p className="text-white/80 text-center">
                       Entschlüsselung wird implementiert...
                     </p>
@@ -425,7 +463,7 @@ export function PhotoGallery({ photosCount }: PhotoGalleryProps) {
           </div>
           <footer className="h-[80px] flex items-center justify-center bg-black/80">
             <div className="flex items-center gap-2 text-[13px] text-white/60">
-              <LockIcon className="w-4 h-4" />
+              <CustomIcon name="lock" size={16} />
               <span>Ende-zu-Ende verschlüsselt</span>
             </div>
           </footer>

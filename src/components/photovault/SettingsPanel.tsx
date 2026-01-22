@@ -1,13 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ChevronRight, Plus, Loader2, Check } from "lucide-react";
-
-// Import custom SVG icons
-import SmartphoneIcon from "@/components/icons/smartphone.svg";
-import RefreshCwIcon from "@/components/icons/RefreshCw.svg";
-import FolderOpenIcon from "@/components/icons/Openfolder.svg";
-import CloudIcon from "@/components/icons/cloud.svg";
+import { Plus, Loader2, Check } from "lucide-react";
+import { CustomIcon } from "@/components/ui/custom-icon";
 import type { AppState } from "./PhotoVaultApp";
 import { dummyBackupPhrase } from "./PhotoVaultApp";
 
@@ -135,7 +130,7 @@ export function SettingsPanel({
               className="w-full flex items-center justify-between p-4 ios-tap-target"
             >
               <div className="flex items-center gap-3">
-                <FolderOpenIcon className="w-5 h-5 text-[#007AFF]" />
+                <CustomIcon name="folder" size={24} />
                 <div className="text-left">
                   <span className="text-[17px] text-[#1D1D1F] block">
                     Backup-Quelle
@@ -147,7 +142,7 @@ export function SettingsPanel({
                   </span>
                 </div>
               </div>
-              <ChevronRight className="w-5 h-5 text-[#C7C7CC]" />
+              <CustomIcon name="chevronRight" size={16} />
             </button>
           </div>
         </div>
@@ -192,7 +187,7 @@ export function SettingsPanel({
                   ? "Upgrade zu Backup+"
                   : "Plan verwalten"}
               </span>
-              <ChevronRight className="w-5 h-5 text-[#C7C7CC]" />
+              <CustomIcon name="chevronRight" size={16} />
             </button>
           </div>
         </div>
@@ -211,7 +206,7 @@ export function SettingsPanel({
               className="w-full flex items-center justify-between p-4 ios-tap-target"
             >
               <div className="flex items-center gap-3">
-                <SmartphoneIcon className="w-5 h-5 text-[#007AFF]" />
+                <CustomIcon name="smartphone" size={24} />
                 <span className="text-[17px] text-[#1D1D1F]">
                   Verbundene Geräte
                 </span>
@@ -220,7 +215,7 @@ export function SettingsPanel({
                 <span className="text-[15px] text-[#6E6E73]">
                   {state.devices.length}
                 </span>
-                <ChevronRight className="w-5 h-5 text-[#C7C7CC]" />
+                <CustomIcon name="chevronRight" size={16} />
               </div>
             </button>
           </div>
@@ -239,7 +234,7 @@ export function SettingsPanel({
               <span className="text-[17px] text-[#1D1D1F]">
                 Backup-Phrase anzeigen
               </span>
-              <ChevronRight className="w-5 h-5 text-[#C7C7CC]" />
+              <CustomIcon name="chevronRight" size={16} />
             </button>
             <div className="h-[0.5px] bg-[#E5E5EA] ml-4" />
             <button
@@ -249,7 +244,7 @@ export function SettingsPanel({
               <span className="text-[17px] text-[#FF3B30]">
                 Neuen Schlüssel erstellen
               </span>
-              <ChevronRight className="w-5 h-5 text-[#C7C7CC]" />
+              <CustomIcon name="chevronRight" size={16} />
             </button>
           </div>
           <p className="text-[13px] text-[#6E6E73] px-4 mt-2">
@@ -271,12 +266,12 @@ export function SettingsPanel({
               className="w-full flex items-center justify-between p-4 ios-tap-target"
             >
               <div className="flex items-center gap-3">
-                <RefreshCwIcon className="w-5 h-5 text-[#007AFF]" />
+                <CustomIcon name="refresh" size={24} />
                 <span className="text-[17px] text-[#1D1D1F]">
                   Onboarding wiederholen
                 </span>
               </div>
-              <ChevronRight className="w-5 h-5 text-[#C7C7CC]" />
+              <CustomIcon name="chevronRight" size={16} />
             </button>
           </div>
           <p className="text-[13px] text-[#6E6E73] px-4 mt-2">
@@ -446,7 +441,7 @@ function DevicesView({
             <div key={device.id}>
               {index > 0 && <div className="h-[0.5px] bg-[#E5E5EA] ml-4" />}
               <div className="flex items-center gap-3 p-4">
-                <SmartphoneIcon className="w-8 h-8 text-[#007AFF]" />
+                <CustomIcon name="smartphone" size={32} />
                 <div className="flex-1">
                   <p className="text-[17px] text-[#1D1D1F]">{device.name}</p>
                   <p className="text-[13px] text-[#6E6E73]">
