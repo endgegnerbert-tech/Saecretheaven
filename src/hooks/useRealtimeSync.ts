@@ -1,266 +1,200 @@
 /**
- * useRealtimeSync Hook - Real-time sync across devices via Supabase
+ * useRealtimeSync Hook - Real-time METADATA sync across devices via Supabase
+ *
+ * This is a "thin" sync layer - it ONLY syncs metadata (CIDs, nonce, etc.)
+ * The actual photo content stays on IPFS and is fetched on-demand by the UI
  */
 
 'use client';
 
 import { useEffect, useCallback, useState } from 'react';
 import { supabase, loadCIDsFromSupabase, registerDevice } from '@/lib/supabase';
-import { remoteStorage } from '@/lib/storage/remote-storage';
 import { getDeviceId } from '@/lib/deviceId';
-import { getPhotoByCID, savePhoto } from '@/lib/storage/local-db';
 import { getUserKeyHash } from '@/lib/crypto';
 import type { RealtimeChannel } from '@supabase/supabase-js';
 
 export interface SyncedPhoto {
-  cid: string;
-  device_id: string;
-  uploaded_at: string;
-  file_size_bytes: number | null;
-  storage_path: string | null;
-  nonce: string | null;
-  mime_type: string | null;
-  isFromOtherDevice: boolean;
+    cid: string;
+    device_id: string;
+    uploaded_at: string;
+    file_size_bytes: number | null;
+    nonce: string | null;
+    mime_type: string | null;
+    isFromOtherDevice: boolean;
 }
 
 interface UseRealtimeSyncOptions {
-  onNewPhoto?: (photo: SyncedPhoto) => void;
-  onPhotoDeleted?: (cid: string) => void;
-  onPhotoDownloaded?: (cid: string) => void;
-  enabled?: boolean;
-  secretKey?: Uint8Array | null;
+    onNewPhoto?: (photo: SyncedPhoto) => void;
+    onPhotoDeleted?: (cid: string) => void;
+    enabled?: boolean;
+    secretKey?: Uint8Array | null;
 }
 
 export function useRealtimeSync(options: UseRealtimeSyncOptions = {}) {
-  const { onNewPhoto, onPhotoDeleted, onPhotoDownloaded, enabled = true, secretKey } = options;
-  const [remoteCIDs, setRemoteCIDs] = useState<SyncedPhoto[]>([]);
-  const [isConnected, setIsConnected] = useState(false);
-  const [lastSyncError, setLastSyncError] = useState<Error | null>(null);
-  const [isSyncing, setIsSyncing] = useState(false);
-  const [userKeyHash, setUserKeyHash] = useState<string | null>(null);
+    const { onNewPhoto, onPhotoDeleted, enabled = true, secretKey } = options;
+    const [remoteCIDs, setRemoteCIDs] = useState<SyncedPhoto[]>([]);
+    const [isConnected, setIsConnected] = useState(false);
+    const [lastSyncError, setLastSyncError] = useState<Error | null>(null);
+    const [userKeyHash, setUserKeyHash] = useState<string | null>(null);
 
-  const deviceId = typeof window !== 'undefined' ? getDeviceId() : 'server';
+    const deviceId = typeof window !== 'undefined' ? getDeviceId() : 'server';
 
-  // Generate Key Hash when secretKey changes
-  useEffect(() => {
-    if (secretKey) {
-      getUserKeyHash(secretKey).then(setUserKeyHash);
-    } else {
-      setUserKeyHash(null);
-    }
-  }, [secretKey]);
+    // Generate Key Hash when secretKey changes
+    useEffect(() => {
+        if (secretKey) {
+            getUserKeyHash(secretKey).then(setUserKeyHash);
+        } else {
+            setUserKeyHash(null);
+        }
+    }, [secretKey]);
 
-  // Register device in cloud when hash is available
-  useEffect(() => {
-    if (userKeyHash && deviceId !== 'server') {
-      const register = async () => {
+    // Register device in cloud when hash is available
+    useEffect(() => {
+        if (userKeyHash && deviceId !== 'server') {
+            const register = async () => {
+                try {
+                    const { getDeviceName, getDeviceType } = await import('@/lib/deviceId');
+                    const name = getDeviceName();
+                    const type = getDeviceType();
+
+                    await registerDevice(deviceId, name, type, userKeyHash);
+                    console.log('Device registered with hash:', userKeyHash);
+                } catch (err) {
+                    console.error('Failed to register device:', err);
+                }
+            };
+            register();
+        }
+    }, [userKeyHash, deviceId]);
+
+    // Load initial CIDs from Supabase (metadata only)
+    const loadRemoteCIDs = useCallback(async () => {
         try {
-          const { getDeviceName, getDeviceType } = await import('@/lib/deviceId');
-          const name = getDeviceName();
-          const type = getDeviceType();
-
-          await registerDevice(deviceId, name, type, userKeyHash);
-          console.log('Device registered with hash:', userKeyHash);
-        } catch (err) {
-          console.error('Failed to register device:', err);
+            const data = await loadCIDsFromSupabase(deviceId, userKeyHash || undefined);
+            const photos: SyncedPhoto[] = data.map((row) => ({
+                cid: row.cid,
+                device_id: row.device_id,
+                uploaded_at: row.uploaded_at,
+                file_size_bytes: row.file_size_bytes,
+                nonce: row.nonce || null,
+                mime_type: row.mime_type || null,
+                isFromOtherDevice: row.device_id !== deviceId,
+            }));
+            setRemoteCIDs(photos);
+            setLastSyncError(null);
+            return photos;
+        } catch (error) {
+            console.error('Failed to load remote CIDs:', error);
+            setLastSyncError(error as Error);
+            return [];
         }
-      };
-      register();
-    }
-  }, [userKeyHash, deviceId]);
+    }, [deviceId, userKeyHash]);
 
-  // Fetch missing photo content from Supabase Storage
-  const fetchMissingContent = useCallback(async (photo: SyncedPhoto) => {
-    if (!secretKey || !photo.storage_path) return false;
+    // Subscribe to realtime changes (metadata only - no auto-download)
+    useEffect(() => {
+        if (!enabled || typeof window === 'undefined') return;
 
-    try {
-      // Check if we already have this photo locally
-      const localPhoto = await getPhotoByCID(photo.cid);
-      if (localPhoto?.encryptedBlob) {
-        return false;
-      }
+        let channel: RealtimeChannel | null = null;
 
-      console.log('Fetching missing photo from storage:', photo.cid);
-      setIsSyncing(true);
+        const setupSubscription = async () => {
+            // Initial load
+            await loadRemoteCIDs();
 
-      // Download encrypted blob from Remote Storage (Supabase/IPFS)
-      const encryptedBlob = await remoteStorage.download(photo.storage_path);
+            // Subscribe to INSERT events
+            channel = supabase
+                .channel('photos_metadata_changes')
+                .on(
+                    'postgres_changes',
+                    {
+                        event: 'INSERT',
+                        schema: 'public',
+                        table: 'photos_metadata',
+                    },
+                    (payload) => {
+                        const newPhoto = payload.new as {
+                            cid: string;
+                            device_id: string;
+                            uploaded_at: string;
+                            file_size_bytes: number | null;
+                            nonce: string | null;
+                            mime_type: string | null;
+                            user_key_hash: string | null;
+                        };
 
-      // Save to local IndexedDB (still encrypted)
-      await savePhoto({
-        cid: photo.cid,
-        nonce: photo.nonce || '',
-        fileName: `synced_${photo.cid}`,
-        mimeType: photo.mime_type || 'image/jpeg',
-        fileSize: photo.file_size_bytes || 0,
-        uploadedAt: new Date(photo.uploaded_at),
-        encryptedBlob: encryptedBlob,
-      });
+                        // Only process if it belongs to this user
+                        if (userKeyHash && newPhoto.user_key_hash !== userKeyHash) {
+                            return;
+                        }
 
-      console.log('Photo downloaded and saved locally:', photo.cid);
-      onPhotoDownloaded?.(photo.cid);
-      return true;
-    } catch (error) {
-      console.error('Failed to fetch missing content:', error);
-      return false;
-    } finally {
-      setIsSyncing(false);
-    }
-  }, [secretKey, onPhotoDownloaded]);
+                        const syncedPhoto: SyncedPhoto = {
+                            cid: newPhoto.cid,
+                            device_id: newPhoto.device_id,
+                            uploaded_at: newPhoto.uploaded_at,
+                            file_size_bytes: newPhoto.file_size_bytes,
+                            nonce: newPhoto.nonce,
+                            mime_type: newPhoto.mime_type,
+                            isFromOtherDevice: newPhoto.device_id !== deviceId,
+                        };
 
-  // Load initial CIDs from Supabase
-  const loadRemoteCIDs = useCallback(async () => {
-    try {
-      const data = await loadCIDsFromSupabase(deviceId, userKeyHash || undefined);
-      const photos: SyncedPhoto[] = data.map((row) => ({
-        cid: row.cid,
-        device_id: row.device_id,
-        uploaded_at: row.uploaded_at,
-        file_size_bytes: row.file_size_bytes,
-        storage_path: row.storage_path || null,
-        nonce: row.nonce || null,
-        mime_type: row.mime_type || null,
-        isFromOtherDevice: row.device_id !== deviceId,
-      }));
-      setRemoteCIDs(photos);
-      setLastSyncError(null);
-      return photos;
-    } catch (error) {
-      console.error('Failed to load remote CIDs:', error);
-      setLastSyncError(error as Error);
-      return [];
-    }
-  }, [deviceId, userKeyHash]);
+                        // Notify callback (for UI updates like toasts)
+                        if (syncedPhoto.isFromOtherDevice) {
+                            console.log('New photo metadata received from another device:', syncedPhoto.cid);
+                            onNewPhoto?.(syncedPhoto);
+                        }
 
-  // Effect to automatically fetch missing content for all remote CIDs when key is available
-  useEffect(() => {
-    if (secretKey && remoteCIDs.length > 0) {
-      const fetchAllMissing = async () => {
-        for (const photo of remoteCIDs) {
-          if (photo.storage_path) {
-            await fetchMissingContent(photo);
-          }
-        }
-      };
-      fetchAllMissing();
-    }
-  }, [secretKey, remoteCIDs, fetchMissingContent]);
+                        // Add to local metadata state (NOT downloading content)
+                        setRemoteCIDs((prev) => {
+                            // Avoid duplicates
+                            if (prev.some((p) => p.cid === syncedPhoto.cid)) {
+                                return prev;
+                            }
+                            return [syncedPhoto, ...prev];
+                        });
+                    }
+                )
+                .on(
+                    'postgres_changes',
+                    {
+                        event: 'DELETE',
+                        schema: 'public',
+                        table: 'photos_metadata',
+                    },
+                    (payload) => {
+                        const deleted = payload.old as { cid: string };
+                        onPhotoDeleted?.(deleted.cid);
+                        setRemoteCIDs((prev) => prev.filter((p) => p.cid !== deleted.cid));
+                    }
+                )
+                .subscribe((status) => {
+                    console.log('Realtime subscription status:', status);
+                    setIsConnected(status === 'SUBSCRIBED');
+                });
+        };
 
-  // Subscribe to realtime changes
-  useEffect(() => {
-    if (!enabled || typeof window === 'undefined') return;
+        setupSubscription();
 
-    let channel: RealtimeChannel | null = null;
-
-    const setupSubscription = async () => {
-      // Initial load
-      await loadRemoteCIDs();
-
-      // Subscribe to INSERT events
-      // Filter by user_key_hash in realtime if possible, or filter locally
-      channel = supabase
-        .channel('photos_metadata_changes')
-        .on(
-          'postgres_changes',
-          {
-            event: 'INSERT',
-            schema: 'public',
-            table: 'photos_metadata',
-          },
-          (payload) => {
-            const newPhoto = payload.new as {
-              cid: string;
-              device_id: string;
-              uploaded_at: string;
-              file_size_bytes: number | null;
-              storage_path: string | null;
-              nonce: string | null;
-              mime_type: string | null;
-              user_key_hash: string | null;
-            };
-
-            // Only process if it belongs to this user
-            if (userKeyHash && newPhoto.user_key_hash !== userKeyHash) {
-              return;
+        return () => {
+            if (channel) {
+                supabase.removeChannel(channel);
             }
+        };
+    }, [enabled, deviceId, userKeyHash, onNewPhoto, onPhotoDeleted, loadRemoteCIDs]);
 
-            const syncedPhoto: SyncedPhoto = {
-              cid: newPhoto.cid,
-              device_id: newPhoto.device_id,
-              uploaded_at: newPhoto.uploaded_at,
-              file_size_bytes: newPhoto.file_size_bytes,
-              storage_path: newPhoto.storage_path,
-              nonce: newPhoto.nonce,
-              mime_type: newPhoto.mime_type,
-              isFromOtherDevice: newPhoto.device_id !== deviceId,
-            };
+    // Force refresh
+    const refresh = useCallback(async () => {
+        return loadRemoteCIDs();
+    }, [loadRemoteCIDs]);
 
-            // Only notify and fetch if it's from another device
-            if (syncedPhoto.isFromOtherDevice) {
-              console.log('New photo received from another device:', syncedPhoto.cid);
-              onNewPhoto?.(syncedPhoto);
+    // Get CIDs from other devices only
+    const remoteCIDsFromOtherDevices = remoteCIDs.filter((p) => p.isFromOtherDevice);
 
-              // Auto-fetch the content if we have the key
-              if (syncedPhoto.storage_path) {
-                fetchMissingContent(syncedPhoto);
-              }
-            }
-
-            // Add to local state
-            setRemoteCIDs((prev) => {
-              // Avoid duplicates
-              if (prev.some((p) => p.cid === syncedPhoto.cid)) {
-                return prev;
-              }
-              return [syncedPhoto, ...prev];
-            });
-          }
-        )
-        .on(
-          'postgres_changes',
-          {
-            event: 'DELETE',
-            schema: 'public',
-            table: 'photos_metadata',
-          },
-          (payload) => {
-            const deleted = payload.old as { cid: string };
-            onPhotoDeleted?.(deleted.cid);
-            setRemoteCIDs((prev) => prev.filter((p) => p.cid !== deleted.cid));
-          }
-        )
-        .subscribe((status) => {
-          console.log('Realtime subscription status:', status);
-          setIsConnected(status === 'SUBSCRIBED');
-        });
+    return {
+        remoteCIDs,
+        remoteCIDsFromOtherDevices,
+        isConnected,
+        lastSyncError,
+        refresh,
+        deviceId,
+        userKeyHash,
     };
-
-    setupSubscription();
-
-    return () => {
-      if (channel) {
-        supabase.removeChannel(channel);
-      }
-    };
-  }, [enabled, deviceId, userKeyHash, onNewPhoto, onPhotoDeleted, loadRemoteCIDs, fetchMissingContent]);
-
-  // Force refresh
-  const refresh = useCallback(async () => {
-    return loadRemoteCIDs();
-  }, [loadRemoteCIDs]);
-
-  // Get CIDs from other devices only
-  const remoteCIDsFromOtherDevices = remoteCIDs.filter((p) => p.isFromOtherDevice);
-
-  return {
-    remoteCIDs,
-    remoteCIDsFromOtherDevices,
-    isConnected,
-    isSyncing,
-    lastSyncError,
-    refresh,
-    fetchMissingContent,
-    deviceId,
-    userKeyHash,
-  };
 }

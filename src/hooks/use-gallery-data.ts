@@ -1,5 +1,7 @@
 /**
- * useGalleryData Hook - Local Photo Gallery Management with Cloud Sync
+ * useGalleryData Hook - Local Photo Gallery Management with IPFS Cloud Sync
+ * Photos are encrypted client-side and stored on IPFS
+ * Only metadata (CID, nonce, etc.) is stored in Supabase
  */
 
 'use client';
@@ -14,7 +16,8 @@ import {
     type PhotoMetadata,
 } from '@/lib/storage/local-db';
 import { encryptFile, decryptFile, getUserKeyHash } from '@/lib/crypto';
-import { uploadCIDMetadata, uploadPhotoBlob, updatePhotoStoragePath } from '@/lib/supabase';
+import { uploadCIDMetadata } from '@/lib/supabase';
+import { remoteStorage } from '@/lib/storage/remote-storage';
 import { getDeviceId } from '@/lib/deviceId';
 
 export function useGalleryData(secretKey: Uint8Array | null) {
@@ -30,7 +33,7 @@ export function useGalleryData(secretKey: Uint8Array | null) {
         }
     }, [secretKey]);
 
-    // Query: Load all photos
+    // Query: Load all photos from local IndexedDB
     const {
         data: photos = [],
         isLoading,
@@ -47,18 +50,28 @@ export function useGalleryData(secretKey: Uint8Array | null) {
         queryFn: getPhotoCount,
     });
 
-    // Mutation: Upload photo
+    // Mutation: Upload photo (encrypt -> IPFS -> Supabase metadata)
     const uploadMutation = useMutation({
         mutationFn: async (file: File) => {
             if (!secretKey) throw new Error('No encryption key');
 
-            // Encrypt file
+            // Step 1: Encrypt file client-side
             const { encrypted, nonce } = await encryptFile(file, secretKey);
+            console.log('File encrypted:', { size: encrypted.size, nonce: nonce.slice(0, 8) + '...' });
 
-            // Generate CID (simplified - in production use IPFS)
-            const cid = `cid_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+            // Step 2: Upload encrypted blob to IPFS -> returns real CID
+            let cid: string;
+            try {
+                cid = await remoteStorage.upload(encrypted, file.name);
+                console.log('Uploaded to IPFS with CID:', cid);
+            } catch (error) {
+                console.error('IPFS upload failed:', error);
+                // Generate fallback local CID for offline-first
+                cid = `cid_${Date.now()}_${Math.random().toString(36).slice(2)}`;
+                console.log('Using local fallback CID:', cid);
+            }
 
-            // Save metadata locally
+            // Step 3: Save to local IndexedDB (for immediate access)
             const metadata: Omit<PhotoMetadata, 'id'> = {
                 cid,
                 nonce,
@@ -66,30 +79,26 @@ export function useGalleryData(secretKey: Uint8Array | null) {
                 mimeType: file.type,
                 fileSize: file.size,
                 uploadedAt: new Date(),
-                encryptedBlob: encrypted,
+                encryptedBlob: encrypted, // Keep locally for fast access
             };
-
             await savePhoto(metadata);
+            console.log('Saved to local IndexedDB');
 
-            // Sync to Supabase Cloud
+            // Step 4: Sync metadata to Supabase (CID only, no blob)
             const deviceId = getDeviceId();
             try {
-                await uploadCIDMetadata(cid, file.size, deviceId, nonce, file.type, userKeyHash || undefined);
-                console.log('Photo metadata synced to cloud:', cid);
+                await uploadCIDMetadata(
+                    cid,
+                    file.size,
+                    deviceId,
+                    nonce,
+                    file.type,
+                    userKeyHash || undefined
+                );
+                console.log('Metadata synced to Supabase:', cid);
             } catch (error) {
-                console.error('Cloud metadata sync failed (photo saved locally):', error);
-                // Don't throw - local save succeeded
-            }
-
-            // Upload encrypted blob to Supabase Storage (background)
-            try {
-                const storagePath = `${deviceId}/${cid}`;
-                await uploadPhotoBlob(storagePath, encrypted);
-                await updatePhotoStoragePath(cid, storagePath);
-                console.log('Photo blob uploaded to storage:', storagePath);
-            } catch (error) {
-                console.error('Storage upload failed (photo saved locally):', error);
-                // Don't throw - local save succeeded, can retry later
+                console.error('Supabase metadata sync failed (photo saved locally & on IPFS):', error);
+                // Don't throw - local + IPFS save succeeded
             }
 
             return metadata;
@@ -104,6 +113,8 @@ export function useGalleryData(secretKey: Uint8Array | null) {
     const deleteMutation = useMutation({
         mutationFn: async (id: number) => {
             await deletePhoto(id);
+            // Note: IPFS content is immutable - we just remove our reference
+            // In production, you might want to unpin from Pinata
         },
         onSuccess: () => {
             queryClient.invalidateQueries({ queryKey: ['photos'] });

@@ -7,16 +7,18 @@ import type { AppState } from "./PhotoVaultApp";
 import { useEncryption } from "@/hooks/use-encryption";
 import { useGalleryData } from "@/hooks/use-gallery-data";
 import { DevicePairing } from "@/components/features/settings/DevicePairing";
-import { uploadPhotoBlob, updatePhotoStoragePath, cidExistsInSupabase } from "@/lib/supabase";
+import { uploadCIDMetadata, cidExistsInSupabase } from "@/lib/supabase";
+import { remoteStorage } from "@/lib/storage/remote-storage";
 import { getAllPhotos } from "@/lib/storage/local-db";
 import { getDeviceId } from "@/lib/deviceId";
+import { getUserKeyHash } from "@/lib/crypto";
 
 interface DashboardProps {
   state: AppState;
   setState: React.Dispatch<React.SetStateAction<AppState>>;
 }
 
-import { useSettingsStore, type SettingsState } from "@/lib/storage/settings-store";
+import { useSettingsStore } from "@/lib/storage/settings-store";
 
 export function Dashboard({ state, setState }: DashboardProps) {
   const [showTooltip, setShowTooltip] = useState<string | null>(null);
@@ -24,7 +26,7 @@ export function Dashboard({ state, setState }: DashboardProps) {
   const [showPairing, setShowPairing] = useState(false);
   const [isUploading, setIsUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 });
-  
+
   // Persistent Settings - Using individual selectors for stability
   const backupActive = useSettingsStore((state) => state.backupActive);
   const setBackupActive = useSettingsStore((state) => state.setBackupActive);
@@ -35,7 +37,7 @@ export function Dashboard({ state, setState }: DashboardProps) {
   // Get real photo count from encryption layer
   // Note: hasKey is checked to avoid calling useGalleryData without a key
   const { secretKey, hasKey } = useEncryption();
-  const { photoCount } = useGalleryData(hasKey ? secretKey : null);
+  const { photoCount, userKeyHash } = useGalleryData(hasKey ? secretKey : null);
 
   // Use real photo count if available
   const displayPhotoCount = photoCount > 0 ? photoCount : state.photosCount;
@@ -50,11 +52,12 @@ export function Dashboard({ state, setState }: DashboardProps) {
     setShowConfirmDialog(false);
   };
 
+  // Manual backup: Upload local photos to IPFS that aren't already there
   const triggerManualBackup = async () => {
-    if (isUploading) return;
+    if (isUploading || !secretKey) return;
 
     setIsUploading(true);
-    console.log("Starting backup to Supabase Storage...");
+    console.log("Starting backup to IPFS...");
 
     try {
       const photos = await getAllPhotos();
@@ -64,24 +67,30 @@ export function Dashboard({ state, setState }: DashboardProps) {
 
       let uploaded = 0;
       const deviceId = getDeviceId();
+      const keyHash = userKeyHash || await getUserKeyHash(secretKey);
 
       for (const photo of photosWithBlobs) {
         if (!photo.encryptedBlob) continue;
 
-        // Check if already uploaded
-        const exists = await cidExistsInSupabase(photo.cid);
-        if (!exists) {
-          console.log(`Skipping ${photo.cid} - not in metadata table`);
-          continue;
-        }
-
         try {
-          // Upload to Storage
-          const storagePath = `${deviceId}/${photo.cid}`;
-          await uploadPhotoBlob(storagePath, photo.encryptedBlob);
+          // Check if already in Supabase metadata
+          const existsInSupabase = await cidExistsInSupabase(photo.cid);
 
-          // Update metadata with storage path
-          await updatePhotoStoragePath(photo.cid, storagePath);
+          if (!existsInSupabase) {
+            // Upload encrypted blob to IPFS
+            const newCid = await remoteStorage.upload(photo.encryptedBlob, photo.fileName);
+            console.log(`Uploaded to IPFS: ${newCid}`);
+
+            // Sync metadata to Supabase
+            await uploadCIDMetadata(
+              newCid,
+              photo.fileSize,
+              deviceId,
+              photo.nonce,
+              photo.mimeType,
+              keyHash
+            );
+          }
 
           uploaded++;
           setUploadProgress({ current: uploaded, total: photosWithBlobs.length });
@@ -91,7 +100,7 @@ export function Dashboard({ state, setState }: DashboardProps) {
       }
 
       setLastBackup("Gerade eben");
-      console.log(`Backup complete: ${uploaded} photos uploaded`);
+      console.log(`Backup complete: ${uploaded} photos processed`);
     } catch (err) {
       console.error("Backup failed:", err);
     } finally {

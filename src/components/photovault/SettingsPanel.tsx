@@ -5,7 +5,7 @@ import { Plus, Loader2, Check } from "lucide-react";
 import { CustomIcon } from "@/components/ui/custom-icon";
 import type { AppState } from "./PhotoVaultApp";
 import { useEncryption } from "@/hooks/use-encryption";
-import { supabase } from "@/lib/supabase";
+import { getDevicesForUser } from "@/lib/supabase";
 import { getDeviceId } from "@/lib/deviceId";
 
 // Helper to format date
@@ -72,24 +72,14 @@ export function SettingsPanel({
     }
   }, [secretKey]);
 
-  // Fetch real devices from Supabase using hash
+  // Fetch real devices from Supabase using hash (aggregates all devices with same key)
   useEffect(() => {
     if (!userKeyHash) return;
 
     const fetchDevices = async () => {
       try {
-        const { data, error } = await supabase
-          .from("devices")
-          .select("*")
-          .eq("user_key_hash", userKeyHash)
-          .order("created_at", { ascending: false });
-
-        if (error) {
-          console.error("Error fetching devices:", error);
-          return;
-        }
-
-        setRealDevices(data || []);
+        const devices = await getDevicesForUser(userKeyHash);
+        setRealDevices(devices as Device[]);
       } catch (err) {
         console.error("Failed to fetch devices:", err);
       }
