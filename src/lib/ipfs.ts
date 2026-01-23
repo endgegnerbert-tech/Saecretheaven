@@ -80,42 +80,67 @@ export async function uploadToIPFS(blob: Blob, fileName?: string): Promise<strin
 
 /**
  * Download content from IPFS via Pinata Gateway
- * Uses dedicated gateway for better performance
+ * Uses dedicated gateway with CORS-friendly fetch options
  */
 export async function downloadFromIPFS(cid: string): Promise<Blob> {
-    const gatewayBase = getGatewayBase();
+    // Try multiple gateways for redundancy and CORS compatibility
+    const gateways = [
+        // Primary: Dedicated Pinata gateway (best performance)
+        () => {
+            const gatewayBase = getGatewayBase();
+            const url = new URL(`${gatewayBase}/ipfs/${cid}`);
+            if (PINATA_GATEWAY_TOKEN) {
+                url.searchParams.set('pinataGatewayToken', PINATA_GATEWAY_TOKEN);
+            }
+            return {
+                url: url.toString(),
+                headers: {},
+            };
+        },
+        // Fallback 1: Cloudflare IPFS gateway (CORS-friendly)
+        () => ({
+            url: `https://cloudflare-ipfs.com/ipfs/${cid}`,
+            headers: {},
+        }),
+        // Fallback 2: dweb.link (Protocol Labs, CORS-friendly)
+        () => ({
+            url: `https://dweb.link/ipfs/${cid}`,
+            headers: {},
+        }),
+        // Fallback 3: w3s.link (Web3.Storage gateway)
+        () => ({
+            url: `https://w3s.link/ipfs/${cid}`,
+            headers: {},
+        }),
+    ];
 
-    // Construct URL with token if available
-    const url = new URL(`${gatewayBase}/ipfs/${cid}`);
-    if (PINATA_GATEWAY_TOKEN) {
-        url.searchParams.set('pinataGatewayToken', PINATA_GATEWAY_TOKEN);
-    }
-    const gatewayUrl = url.toString();
+    let lastError: Error | null = null;
 
-    console.log('Fetching from Pinata Gateway:', gatewayUrl.split('?')[0]); // Log without token for security
+    for (const getGateway of gateways) {
+        try {
+            const { url, headers } = getGateway();
+            console.log('Fetching from gateway:', url.split('?')[0]);
 
-    const response = await fetch(gatewayUrl, {
-        method: 'GET',
-        // Still include header for backward compatibility or dedicated gateways that use it
-        headers: PINATA_GATEWAY_TOKEN ? {
-            'x-pinata-gateway-token': PINATA_GATEWAY_TOKEN,
-        } : {},
-    });
+            const response = await fetch(url, {
+                method: 'GET',
+                headers,
+                // CORS-friendly options
+                mode: 'cors',
+                credentials: 'omit',
+            });
 
-    if (!response.ok) {
-        console.warn(`Pinata fetch failed (${response.status}) for ${cid}, falling back to public gateway...`);
-        // Fallback to public IPFS gateway
-        const publicGateway = `https://ipfs.io/ipfs/${cid}`;
-        const fallbackResponse = await fetch(publicGateway);
+            if (response.ok) {
+                return await response.blob();
+            }
 
-        if (!fallbackResponse.ok) {
-            throw new Error(`IPFS download failed: ${response.status} (Fallback: ${fallbackResponse.status})`);
+            console.warn(`Gateway returned ${response.status}: ${url.split('?')[0]}`);
+        } catch (error) {
+            console.warn('Gateway fetch error:', error);
+            lastError = error instanceof Error ? error : new Error(String(error));
         }
-
-        return await fallbackResponse.blob();
     }
 
-    return await response.blob();
+    throw lastError || new Error(`IPFS download failed for CID: ${cid}`);
 }
 
 /**

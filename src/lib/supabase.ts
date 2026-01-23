@@ -13,22 +13,22 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 // Type definitions for our tables
 export interface PhotoMetadata {
-    id?: string
-    cid: string              // IPFS Content Identifier (the actual photo is on IPFS)
-    device_id: string        // Which device uploaded this
-    file_size_bytes?: number // Original file size
-    nonce?: string           // Encryption nonce (Base64)
-    mime_type?: string       // Original MIME type
-    user_key_hash?: string   // Hash of user's encryption key (for multi-device sync)
-    uploaded_at?: string     // When it was uploaded
+  id?: string
+  cid: string              // IPFS Content Identifier (the actual photo is on IPFS)
+  device_id: string        // Which device uploaded this
+  file_size_bytes?: number // Original file size
+  nonce?: string           // Encryption nonce (Base64)
+  mime_type?: string       // Original MIME type
+  user_key_hash?: string   // Hash of user's encryption key (for multi-device sync)
+  uploaded_at?: string     // When it was uploaded
 }
 
 export interface Device {
-    id?: string
-    device_name: string
-    device_type?: string
-    user_key_hash?: string   // Links device to user's encryption key
-    created_at?: string
+  id?: string
+  device_name: string
+  device_type?: string
+  user_key_hash?: string   // Links device to user's encryption key
+  created_at?: string
 }
 
 /**
@@ -36,30 +36,30 @@ export interface Device {
  * The actual encrypted photo is stored on IPFS
  */
 export async function uploadCIDMetadata(
-    cid: string,
-    fileSize: number,
-    deviceId: string,
-    nonce?: string,
-    mimeType?: string,
-    userKeyHash?: string
+  cid: string,
+  fileSize: number,
+  deviceId: string,
+  nonce?: string,
+  mimeType?: string,
+  userKeyHash?: string
 ) {
-    const { data, error } = await supabase
-        .from('photos_metadata')
-        .insert([{
-            cid,
-            file_size_bytes: fileSize,
-            device_id: deviceId,
-            nonce,
-            mime_type: mimeType,
-            user_key_hash: userKeyHash
-        }])
-        .select()
+  const { data, error } = await supabase
+    .from('photos_metadata')
+    .insert([{
+      cid,
+      file_size_bytes: fileSize,
+      device_id: deviceId,
+      nonce,
+      mime_type: mimeType,
+      user_key_hash: userKeyHash
+    }])
+    .select()
 
-    if (error) {
-        console.error('Supabase Metadata Upload Error:', error)
-        throw error
-    }
-    return data
+  if (error) {
+    console.error('Supabase Metadata Upload Error:', error)
+    throw error
+  }
+  return data
 }
 
 /**
@@ -67,107 +67,152 @@ export async function uploadCIDMetadata(
  * Photos are identified by CID and can be fetched from IPFS
  */
 export async function loadCIDsFromSupabase(_currentDeviceId: string, userKeyHash?: string) {
-    let query = supabase
-        .from('photos_metadata')
-        .select('cid, device_id, uploaded_at, file_size_bytes, nonce, mime_type')
+  let query = supabase
+    .from('photos_metadata')
+    .select('cid, device_id, uploaded_at, file_size_bytes, nonce, mime_type')
 
-    if (userKeyHash) {
-        query = query.eq('user_key_hash', userKeyHash)
-    }
+  if (userKeyHash) {
+    query = query.eq('user_key_hash', userKeyHash)
+  }
 
-    const { data, error } = await query.order('uploaded_at', { ascending: false })
+  const { data, error } = await query.order('uploaded_at', { ascending: false })
 
-    if (error) {
-        console.error('Supabase Load Error:', error)
-        throw error
-    }
-    return data || []
+  if (error) {
+    console.error('Supabase Load Error:', error)
+    throw error
+  }
+  return data || []
 }
 
 /**
  * Check if CID already exists in Supabase
  */
 export async function cidExistsInSupabase(cid: string): Promise<boolean> {
-    const { data, error } = await supabase
-        .from('photos_metadata')
-        .select('id')
-        .eq('cid', cid)
-        .single()
+  const { data, error } = await supabase
+    .from('photos_metadata')
+    .select('id')
+    .eq('cid', cid)
+    .single()
 
-    if (error && error.code !== 'PGRST116') {
-        // PGRST116 = no rows returned, which is expected
-        console.error('Supabase Check Error:', error)
-    }
-    return !!data
+  if (error && error.code !== 'PGRST116') {
+    // PGRST116 = no rows returned, which is expected
+    console.error('Supabase Check Error:', error)
+  }
+  return !!data
 }
 
 /**
  * Delete photo metadata from Supabase
  */
 export async function deletePhotoMetadata(cid: string): Promise<void> {
-    const { error } = await supabase
-        .from('photos_metadata')
-        .delete()
-        .eq('cid', cid)
+  const { error } = await supabase
+    .from('photos_metadata')
+    .delete()
+    .eq('cid', cid)
 
-    if (error) {
-        console.error('Supabase Delete Error:', error)
-        throw error
-    }
+  if (error) {
+    console.error('Supabase Delete Error:', error)
+    throw error
+  }
 }
 
 /**
  * Register or update a device
+ * IMPORTANT: userKeyHash and userId are required for RLS/BetterAuth compliance
  */
-export async function registerDevice(id: string, deviceName: string, deviceType?: string, userKeyHash?: string) {
+export async function registerDevice(
+  id: string,
+  deviceName: string,
+  deviceType?: string,
+  userKeyHash?: string,
+  userId?: string
+) {
+  // Validate userKeyHash - required for RLS
+  if (!userKeyHash || userKeyHash.length === 0) {
+    console.error('registerDevice: userKeyHash is required');
+    throw new Error('userKeyHash is required for device registration');
+  }
+
+  // First try to check if device exists
+  const { data: existingDevice } = await supabase
+    .from('devices')
+    .select('id')
+    .eq('id', id)
+    .single();
+
+  const devicePayload = {
+    device_name: deviceName,
+    device_type: deviceType,
+    user_key_hash: userKeyHash,
+    user_id: userId
+  };
+
+  if (existingDevice) {
+    // UPDATE existing device
     const { data, error } = await supabase
-        .from('devices')
-        .upsert([{
-            id,
-            device_name: deviceName,
-            device_type: deviceType,
-            user_key_hash: userKeyHash
-        }], { onConflict: 'id' })
-        .select()
+      .from('devices')
+      .update(devicePayload)
+      .eq('id', id)
+      .select();
 
     if (error) {
-        console.error('Supabase Device Registration Error:', error)
-        throw error
+      console.error('Supabase Device Update Error:', error);
+      throw error;
     }
-    return data?.[0]
+    return data?.[0];
+  } else {
+    // INSERT new device
+    const { data, error } = await supabase
+      .from('devices')
+      .insert([{
+        id,
+        ...devicePayload
+      }])
+      .select();
+
+    if (error) {
+      // Check for device limit error
+      if (error.message?.includes('Device limit exceeded')) {
+        throw new Error('DEVICE_LIMIT_EXCEEDED');
+      }
+      console.error('Supabase Device Insert Error:', error);
+      throw error;
+    }
+    return data?.[0];
+  }
 }
 
 /**
  * Get all devices for a user (by user_key_hash)
  */
 export async function getDevicesForUser(userKeyHash: string): Promise<Device[]> {
-    const { data, error } = await supabase
-        .from('devices')
-        .select('*')
-        .eq('user_key_hash', userKeyHash)
-        .order('created_at', { ascending: false })
+  const { data, error } = await supabase
+    .from('devices')
+    .select('*')
+    .eq('user_key_hash', userKeyHash)
+    .order('created_at', { ascending: false })
 
-    if (error) {
-        console.error('Supabase Get Devices Error:', error)
-        throw error
-    }
-    return data || []
+  if (error) {
+    console.error('Supabase Get Devices Error:', error)
+    throw error
+  }
+  return data || []
 }
 
 /**
  * Get photo metadata by CID
  */
 export async function getPhotoMetadataByCID(cid: string): Promise<PhotoMetadata | null> {
-    const { data, error } = await supabase
-        .from('photos_metadata')
-        .select('*')
-        .eq('cid', cid)
-        .single()
+  const { data, error } = await supabase
+    .from('photos_metadata')
+    .select('*')
+    .eq('cid', cid)
+    .single()
 
-    if (error && error.code !== 'PGRST116') {
-        console.error('Supabase Get Photo Error:', error)
-        throw error
-    }
+  if (error && error.code !== 'PGRST116') {
+    console.error('Supabase Get Photo Error:', error)
+    throw error
+  }
 
-    return data
+  return data
 }

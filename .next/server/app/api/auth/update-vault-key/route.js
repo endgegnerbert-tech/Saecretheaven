@@ -1,0 +1,13 @@
+var R=require("../../../../chunks/[turbopack]_runtime.js")("server/app/api/auth/update-vault-key/route.js")
+R.c("server/chunks/[root-of-the-server]__333b381d._.js")
+R.c("server/chunks/node_modules_next_f5199d09._.js")
+R.c("server/chunks/node_modules_better-auth_dist_adapters_kysely-adapter_dialect_mjs_60ce8344._.js")
+R.c("server/chunks/node_modules_next_dist_3cae5f3a._.js")
+R.c("server/chunks/node_modules_next_f2da0d3e._.js")
+R.c("server/chunks/[root-of-the-server]__ea845f9f._.js")
+R.c("server/chunks/node_modules_@better-auth_80a26161._.js")
+R.c("server/chunks/[root-of-the-server]__4151f322._.js")
+R.c("server/chunks/node_modules_kysely_dist_esm_496c2397._.js")
+R.c("server/chunks/_next-internal_server_app_api_auth_update-vault-key_route_actions_18ffa9f0.js")
+R.m(87415)
+module.exports=R.m(87415).exports

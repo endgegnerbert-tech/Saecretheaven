@@ -12,6 +12,7 @@ import {
   clearKeyFromStorage,
   keyToRecoveryPhrase,
   recoveryPhraseToKey,
+  getUserKeyHash,
 } from "@/lib/crypto";
 
 export function useEncryption() {
@@ -19,15 +20,21 @@ export function useEncryption() {
   const [isInitialized, setIsInitialized] = useState(false);
   const [recoveryPhrase, setRecoveryPhrase] = useState<string | null>(null);
   const [isGeneratingKey, setIsGeneratingKey] = useState(false);
+  const [userKeyHash, setUserKeyHash] = useState<string | null>(null);
 
   // Load key on mount
   useEffect(() => {
-    const key = loadKeyFromStorage();
-    if (key) {
-      setSecretKey(key);
-      setRecoveryPhrase(keyToRecoveryPhrase(key));
-    }
-    setIsInitialized(true);
+    const loadKey = async () => {
+      const key = loadKeyFromStorage();
+      if (key) {
+        setSecretKey(key);
+        setRecoveryPhrase(keyToRecoveryPhrase(key));
+        const hash = await getUserKeyHash(key);
+        setUserKeyHash(hash);
+      }
+      setIsInitialized(true);
+    };
+    loadKey();
   }, []);
 
   // Generate new key
@@ -36,7 +43,7 @@ export function useEncryption() {
       setIsGeneratingKey(true);
 
       // Simulate key generation time
-      setTimeout(() => {
+      setTimeout(async () => {
         const keyPair = generateKeyPair();
         const key = keyPair.secretKey;
 
@@ -45,8 +52,11 @@ export function useEncryption() {
 
         const phrase = keyToRecoveryPhrase(key);
         setRecoveryPhrase(phrase);
-        setIsGeneratingKey(false);
 
+        const hash = await getUserKeyHash(key);
+        setUserKeyHash(hash);
+
+        setIsGeneratingKey(false);
         resolve(phrase);
       }, 1500);
     });
@@ -77,6 +87,7 @@ export function useEncryption() {
     isInitialized,
     hasKey: !!secretKey,
     recoveryPhrase,
+    userKeyHash,
     isGeneratingKey,
     generateNewKey,
     restoreFromPhrase,
