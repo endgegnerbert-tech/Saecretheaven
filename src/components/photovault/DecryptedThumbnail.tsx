@@ -49,7 +49,7 @@ export function DecryptedThumbnail({
                         blobToDecrypt = await remoteStorage.download(photo.cid);
                         console.log('Fetched from IPFS:', { cid: photo.cid, size: blobToDecrypt.size });
                     } catch (fetchError) {
-                        console.error('Failed to fetch from IPFS:', fetchError);
+                        console.error(`Failed to fetch from IPFS (CID: ${photo.cid}):`, fetchError);
                         setError(true);
                         return;
                     } finally {

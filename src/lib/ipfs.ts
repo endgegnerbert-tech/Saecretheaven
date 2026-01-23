@@ -6,10 +6,26 @@
 // Pinata Configuration
 const PINATA_JWT = process.env.NEXT_PUBLIC_PINATA_JWT || '';
 const PINATA_GATEWAY = process.env.NEXT_PUBLIC_PINATA_GATEWAY || 'https://gateway.pinata.cloud';
+const PINATA_GATEWAY_TOKEN = process.env.NEXT_PUBLIC_PINATA_GATEWAY_TOKEN || '';
 
 // API Endpoints
 const PINATA_PIN_URL = 'https://api.pinata.cloud/pinning/pinFileToIPFS';
 const PINATA_UNPIN_URL = 'https://api.pinata.cloud/pinning/unpin';
+
+/**
+ * Helper: Get the full gateway base URL
+ */
+function getGatewayBase(): string {
+    if (PINATA_GATEWAY.startsWith('http')) return PINATA_GATEWAY;
+
+    // If it's just a subdomain or already includes mypinata.cloud but lacks protocol
+    if (PINATA_GATEWAY.includes('.')) {
+        return `https://${PINATA_GATEWAY}`;
+    }
+
+    // Default to mypinata.cloud for simple subdomain strings
+    return `https://${PINATA_GATEWAY}.mypinata.cloud`;
+}
 
 /**
  * Generate a real IPFS CID by uploading to Pinata
@@ -67,23 +83,33 @@ export async function uploadToIPFS(blob: Blob, fileName?: string): Promise<strin
  * Uses dedicated gateway for better performance
  */
 export async function downloadFromIPFS(cid: string): Promise<Blob> {
-    // Try Pinata dedicated gateway first for speed
-    const gatewayUrl = `${PINATA_GATEWAY}/ipfs/${cid}`;
+    const gatewayBase = getGatewayBase();
+
+    // Construct URL with token if available
+    const url = new URL(`${gatewayBase}/ipfs/${cid}`);
+    if (PINATA_GATEWAY_TOKEN) {
+        url.searchParams.set('pinataGatewayToken', PINATA_GATEWAY_TOKEN);
+    }
+    const gatewayUrl = url.toString();
+
+    console.log('Fetching from Pinata Gateway:', gatewayUrl.split('?')[0]); // Log without token for security
 
     const response = await fetch(gatewayUrl, {
         method: 'GET',
-        headers: PINATA_JWT ? {
-            'x-pinata-gateway-token': PINATA_JWT,
+        // Still include header for backward compatibility or dedicated gateways that use it
+        headers: PINATA_GATEWAY_TOKEN ? {
+            'x-pinata-gateway-token': PINATA_GATEWAY_TOKEN,
         } : {},
     });
 
     if (!response.ok) {
+        console.warn(`Pinata fetch failed (${response.status}) for ${cid}, falling back to public gateway...`);
         // Fallback to public IPFS gateway
         const publicGateway = `https://ipfs.io/ipfs/${cid}`;
         const fallbackResponse = await fetch(publicGateway);
 
         if (!fallbackResponse.ok) {
-            throw new Error(`IPFS download failed: ${response.status}`);
+            throw new Error(`IPFS download failed: ${response.status} (Fallback: ${fallbackResponse.status})`);
         }
 
         return await fallbackResponse.blob();
@@ -119,11 +145,16 @@ export async function unpinFromIPFS(cid: string): Promise<void> {
  */
 export async function cidExistsOnIPFS(cid: string): Promise<boolean> {
     try {
-        const gatewayUrl = `${PINATA_GATEWAY}/ipfs/${cid}`;
-        const response = await fetch(gatewayUrl, {
+        const gatewayBase = getGatewayBase();
+        const url = new URL(`${gatewayBase}/ipfs/${cid}`);
+        if (PINATA_GATEWAY_TOKEN) {
+            url.searchParams.set('pinataGatewayToken', PINATA_GATEWAY_TOKEN);
+        }
+
+        const response = await fetch(url.toString(), {
             method: 'HEAD',
-            headers: PINATA_JWT ? {
-                'x-pinata-gateway-token': PINATA_JWT,
+            headers: PINATA_GATEWAY_TOKEN ? {
+                'x-pinata-gateway-token': PINATA_GATEWAY_TOKEN,
             } : {},
         });
         return response.ok;
@@ -136,7 +167,12 @@ export async function cidExistsOnIPFS(cid: string): Promise<boolean> {
  * Get the gateway URL for a CID (for direct browser access)
  */
 export function getIPFSGatewayUrl(cid: string): string {
-    return `${PINATA_GATEWAY}/ipfs/${cid}`;
+    const gatewayBase = getGatewayBase();
+    const url = new URL(`${gatewayBase}/ipfs/${cid}`);
+    if (PINATA_GATEWAY_TOKEN) {
+        url.searchParams.set('pinataGatewayToken', PINATA_GATEWAY_TOKEN);
+    }
+    return url.toString();
 }
 
 /**
