@@ -13,6 +13,9 @@ import { Pool } from "pg";
 // Use the same database connection as Better Auth
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false,
+    },
 });
 
 export async function POST(request: NextRequest) {

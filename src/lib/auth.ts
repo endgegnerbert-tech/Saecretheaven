@@ -8,9 +8,12 @@
 import { betterAuth } from "better-auth";
 import { Pool } from "pg";
 
-// Supabase Postgres connection
+// Supabase Postgres connection with SSL
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
+    ssl: {
+        rejectUnauthorized: false, // Required for Supabase connection
+    },
 });
 
 export const auth = betterAuth({
