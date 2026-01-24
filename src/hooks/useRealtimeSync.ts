@@ -8,7 +8,7 @@
 'use client';
 
 import { useEffect, useCallback, useState } from 'react';
-import { supabase, loadCIDsFromSupabase, registerDevice } from '@/lib/supabase';
+import { supabase, loadCIDsFromSupabase } from '@/lib/supabase';
 import { getDeviceId } from '@/lib/deviceId';
 import { getUserKeyHash } from '@/lib/crypto';
 import type { RealtimeChannel } from '@supabase/supabase-js';
@@ -48,24 +48,8 @@ export function useRealtimeSync(options: UseRealtimeSyncOptions = {}) {
     }
   }, [secretKey]);
 
-  // Register device in cloud when hash is available
-  useEffect(() => {
-    if (userKeyHash && deviceId !== 'server') {
-      const register = async () => {
-        try {
-          const { getDeviceName, getDeviceType } = await import('@/lib/deviceId');
-          const name = getDeviceName();
-          const type = getDeviceType();
-
-          await registerDevice(deviceId, name, type, userKeyHash);
-          console.log('Device registered with hash:', userKeyHash);
-        } catch (err) {
-          console.error('Failed to register device:', err);
-        }
-      };
-      register();
-    }
-  }, [userKeyHash, deviceId]);
+  // Device registration is now handled centrally in PhotoVaultApp.tsx
+  // to prevent duplicate registrations across hooks
 
   // Load initial CIDs from Supabase (metadata only)
   const loadRemoteCIDs = useCallback(async () => {
@@ -168,8 +152,18 @@ export function useRealtimeSync(options: UseRealtimeSyncOptions = {}) {
           }
         )
         .subscribe((status) => {
-          console.log('Realtime subscription status:', status);
+          console.log('[Realtime] Status:', status);
           setIsConnected(status === 'SUBSCRIBED');
+
+          // Auto-reconnect on channel error
+          if (status === 'CHANNEL_ERROR') {
+            console.log('[Realtime] Channel error, retrying in 5s...');
+            setTimeout(() => {
+              if (channel) {
+                channel.subscribe();
+              }
+            }, 5000);
+          }
         });
     };
 

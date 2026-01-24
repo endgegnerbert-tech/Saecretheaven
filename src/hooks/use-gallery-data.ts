@@ -83,6 +83,8 @@ export function useGalleryData(secretKey: Uint8Array | null) {
     }, [secretKey]);
 
     // Query: Load all photos from local IndexedDB
+    // WICHTIG: Query ist IMMER enabled - IndexedDB braucht kein secretKey
+    // Decryption passiert separat wenn secretKey vorhanden ist
     const {
         data: photos = [],
         isLoading,
@@ -90,7 +92,7 @@ export function useGalleryData(secretKey: Uint8Array | null) {
     } = useQuery({
         queryKey: ['photos'],
         queryFn: getAllPhotos,
-        enabled: !!secretKey,
+        enabled: true, // Immer laden, unabhängig von secretKey
     });
 
     // Query: Photo count
@@ -105,7 +107,9 @@ export function useGalleryData(secretKey: Uint8Array | null) {
     const uploadMutation = useMutation({
         mutationFn: async (file: File) => {
             if (!secretKey) throw new Error('No encryption key');
+            if (!userKeyHash) throw new Error('userKeyHash not ready - bitte kurz warten');
 
+            console.log('[Upload] Starting upload:', file.name);
             setUploadProgress(0);
 
             // Step 0: Convert HEIC to JPEG if needed (iOS compatibility)
@@ -113,7 +117,7 @@ export function useGalleryData(secretKey: Uint8Array | null) {
 
             // Step 1: Encrypt file client-side
             const { encrypted, nonce } = await encryptFile(processedFile, secretKey);
-            console.log('File encrypted:', { size: encrypted.size, nonce: nonce.slice(0, 8) + '...' });
+            console.log('[Upload] Encrypted:', { size: encrypted.size });
 
             // Step 2: Upload encrypted blob to IPFS -> returns real CID
             let cid: string;
@@ -121,12 +125,12 @@ export function useGalleryData(secretKey: Uint8Array | null) {
                 cid = await remoteStorage.upload(encrypted, processedFile.name, (progress) => {
                     setUploadProgress(progress);
                 });
-                console.log('Uploaded to IPFS with CID:', cid);
+                console.log('[Upload] IPFS CID:', cid);
             } catch (error) {
-                console.error('IPFS upload failed:', error);
+                console.error('[Upload] IPFS failed:', error);
                 // Generate fallback local CID for offline-first
                 cid = `cid_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-                console.log('Using local fallback CID:', cid);
+                console.log('[Upload] Using fallback CID:', cid);
             }
 
             // Step 3: Save to local IndexedDB (for immediate access)
@@ -139,8 +143,14 @@ export function useGalleryData(secretKey: Uint8Array | null) {
                 uploadedAt: new Date(),
                 encryptedBlob: encrypted, // Keep locally for fast access
             };
-            await savePhoto(metadata);
-            console.log('Saved to local IndexedDB');
+
+            try {
+                await savePhoto(metadata);
+                console.log('[Upload] Saved to IndexedDB:', cid);
+            } catch (dbError) {
+                console.error('[Upload] IndexedDB save FAILED:', dbError);
+                throw dbError; // Fail the mutation - this is critical
+            }
 
             // Step 4: Sync metadata to Supabase (CID only, no blob)
             const deviceId = getDeviceId();
@@ -151,19 +161,24 @@ export function useGalleryData(secretKey: Uint8Array | null) {
                     deviceId,
                     nonce,
                     processedFile.type,
-                    userKeyHash || undefined
+                    userKeyHash // Jetzt garantiert nicht undefined
                 );
-                console.log('Metadata synced to Supabase:', cid);
+                console.log('[Upload] Supabase synced:', cid);
             } catch (error) {
-                console.error('Supabase metadata sync failed (photo saved locally & on IPFS):', error);
+                console.error('[Upload] Supabase sync failed (local + IPFS OK):', error);
                 // Don't throw - local + IPFS save succeeded
             }
 
             return metadata;
         },
         onSuccess: () => {
+            // Sofort Queries invalidieren für UI-Update
             queryClient.invalidateQueries({ queryKey: ['photos'] });
             queryClient.invalidateQueries({ queryKey: ['photoCount'] });
+            console.log('[Upload] Complete - queries invalidated');
+        },
+        onError: (error) => {
+            console.error('[Upload] Mutation failed:', error);
         },
     });
 

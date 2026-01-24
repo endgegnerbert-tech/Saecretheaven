@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Settings } from "lucide-react";
 import { CustomIcon } from "@/components/ui/custom-icon";
 import ShieldLoader from "@/components/ui/shield-loader";
@@ -9,7 +9,6 @@ import ShieldLoader from "@/components/ui/shield-loader";
 import { AuthScreen } from "./AuthScreen";
 import { UnlockVaultScreen } from "./UnlockVaultScreen";
 import { VaultSetupScreen } from "./VaultSetupScreen";
-import { Dashboard } from "./Dashboard";
 import { SettingsPanel } from "./SettingsPanel";
 import { PhotoGallery } from "./PhotoGallery";
 
@@ -58,7 +57,7 @@ const defaultState: AppState = {
     photoSource: "photos-app",
 };
 
-export type Screen = "gallery" | "dashboard" | "settings";
+export type Screen = "gallery" | "settings";
 
 type AppPhase =
     | "loading"
@@ -82,17 +81,27 @@ export function PhotoVaultApp() {
     // Better Auth session hook
     const { data: session, isPending: isSessionLoading } = useSession();
 
-    // Register device for authenticated user
+    // Ref-Guard: Verhindert mehrfache Device-Registrierung pro Session
+    const hasRegisteredDevice = useRef(false);
+
+    // Register device for authenticated user (nur einmal pro Session)
     const registerDeviceForUser = useCallback(async (keyHash: string, userId: string) => {
+        // Guard: Nur einmal registrieren
+        if (hasRegisteredDevice.current) {
+            console.log("[Device] Already registered this session, skipping");
+            return;
+        }
+
         try {
             const deviceId = getDeviceId();
             const deviceName = getDeviceName();
             const deviceType = getDeviceType();
 
             await registerDevice(deviceId, deviceName, deviceType, keyHash, userId);
-            console.log("Device registered successfully");
+            hasRegisteredDevice.current = true; // Markiere als registriert
+            console.log("[Device] Registered successfully:", deviceId);
         } catch (err) {
-            console.error("Failed to register device:", err);
+            console.error("[Device] Registration failed:", err);
         }
     }, []);
 
@@ -278,9 +287,6 @@ export function PhotoVaultApp() {
                     {currentScreen === "gallery" && (
                         <PhotoGallery photosCount={state.photosCount} />
                     )}
-                    {currentScreen === "dashboard" && (
-                        <Dashboard state={state} setState={setState} />
-                    )}
                     {currentScreen === "settings" && (
                         <SettingsPanel
                             state={state}
@@ -330,7 +336,7 @@ function BottomNavigation({
             {/* Gallery Tab */}
             <button
                 onClick={() => onNavigate("gallery")}
-                className="flex flex-col items-center gap-1 ios-tap-target px-4"
+                className="flex flex-col items-center gap-1 ios-tap-target px-8"
             >
                 <CustomIcon
                     name="image"
@@ -344,27 +350,10 @@ function BottomNavigation({
                 </span>
             </button>
 
-            {/* Backup Tab */}
-            <button
-                onClick={() => onNavigate("dashboard")}
-                className="flex flex-col items-center gap-1 ios-tap-target px-4"
-            >
-                <CustomIcon
-                    name="shield"
-                    size={24}
-                    className={currentScreen === "dashboard" ? "text-[#007AFF]" : "text-[#6E6E73]"}
-                />
-                <span
-                    className={`text-[10px] ${currentScreen === "dashboard" ? "text-[#007AFF]" : "text-[#6E6E73]"}`}
-                >
-                    Backup
-                </span>
-            </button>
-
             {/* Settings Tab */}
             <button
                 onClick={() => onNavigate("settings")}
-                className="flex flex-col items-center gap-1 ios-tap-target px-4"
+                className="flex flex-col items-center gap-1 ios-tap-target px-8"
             >
                 <Settings
                     className={`w-6 h-6 ${currentScreen === "settings" ? "text-[#007AFF]" : "text-[#6E6E73]"}`}

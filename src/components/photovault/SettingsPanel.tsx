@@ -1,12 +1,15 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Plus, Loader2, Check } from "lucide-react";
+import { Plus, Loader2, Check, Cloud } from "lucide-react";
 import { CustomIcon } from "@/components/ui/custom-icon";
 import type { AppState } from "./PhotoVaultApp";
 import { useEncryption } from "@/hooks/use-encryption";
-import { getDevicesForUser } from "@/lib/supabase";
+import { getDevicesForUser, uploadCIDMetadata, cidExistsInSupabase } from "@/lib/supabase";
 import { getDeviceId } from "@/lib/deviceId";
+import { remoteStorage } from "@/lib/storage/remote-storage";
+import { getAllPhotos } from "@/lib/storage/local-db";
+import { getUserKeyHash } from "@/lib/crypto";
 
 // Helper to format date
 function formatDate(dateStr?: string): string {
@@ -52,7 +55,11 @@ export function SettingsPanel({
   const [showSourceSelector, setShowSourceSelector] = useState(false);
   const [showPlanSelector, setShowPlanSelector] = useState(false);
   const [realDevices, setRealDevices] = useState<Device[]>([]);
-  
+
+  // Manual Backup State
+  const [isUploading, setIsUploading] = useState(false);
+  const [uploadProgress, setUploadProgress] = useState({ current: 0, total: 0 });
+
   // Persistent Settings
   const autoBackupEnabled = useSettingsStore(state => state.autoBackupEnabled);
   const setAutoBackupEnabled = useSettingsStore(state => state.setAutoBackupEnabled);
@@ -60,6 +67,7 @@ export function SettingsPanel({
   const setBackgroundBackupEnabled = useSettingsStore(state => state.setBackgroundBackupEnabled);
   const selectedPlan = useSettingsStore(state => state.selectedPlan);
   const setSelectedPlan = useSettingsStore(state => state.setSelectedPlan);
+  const setLastBackup = useSettingsStore(state => state.setLastBackup);
 
   const { secretKey, recoveryPhrase, generateNewKey, clearKey } = useEncryption();
   const currentDeviceId = typeof window !== "undefined" ? getDeviceId() : "";
@@ -97,6 +105,63 @@ export function SettingsPanel({
 
   const toggleBackgroundBackup = () => {
     setBackgroundBackupEnabled(!backgroundBackupEnabled);
+  };
+
+  // Manual backup: Upload local photos to IPFS that aren't already there
+  const triggerManualBackup = async () => {
+    if (isUploading || !secretKey) return;
+
+    setIsUploading(true);
+    console.log("[Backup] Starting manual backup to IPFS...");
+
+    try {
+      const photos = await getAllPhotos();
+      const photosWithBlobs = photos.filter((p) => p.encryptedBlob);
+
+      setUploadProgress({ current: 0, total: photosWithBlobs.length });
+
+      let uploaded = 0;
+      const deviceId = getDeviceId();
+      const keyHash = userKeyHash || await getUserKeyHash(secretKey);
+
+      for (const photo of photosWithBlobs) {
+        if (!photo.encryptedBlob) continue;
+
+        try {
+          // Check if already in Supabase metadata for this user
+          const existsInSupabase = await cidExistsInSupabase(photo.cid, keyHash);
+
+          if (!existsInSupabase) {
+            // Upload encrypted blob to IPFS
+            const newCid = await remoteStorage.upload(photo.encryptedBlob, photo.fileName);
+            console.log(`[Backup] Uploaded to IPFS: ${newCid}`);
+
+            // Sync metadata to Supabase
+            await uploadCIDMetadata(
+              newCid,
+              photo.fileSize,
+              deviceId,
+              photo.nonce,
+              photo.mimeType,
+              keyHash
+            );
+          }
+
+          uploaded++;
+          setUploadProgress({ current: uploaded, total: photosWithBlobs.length });
+        } catch (err) {
+          console.error(`[Backup] Failed to upload ${photo.cid}:`, err);
+        }
+      }
+
+      setLastBackup("Gerade eben");
+      console.log(`[Backup] Complete: ${uploaded} photos processed`);
+    } catch (err) {
+      console.error("[Backup] Failed:", err);
+    } finally {
+      setIsUploading(false);
+      setUploadProgress({ current: 0, total: 0 });
+    }
   };
 
   const viewBackupPhrase = () => {
@@ -236,6 +301,30 @@ export function SettingsPanel({
               <CustomIcon name="chevronRight" size={16} />
             </button>
           </div>
+
+          {/* Manual Backup Button */}
+          <button
+            onClick={triggerManualBackup}
+            disabled={isUploading || !secretKey}
+            className="w-full h-[50px] bg-[#007AFF] text-white text-[17px] font-semibold rounded-xl mt-3 ios-tap-target disabled:opacity-70 flex items-center justify-center gap-2"
+          >
+            {isUploading ? (
+              <>
+                <Loader2 className="w-5 h-5 animate-spin" />
+                {uploadProgress.total > 0
+                  ? `${uploadProgress.current}/${uploadProgress.total} hochladen...`
+                  : "Vorbereiten..."}
+              </>
+            ) : (
+              <>
+                <Cloud className="w-5 h-5" />
+                Jetzt sichern
+              </>
+            )}
+          </button>
+          <p className="text-[13px] text-[#6E6E73] px-4 mt-2 text-center">
+            Alle lokalen Fotos in die Cloud hochladen
+          </p>
         </div>
 
         {/* Storage Section */}
