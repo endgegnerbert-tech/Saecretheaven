@@ -42,32 +42,50 @@ export async function uploadToIPFS(
         return mockCid;
     }
 
+    console.log('[IPFS] Starting upload to Pinata...', { blobSize: blob.size, fileName });
+
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.open('POST', PINATA_PIN_URL);
         xhr.setRequestHeader('Authorization', `Bearer ${PINATA_JWT}`);
 
+        // Timeout: 2 minutes for large files on mobile
+        xhr.timeout = 120000;
+
         xhr.upload.onprogress = (event) => {
             if (event.lengthComputable && onProgress) {
                 const percentComplete = Math.round((event.loaded / event.total) * 100);
+                console.log(`[IPFS] Upload progress: ${percentComplete}%`);
                 onProgress(percentComplete);
             }
         };
 
         xhr.onload = () => {
+            console.log('[IPFS] XHR onload, status:', xhr.status);
             if (xhr.status >= 200 && xhr.status < 300) {
                 try {
                     const result = JSON.parse(xhr.responseText);
+                    console.log('[IPFS] Upload success, CID:', result.IpfsHash);
                     resolve(result.IpfsHash);
                 } catch (e) {
+                    console.error('[IPFS] Failed to parse response:', xhr.responseText);
                     reject(new Error('Failed to parse Pinata response'));
                 }
             } else {
-                reject(new Error(`IPFS upload failed: ${xhr.status}`));
+                console.error('[IPFS] Upload failed:', { status: xhr.status, response: xhr.responseText });
+                reject(new Error(`IPFS upload failed: ${xhr.status} - ${xhr.responseText}`));
             }
         };
 
-        xhr.onerror = () => reject(new Error('Network error during IPFS upload'));
+        xhr.onerror = (event) => {
+            console.error('[IPFS] XHR network error:', event);
+            reject(new Error('Network error during IPFS upload - check connection'));
+        };
+
+        xhr.ontimeout = () => {
+            console.error('[IPFS] Upload timeout (2 min)');
+            reject(new Error('IPFS upload timeout - file too large or slow connection'));
+        };
 
         const formData = new FormData();
         formData.append('file', blob, fileName || 'encrypted-photo.bin');
@@ -81,6 +99,7 @@ export async function uploadToIPFS(
         const options = JSON.stringify({ cidVersion: 1 });
         formData.append('pinataOptions', options);
 
+        console.log('[IPFS] Sending XHR...');
         xhr.send(formData);
     });
 }

@@ -159,25 +159,52 @@ export async function registerDevice(
     user_id: userId
   };
 
-  // Perform an atomic UPSERT using the 'id' as the conflict target
+  // First, check if device already exists by unique constraint (user_id + device_name + device_type)
+  // If exists, update it. If not, insert new.
+  const { data: existingDevice } = await supabase
+    .from('devices')
+    .select('id')
+    .eq('user_id', userId)
+    .eq('device_name', deviceName)
+    .eq('device_type', deviceType || '')
+    .single();
+
+  if (existingDevice) {
+    // Update existing device
+    const { error: updateError } = await supabase
+      .from('devices')
+      .update({
+        device_name: deviceName,
+        device_type: deviceType,
+        user_key_hash: userKeyHash,
+      })
+      .eq('id', existingDevice.id);
+
+    if (updateError) {
+      console.error('[Supabase] Device Update Error:', updateError);
+      throw updateError;
+    }
+    console.log('[Supabase] Device updated:', existingDevice.id);
+    return true;
+  }
+
+  // Insert new device
   const { error } = await supabase
     .from('devices')
-    .upsert(
-      {
-        id,
-        ...devicePayload
-      },
-      { onConflict: 'id' }
-    );
+    .insert({
+      id,
+      ...devicePayload
+    });
 
   if (error) {
     // Check for device limit error (likely from a database trigger)
     if (error.message?.includes('Device limit exceeded')) {
       throw new Error('DEVICE_LIMIT_EXCEEDED');
     }
-    console.error('Supabase Device Upsert Error:', error);
+    console.error('[Supabase] Device Insert Error:', error);
     throw error;
   }
+  console.log('[Supabase] Device inserted:', id);
   return true;
 }
 
