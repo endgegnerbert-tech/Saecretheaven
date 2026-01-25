@@ -95,7 +95,7 @@ export function useRealtimeSync(options: UseRealtimeSyncOptions = {}) {
 
     try {
       const data = await loadCIDsFromSupabase(currentDeviceId, currentKeyHash);
-      const photos: SyncedPhoto[] = data.map((row) => ({
+      const photos: SyncedPhoto[] = data.map((row: { cid: string; device_id: string; uploaded_at: string; file_size_bytes: number | null; nonce: string | null; mime_type: string | null }) => ({
         cid: row.cid,
         device_id: row.device_id,
         uploaded_at: row.uploaded_at,

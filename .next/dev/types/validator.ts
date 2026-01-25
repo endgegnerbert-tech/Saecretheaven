@@ -83,6 +83,24 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/api/ipfs/download/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/ipfs/download">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/ipfs/download/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/api/supabase/proxy/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/supabase/proxy">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/supabase/proxy/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 
 
 

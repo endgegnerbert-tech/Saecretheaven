@@ -34,6 +34,7 @@ export interface Device {
 /**
  * Upload photo metadata to Supabase (metadata only, NOT the actual photo)
  * The actual encrypted photo is stored on IPFS
+ * Uses API proxy to avoid CORS issues on Safari/iOS
  */
 export async function uploadCIDMetadata(
   cid: string,
@@ -51,6 +52,34 @@ export async function uploadCIDMetadata(
     hasUserKeyHash: !!userKeyHash,
   });
 
+  // Try API proxy first (avoids CORS issues)
+  try {
+    const response = await fetch('/api/supabase/proxy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'uploadMetadata',
+        cid,
+        fileSize,
+        deviceId,
+        nonce,
+        mimeType,
+        userKeyHash,
+      }),
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      console.log('[Supabase] Metadata uploaded via proxy:', result.data?.[0]?.id);
+      return result.data;
+    }
+
+    console.warn('[Supabase] Proxy failed, trying direct client:', result.error);
+  } catch (err) {
+    console.warn('[Supabase] Proxy error, trying direct client:', err);
+  }
+
+  // Fallback to direct client
   const { data, error } = await supabase
     .from('photos_metadata')
     .insert([{
@@ -80,6 +109,7 @@ export async function uploadCIDMetadata(
 /**
  * Load all photo CIDs from Supabase for a user
  * Photos are identified by CID and can be fetched from IPFS
+ * Uses API proxy to avoid CORS issues on Safari/iOS
  */
 export async function loadCIDsFromSupabase(_currentDeviceId: string, userKeyHash: string) {
   if (!userKeyHash) {
@@ -87,6 +117,29 @@ export async function loadCIDsFromSupabase(_currentDeviceId: string, userKeyHash
     return [];
   }
 
+  // Try API proxy first (avoids CORS issues)
+  try {
+    const response = await fetch('/api/supabase/proxy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'loadCIDs',
+        userKeyHash,
+      }),
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      console.log('[Supabase] CIDs loaded via proxy:', result.data?.length);
+      return result.data || [];
+    }
+
+    console.warn('[Supabase] Proxy failed, trying direct client:', result.error);
+  } catch (err) {
+    console.warn('[Supabase] Proxy error, trying direct client:', err);
+  }
+
+  // Fallback to direct client
   const { data, error } = await supabase
     .from('photos_metadata')
     .select('cid, device_id, uploaded_at, file_size_bytes, nonce, mime_type')
@@ -122,8 +175,32 @@ export async function cidExistsInSupabase(cid: string, userKeyHash: string): Pro
 
 /**
  * Delete photo metadata from Supabase
+ * Uses API proxy to avoid CORS issues on Safari/iOS
  */
 export async function deletePhotoMetadata(cid: string): Promise<void> {
+  // Try API proxy first (avoids CORS issues)
+  try {
+    const response = await fetch('/api/supabase/proxy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'deleteMetadata',
+        cid,
+      }),
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      console.log('[Supabase] Metadata deleted via proxy');
+      return;
+    }
+
+    console.warn('[Supabase] Proxy failed, trying direct client:', result.error);
+  } catch (err) {
+    console.warn('[Supabase] Proxy error, trying direct client:', err);
+  }
+
+  // Fallback to direct client
   const { error } = await supabase
     .from('photos_metadata')
     .delete()
@@ -138,6 +215,7 @@ export async function deletePhotoMetadata(cid: string): Promise<void> {
 /**
  * Register or update a device
  * IMPORTANT: userKeyHash and userId are required for RLS/BetterAuth compliance
+ * Uses API proxy to avoid CORS issues on Safari/iOS
  */
 export async function registerDevice(
   id: string,
@@ -152,6 +230,33 @@ export async function registerDevice(
     throw new Error('userKeyHash is required for device registration');
   }
 
+  // Try API proxy first (avoids CORS issues)
+  try {
+    const response = await fetch('/api/supabase/proxy', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        action: 'registerDevice',
+        id,
+        deviceName,
+        deviceType,
+        userKeyHash,
+        userId,
+      }),
+    });
+
+    const result = await response.json();
+    if (result.success) {
+      console.log('[Supabase] Device registered via proxy:', result.updated ? 'updated' : 'inserted');
+      return true;
+    }
+
+    console.warn('[Supabase] Proxy failed, trying direct client:', result.error);
+  } catch (err) {
+    console.warn('[Supabase] Proxy error, trying direct client:', err);
+  }
+
+  // Fallback to direct client
   const devicePayload = {
     device_name: deviceName,
     device_type: deviceType,
@@ -159,8 +264,6 @@ export async function registerDevice(
     user_id: userId
   };
 
-  // First, check if device already exists by unique constraint (user_id + device_name + device_type)
-  // If exists, update it. If not, insert new.
   const { data: existingDevice } = await supabase
     .from('devices')
     .select('id')
@@ -170,7 +273,6 @@ export async function registerDevice(
     .single();
 
   if (existingDevice) {
-    // Update existing device
     const { error: updateError } = await supabase
       .from('devices')
       .update({
@@ -188,7 +290,6 @@ export async function registerDevice(
     return true;
   }
 
-  // Insert new device
   const { error } = await supabase
     .from('devices')
     .insert({
@@ -197,7 +298,6 @@ export async function registerDevice(
     });
 
   if (error) {
-    // Check for device limit error (likely from a database trigger)
     if (error.message?.includes('Device limit exceeded')) {
       throw new Error('DEVICE_LIMIT_EXCEEDED');
     }

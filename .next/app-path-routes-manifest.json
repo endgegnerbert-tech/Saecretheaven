@@ -4,6 +4,8 @@
   "/api/auth/[...all]/route": "/api/auth/[...all]",
   "/api/auth/get-vault-key-hash/route": "/api/auth/get-vault-key-hash",
   "/api/auth/update-vault-key/route": "/api/auth/update-vault-key",
+  "/api/ipfs/download/route": "/api/ipfs/download",
+  "/api/supabase/proxy/route": "/api/supabase/proxy",
   "/apple-icon.png/route": "/apple-icon.png",
   "/favicon.ico/route": "/favicon.ico",
   "/icon.ico/route": "/icon.ico",

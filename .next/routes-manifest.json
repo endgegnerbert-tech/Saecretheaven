@@ -62,6 +62,18 @@
       "namedRegex": "^/api/auth/update\\-vault\\-key(?:/)?$"
     },
     {
+      "page": "/api/ipfs/download",
+      "regex": "^/api/ipfs/download(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/ipfs/download(?:/)?$"
+    },
+    {
+      "page": "/api/supabase/proxy",
+      "regex": "^/api/supabase/proxy(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/supabase/proxy(?:/)?$"
+    },
+    {
       "page": "/apple-icon.png",
       "regex": "^/apple\\-icon\\.png(?:/)?$",
       "routeKeys": {},
