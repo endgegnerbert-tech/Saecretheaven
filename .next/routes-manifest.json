@@ -50,6 +50,12 @@
       "namedRegex": "^/_not\\-found(?:/)?$"
     },
     {
+      "page": "/api/auth/get-vault-key-hash",
+      "regex": "^/api/auth/get\\-vault\\-key\\-hash(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/api/auth/get\\-vault\\-key\\-hash(?:/)?$"
+    },
+    {
       "page": "/api/auth/update-vault-key",
       "regex": "^/api/auth/update\\-vault\\-key(?:/)?$",
       "routeKeys": {},

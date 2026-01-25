@@ -65,6 +65,15 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/api/auth/get-vault-key-hash/route.ts
+{
+  type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/get-vault-key-hash">> = Specific
+  const handler = {} as typeof import("../../../src/app/api/auth/get-vault-key-hash/route.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/api/auth/update-vault-key/route.ts
 {
   type __IsExpected<Specific extends RouteHandlerConfig<"/api/auth/update-vault-key">> = Specific

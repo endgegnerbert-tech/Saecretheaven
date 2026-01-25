@@ -2,6 +2,7 @@
   "/_global-error/page": "app/_global-error/page.js",
   "/_not-found/page": "app/_not-found/page.js",
   "/api/auth/[...all]/route": "app/api/auth/[...all]/route.js",
+  "/api/auth/get-vault-key-hash/route": "app/api/auth/get-vault-key-hash/route.js",
   "/api/auth/update-vault-key/route": "app/api/auth/update-vault-key/route.js",
   "/apple-icon.png/route": "app/apple-icon.png/route.js",
   "/favicon.ico/route": "app/favicon.ico/route.js",

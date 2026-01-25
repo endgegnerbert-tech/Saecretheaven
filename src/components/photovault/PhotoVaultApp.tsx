@@ -117,12 +117,25 @@ export function PhotoVaultApp() {
                 return;
             }
 
-            // Have session - check for local encryption key
-            const user = session.user as { id: string; email: string; vault_key_hash?: string };
+            // Have session - fetch vault_key_hash from API (not session)
+            const user = session.user as { id: string; email: string };
+
+            // Fetch the actual vault_key_hash from the database
+            let vaultKeyHash: string | null = null;
+            try {
+                const response = await fetch("/api/auth/get-vault-key-hash");
+                if (response.ok) {
+                    const data = await response.json();
+                    vaultKeyHash = data.vaultKeyHash;
+                }
+            } catch (err) {
+                console.error("Failed to fetch vault_key_hash:", err);
+            }
+
             setAuthUser({
                 id: user.id,
                 email: user.email,
-                vaultKeyHash: user.vault_key_hash || null,
+                vaultKeyHash,
             });
 
             const localKey = loadKeyFromStorage();
@@ -131,7 +144,7 @@ export function PhotoVaultApp() {
                 // Verify local key matches account's vault_key_hash (if set)
                 const localKeyHash = await getUserKeyHash(localKey);
 
-                if (user.vault_key_hash && localKeyHash !== user.vault_key_hash) {
+                if (vaultKeyHash && localKeyHash !== vaultKeyHash) {
                     // Key mismatch - user needs to enter correct recovery phrase
                     console.warn("Local key doesn't match account's vault_key_hash");
                     clearKeyFromStorage();
@@ -145,7 +158,7 @@ export function PhotoVaultApp() {
                 // Ready to go
                 setState((prev) => ({ ...prev, isOnboarded: true }));
                 setAppPhase("main");
-            } else if (user.vault_key_hash) {
+            } else if (vaultKeyHash) {
                 // User has a vault but no local key - need to unlock
                 setAppPhase("unlock");
             } else {
@@ -158,25 +171,37 @@ export function PhotoVaultApp() {
     }, [session, isSessionLoading, registerDeviceForUser]);
 
     // Handle successful auth (login/signup)
-    const handleAuthSuccess = useCallback((user: AuthUser) => {
-        setAuthUser(user);
+    const handleAuthSuccess = useCallback(async (user: AuthUser) => {
+        // Fetch the actual vault_key_hash from the database
+        let vaultKeyHash: string | null = user.vaultKeyHash;
+        try {
+            const response = await fetch("/api/auth/get-vault-key-hash");
+            if (response.ok) {
+                const data = await response.json();
+                vaultKeyHash = data.vaultKeyHash;
+            }
+        } catch (err) {
+            console.error("Failed to fetch vault_key_hash:", err);
+        }
+
+        const updatedUser = { ...user, vaultKeyHash };
+        setAuthUser(updatedUser);
 
         // Check for local key
         const localKey = loadKeyFromStorage();
 
         if (localKey) {
             // User has local key - verify and proceed
-            getUserKeyHash(localKey).then((keyHash) => {
-                if (user.vaultKeyHash && keyHash !== user.vaultKeyHash) {
-                    clearKeyFromStorage();
-                    setAppPhase("unlock");
-                } else {
-                    registerDeviceForUser(keyHash, user.id);
-                    setState((prev) => ({ ...prev, isOnboarded: true }));
-                    setAppPhase("main");
-                }
-            });
-        } else if (user.vaultKeyHash) {
+            const keyHash = await getUserKeyHash(localKey);
+            if (vaultKeyHash && keyHash !== vaultKeyHash) {
+                clearKeyFromStorage();
+                setAppPhase("unlock");
+            } else {
+                await registerDeviceForUser(keyHash, user.id);
+                setState((prev) => ({ ...prev, isOnboarded: true }));
+                setAppPhase("main");
+            }
+        } else if (vaultKeyHash) {
             // User has vault but no local key
             setAppPhase("unlock");
         } else {
