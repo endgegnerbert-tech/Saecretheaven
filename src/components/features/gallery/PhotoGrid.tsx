@@ -1,11 +1,19 @@
 /**
- * PhotoGrid - Gallery Grid mit Virtualization
+ * PhotoGrid - Responsive Gallery Grid with Glassmorphism Effects
+ *
+ * Features:
+ * - Responsive layout (2-8 columns based on screen size)
+ * - Glassmorphism container with backdrop blur
+ * - Smooth fade-in animations for photos
+ * - Optimized gap spacing for different screen sizes
+ * - Empty state with iOS-style design
  */
 
-'use client';
+"use client";
 
-import { type PhotoMetadata } from '@/lib/storage/local-db';
-import { PhotoCard } from './PhotoCard';
+import { type PhotoMetadata } from "@/lib/storage/local-db";
+import { PhotoCard } from "./PhotoCard";
+import { motion } from "framer-motion";
 
 interface PhotoGridProps {
   photos: PhotoMetadata[];
@@ -13,11 +21,20 @@ interface PhotoGridProps {
   onDeletePhoto?: (id: number) => void;
 }
 
-export function PhotoGrid({ photos, decryptPhoto, onDeletePhoto }: PhotoGridProps) {
+export function PhotoGrid({
+  photos,
+  decryptPhoto,
+  onDeletePhoto,
+}: PhotoGridProps) {
   if (photos.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[400px] text-center">
-        <div className="p-6 rounded-full bg-white/5 border border-white/10 mb-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        className="flex flex-col items-center justify-center min-h-[400px] text-center px-4"
+      >
+        <div className="p-6 rounded-full bg-white/10 backdrop-blur-sm border border-white/10 mb-4 glass-dark">
           <svg
             className="w-12 h-12 text-white/40"
             fill="none"
@@ -32,22 +49,44 @@ export function PhotoGrid({ photos, decryptPhoto, onDeletePhoto }: PhotoGridProp
             />
           </svg>
         </div>
-        <h3 className="text-xl font-medium text-white mb-2">No photos yet</h3>
-        <p className="text-white/60">Upload your first encrypted photo to get started</p>
-      </div>
+        <h3 className="text-xl font-medium text-white mb-2 sf-pro-display">
+          No photos yet
+        </h3>
+        <p className="text-white/60 max-w-xs">
+          Upload your first encrypted photo to get started
+        </p>
+      </motion.div>
     );
   }
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-      {photos.map((photo) => (
-        <PhotoCard
-          key={photo.id}
-          photo={photo}
-          decryptPhoto={decryptPhoto}
-          onDelete={onDeletePhoto}
-        />
-      ))}
-    </div>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className="photo-grid-container"
+    >
+      <div className="photo-grid">
+        {photos.map((photo, index) => (
+          <motion.div
+            key={photo.id}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{
+              duration: 0.3,
+              delay: index * 0.05,
+              ease: "easeOut",
+            }}
+            className="photo-grid-item"
+          >
+            <PhotoCard
+              photo={photo}
+              decryptPhoto={decryptPhoto}
+              onDelete={onDeletePhoto}
+            />
+          </motion.div>
+        ))}
+      </div>
+    </motion.div>
   );
 }

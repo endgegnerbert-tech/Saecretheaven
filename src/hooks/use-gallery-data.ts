@@ -20,54 +20,9 @@ import { uploadCIDMetadata } from '@/lib/supabase';
 import { remoteStorage } from '@/lib/storage/remote-storage';
 import { getDeviceId } from '@/lib/deviceId';
 
-/**
- * Convert HEIC/HEIF images to JPEG for cross-platform compatibility
- * iPhones capture in HEIC by default which isn't supported in all browsers
- */
-async function convertHeicToJpeg(file: File): Promise<File> {
-    const heicTypes = ['image/heic', 'image/heif', 'image/heic-sequence', 'image/heif-sequence'];
-    const isHeic = heicTypes.includes(file.type.toLowerCase()) ||
-                   file.name.toLowerCase().endsWith('.heic') ||
-                   file.name.toLowerCase().endsWith('.heif');
-
-    if (!isHeic) {
-        return file; // Not HEIC, return as-is
-    }
-
-    console.log('[HEIC] Converting HEIC to JPEG:', file.name);
-
-    try {
-        // Dynamic import to avoid loading heic2any on non-iOS devices
-        const heic2any = (await import('heic2any')).default;
-
-        const convertedBlob = await heic2any({
-            blob: file,
-            toType: 'image/jpeg',
-            quality: 0.92, // High quality JPEG
-        });
-
-        // heic2any can return array for multi-frame HEIC, take first
-        const resultBlob = Array.isArray(convertedBlob) ? convertedBlob[0] : convertedBlob;
-
-        // Create new File with .jpg extension
-        const newFileName = file.name.replace(/\.(heic|heif)$/i, '.jpg');
-        const convertedFile = new File([resultBlob], newFileName, {
-            type: 'image/jpeg',
-            lastModified: file.lastModified,
-        });
-
-        console.log('[HEIC] Conversion complete:', {
-            original: { name: file.name, size: file.size, type: file.type },
-            converted: { name: convertedFile.name, size: convertedFile.size, type: convertedFile.type }
-        });
-
-        return convertedFile;
-    } catch (error) {
-        console.error('[HEIC] Conversion failed, using original:', error);
-        // Return original file if conversion fails (better than nothing)
-        return file;
-    }
-}
+// HEIC conversion moved to Web Worker for non-blocking performance
+// See src/lib/heic-converter.ts
+import { convertHeicToJpeg } from '@/lib/heic-converter';
 
 export function useGalleryData(secretKey: Uint8Array | null) {
     const queryClient = useQueryClient();
@@ -113,7 +68,16 @@ export function useGalleryData(secretKey: Uint8Array | null) {
             setUploadProgress(0);
 
             // Step 0: Convert HEIC to JPEG if needed (iOS compatibility)
-            const processedFile = await convertHeicToJpeg(file);
+            // Uses Web Worker for non-blocking conversion on iPad/iPhone
+            const conversionResult = await convertHeicToJpeg(file);
+            const processedFile = conversionResult.file;
+
+            if (conversionResult.converted) {
+                console.log('[Upload] HEIC converted:', {
+                    originalSize: conversionResult.originalSize,
+                    convertedSize: conversionResult.convertedSize
+                });
+            }
 
             // Step 1: Encrypt file client-side
             const { encrypted, nonce } = await encryptFile(processedFile, secretKey);
