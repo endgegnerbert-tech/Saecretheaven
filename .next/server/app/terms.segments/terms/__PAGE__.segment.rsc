@@ -1,0 +1,5 @@
+1:"$Sreact.fragment"
+2:I[97367,["/_next/static/chunks/ff1a16fafef87110.js","/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+3:"$Sreact.suspense"
+0:{"buildId":"P2hzWF8B_Uk5xAXZotOO7","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"min-h-screen bg-white text-black py-20 px-8 lg:px-20 max-w-4xl mx-auto","children":[["$","h1",null,{"className":"font-syne text-4xl mb-6","children":"Terms of Service"}],["$","div",null,{"className":"prose prose-gray","children":[["$","p",null,{"children":"By using SaecretHeaven, you agree to these terms."}],["$","h3",null,{"children":"1. Usage"}],["$","p",null,{"children":"This is a Beta release. Use at your own risk. Always keep a backup of your recovery key."}],["$","h3",null,{"children":"2. Liability"}],["$","p",null,{"children":"We are not responsible for data loss due to lost recovery keys."}]]}]]}],null,["$","$L2",null,{"children":["$","$3",null,{"name":"Next.MetadataOutlet","children":"$@4"}]}]]}],"loading":null,"isPartial":false}
+4:null

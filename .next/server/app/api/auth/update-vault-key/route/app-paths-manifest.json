@@ -1,0 +1,3 @@
+{
+  "/api/auth/update-vault-key/route": "app/api/auth/update-vault-key/route.js"
+}

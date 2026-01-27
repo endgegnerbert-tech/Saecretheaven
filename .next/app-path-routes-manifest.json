@@ -1,0 +1,18 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/api/auth/[...all]/route": "/api/auth/[...all]",
+  "/api/auth/get-vault-key-hash/route": "/api/auth/get-vault-key-hash",
+  "/api/auth/update-vault-key/route": "/api/auth/update-vault-key",
+  "/api/ipfs/download/route": "/api/ipfs/download",
+  "/api/supabase/proxy/route": "/api/supabase/proxy",
+  "/app/page": "/app",
+  "/apple-icon.png/route": "/apple-icon.png",
+  "/favicon.ico/route": "/favicon.ico",
+  "/icon.ico/route": "/icon.ico",
+  "/impressum/page": "/impressum",
+  "/page": "/",
+  "/privacy/page": "/privacy",
+  "/secret-signup/page": "/secret-signup",
+  "/terms/page": "/terms"
+}

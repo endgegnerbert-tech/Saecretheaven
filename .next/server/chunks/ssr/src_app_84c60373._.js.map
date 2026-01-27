@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../src/app/icon.ico.mjs%20%28structured%20image%20object%29"],"sourcesContent":["import src from \"IMAGE\";\nexport default { src, width: 1028, height: 1028 }\n"],"names":[],"mappings":"oGACe,CAAE,IADjB,AACiB,EADjB,CAAA,CAAA,OACiB,OAAG,CAAE,MAAO,KAAM,OAAQ,IAAK"}
