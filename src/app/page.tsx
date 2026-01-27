@@ -13,6 +13,7 @@ import SecurityGrid from "@/components/landing/landing/SecurityGrid";
 import ComparisonTable from "@/components/landing/landing/ComparisonTable";
 import TechnicalAccordion from "@/components/landing/landing/TechnicalAccordion";
 import WaitlistSection from "@/components/landing/landing/WaitlistSection";
+import CountdownTimer from "@/components/landing/landing/CountdownTimer";
 
 export default function LandingPage() {
   const router = useRouter();
@@ -34,6 +35,7 @@ export default function LandingPage() {
   return (
     <div className="min-h-screen bg-white text-black">
       <Navigation />
+      <CountdownTimer />
       
       {/* 1. Hero */}
       <HeroSection />
