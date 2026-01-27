@@ -1,0 +1,8 @@
+# Sitemap for SaecretHeaven
+
+User-agent: *
+Allow: /
+Disallow: /app/
+Disallow: /api/
+
+Sitemap: https://saecretheaven.com/sitemap.xml
