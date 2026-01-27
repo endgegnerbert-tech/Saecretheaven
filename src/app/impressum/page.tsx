@@ -4,9 +4,9 @@ export default function ImpressumPage() {
       <h1 className="font-syne text-4xl mb-6">Legal Notice (Impressum)</h1>
       <div className="prose prose-gray">
         <h3>Provider</h3>
-        <p>SaecretHeaven Inc.<br/>Anytown, USA</p>
+        <p>Einar Jäger</p>
         <h3>Contact</h3>
-        <p>support@saecretheaven.com</p>
+        <p>einar@black-night.dev</p>
       </div>
     </div>
   );

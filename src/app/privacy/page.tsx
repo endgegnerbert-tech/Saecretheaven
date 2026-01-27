@@ -11,6 +11,8 @@ export default function PrivacyPage() {
         <p>We collect minimal metadata solely for synchronization purposes. We cannot access your encrypted content.</p>
         <h3>2. Encryption</h3>
         <p>All photos are encrypted on your device before upload. You hold the keys.</p>
+        <h3>3. Analytics</h3>
+        <p>We use Vercel Analytics to understand website traffic and improve user experience. This service collects anonymous data about visitor interactions. No personally identifiable information (PII) is collected or stored.</p>
       </div>
     </div>
   );

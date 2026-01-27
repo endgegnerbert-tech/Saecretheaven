@@ -105,7 +105,15 @@ export default function Navigation() {
                 {link.label}
               </button>
             ))}
-            <div className="pt-2 mt-2 border-t border-gray-100">
+            <div className="pt-2 mt-2 border-t border-gray-100 space-y-2">
+              <SketchButton 
+                variant="secondary"
+                size="md"
+                onClick={() => window.location.href = '/app'}
+                className="w-full"
+              >
+                Launch App
+              </SketchButton>
               <div className="flex justify-center">
                 <SketchButton 
                   variant="primary"

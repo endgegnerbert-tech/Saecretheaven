@@ -11,14 +11,15 @@ interface SplitTileProps {
   bullet: string;
   icon: React.ReactNode;
   delay: number;
+  isMobile: boolean;
 }
 
-function SplitTile({ index, isActive, imageUrl, title, description, bullet, icon, delay }: SplitTileProps) {
+function SplitTile({ index, isActive, imageUrl, title, description, bullet, icon, delay, isMobile }: SplitTileProps) {
   const tilePositions = [
-    { x: -320, y: -240, rotate: -12 }, // Top Left
-    { x: 320, y: -240, rotate: 12 },   // Top Right
-    { x: -320, y: 240, rotate: -6 },   // Bottom Left
-    { x: 320, y: 240, rotate: 6 },     // Bottom Right
+    { x: isMobile ? -100 : -320, y: isMobile ? -260 : -240, rotate: -12 }, // Top Left
+    { x: isMobile ? 100 : 320, y: isMobile ? -260 : -240, rotate: 12 },   // Top Right
+    { x: isMobile ? -100 : -320, y: isMobile ? 260 : 240, rotate: -6 },   // Bottom Left
+    { x: isMobile ? 100 : 320, y: isMobile ? 260 : 240, rotate: 6 },     // Bottom Right
   ];
   
   const pos = tilePositions[index];
@@ -30,7 +31,7 @@ function SplitTile({ index, isActive, imageUrl, title, description, bullet, icon
         y: 0, 
         rotateY: 0,
         rotateX: 0,
-        scale: 1,
+        scale: isMobile ? 0.6 : 1,
         opacity: 1 
       }}
       animate={isActive ? {
@@ -38,7 +39,8 @@ function SplitTile({ index, isActive, imageUrl, title, description, bullet, icon
         y: pos.y,
         rotateY: pos.rotate * 3,
         rotateX: -15,
-        scale: 1, // Increased scale
+        scale: isMobile ? 0.75 : 1, // Increased scale
+
         opacity: 1
       } : {
         x: 0,
@@ -118,6 +120,7 @@ function SplitTile({ index, isActive, imageUrl, title, description, bullet, icon
 export default function PhoneSplitAnimation() {
   const [isSplit, setIsSplit] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-20%" });
 
@@ -132,6 +135,17 @@ export default function PhoneSplitAnimation() {
         document.body.style.overflow = 'unset';
     };
   }, [isFullscreen]);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile(); // Initial check
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   const tiles = [
     {
@@ -347,6 +361,7 @@ export default function PhoneSplitAnimation() {
                           bullet={tile.bullet}
                           icon={tile.icon}
                           delay={index * 0.05}
+                          isMobile={isMobile}
                         />
                       ))}
                     </div>
@@ -377,8 +392,8 @@ export default function PhoneSplitAnimation() {
                     // Calculate positions for floating cards
                     const isLeft = index % 2 === 0;
                     const isTop = index < 2;
-                    const xOffset = isLeft ? -450 : 450; // Distance from center
-                    const yOffset = isTop ? -200 : 200;
+                    const xOffset = isLeft ? (isMobile ? -165 : -450) : (isMobile ? 165 : 450); // Distance from center
+                    const yOffset = isTop ? (isMobile ? -230 : -200) : (isMobile ? 230 : 200);
                     
                     return (
                       <motion.div
@@ -398,7 +413,7 @@ export default function PhoneSplitAnimation() {
                           stiffness: 100
                         }}
                         className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-0 pointer-events-auto"
-                        style={{ marginLeft: -120, marginTop: -60 }} // Center correction
+                        style={{ marginLeft: isMobile ? -100 : -120, marginTop: -60 }} // Center correction
                       >
                         <div 
                           className="w-[240px] p-4 bg-white/90 backdrop-blur-sm rounded-2xl border border-gray-100/50 shadow-xl"
