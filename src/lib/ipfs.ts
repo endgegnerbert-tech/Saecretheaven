@@ -1,9 +1,19 @@
 /**
- * IPFS Layer - Content-Addressed Storage with Pinata Remote Pinning
+ * IPFS Layer - Hybrid Storage (Contabo Primary + Pinata Fallback)
  * All encrypted blobs are stored on IPFS with CIDs
+ * 
+ * Upload Strategy: Contabo first → Pinata fallback
+ * Download Strategy: Contabo → Pinata → Cloudflare
  */
 
-// Pinata Configuration
+import {
+    uploadToSelfHosted,
+    downloadFromSelfHosted,
+    isSelfHostedConfigured,
+    getSelfHostedGatewayUrl,
+} from './ipfs-selfhosted';
+
+// Pinata Configuration (Fallback)
 const PINATA_JWT = process.env.NEXT_PUBLIC_PINATA_JWT || '';
 const PINATA_GATEWAY = process.env.NEXT_PUBLIC_PINATA_GATEWAY || 'https://gateway.pinata.cloud';
 const PINATA_GATEWAY_TOKEN = process.env.NEXT_PUBLIC_PINATA_GATEWAY_TOKEN || '';
@@ -28,7 +38,9 @@ function getGatewayBase(): string {
 }
 
 /**
- * Generate a real IPFS CID by uploading to Pinata
+ * Upload to IPFS using hybrid strategy:
+ * 1. Try Contabo (self-hosted) first - cheaper, EU-based
+ * 2. Fall back to Pinata if Contabo fails
  * Returns the CID (Content Identifier) that uniquely identifies this blob
  */
 export async function uploadToIPFS(
@@ -36,8 +48,21 @@ export async function uploadToIPFS(
     fileName?: string,
     onProgress?: (progress: number) => void
 ): Promise<string> {
+    // Strategy 1: Try Contabo (self-hosted) first
+    if (isSelfHostedConfigured()) {
+        try {
+            console.log('[IPFS] Trying Contabo (primary)...');
+            const cid = await uploadToSelfHosted(blob, fileName, onProgress);
+            console.log('[IPFS] Contabo upload success:', cid);
+            return cid;
+        } catch (error) {
+            console.warn('[IPFS] Contabo failed, falling back to Pinata:', error);
+        }
+    }
+
+    // Strategy 2: Fall back to Pinata
     if (!PINATA_JWT) {
-        console.warn('PINATA_JWT not configured - using local mock CID');
+        console.warn('Neither Contabo nor Pinata configured - using local mock CID');
         const mockCid = `Qm${generateMockHash()}`;
         return mockCid;
     }
@@ -128,14 +153,19 @@ export async function downloadFromIPFS(cid: string): Promise<Blob> {
         console.warn(`[IPFS] API proxy error:`, err);
     }
 
-    // Fallback: Direct gateway access (works in development, may fail on production due to CORS)
+    // Fallback: Direct gateway access with multi-gateway strategy
+    // Order: Contabo (self-hosted) -> Pinata -> Cloudflare
     const gatewayBase = getGatewayBase();
     const gateways = [
+        // Gateway 1: Self-hosted Contabo (fastest for our content)
+        () => getSelfHostedGatewayUrl(cid),
+        // Gateway 2: Pinata (fallback for old content)
         () => {
             const url = new URL(`${gatewayBase}/ipfs/${cid}`);
             if (PINATA_GATEWAY_TOKEN) url.searchParams.set('pinataGatewayToken', PINATA_GATEWAY_TOKEN);
             return url.toString();
         },
+        // Gateway 3: Cloudflare public gateway (last resort)
         () => `https://cloudflare-ipfs.com/ipfs/${cid}`,
     ];
 

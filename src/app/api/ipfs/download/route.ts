@@ -68,14 +68,21 @@ export async function GET(request: NextRequest) {
         );
     }
 
-    // Build gateway URLs (ordered by reliability)
+    // Build gateway URLs (ordered by reliability for our content)
+    // Priority: Contabo (self-hosted) -> Pinata -> Public gateways
     const gatewayBase = getGatewayBase();
+    const selfHostedGateway = process.env.NEXT_PUBLIC_IPFS_GATEWAY_URL || 'https://ipfs.saecretheaven.com';
+
     const gateways = [
+        // Gateway 1: Self-hosted Contabo (for new content)
+        () => `${selfHostedGateway}/ipfs/${cid}`,
+        // Gateway 2: Pinata (for old content + fallback)
         () => {
             const url = new URL(`${gatewayBase}/ipfs/${cid}`);
             if (PINATA_GATEWAY_TOKEN) url.searchParams.set('pinataGatewayToken', PINATA_GATEWAY_TOKEN);
             return url.toString();
         },
+        // Gateway 3-5: Public fallbacks
         () => `https://cloudflare-ipfs.com/ipfs/${cid}`,
         () => `https://dweb.link/ipfs/${cid}`,
         () => `https://ipfs.io/ipfs/${cid}`,
