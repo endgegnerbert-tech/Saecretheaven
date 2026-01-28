@@ -17,15 +17,23 @@ if (process.env.DATABASE_URL && process.env.DATABASE_URL.includes("db.jextayidnm
     console.warn("WARNING: DATABASE_URL appears to be TRUNCATED (missing 'nig')");
 }
 
-const pool = new Pool({
-    connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false, // Required for Supabase connection
-    },
-});
+// Create pool only if DATABASE_URL exists
+const pool = process.env.DATABASE_URL
+    ? new Pool({
+        connectionString: process.env.DATABASE_URL,
+        ssl: {
+            rejectUnauthorized: false, // Required for Supabase connection
+        },
+    })
+    : null;
+
+if (!pool) {
+    console.error("CRITICAL: Could not create database pool - DATABASE_URL missing");
+    throw new Error("DATABASE_URL environment variable is required");
+}
 
 export const auth = betterAuth({
-    database: pool,
+    database: pool as Pool,
 
     // Email/Password authentication
     emailAndPassword: {
@@ -110,7 +118,10 @@ export const auth = betterAuth({
     // Trusted origins for CORS
     trustedOrigins: [
         process.env.BETTER_AUTH_URL || "http://localhost:3000",
-    ],
+        "https://www.saecretheaven.com",
+        "https://saecretheaven.com",
+        "http://localhost:3000",
+    ].filter(Boolean),
 });
 
 // Type inference for client
