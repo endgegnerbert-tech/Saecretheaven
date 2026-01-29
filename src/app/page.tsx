@@ -81,6 +81,7 @@ export default function LandingPage() {
                   <a href="/privacy" className="font-inter text-xs text-gray-400 hover:text-white transition-colors">Privacy Policy</a>
                   <a href="/terms" className="font-inter text-xs text-gray-400 hover:text-white transition-colors">Terms of Service</a>
                   <a href="/impressum" className="font-inter text-xs text-gray-400 hover:text-white transition-colors">Legal Notice</a>
+                  <a href="/credits" className="font-inter text-xs text-gray-400 hover:text-white transition-colors">Credits</a>
                 </nav>
               </div>
               
