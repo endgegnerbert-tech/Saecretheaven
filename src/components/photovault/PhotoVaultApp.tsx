@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { Settings } from "lucide-react";
+import { Settings, AlertTriangle, Copy, X, Shield } from "lucide-react";
 import { CustomIcon } from "@/components/ui/custom-icon";
 import ShieldLoader from "@/components/ui/shield-loader";
+import { Button } from "@/components/ui/button";
+import { Switch } from "@/components/ui/switch";
 
 // Screens
 import { AuthScreen } from "./AuthScreen";
@@ -17,7 +19,109 @@ import { useSession, signOut } from "@/lib/auth-client";
 
 
 // Crypto
-import { loadKeyFromStorage, getUserKeyHash, clearKeyFromStorage } from "@/lib/crypto";
+import { loadKeyFromStorage, getUserKeyHash, clearKeyFromStorage, keyToRecoveryPhrase } from "@/lib/crypto";
+
+// Recovery Phrase Reminder Modal - shown on first gallery load
+function RecoveryPhraseReminder({
+    recoveryPhrase,
+    onConfirm
+}: {
+    recoveryPhrase: string;
+    onConfirm: () => void;
+}) {
+    const [confirmed, setConfirmed] = useState(false);
+    const [copied, setCopied] = useState(false);
+
+    const phraseWords = recoveryPhrase.split("-").slice(0, 12);
+
+    const handleCopy = async () => {
+        await navigator.clipboard.writeText(recoveryPhrase);
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    };
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+            <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto">
+                {/* Header */}
+                <div className="p-6 pb-4 border-b border-gray-100 dark:border-gray-800">
+                    <div className="flex items-center gap-3 mb-2">
+                        <div className="w-12 h-12 bg-orange-100 dark:bg-orange-900/20 rounded-full flex items-center justify-center">
+                            <AlertTriangle className="w-6 h-6 text-orange-600 dark:text-orange-400" />
+                        </div>
+                        <div>
+                            <h2 className="text-xl font-bold text-gray-900 dark:text-white">
+                                Important!
+                            </h2>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">
+                                Save your recovery phrase
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6">
+                    {/* Warning */}
+                    <div className="bg-red-50 dark:bg-red-900/10 border border-red-200 dark:border-red-900/30 rounded-xl p-4 mb-6">
+                        <p className="text-sm text-red-700 dark:text-red-400 font-medium text-center">
+                            If you lose this phrase, your photos CANNOT be recovered.
+                            We cannot help you - this is zero-knowledge encryption.
+                        </p>
+                    </div>
+
+                    {/* Phrase Grid */}
+                    <div className="grid grid-cols-3 gap-2 mb-4">
+                        {phraseWords.map((word, index) => (
+                            <div
+                                key={index}
+                                className="p-2 text-center bg-gray-50 dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700"
+                            >
+                                <span className="text-[10px] text-gray-400 block">
+                                    {index + 1}
+                                </span>
+                                <span className="text-sm font-mono font-medium text-gray-900 dark:text-white">
+                                    {word}
+                                </span>
+                            </div>
+                        ))}
+                    </div>
+
+                    {/* Copy Button */}
+                    <button
+                        onClick={handleCopy}
+                        className="w-full py-2 text-blue-600 dark:text-blue-400 text-sm font-medium flex items-center justify-center gap-2 hover:bg-blue-50 dark:hover:bg-blue-900/10 rounded-lg transition-colors mb-6"
+                    >
+                        <Copy className="w-4 h-4" />
+                        {copied ? "Copied!" : "Copy to clipboard"}
+                    </button>
+
+                    {/* Confirmation Toggle */}
+                    <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 mb-6">
+                        <div className="flex items-center justify-between">
+                            <span className="text-sm font-medium text-gray-900 dark:text-white">
+                                I have saved my recovery phrase securely
+                            </span>
+                            <Switch
+                                checked={confirmed}
+                                onCheckedChange={setConfirmed}
+                            />
+                        </div>
+                    </div>
+
+                    {/* Continue Button */}
+                    <Button
+                        onClick={onConfirm}
+                        disabled={!confirmed}
+                        className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-gray-300 disabled:cursor-not-allowed text-white rounded-xl h-12 font-semibold"
+                    >
+                        Continue to Gallery
+                    </Button>
+                </div>
+            </div>
+        </div>
+    );
+}
 
 // Device & Supabase
 import { getDeviceId, getDeviceName, getDeviceType } from "@/lib/deviceId";
@@ -73,11 +177,18 @@ interface AuthUser {
     vaultKeyHash: string | null;
 }
 
+// Local storage key for tracking if recovery reminder was shown
+const RECOVERY_REMINDER_SHOWN_KEY = "saecretheaven_recovery_reminder_shown";
+
 export function PhotoVaultApp() {
     const [state, setState] = useState<AppState>(defaultState);
     const [currentScreen, setCurrentScreen] = useState<Screen>("gallery");
     const [appPhase, setAppPhase] = useState<AppPhase>("loading");
     const [authUser, setAuthUser] = useState<AuthUser | null>(null);
+
+    // Recovery phrase reminder state
+    const [showRecoveryReminder, setShowRecoveryReminder] = useState(false);
+    const [recoveryPhraseForReminder, setRecoveryPhraseForReminder] = useState<string | null>(null);
 
     // Better Auth session hook
     const { data: session, isPending: isSessionLoading } = useSession();
@@ -169,6 +280,13 @@ export function PhotoVaultApp() {
                     return;
                 }
 
+                // CRITICAL: If no vaultKeyHash, user must go through setup to anchor key
+                if (!vaultKeyHash) {
+                    console.log("Local key exists but no vaultKeyHash - showing setup to anchor key");
+                    setAppPhase("setup");
+                    return;
+                }
+
                 // Register device
                 await registerDeviceForUser(localKeyHash, user.id);
 
@@ -219,6 +337,10 @@ export function PhotoVaultApp() {
             if (vaultKeyHash && keyHash !== vaultKeyHash) {
                 clearKeyFromStorage();
                 setAppPhase("unlock");
+            } else if (!vaultKeyHash) {
+                // CRITICAL: Local key exists but no vaultKeyHash - need to anchor key
+                console.log("Local key exists but no vaultKeyHash - showing setup to anchor key");
+                setAppPhase("setup");
             } else {
                 await registerDeviceForUser(keyHash, user.id);
                 setState((prev) => ({ ...prev, isOnboarded: true }));
@@ -261,6 +383,19 @@ export function PhotoVaultApp() {
         // Register device
         await registerDeviceForUser(keyHash, authUser.id);
 
+        // Get recovery phrase for reminder modal
+        const localKey = loadKeyFromStorage();
+        if (localKey) {
+            const phrase = keyToRecoveryPhrase(localKey);
+            setRecoveryPhraseForReminder(phrase);
+
+            // Only show reminder if not shown before for this user
+            const reminderKey = `${RECOVERY_REMINDER_SHOWN_KEY}_${authUser.id}`;
+            if (!localStorage.getItem(reminderKey)) {
+                setShowRecoveryReminder(true);
+            }
+        }
+
         setState((prev) => ({ ...prev, isOnboarded: true }));
         setAppPhase("main");
     }, [authUser, registerDeviceForUser]);
@@ -273,6 +408,17 @@ export function PhotoVaultApp() {
         setState(defaultState);
         setAppPhase("auth");
     }, []);
+
+    // Handle recovery reminder confirmation
+    const handleRecoveryReminderConfirm = useCallback(() => {
+        if (authUser) {
+            // Mark as shown for this user
+            const reminderKey = `${RECOVERY_REMINDER_SHOWN_KEY}_${authUser.id}`;
+            localStorage.setItem(reminderKey, "true");
+        }
+        setShowRecoveryReminder(false);
+        setRecoveryPhraseForReminder(null);
+    }, [authUser]);
 
     const navigateTo = (screen: Screen) => {
         setCurrentScreen(screen);
@@ -337,11 +483,19 @@ export function PhotoVaultApp() {
     return (
         <div className="min-h-screen ios-bg-gray">
             <div className="max-w-[1200px] mx-auto min-h-screen bg-[#F2F2F7] flex flex-col relative">
+                {/* Recovery Phrase Reminder Modal */}
+                {showRecoveryReminder && recoveryPhraseForReminder && (
+                    <RecoveryPhraseReminder
+                        recoveryPhrase={recoveryPhraseForReminder}
+                        onConfirm={handleRecoveryReminderConfirm}
+                    />
+                )}
+
                 {/* Main Content Area */}
                 <div className="flex-1 overflow-hidden pb-[80px]">
                     {currentScreen === "gallery" && (
-                        <PhotoGallery 
-                            photosCount={state.photosCount} 
+                        <PhotoGallery
+                            photosCount={state.photosCount}
                             authUser={authUser}
                         />
                     )}

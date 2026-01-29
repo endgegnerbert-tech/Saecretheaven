@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { Upload, Lock, Cloud, Download } from "lucide-react";
 
 export default function TechnicalAccordion() {
   const technicalDetails = [
@@ -13,11 +14,30 @@ export default function TechnicalAccordion() {
       title: "Encryption Algorithms",
       content: (
         <div className="space-y-4">
+           {/* New Data Flow Section inserted at the TOP */}
+            <div className="mb-8 p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+                <h4 className="font-syne text-sm font-bold text-blue-900 mb-4 uppercase tracking-widest">Pipeline: Upload to Download</h4>
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    {[
+                        { icon: <Upload size={16} />, step: "1. Capture", desc: "Photo taken in sandbox" },
+                        { icon: <Lock size={16} />, step: "2. Encrypt", desc: "XSalsa20 on device" },
+                        { icon: <Cloud size={16} />, step: "3. Store", desc: "Sharded to IPFS" },
+                        { icon: <Download size={16} />, step: "4. Retrieve", desc: "Decrypt locally" },
+                    ].map((s, i) => (
+                        <div key={i} className="flex flex-col items-center text-center">
+                             <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-2">{s.icon}</div>
+                             <div className="font-bold text-gray-900 text-xs">{s.step}</div>
+                             <div className="text-gray-500 text-[10px]">{s.desc}</div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
           <div>
-            <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
+            <h4 className="font-syne text-base font-bold text-gray-900 mb-2">
               XSalsa20-Poly1305 (TweetNaCl)
             </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
+            <p className="font-inter text-sm text-gray-500 leading-relaxed">
               High-performance authenticated encryption. Used by Signal and other privacy-focused tools. 
               Poly1305 provides message authentication to prevent tampering.
             </p>
@@ -127,7 +147,7 @@ export default function TechnicalAccordion() {
   const isInView = useInView(ref, { once: true, margin: "-20%" });
 
   return (
-    <section ref={ref} className="py-32 lg:py-40 bg-gradient-to-b from-sky-light/30 to-white">
+    <section ref={ref} className="py-32 lg:py-40 bg-white border-t border-gray-100">
       <div className="max-w-[1280px] mx-auto px-8 lg:px-20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

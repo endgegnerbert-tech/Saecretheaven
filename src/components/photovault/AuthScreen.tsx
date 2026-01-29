@@ -1,10 +1,10 @@
 "use client";
 
 import { useState } from "react";
-import { Mail, Lock, Eye, EyeOff, Loader2, Key, MailCheck } from "lucide-react";
+import { Mail, Lock, Eye, EyeOff, Loader2, Key, MailCheck, X, AlertCircle } from "lucide-react";
 import { CustomIcon } from "@/components/ui/custom-icon";
 import { signIn, signUp } from "@/lib/auth-client";
-import { verifyAccessCode, consumeAccessCode } from "@/app/actions/access-code";
+import { claimAccessCode, releaseAccessCode } from "@/app/actions/access-code";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -21,6 +21,62 @@ interface AuthScreenProps {
 
 type AuthMode = "welcome" | "login" | "register" | "verification-sent";
 
+// Email verification popup modal
+function EmailCheckModal({ email, onClose }: { email: string; onClose: () => void }) {
+  return (
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4">
+      <div className="bg-white dark:bg-gray-900 rounded-2xl shadow-2xl max-w-sm w-full p-6 relative animate-in fade-in zoom-in duration-200">
+        {/* Close button */}
+        <button
+          onClick={onClose}
+          className="absolute top-4 right-4 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+        >
+          <X className="w-5 h-5" />
+        </button>
+
+        {/* Icon */}
+        <div className="flex justify-center mb-4">
+          <div className="w-16 h-16 bg-green-100 dark:bg-green-900/20 rounded-full flex items-center justify-center">
+            <MailCheck className="w-8 h-8 text-green-600 dark:text-green-400" />
+          </div>
+        </div>
+
+        {/* Content */}
+        <h2 className="text-xl font-bold text-center mb-2 text-gray-900 dark:text-white">
+          Check your email!
+        </h2>
+        <p className="text-center text-gray-600 dark:text-gray-400 mb-2">
+          We sent a verification link to:
+        </p>
+        <p className="text-center text-blue-600 dark:text-blue-400 font-semibold mb-4">
+          {email}
+        </p>
+        <p className="text-center text-gray-500 dark:text-gray-500 text-sm mb-6">
+          Click the link in your email to verify your account, then come back to log in.
+        </p>
+
+        {/* Support info */}
+        <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 mb-4">
+          <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
+            Having problems? Contact us at:<br />
+            <a href="mailto:support@saecretheaven.com" className="text-blue-600 dark:text-blue-400 font-medium">
+              support@saecretheaven.com
+            </a>
+          </p>
+        </div>
+
+        {/* Confirm button */}
+        <Button
+          onClick={onClose}
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-12 font-semibold"
+        >
+          I understand
+        </Button>
+      </div>
+    </div>
+  );
+}
+
 export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: AuthScreenProps) {
   const [mode, setMode] = useState<AuthMode>(initialMode);
   const [email, setEmail] = useState(userEmail || "");
@@ -29,6 +85,7 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [showEmailModal, setShowEmailModal] = useState(false);
 
   const handleLogin = async () => {
     if (!email || !password) {
@@ -76,16 +133,19 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
     setIsLoading(true);
     setError(null);
 
+    let claimedCodeId: string | null = null;
+
     try {
-      // 1. Verify Access Code
-      const verifyRes = await verifyAccessCode(accessCode);
-      if (!verifyRes.success) {
-        setError(verifyRes.message || "Invalid access code");
+      // 1. ATOMICALLY claim the access code (prevents race conditions & reuse)
+      const claimRes = await claimAccessCode(accessCode);
+      if (!claimRes.success) {
+        setError(claimRes.message || "Invalid or already used access code");
         setIsLoading(false);
         return;
       }
+      claimedCodeId = claimRes.codeId || null;
 
-      // 2. Register
+      // 2. Register the user
       const result = await signUp.email({
         email,
         password,
@@ -93,25 +153,42 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
       });
 
       if (result.error) {
+        // Registration failed - release the code so it can be used again
+        if (claimedCodeId) {
+          await releaseAccessCode(claimedCodeId);
+        }
         setError(result.error.message || "Registration failed");
         setIsLoading(false);
         return;
       }
 
-      // 3. Consume Code
-      await consumeAccessCode(accessCode);
-
-      // 4. Show verification screen - DO NOT auto-login
-      // User must verify email before proceeding
-      setMode("verification-sent");
-      return;
+      // 3. Success! Show email popup modal
+      setShowEmailModal(true);
     } catch (err) {
       console.error("Registration error:", err);
+      // Release the code on error
+      if (claimedCodeId) {
+        await releaseAccessCode(claimedCodeId);
+      }
       setError("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
     }
   };
+
+  const handleEmailModalClose = () => {
+    setShowEmailModal(false);
+    setMode("verification-sent");
+  };
+
+  // Email check modal (shown immediately after registration)
+  if (showEmailModal) {
+    return (
+      <div className="min-h-screen bg-[#FAFBFC]">
+        <EmailCheckModal email={email} onClose={handleEmailModalClose} />
+      </div>
+    );
+  }
 
   // Verification Sent Screen
   if (mode === "verification-sent") {
@@ -132,9 +209,19 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
           <p className="text-blue-600 dark:text-blue-400 font-semibold mb-8 text-lg">
             {email}
           </p>
-          <p className="text-gray-500 dark:text-gray-500 max-w-[300px] mb-12 text-sm">
+          <p className="text-gray-500 dark:text-gray-500 max-w-[300px] mb-6 text-sm">
             Click the link in your email to verify your account. Then come back here to log in.
           </p>
+
+          {/* Support info */}
+          <div className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-8 max-w-[300px] shadow-sm border border-gray-100 dark:border-gray-700">
+            <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
+              Having problems? Contact us at:<br />
+              <a href="mailto:support@saecretheaven.com" className="text-blue-600 dark:text-blue-400 font-medium">
+                support@saecretheaven.com
+              </a>
+            </p>
+          </div>
         </div>
 
         <div className="space-y-4">

@@ -8,29 +8,9 @@
  */
 
 use keyring::{Entry, Error as KeyringError};
-use thiserror::Error;
 
 const SERVICE_NAME: &str = "photovault";
 const USERNAME: &str = "secret_key";
-
-#[derive(Error, Debug)]
-pub enum KeychainError {
-    #[error("Keychain access error: {0}")]
-    Access(String),
-    #[error("Key not found in keychain")]
-    NotFound,
-    #[error("Invalid key format")]
-    InvalidFormat,
-}
-
-impl From<KeyringError> for KeychainError {
-    fn from(err: KeyringError) -> Self {
-        match err {
-            KeyringError::NoEntry => KeychainError::NotFound,
-            other => KeychainError::Access(other.to_string()),
-        }
-    }
-}
 
 /// Store the encryption key in the OS keychain
 ///

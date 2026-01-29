@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Switch } from "@/components/ui/switch";
 import { CustomIcon } from "@/components/ui/custom-icon";
@@ -21,7 +21,16 @@ export function VaultSetupScreen({ userId, onComplete, onBack }: VaultSetupScree
     const [phraseConfirmed, setPhraseConfirmed] = useState(false);
     const [copied, setCopied] = useState(false);
 
-    const { isGeneratingKey, generateNewKey, recoveryPhrase, userKeyHash } = useEncryption();
+    const { isGeneratingKey, generateNewKey, recoveryPhrase, userKeyHash, hasKey, isInitialized } = useEncryption();
+
+    // If user already has a key (from previous session), skip to phrase screen
+    // This ensures they see and can write down their recovery phrase
+    useEffect(() => {
+        if (isInitialized && hasKey && recoveryPhrase && userKeyHash) {
+            console.log("Existing key found - showing recovery phrase for anchoring");
+            setStep("phrase");
+        }
+    }, [isInitialized, hasKey, recoveryPhrase, userKeyHash]);
 
     const handleCreateVault = async () => {
         setStep("generating");
@@ -51,8 +60,8 @@ export function VaultSetupScreen({ userId, onComplete, onBack }: VaultSetupScree
     // Parse phrase into words for display
     const phraseWords = recoveryPhrase?.split("-").slice(0, 12) || [];
 
-    // Show loader during key generation
-    if (step === "generating" || isGeneratingKey) {
+    // Show loader during key generation or initialization
+    if (step === "generating" || isGeneratingKey || !isInitialized) {
         return <ShieldLoader />;
     }
 

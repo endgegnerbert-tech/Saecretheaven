@@ -179,16 +179,19 @@ export default function HeroSection() {
                 </div>
 
                 {/* Photo Grid / Empty State */}
-                <div className="flex-1 overflow-hidden flex items-center justify-center p-4">
-                   <div className="text-center">
-                      <div className="w-16 h-16 mx-auto mb-3 text-gray-300">
-                        <svg fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/>
-                        </svg>
-                      </div>
-                      <p className="text-blue-600 text-sm font-medium">No Fotos yet found</p>
-                      <p className="text-gray-500 text-xs mt-1">Try another search term or filter</p>
-                   </div>
+                <div className="flex-1 overflow-y-auto p-4 grid grid-cols-3 gap-1 content-start">
+                   {[...Array(12)].map((_, i) => (
+                     <div key={i} className="aspect-square bg-gray-100 rounded-md relative overflow-hidden group">
+                       <div className="absolute inset-0 bg-gray-200 animate-pulse" style={{ animationDelay: `${i * 100}ms` }} />
+                       <div className="absolute inset-0 flex items-center justify-center bg-black/10 backdrop-blur-[2px]">
+                         <div className="bg-white/90 p-1.5 rounded-full shadow-sm">
+                            <svg className="w-3 h-3 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                            </svg>
+                         </div>
+                       </div>
+                     </div>
+                   ))}
                 </div>
 
                 {/* Bottom Navigation */}
@@ -243,14 +246,14 @@ export default function HeroSection() {
             </motion.div>
 
             <h1 className="font-syne text-[48px] lg:text-[64px] xl:text-[72px] leading-[1.05] font-bold text-charcoal mb-4">
-              SaecretHeaven
+              Seacretheaven
             </h1>
             <p className="font-space-grotesk text-xl lg:text-2xl text-charcoal/80 mb-2">
-              Join the Privacy Revolution
+              Your Photos. Your Eyes Only.
             </p>
             <p className="font-inter text-base lg:text-lg text-warm-gray mb-6 leading-relaxed max-w-lg">
-              Be first to experience military-grade encryption for your photos. 
-              Zero-knowledge architecture means only you can see your memories.
+              End-to-end encrypted storage that lives on your device, not in big tech's cloud. 
+              100% Private. 100% Yours. Only you hold the keys.
             </p>
 
             {/* Social Proof Counter */}

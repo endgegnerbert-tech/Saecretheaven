@@ -7,8 +7,7 @@ import { LoadingScreen } from "@/components/ui/loading-spinner";
 
 // Landing Page Components
 import Navigation from "@/components/landing/landing/Navigation";
-import HeroSection from "@/components/landing/landing/HeroSection";
-import PhoneSplitAnimation from "@/components/landing/landing/PhoneSplitAnimation";
+import ScrollyTellingHero from "@/components/landing/landing/ScrollyTellingHero";
 import SecurityGrid from "@/components/landing/landing/SecurityGrid";
 import ComparisonTable from "@/components/landing/landing/ComparisonTable";
 import TechnicalAccordion from "@/components/landing/landing/TechnicalAccordion";
@@ -42,11 +41,8 @@ export default function LandingPage() {
         <CountdownTimer />
         
         <main id="main-content" role="main">
-          {/* 1. Hero */}
-          <HeroSection />
-          
-          {/* 2. 3D Phone Split Animation */}
-          <PhoneSplitAnimation />
+          {/* 1. ScrollyTelling Hero (Hero + Video + Split) */}
+          <ScrollyTellingHero />
           
           {/* 3. Security Cards */}
           <SecurityGrid />

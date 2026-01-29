@@ -103,10 +103,10 @@ export default function WaitlistSection() {
           </motion.div>
 
           <h2 className="font-space-grotesk text-[40px] lg:text-[48px] font-semibold text-charcoal mb-4">
-            Request Early Access
+            Stop Feeding the Algorithm.
           </h2>
           <p className="font-inter text-lg lg:text-xl text-warm-gray max-w-2xl mx-auto mb-4">
-            Join the privacy-first photo storage revolution. Manual approval ensures quality.
+            Take back control of your digital life. Join the resistance against surveillance capitalism.
           </p>
           <p className="font-jetbrains text-sm text-indigo-soft mb-10">
             Your photos. Your eyes only. Zero compromises.
@@ -153,8 +153,7 @@ export default function WaitlistSection() {
                 </SketchButton>
               </div>
               <p className="mt-4 text-sm text-warm-gray">
-                <img src="/logo.svg" alt="SaecretHeaven" className="inline-block w-4 h-4 mr-1 -mt-0.5" />
-                Manual approval for privacy
+                <span className="font-semibold text-indigo-soft">Pro Tip:</span> Refer a friend to jump ~100 spots in line.
               </p>
             </motion.form>
           ) : (
