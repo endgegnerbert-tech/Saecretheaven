@@ -17,7 +17,7 @@
 
 ---
 
-## 🔒 Trust Through Verification
+##  Trust Through Verification
 
 SaecretHeaven is built on a simple premise: **"Don't Trust. Verify."**
 
@@ -28,14 +28,14 @@ This repository contains the **Open Core** of SaecretHeaven. We believe that cri
 - **Zero-Knowledge:** We do not have your keys. We cannot see your files. Even if served with a subpoena, we cannot decrypt your data.
 - **Decentralized Storage:** Encrypted shards are distributed across the IPFS network, ensuring redundancy and censorship resistance.
 
-## ⚡ Features
+## Features
 
 - **Quantum-Resistant Architecture:** Built with future-proof cryptography in mind.
 - **Multi-Device Sync:** Seamlessly access your vault on macOS, Windows, iOS, and Android.
 - **Auto-Backup:** Background synchronization ensures you never lose a memory.
 - **PWA First:** Installable directly from the browser for maximum privacy and sandboxing.
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Core:** Next.js 14, React, TypeScript
 - **Desktop:** Tauri (Rust-based, audited security)
@@ -43,7 +43,7 @@ This repository contains the **Open Core** of SaecretHeaven. We believe that cri
 - **State:** Zustand + TanStack Query
 - **Styling:** TailwindCSS + Framer Motion
 
-## 🏗️ Development & Security Model
+##  Development & Security Model
 
 ### The "Open Core" Philosophy
 We operate under a **Source Available (BSL 1.1)** model.
@@ -69,7 +69,7 @@ npm install
 npm run dev
 ```
 
-## 📜 License
+## License
 
 This software is licensed under the **Business Source License 1.1 (BSL)**.
 - **Free for:** Non-production use, auditing, personal modification.
@@ -81,5 +81,5 @@ See [LICENSE](LICENSE) for details.
 ---
 
 <div align="center">
-Built with 🛡️ for the Paranoid.
+Built with People in Mind  for the People.
 </div>
