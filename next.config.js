@@ -10,7 +10,12 @@ const withSerwist = require("@serwist/next").default({
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // Enable static export for Tauri builds
+    output: process.env.BUILD_TARGET === 'tauri' ? 'export' : undefined,
+
     images: {
+        // Use unoptimized images for static export (Tauri)
+        unoptimized: process.env.BUILD_TARGET === 'tauri' || undefined,
         remotePatterns: [
             {
                 protocol: 'https',

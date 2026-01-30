@@ -6,16 +6,52 @@ import { Input } from "@/components/ui/input";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Check, Download, Smartphone } from "lucide-react";
+import Link from "next/link";
+
+// GitHub Release download URLs
+const GITHUB_REPO = "endgegnerbert-tech/Photovault";
+const VERSION = "0.1.0";
+
+const getDownloadUrl = () => {
+  if (typeof window === "undefined") return "";
+
+  const userAgent = window.navigator.userAgent.toLowerCase();
+  const platform = window.navigator.platform.toLowerCase();
+
+  // Detect macOS
+  if (platform.includes("mac")) {
+    // Check for Apple Silicon (M1/M2/M3)
+    if (userAgent.includes("arm") || userAgent.includes("aarch64")) {
+      return `https://github.com/${GITHUB_REPO}/releases/latest/download/SaecretHeaven_aarch64.dmg`;
+    }
+    // Intel Mac
+    return `https://github.com/${GITHUB_REPO}/releases/latest/download/SaecretHeaven_x64.dmg`;
+  }
+
+  // Detect Windows
+  if (platform.includes("win")) {
+    return `https://github.com/${GITHUB_REPO}/releases/latest/download/SaecretHeaven_${VERSION}_x64_en-US.msi`;
+  }
+
+  // Detect Linux
+  if (platform.includes("linux")) {
+    return `https://github.com/${GITHUB_REPO}/releases/latest/download/saecret-heaven_${VERSION}_amd64.deb`;
+  }
+
+  // Fallback to releases page
+  return `https://github.com/${GITHUB_REPO}/releases/latest`;
+};
 
 export default function WaitlistSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-20%" });
-  
+
   const [email, setEmail] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
-  
+  const [downloadUrl, setDownloadUrl] = useState("");
+
   // Scarcity: 30 beta seats total, dynamic remaining based on waitlist signups
   const totalSeats = 30;
   const [seatsRemaining, setSeatsRemaining] = useState<number | null>(null);
@@ -28,6 +64,11 @@ export default function WaitlistSection() {
       setSeatsRemaining(Math.max(0, totalSeats - count));
     };
     fetchCount();
+  }, []);
+
+  // Set download URL based on OS
+  useEffect(() => {
+    setDownloadUrl(getDownloadUrl());
   }, []);
 
   const validateEmail = (email: string) => {
@@ -188,7 +229,7 @@ export default function WaitlistSection() {
           )}
 
           {/* Alternative Download Options */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ delay: 0.5 }}
@@ -198,20 +239,28 @@ export default function WaitlistSection() {
               Or try the public beta now:
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <SketchButton
-                variant="outline"
-                size="lg"
+              <Link href="/app">
+                <SketchButton
+                  variant="outline"
+                  size="lg"
+                >
+                  <Smartphone className="mr-2" size={20} />
+                  PWA Now
+                </SketchButton>
+              </Link>
+              <a
+                href={downloadUrl || `https://github.com/${GITHUB_REPO}/releases/latest`}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                <Smartphone className="mr-2" size={20} />
-                PWA Now
-              </SketchButton>
-              <SketchButton
-                variant="outline"
-                size="lg"
-              >
-                <Download className="mr-2" size={20} />
-                Download Desktop
-              </SketchButton>
+                <SketchButton
+                  variant="outline"
+                  size="lg"
+                >
+                  <Download className="mr-2" size={20} />
+                  Download Desktop
+                </SketchButton>
+              </a>
             </div>
           </motion.div>
 

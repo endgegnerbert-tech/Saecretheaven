@@ -5,9 +5,9 @@
   "identifier": "com.saecretheaven.app",
   "build": {
     "devUrl": "http://localhost:3000",
-    "frontendDist": "https://saecretheaven.com",
+    "frontendDist": "../out",
     "beforeDevCommand": "npm run dev",
-    "beforeBuildCommand": ""
+    "beforeBuildCommand": "cross-env BUILD_TARGET=tauri npm run build"
   },
   "app": {
     "windows": [
