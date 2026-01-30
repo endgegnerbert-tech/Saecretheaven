@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Code } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SketchButton } from "@/sketch-ui/SketchButton";
 
@@ -68,14 +68,23 @@ export default function Navigation() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-4">
-          <SketchButton 
+          <a
+            href="https://github.com/endgegnerbert-tech/Photovault"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="p-2 text-charcoal/70 hover:text-charcoal transition-colors"
+            aria-label="View source on GitHub"
+          >
+            <Code size={20} />
+          </a>
+          <SketchButton
             variant="secondary"
             size="md"
             onClick={() => window.location.href = '/app'}
           >
             Launch App
           </SketchButton>
-          <SketchButton 
+          <SketchButton
             variant="primary"
             size="md"
             onClick={() => scrollToSection('waitlist')}

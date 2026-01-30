@@ -59,9 +59,15 @@ src/config/secrets.ts
 # Internal Docs (Only README/LICENSE/SECURITY/CLAUDE stay public)
 *.md
 !README.md
-!LICENSE
+!LICENSE.md
 !SECURITY.md
 !CLAUDE.md
+
+# Planning & Launch Documents
+*.plan
+*plan*.md
+launch.*
+securityimpl.md
 
 # Marketing & Assets (Source files)
 src/assets/branding/source-files/
