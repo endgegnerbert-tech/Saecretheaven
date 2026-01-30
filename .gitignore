@@ -47,3 +47,66 @@ src-tauri/target/
 
 # Misc
 *.log
+
+# ===========================================
+# BLACK BOX STRUCTURE (Source Available Model)
+# ===========================================
+
+# Proprietary Core Logic & Config
+src/lib/core/pricing-engine.ts
+src/config/secrets.ts
+
+# Internal Docs (Only README/LICENSE/SECURITY/CLAUDE stay public)
+*.md
+!README.md
+!LICENSE
+!SECURITY.md
+!CLAUDE.md
+
+# Marketing & Assets (Source files)
+src/assets/branding/source-files/
+public/marketing-assets/
+
+# Video/Remotion (preserved locally, not in public repo)
+video/
+
+# Agent/AI Configuration directories (internal tooling)
+.agent/
+.agents/
+.claude/
+.cline/
+.codebuddy/
+.codex/
+.commandcode/
+.continue/
+.crush/
+.cursor/
+.factory/
+.gemini/
+.goose/
+.junie/
+.kilocode/
+.kiro/
+.kode/
+.mcpjam/
+.mux/
+.neovate/
+.openhands/
+.pi/
+.pochi/
+.qoder/
+.qwen/
+.trae/
+skills/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Security audit files
+security-audit-*.json
+
+# Build artifacts (root level only, not public/)
+/Icon.ico
+/SaecretHeavenLogo.svg
