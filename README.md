@@ -276,7 +276,7 @@ The code remains fully auditable while preventing commercial exploitation.
 
 We welcome security audits, bug reports, and feature suggestions:
 
-1. **Security Issues:** Email security@saecretheaven.com (PGP key on website)
+1. **Security Issues:** Email einar@black-knight.dev (PGP key on website)
 2. **Bug Reports:** Open a GitHub issue with reproduction steps
 3. **Feature Requests:** Start a discussion in GitHub Discussions
 4. **Code Contributions:** Fork, create feature branch, submit PR
@@ -312,8 +312,8 @@ Before contributing code, please read:
 
 - **Documentation:** [GitHub Wiki](https://github.com/SaecretHeaven/privacyheaven/wiki)
 - **Community:** [GitHub Discussions](https://github.com/SaecretHeaven/privacyheaven/discussions)
-- **Email:** support@saecretheaven.com
-- **Security:** security@saecretheaven.com (encrypted)
+- **Email:** einar@black-knight.dev
+- **Security:** einar@black-knight.dev (encrypted)
 
 ## License
 

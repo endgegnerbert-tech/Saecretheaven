@@ -49,7 +49,7 @@ export default function ManifestoPage() {
 
           <div className="mt-12 pt-8 border-t border-gray-200">
             <p className="italic text-gray-500">
-              — The SaecretHeaven Team
+              — Blackknight
             </p>
           </div>
         </article>

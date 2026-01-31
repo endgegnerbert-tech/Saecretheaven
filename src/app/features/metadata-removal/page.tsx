@@ -6,6 +6,7 @@ import FeatureHero from "@/components/features/FeatureHero";
 import TechSpecCard from "@/components/features/TechSpecCard";
 import FeedbackButton from "@/components/features/FeedbackButton";
 import { motion } from "framer-motion";
+import CommentSection from "@/components/features/CommentSection";
 
 export default function MetadataRemovalPage() {
   return (
@@ -454,6 +455,15 @@ await encryptAndUpload(cleanBlob);`}
               className="text-sm px-6 py-3"
             />
           </motion.div>
+        </div>
+      </section>
+
+      {/* Comments Section */}
+      <section className="py-16 bg-white border-t border-gray-100">
+        <div className="max-w-[1280px] mx-auto px-8 lg:px-20">
+          <div className="max-w-4xl mx-auto">
+            <CommentSection featureSlug="metadata-removal" />
+          </div>
         </div>
       </section>
     </FeaturePageLayout>

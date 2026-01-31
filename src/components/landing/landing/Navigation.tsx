@@ -87,6 +87,15 @@ export default function Navigation() {
             )}
           </div>
 
+
+          {/* Community Link */}
+          <button
+            onClick={() => scrollToSection('community')}
+            className="font-inter text-sm text-charcoal/70 hover:text-charcoal transition-colors hover:text-blue-600"
+          >
+            Community
+          </button>
+
           {/* Technical Link */}
           <button
             onClick={() => scrollToSection('technical')}
@@ -94,6 +103,13 @@ export default function Navigation() {
           >
             Technical
           </button>
+
+          <a
+            href="/manifesto"
+            className="font-inter text-sm text-charcoal/70 hover:text-charcoal transition-colors"
+          >
+            Manifesto
+          </a>
         </nav>
 
         {/* Desktop CTA */}
@@ -154,6 +170,14 @@ export default function Navigation() {
               </div>
             </div>
 
+            {/* Community Link */}
+            <button
+              onClick={() => scrollToSection('community')}
+              className="font-inter text-base text-charcoal py-3 px-4 rounded-lg hover:bg-gray-50 text-left transition-colors font-semibold"
+            >
+              Community
+            </button>
+
             {/* Technical Link */}
             <button
               onClick={() => scrollToSection('technical')}
@@ -161,6 +185,13 @@ export default function Navigation() {
             >
               Technical
             </button>
+
+            <a
+              href="/manifesto"
+              className="font-inter text-base text-charcoal py-3 px-4 rounded-lg hover:bg-gray-50 text-left transition-colors font-semibold"
+            >
+              Manifesto
+            </a>
 
             <div className="pt-2 mt-2 border-t border-gray-100">
               <SketchButton

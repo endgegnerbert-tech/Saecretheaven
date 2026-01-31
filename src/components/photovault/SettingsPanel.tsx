@@ -300,7 +300,7 @@ export function SettingsPanel({ state: appState, setState: setAppState, onRestar
               <ChevronRight className="w-4 h-4 text-gray-400" />
             </button>
             <div className="h-px bg-gray-100 mx-4" />
-            <a href="mailto:support@saecretheaven.com" className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors">
+            <a href="mailto:einar@black-knight.dev" className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors">
               <div className="flex items-center gap-3">
                 <HelpCircle className="w-5 h-5 text-gray-500" />
                 <span className="text-base font-medium text-gray-900">Get Help</span>

@@ -7,7 +7,7 @@ interface FeedbackButtonProps {
 export default function FeedbackButton({ featureName, question, className = "" }: FeedbackButtonProps) {
   const subject = encodeURIComponent(`Feedback: ${featureName}`);
   const body = question ? encodeURIComponent(`\n\nQuestion: ${question}\n\nMy feedback:\n`) : encodeURIComponent(`\n\nMy feedback:\n`);
-  const mailtoLink = `mailto:beta@saecretheaven.com?subject=${subject}&body=${body}`;
+  const mailtoLink = `mailto:einar@black-knight.dev?subject=${subject}&body=${body}`;
 
   return (
     <a

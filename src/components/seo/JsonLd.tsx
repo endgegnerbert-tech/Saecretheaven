@@ -11,7 +11,7 @@ export function JsonLd() {
     "author": {
       "@type": "Person",
       "name": "Einar Jäger",
-      "email": "einar@black-night.dev"
+      "email": "einar@black-knight.dev"
     },
     "offers": {
       "@type": "Offer",

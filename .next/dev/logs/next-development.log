@@ -1492,3 +1492,1671 @@ It can also happen if the client has a browser extension installed which messes 
 [01:10:45.260] Server  LOG     ✓ Compiled in 520ms
 [01:12:18.793] Server  LOG     ✓ Compiled in 302ms
 [01:13:26.782] Server  LOG     ✓ Compiled in 279ms
+[01:32:57.057] Server  LOG     ✓ Compiled in 387ms
+[01:32:59.060] Server  LOG     ✓ Compiled in 234ms
+[01:33:36.266] Server  LOG     ✓ Compiled in 795ms
+[01:50:56.228] Server  LOG     ✓ Compiled in 835ms
+[01:51:13.175] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3002". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:51:28.529] Server  LOG     ✓ Compiled in 4.4s
+[01:51:38.161] Server  LOG     ✓ Compiled in 262ms
+[01:51:42.200] Server  LOG     ✓ Compiled in 257ms
+[01:52:24.864] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3002". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:52:26.436] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <InnerLayoutRouter url="/features/..." tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+      <SegmentViewNode type="page" pagePath="features/s...">
+        <SegmentTrieNode>
+        <ClientPageRoot Component={function SecureDropPage} serverProvidedParams={{...}}>
+          <SecureDropPage params={Promise} searchParams={Promise}>
+            <FeaturePageLayout>
+              <a>
+              <div className="min-h-scre...">
+                <Navigation>
+                  <header className="fixed top-...">
+                    <div className="max-w-[128...">
+                      <a>
+                      <nav>
+                      <div className="hidden lg:...">
+                        <a>
+                        <SketchButton variant="primary" size="md" onClick={function onClick}>
+                          <button onClick={function onClick} disabled={false} type="button" className={"\n      ..."} ...>
+                            <svg width={160} height={50} viewBox="0 0 160 50" className="absolute i...">
+                              <path
++                               d={"\n    M 1.9544633862364726 3.4128839558529043\n    Q 39.530611776838654 -2.460149..."}
+-                               d={"\n    M 1.6738951872975485 3.6156037577855122\n    Q 38.11508586090903 0.79595664..."}
+                                fill="#2563EB"
+                                stroke="none"
+                              >
+                              <path
++                               d={"\n    M 1.9544633862364726 3.4128839558529043\n    Q 39.530611776838654 -2.460149..."}
+-                               d={"\n    M 1.6738951872975485 3.6156037577855122\n    Q 38.11508586090903 0.79595664..."}
+                                fill="none"
+                                stroke="#2563EB"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                style={{filter:"url(#rough..."}}
+                              >
+                              <path
++                               d={"\n    M 4.412883955852904 2.9544633862364726\n    Q 38.53985017021589 -0.46938822..."}
+-                               d={"\n    M 4.615603757785513 2.6738951872975485\n    Q 41.79595664663863 -1.88491413..."}
+                                fill="none"
+                                stroke="#2563EB"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                opacity="0.6"
+                              >
+                            ...
+                      ...
+                ...
+      ...
+
+[01:52:26.436] Browser LOG     [App] Device ID ensured: 04ed5b4c-e173-4a26-b283-67a3d5e6e13d
+[01:52:26.436] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:52:26.436] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3002/features/secure-drop color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3002/features/secure-drop","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1769885853848}
+[01:52:43.539] Browser LOG     [App] Device ID ensured: 04ed5b4c-e173-4a26-b283-67a3d5e6e13d
+[01:52:43.539] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:52:43.539] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3002/ color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3002/","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1769885870925}
+[01:52:43.843] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[01:53:06.167] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3002". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:53:07.106] Browser ERROR   A tree hydrated but some attributes of the server rendered HTML didn't match the client properties. This won't be patched up. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+%s%s https://react.dev/link/hydration-mismatch 
+
+  ...
+    <InnerLayoutRouter url="/features/..." tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} segmentPath={[...]} ...>
+      <SegmentViewNode type="page" pagePath="features/p...">
+        <SegmentTrieNode>
+        <ClientPageRoot Component={function PanicButtonPage} serverProvidedParams={{...}}>
+          <PanicButtonPage params={Promise} searchParams={Promise}>
+            <FeaturePageLayout>
+              <a>
+              <div className="min-h-scre...">
+                <Navigation>
+                  <header className="fixed top-...">
+                    <div className="max-w-[128...">
+                      <a>
+                      <nav>
+                      <div className="hidden lg:...">
+                        <a>
+                        <SketchButton variant="primary" size="md" onClick={function onClick}>
+                          <button onClick={function onClick} disabled={false} type="button" className={"\n      ..."} ...>
+                            <svg width={160} height={50} viewBox="0 0 160 50" className="absolute i...">
+                              <path
++                               d={"\n    M 3.5175218751264525 3.8719514873024066\n    Q 41.888974449464826 -2.273309..."}
+-                               d={"\n    M 2.8885044418733195 3.761211887393918\n    Q 40.83434295106441 -2.59457904..."}
+                                fill="#2563EB"
+                                stroke="none"
+                              >
+                              <path
++                               d={"\n    M 3.5175218751264525 3.8719514873024066\n    Q 41.888974449464826 -2.273309..."}
+-                               d={"\n    M 2.8885044418733195 3.761211887393918\n    Q 40.83434295106441 -2.59457904..."}
+                                fill="none"
+                                stroke="#2563EB"
+                                strokeWidth="3"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                style={{filter:"url(#rough..."}}
+                              >
+                              <path
++                               d={"\n    M 4.871951487302407 4.5175218751264525\n    Q 38.72669065078999 1.888974449..."}
+-                               d={"\n    M 4.761211887393918 3.8885044418733195\n    Q 38.405420951779135 0.83434295..."}
+                                fill="none"
+                                stroke="#2563EB"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                opacity="0.6"
+                              >
+                            ...
+                      ...
+                ...
+      ...
+
+[01:53:07.106] Browser LOG     [App] Device ID ensured: 04ed5b4c-e173-4a26-b283-67a3d5e6e13d
+[01:53:07.106] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:53:07.106] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3002/features/panic-button color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3002/features/panic-button","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1769885894518}
+[01:55:55.581] Server  LOG     ✓ Compiled in 714ms
+[01:55:57.143] Server  LOG     ✓ Compiled in 237ms
+[01:55:59.113] Server  LOG     ✓ Compiled in 236ms
+[01:56:03.589] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3002". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:56:03.598] Server  LOG     ✓ Compiled in 765ms
+[01:56:31.331] Server  WARN    ⚠ metadataBase property in metadata export is not set for resolving social open graph or twitter images, using "http://localhost:3002". See https://nextjs.org/docs/app/api-reference/functions/generate-metadata#metadatabase
+[01:56:34.044] Browser LOG     [App] Device ID ensured: 04ed5b4c-e173-4a26-b283-67a3d5e6e13d
+[01:56:34.044] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[01:56:34.044] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3002/ color: rgb(120, 120, 120) color: inherit {"o":"http://localhost:3002/","sdkn":"@vercel/analytics/react","sdkv":"1.6.1","sv":"0.1.3","ts":1769886101346}
+[01:56:34.155] Browser WARN    Please ensure that the container has a non-static position, like 'relative', 'fixed', or 'absolute' to ensure scroll offset is calculated correctly.
+[01:59:35.312] Server  LOG     ✓ Compiled in 649ms
+[01:59:35.563] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
+[02:02:51.067] Server  LOG     ✓ Compiled in 678ms
+[02:02:51.459] Browser WARN    Multiple GoTrueClient instances detected in the same browser context. It is not an error, but this should be avoided as it may produce undefined behavior when used concurrently under the same storage key.
+[02:12:04.145] Server  LOG     ✓ Compiled in 5.5s
+[02:12:33.630] Server  LOG     ✓ Compiled in 1252ms
+[02:12:34.699] Server  LOG     ✓ Compiled in 251ms
+[02:12:55.257] Server  LOG     ✓ Compiled in 603ms
+[02:12:56.533] Server  LOG     ✓ Compiled in 124ms
+[02:15:30.888] Server  LOG     ✓ Compiled in 932ms
+[02:15:48.601] Server  LOG     ✓ Compiled in 524ms
+[02:15:50.621] Server  LOG     ✓ Compiled in 165ms
+[02:15:51.997] Server  LOG     ✓ Compiled in 93ms
+[02:15:53.664] Server  LOG     ✓ Compiled in 118ms
+[02:20:06.262] Server  LOG     ✓ Compiled in 744ms
+[02:20:22.754] Server  LOG     ✓ Compiled in 325ms
+[02:20:32.872] Server  LOG     ✓ Compiled in 160ms
+[02:27:18.839] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.922] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.927] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.938] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.953] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.958] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.960] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.964] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.978] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.984] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.986] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:18.994] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.111] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/crypto.ts [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/app/page.tsx [Server Component]
+
+  #2 [Client Component Browser]:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  #3 [Client Component SSR]:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/crypto.ts [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/app/page.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.119] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/crypto.ts [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/app/page.tsx [Server Component]
+
+  #2 [Client Component Browser]:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  #3 [Client Component SSR]:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/crypto.ts [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/app/page.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.127] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/crypto.ts [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/app/page.tsx [Server Component]
+
+  #2 [Client Component Browser]:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  #3 [Client Component SSR]:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/crypto.ts [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/app/page.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.135] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  #1 [Client Component Browser]:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/crypto.ts [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component Browser]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/app/page.tsx [Server Component]
+
+  #2 [Client Component Browser]:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  #3 [Client Component SSR]:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/crypto.ts [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Client Component SSR]
+    ./src/components/photovault/PhotoVaultApp.tsx [Server Component]
+    ./src/app/app/page.tsx [Server Component]
+
+  #4 [Client Component SSR]:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.157] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.169] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.171] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.176] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.201] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.208] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.210] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.211] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.277] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.283] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.284] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.285] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.291] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.295] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.296] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.297] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.305] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.306] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.307] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.308] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.314] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.316] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.319] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.320] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.331] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.336] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.337] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.338] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.348] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.350] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.352] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.353] Server  ERROR   ⨯ ./src/lib/storage/native-keychain.ts:8:1
+Module not found: Can't resolve '@tauri-apps/api/core'
+   6 |  */
+   7 |
+>  8 | import { invoke } from '@tauri-apps/api/core';
+     | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   9 |
+  10 | /**
+  11 |  * Detect if we're running in a Tauri environment
+
+
+
+Import traces:
+  Client Component Browser:
+    ./src/lib/storage/native-keychain.ts [Client Component Browser]
+    ./src/lib/deviceId.ts [Client Component Browser]
+    ./src/app/providers.tsx [Client Component Browser]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+  Client Component SSR:
+    ./src/lib/storage/native-keychain.ts [Client Component SSR]
+    ./src/lib/deviceId.ts [Client Component SSR]
+    ./src/app/providers.tsx [Client Component SSR]
+    ./src/app/providers.tsx [Server Component]
+    ./src/app/layout.tsx [Server Component]
+
+https://nextjs.org/docs/messages/module-not-found
+
+
+[02:27:19.355] Server  LOG     ✓ Compiled in 2.2s

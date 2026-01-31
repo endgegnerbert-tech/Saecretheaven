@@ -10,6 +10,7 @@ import Navigation from "@/components/landing/landing/Navigation";
 import ScrollyTellingHero from "@/components/landing/landing/ScrollyTellingHero";
 import SecurityGrid from "@/components/landing/landing/SecurityGrid";
 import TechnicalAccordion from "@/components/landing/landing/TechnicalAccordion";
+import LandingComments from "@/components/landing/landing/LandingComments";
 import Footer from "@/components/landing/landing/Footer";
 
 export default function LandingPage() {
@@ -46,6 +47,9 @@ export default function LandingPage() {
 
           {/* 3. Technical Deep Dive */}
           <TechnicalAccordion />
+
+          {/* 4. Community Comments */}
+          <LandingComments />
         </main>
         
         <Footer />

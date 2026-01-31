@@ -59,8 +59,8 @@ function EmailCheckModal({ email, onClose }: { email: string; onClose: () => voi
         <div className="bg-gray-50 dark:bg-gray-800 rounded-xl p-4 mb-4">
           <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
             Having problems? Contact us at:<br />
-            <a href="mailto:support@saecretheaven.com" className="text-blue-600 dark:text-blue-400 font-medium">
-              support@saecretheaven.com
+            <a href="mailto:einar@black-knight.dev" className="text-blue-600 dark:text-blue-400 font-medium">
+              einar@black-knight.dev
             </a>
           </p>
         </div>
@@ -217,8 +217,8 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
           <div className="bg-white dark:bg-gray-800 rounded-xl p-4 mb-8 max-w-[300px] shadow-sm border border-gray-100 dark:border-gray-700">
             <p className="text-xs text-gray-500 dark:text-gray-400 text-center">
               Having problems? Contact us at:<br />
-              <a href="mailto:support@saecretheaven.com" className="text-blue-600 dark:text-blue-400 font-medium">
-                support@saecretheaven.com
+              <a href="mailto:einar@black-knight.dev" className="text-blue-600 dark:text-blue-400 font-medium">
+                einar@black-knight.dev
               </a>
             </p>
           </div>

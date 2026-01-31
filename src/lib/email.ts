@@ -15,7 +15,7 @@ const BRAND = {
     name: 'SaecretHeaven',
     logo: 'https://saecretheaven.com/logo.svg',
     primaryColor: '#6366f1', // Indigo
-    supportEmail: 'support@saecretheaven.com',
+    supportEmail: 'einar@black-knight.dev',
 };
 
 interface SendVerificationEmailParams {
