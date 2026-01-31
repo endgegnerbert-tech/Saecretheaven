@@ -174,7 +174,6 @@ export async function downloadFromIPFS(cid: string): Promise<Blob> {
     try {
         const fetchPromises = gateways.map(async (getUrl, index) => {
             const url = getUrl();
-            console.log(`[IPFS] Trying gateway ${index + 1}: ${url.substring(0, 60)}...`);
 
             const response = await fetch(url, {
                 signal: controller.signal,
@@ -186,7 +185,6 @@ export async function downloadFromIPFS(cid: string): Promise<Blob> {
                 throw new Error(`Gateway failed: ${response.status}`);
             }
 
-            console.log(`[IPFS] Gateway ${index + 1} succeeded`);
             return response.blob();
         });
 
