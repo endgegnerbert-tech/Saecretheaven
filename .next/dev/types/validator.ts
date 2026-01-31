@@ -65,10 +65,55 @@ type RouteHandlerConfig<Route extends AppRouteHandlerRoutes = AppRouteHandlerRou
   type __Unused = __Check
 }
 
+// Validate ../../../src/app/features/decoy-accounts/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/features/decoy-accounts">> = Specific
+  const handler = {} as typeof import("../../../src/app/features/decoy-accounts/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/features/metadata-removal/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/features/metadata-removal">> = Specific
+  const handler = {} as typeof import("../../../src/app/features/metadata-removal/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/features/panic-button/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/features/panic-button">> = Specific
+  const handler = {} as typeof import("../../../src/app/features/panic-button/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/features/secure-drop/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/features/secure-drop">> = Specific
+  const handler = {} as typeof import("../../../src/app/features/secure-drop/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
 // Validate ../../../src/app/impressum/page.tsx
 {
   type __IsExpected<Specific extends AppPageConfig<"/impressum">> = Specific
   const handler = {} as typeof import("../../../src/app/impressum/page.js")
+  type __Check = __IsExpected<typeof handler>
+  // @ts-ignore
+  type __Unused = __Check
+}
+
+// Validate ../../../src/app/manifesto/page.tsx
+{
+  type __IsExpected<Specific extends AppPageConfig<"/manifesto">> = Specific
+  const handler = {} as typeof import("../../../src/app/manifesto/page.js")
   type __Check = __IsExpected<typeof handler>
   // @ts-ignore
   type __Unused = __Check

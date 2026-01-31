@@ -13,12 +13,24 @@ test-results/
 out/
 build/
 
-# Environment files
+# Environment files & Secrets
 .env
+.env.*
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+secret-*
+*secret*
+*credentials*
+*-credentials.json
+api-keys.json
+config/secrets.*
 
 # Debug
 npm-debug.log*
@@ -59,6 +71,7 @@ src/config/secrets.ts
 # Internal Docs (Only README/LICENSE/SECURITY/CLAUDE stay public)
 *.md
 !README.md
+!LICENSE
 !LICENSE.md
 !SECURITY.md
 !CLAUDE.md
@@ -68,6 +81,8 @@ src/config/secrets.ts
 *plan*.md
 launch.*
 securityimpl.md
+ide fuer anderung /
+"ide fuer anderung /"
 
 # Marketing & Assets (Source files)
 src/assets/branding/source-files/

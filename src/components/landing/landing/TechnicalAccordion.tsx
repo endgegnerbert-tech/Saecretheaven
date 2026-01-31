@@ -6,137 +6,149 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { Upload, Lock, Cloud, Download } from "lucide-react";
+import { Upload, Lock, Cloud, Download, EyeOff } from "lucide-react";
 
 export default function TechnicalAccordion() {
   const technicalDetails = [
     {
-      title: "Encryption Algorithms",
+      title: "1. Encryption Pipeline (Current)",
       content: (
         <div className="space-y-4">
-           {/* New Data Flow Section inserted at the TOP */}
-            <div className="mb-8 p-4 bg-blue-50/50 rounded-xl border border-blue-100">
-                <h4 className="font-syne text-sm font-bold text-blue-900 mb-4 uppercase tracking-widest">Pipeline: Upload to Download</h4>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-                    {[
-                        { icon: <Upload size={16} />, step: "1. Capture", desc: "Photo taken in sandbox" },
-                        { icon: <Lock size={16} />, step: "2. Encrypt", desc: "XSalsa20 on device" },
-                        { icon: <Cloud size={16} />, step: "3. Store", desc: "Sharded to IPFS" },
-                        { icon: <Download size={16} />, step: "4. Retrieve", desc: "Decrypt locally" },
-                    ].map((s, i) => (
-                        <div key={i} className="flex flex-col items-center text-center">
-                             <div className="w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center mb-2">{s.icon}</div>
-                             <div className="font-bold text-gray-900 text-xs">{s.step}</div>
-                             <div className="text-gray-500 text-[10px]">{s.desc}</div>
-                        </div>
-                    ))}
+           {/* Now vs Future Comparison */}
+            <div className="grid grid-cols-2 gap-4 mb-6">
+                <div className="p-4 bg-green-50 rounded-lg border border-green-100">
+                    <span className="text-xs font-bold text-green-600 uppercase tracking-widest block mb-2">LIVE PROTOCOL</span>
+                    <ul className="space-y-2">
+                        <li className="text-xs text-gray-600"><strong>Algo:</strong> XSalsa20-Poly1305 (TweetNaCl)</li>
+                        <li className="text-xs text-gray-600"><strong>Keys:</strong> WebCrypto API (Local)</li>
+                        <li className="text-xs text-gray-600"><strong>Storage:</strong> IndexedDB (Encrypted)</li>
+                    </ul>
+                </div>
+                <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 opacity-80">
+                    <span className="text-xs font-bold text-blue-600 uppercase tracking-widest block mb-1">RESEARCH / NEXT</span>
+                    <ul className="space-y-2">
+                        <li className="text-xs text-gray-500"><strong>Padding:</strong> Fixed-size chunking (Anti-traffic analysis)</li>
+                        <li className="text-xs text-gray-500"><strong>Quantum:</strong> Dilithium Sig (Experimental)</li>
+                    </ul>
                 </div>
             </div>
 
           <div>
             <h4 className="font-syne text-base font-bold text-gray-900 mb-2">
-              XSalsa20-Poly1305 (TweetNaCl)
+              Why XSalsa20?
             </h4>
-            <p className="font-inter text-sm text-gray-500 leading-relaxed">
-              High-performance authenticated encryption. Used by Signal and other privacy-focused tools. 
-              Poly1305 provides message authentication to prevent tampering.
+            <p className="font-inter text-sm text-gray-500 leading-relaxed mb-4">
+              We use <strong>TweetNaCl.js</strong>, a verified constant-time cryptographic library. Unlike AES-GCM, which can be vulnerable to side-channel attacks in some browser implementations, Salsa20 is immune to cache-timing attacks by design.
             </p>
-          </div>
-          <div>
-            <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
-              Secure Key Generation
-            </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
-              <span className="font-jetbrains text-xs bg-gray-100 px-2 py-1 rounded">Web Crypto API</span> 
-              {" "}keys are generated locally using cryptographically secure random number generators. 
-              Your master key never leaves your device.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
-              ChaCha20-Poly1305 (Alternative Cipher)
-            </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
-              Secondary cipher for devices where AES hardware acceleration isn't available. 
-              Provides equivalent security with better performance on mobile processors.
-            </p>
+            <div className="flex items-center gap-4 mt-6">
+                <a href="/features/panic-button" className="text-xs font-bold text-blue-600 hover:underline hover:text-blue-800 transition-colors">
+                    Read Security Whitepaper →
+                </a>
+                <button className="text-xs font-bold text-gray-400 hover:text-black border border-gray-200 px-3 py-1.5 rounded-md hover:border-gray-400 transition-colors">
+                    Give Feedback
+                </button>
+            </div>
           </div>
         </div>
       )
     },
     {
-      title: "Key Storage & Management",
+      title: "2. Data Authenticity (C2PA)",
       content: (
         <div className="space-y-4">
+             <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 mb-4">
+                <span className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">
+                    <Cloud className="w-3 h-3" /> IN DEVELOPMENT
+                </span>
+                <p className="text-xs text-blue-900/80">
+                    The "Authenticity Proof" module is currently focused on <strong>Metadata Stripping</strong>. Full C2PA signature support is scheduled for Q3.
+                </p>
+            </div>
+
           <div>
-            <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
-              Client-Side Key Generation
+             <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
+              The "Photoshop Problem"
             </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
-              All cryptographic keys are generated in your browser using the Web Crypto API's 
-              cryptographically secure random number generator (CSRNG). Keys never leave your device unencrypted.
+            <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">
+              Journalists strip EXIF data to protect sources, but this makes the image impossible to verify. 
             </p>
-          </div>
-          <div>
             <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
-              Secure Key Wrapping
+              Our Solution (Planned)
             </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
-              Device-specific keys are wrapped using hardware-backed keystores (Web Crypto API + Secure Enclave on iOS, 
-              Keystore on Android) ensuring keys can't be extracted even if the device is compromised.
+            <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">
+              We cryptographically sign the <strong>image hash + original metadata</strong> before stripping it. This allows you to publish a clean image publicly, while retaining a private mathematical proof that the image was not doctored.
             </p>
-          </div>
-          <div>
-            <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
-              Backup Recovery Phrase
-            </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
-              Generate a secure recovery phrase to restore your access on new devices. 
-              Crucial for Zero-Knowledge systems as we cannot reset your password.
-            </p>
+             <div className="flex items-center gap-4 mt-2">
+                <a href="/features/metadata-removal" className="text-xs font-bold text-blue-600 hover:underline hover:text-blue-800 transition-colors">
+                    View Specs & Research →
+                </a>
+                <button className="text-xs font-bold text-gray-400 hover:text-black border border-gray-200 px-3 py-1.5 rounded-md hover:border-gray-400 transition-colors">
+                    Give Feedback
+                </button>
+            </div>
           </div>
         </div>
       )
     },
     {
-      title: "Threat Model & Mitigations",
+      title: "3. Threat Model: Seizure",
       content: (
         <div className="space-y-4">
+            <div className="grid grid-cols-2 gap-4 mb-4">
+               <div>
+                  <h5 className="font-bold text-xs text-gray-900 uppercase mb-2">Current Protection</h5>
+                  <p className="text-xs text-gray-500">If device is seized unlocked, attackers can see the app. We rely on the OS sandbox.</p>
+               </div>
+               <div>
+                  <h5 className="font-bold text-xs text-blue-800 uppercase mb-2">Vision Benefit</h5>
+                  <p className="text-xs text-blue-600">"Panic Button" will wipe the encryption keys from RAM. Even if the app is open, the data becomes garbage.</p>
+               </div>
+            </div>
+             <div className="flex items-center gap-4 mt-4 pt-4 border-t border-gray-100">
+                <a href="/features/panic-button" className="text-xs font-bold text-blue-600 hover:underline hover:text-blue-800 transition-colors">
+                    Full Threat Model Analysis →
+                </a>
+                 <button className="text-xs font-bold text-gray-400 hover:text-black border border-gray-200 px-3 py-1.5 rounded-md hover:border-gray-400 transition-colors">
+                    Give Feedback
+                </button>
+            </div>
+        </div>
+      )
+    },
+    {
+      title: "4. Secure Drop (Zero-Trace)",
+      content: (
+        <div className="space-y-4">
+             <div className="p-4 bg-blue-50 rounded-lg border border-blue-100 mb-4">
+                <span className="flex items-center gap-2 text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">
+                    <EyeOff className="w-3 h-3" /> IN DEVELOPMENT
+                </span>
+                <p className="text-xs text-blue-900/80">
+                    Anonymous source uploads without forensic trace. Photos processed entirely in RAM, never touching disk.
+                </p>
+            </div>
+
           <div>
-            <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
-              Server Compromise Protection
+             <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
+              The Forensic Problem
             </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
-              Even if our servers are breached, attackers gain only encrypted data blobs. 
-              Without your passphrase, data remains cryptographically secure indefinitely.
+            <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">
+              Standard workflows save photos to disk where they remain recoverable by forensic tools like Cellebrite, even after deletion.
             </p>
-          </div>
-          <div>
             <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
-              Man-in-the-Middle (MITM) Prevention
+              Zero-Trace Solution
             </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
-              TLS 1.3 with certificate pinning ensures transport security. 
-              PWA integrity checks via Service Worker verification prevent code injection attacks.
+            <p className="font-inter text-sm text-warm-gray leading-relaxed mb-4">
+              We use WebRTC getUserMedia to stream directly from camera to RAM. Photos are encrypted immediately using the journalist's public key, uploaded to IPFS, then the page reloads to flush all memory.
             </p>
-          </div>
-          <div>
-            <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
-              Side-Channel Attack Resistance
-            </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
-              Constant-time cryptographic operations prevent timing attacks. 
-              Memory is securely wiped after cryptographic operations to prevent cold boot attacks.
-            </p>
-          </div>
-          <div>
-            <h4 className="font-space-grotesk text-base font-semibold text-charcoal mb-2">
-              Metadata Protection
-            </h4>
-            <p className="font-inter text-sm text-warm-gray leading-relaxed">
-              File names, dates, and EXIF data are encrypted alongside image data. 
-              Server-side, we only see encrypted blobs with random UUIDs.
-            </p>
+             <div className="flex items-center gap-4 mt-2">
+                <a href="/features/secure-drop" className="text-xs font-bold text-blue-600 hover:underline hover:text-blue-800 transition-colors">
+                    View Technical Specs →
+                </a>
+                <button className="text-xs font-bold text-gray-400 hover:text-black border border-gray-200 px-3 py-1.5 rounded-md hover:border-gray-400 transition-colors">
+                    Give Feedback
+                </button>
+            </div>
           </div>
         </div>
       )
@@ -147,7 +159,7 @@ export default function TechnicalAccordion() {
   const isInView = useInView(ref, { once: true, margin: "-20%" });
 
   return (
-    <section ref={ref} className="py-32 lg:py-40 bg-white border-t border-gray-100">
+    <section id="technical" ref={ref} className="scroll-mt-20 py-32 lg:py-40 bg-white border-t border-gray-100">
       <div className="max-w-[1280px] mx-auto px-8 lg:px-20">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -156,10 +168,10 @@ export default function TechnicalAccordion() {
           className="text-center mb-12 lg:mb-16"
         >
           <h2 className="font-space-grotesk text-[36px] lg:text-[48px] font-semibold text-charcoal mb-4">
-            Technical Deep Dive
+            Current Architecture
           </h2>
           <p className="font-inter text-lg lg:text-xl text-warm-gray max-w-2xl mx-auto">
-            For developers and security researchers who want to understand exactly how we protect your data.
+            The technology protecting your data <strong>today</strong>.
           </p>
         </motion.div>
 

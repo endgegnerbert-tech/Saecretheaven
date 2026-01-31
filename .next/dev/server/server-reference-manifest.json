@@ -29,6 +29,36 @@
       },
       "filename": "src/app/actions/waitlist.ts",
       "exportedName": "getWaitlistCount"
+    },
+    "400ddf1d21c8045a9c9d9edbb136470eabf705cb73": {
+      "workers": {
+        "app/app/page": {
+          "moduleId": "[project]/.next-internal/server/app/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions/access-code.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "claimAccessCode",
+          "filename": "src/app/actions/access-code.ts"
+        }
+      },
+      "layer": {
+        "app/app/page": "action-browser"
+      },
+      "filename": "src/app/actions/access-code.ts",
+      "exportedName": "claimAccessCode"
+    },
+    "4016fd6773afd84048d82f0012649de204b32ae5cc": {
+      "workers": {
+        "app/app/page": {
+          "moduleId": "[project]/.next-internal/server/app/app/page/actions.js { ACTIONS_MODULE0 => \"[project]/src/app/actions/access-code.ts [app-rsc] (ecmascript)\" } [app-rsc] (server actions loader, ecmascript)",
+          "async": false,
+          "exportedName": "releaseAccessCode",
+          "filename": "src/app/actions/access-code.ts"
+        }
+      },
+      "layer": {
+        "app/app/page": "action-browser"
+      },
+      "filename": "src/app/actions/access-code.ts",
+      "exportedName": "releaseAccessCode"
     }
   },
   "edge": {},

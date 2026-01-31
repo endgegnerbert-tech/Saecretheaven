@@ -1,13 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Code } from "lucide-react";
+import { Menu, X, Code, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SketchButton } from "@/sketch-ui/SketchButton";
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [featuresDropdownOpen, setFeaturesDropdownOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,7 +24,7 @@ export default function Navigation() {
       const offset = 80;
       const elementPosition = section.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
@@ -32,10 +33,11 @@ export default function Navigation() {
     setIsMobileMenuOpen(false);
   };
 
-  const navLinks = [
-    { label: "Features", id: "features" },
-    { label: "Security", id: "security" },
-    { label: "Compare", id: "compare" },
+  const featurePages = [
+    { label: "Panic Button", href: "/features/panic-button" },
+    { label: "Secure Drop", href: "/features/secure-drop" },
+    { label: "Metadata Removal", href: "/features/metadata-removal" },
+    { label: "Decoy Accounts", href: "/features/decoy-accounts" },
   ];
 
   return (
@@ -50,20 +52,48 @@ export default function Navigation() {
         {/* Logo */}
         <a href="/" className="flex items-center gap-2">
           <img src="/logo.svg" alt="SaecretHeaven Logo" className="w-8 h-8" />
-          <div className="font-syne text-xl font-bold tracking-tight">SaecretHeaven</div>
+          <div className="font-syne text-xl font-bold tracking-tight text-blue-600">SaecretHeaven</div>
         </a>
 
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
+          {/* Features Dropdown */}
+          <div
+            className="relative"
+            onMouseEnter={() => setFeaturesDropdownOpen(true)}
+            onMouseLeave={() => setFeaturesDropdownOpen(false)}
+          >
             <button
-              key={link.id}
-              onClick={() => scrollToSection(link.id)}
-              className="font-inter text-sm text-charcoal/70 hover:text-charcoal transition-colors"
+              onClick={() => scrollToSection('security')}
+              className="font-inter text-sm text-charcoal/70 hover:text-charcoal transition-colors flex items-center gap-1"
             >
-              {link.label}
+              Features
+              <ChevronDown size={16} className={`transition-transform ${featuresDropdownOpen ? 'rotate-180' : ''}`} />
             </button>
-          ))}
+
+            {/* Dropdown Menu */}
+            {featuresDropdownOpen && (
+              <div className="absolute top-full left-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-100 py-2 z-50">
+                {featurePages.map((feature) => (
+                  <a
+                    key={feature.href}
+                    href={feature.href}
+                    className="block px-4 py-2.5 font-inter text-sm text-charcoal/70 hover:text-charcoal hover:bg-gray-50 transition-colors"
+                  >
+                    {feature.label}
+                  </a>
+                ))}
+              </div>
+            )}
+          </div>
+
+          {/* Technical Link */}
+          <button
+            onClick={() => scrollToSection('technical')}
+            className="font-inter text-sm text-charcoal/70 hover:text-charcoal transition-colors"
+          >
+            Technical
+          </button>
         </nav>
 
         {/* Desktop CTA */}
@@ -78,18 +108,11 @@ export default function Navigation() {
             <Code size={20} />
           </a>
           <SketchButton
-            variant="secondary"
+            variant="primary"
             size="md"
             onClick={() => window.location.href = '/app'}
           >
             Launch App
-          </SketchButton>
-          <SketchButton
-            variant="primary"
-            size="md"
-            onClick={() => scrollToSection('waitlist')}
-          >
-            Waitlist
           </SketchButton>
         </div>
 
@@ -107,34 +130,47 @@ export default function Navigation() {
       {isMobileMenuOpen && (
         <div className="lg:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg">
           <nav className="flex flex-col p-4 gap-2">
-            {navLinks.map((link) => (
+            {/* Features with sub-links */}
+            <div className="flex flex-col">
               <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className="font-inter text-base text-charcoal py-3 px-4 rounded-lg hover:bg-gray-50 text-left transition-colors"
+                onClick={() => {
+                  scrollToSection('security');
+                }}
+                className="font-inter text-base text-charcoal py-3 px-4 rounded-lg hover:bg-gray-50 text-left transition-colors font-semibold"
               >
-                {link.label}
+                Features
               </button>
-            ))}
-            <div className="pt-2 mt-2 border-t border-gray-100 space-y-2">
-              <SketchButton 
-                variant="secondary"
+              <div className="ml-4 flex flex-col gap-1">
+                {featurePages.map((feature) => (
+                  <a
+                    key={feature.href}
+                    href={feature.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="font-inter text-sm text-charcoal/70 py-2 px-4 rounded-lg hover:bg-gray-50 text-left transition-colors"
+                  >
+                    {feature.label}
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            {/* Technical Link */}
+            <button
+              onClick={() => scrollToSection('technical')}
+              className="font-inter text-base text-charcoal py-3 px-4 rounded-lg hover:bg-gray-50 text-left transition-colors font-semibold"
+            >
+              Technical
+            </button>
+
+            <div className="pt-2 mt-2 border-t border-gray-100">
+              <SketchButton
+                variant="primary"
                 size="md"
                 onClick={() => window.location.href = '/app'}
                 className="w-full"
               >
                 Launch App
               </SketchButton>
-              <div className="flex justify-center">
-                <SketchButton 
-                  variant="primary"
-                  size="md"
-                  onClick={() => scrollToSection('waitlist')}
-                  className="w-full"
-                >
-                  Join Waitlist
-                </SketchButton>
-              </div>
             </div>
           </nav>
         </div>

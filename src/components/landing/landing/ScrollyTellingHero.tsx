@@ -111,6 +111,44 @@ function CountdownDisplay() {
   );
 }
 
+// --- TYPING HEADER COMPONENT ---
+function TypingHeader() {
+  const [text, setText] = useState("");
+  const fullText = "Building the Ultimate Shield";
+  const [showCursor, setShowCursor] = useState(true);
+
+  useEffect(() => {
+    let i = 0;
+    const typingInterval = setInterval(() => {
+      if (i < fullText.length) {
+        setText(fullText.substring(0, i + 1));
+        i++;
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 100); // Typer speed
+
+    const cursorInterval = setInterval(() => {
+      setShowCursor(prev => !prev);
+    }, 500); // Blink speed
+
+    return () => {
+      clearInterval(typingInterval);
+      clearInterval(cursorInterval);
+    };
+  }, []);
+
+  return (
+    <div className="mb-8 h-[120px] lg:h-[160px] flex items-end lg:items-start justify-center lg:justify-start">
+       <h1 className="pointer-events-auto text-4xl lg:text-7xl font-bold text-blue-600 leading-[1.1] tracking-tight min-h-[3em] lg:min-h-[2em]">
+          {text} <span className={`${showCursor ? 'opacity-100' : 'opacity-0'} text-blue-600`}>|</span>
+       </h1>
+    </div>
+  );
+}
+
+// --- COUNTDOWN REMOVED --
+
 export default function ScrollyTellingHero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -232,10 +270,10 @@ export default function ScrollyTellingHero() {
   };
 
   const tiles = [
-    { imageUrl: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=400&q=80', title: "Encrypted on Device", description: "Photos are encrypted before upload.", bullet: "Keys stay with you", icon: <Smartphone className="w-5 h-5" /> }, // Code/Screen
-    { imageUrl: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=400&q=80', title: "Military Grade", description: "XSalsa20-Poly1305 Standard.", bullet: "Unbreakable Security", icon: <Lock className="w-5 h-5" /> }, // Shield/Blue
-    { imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80', title: "Decentralized", description: "Stored across secure IPFS nodes.", bullet: "IPFS Network", icon: <Cloud className="w-5 h-5" /> }, // Globe/Network
-    { imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80', title: "Private by Design", description: "We cannot see your photos.", bullet: "Zero Knowledge", icon: <Eye className="w-5 h-5" /> } // Abstract Flow
+    { imageUrl: 'https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&w=400&q=80', title: "No Metadata", description: "GPS & EXIF data stripped instantly.", bullet: "Clean Files", icon: <Smartphone className="w-5 h-5" /> },
+    { imageUrl: 'https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&w=400&q=80', title: "Panic Button", description: "Instant local wipe on seizure.", bullet: "Emergency Wipe", icon: <Lock className="w-5 h-5" /> },
+    { imageUrl: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=400&q=80', title: "RAM Capture", description: "Bypass disk forensics completely.", bullet: "Zero Trace", icon: <Cloud className="w-5 h-5" /> },
+    { imageUrl: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=400&q=80', title: "Decoy Mode", description: "Fake gallery for forced unlocks.", bullet: "Plausible Deniability", icon: <Eye className="w-5 h-5" /> }
   ];
 
   return (
@@ -257,34 +295,23 @@ export default function ScrollyTellingHero() {
                <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center px-4 lg:px-12 w-full">
                   {/* TEXT COLUMN (Left) */}
                   <div className="flex flex-col justify-center w-full pt-[12vh] lg:pt-0 pointer-events-none relative z-40">
-                      {/* Release Timer Badge - ADDED GLASS BACKGROUND FOR MOBILE */}
-                      {/* Release Timer Badge - ADDED GLASS BACKGROUND FOR MOBILE */}
-                      <div className="pointer-events-auto inline-flex items-center gap-2.5 px-4 py-2 bg-white/90 lg:bg-black/5 backdrop-blur-xl lg:backdrop-blur-sm rounded-lg mb-8 border border-black/[0.05] lg:border-black/10 shadow-lg lg:shadow-sm group hover:border-black/20 transition-all mx-auto lg:mx-0 max-w-fit">
-                          <span className="relative flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-500"></span>
-                          </span>
-                          <div className="flex flex-col leading-none">
-                            <span className="text-[10px] uppercase tracking-wider font-bold text-gray-500 mb-0.5">Limited Access</span>
-                            <span className="text-sm font-mono font-bold text-gray-900">
-                                {seatsRemaining !== null ? (
-                                  <>
-                                    <span className="text-red-600">{seatsRemaining.toString().padStart(3, '0')}</span> 
-                                    <span className="ml-1">SEATS LEFT</span>
-                                  </>
-                                ) : 'BETA FULL'}
-                            </span>
-                          </div>
-                      </div>
-                      
+                      {/* TYPEWRTIER TEXT COMPONENT */}
+                      <TypingHeader />
+
                       {/* Text Content with Mobile Backdrop */}
                       <div className="lg:contents flex flex-col items-center text-center lg:text-left bg-white/80 lg:bg-transparent backdrop-blur-lg lg:backdrop-blur-none p-8 lg:p-0 rounded-3xl lg:rounded-none shadow-xl lg:shadow-none border border-white/50 lg:border-none mx-4 lg:mx-0">
-                          <h1 className="pointer-events-auto text-4xl lg:text-7xl font-bold text-black mb-6 leading-[1.1] tracking-tight">
-                            Seacret<span className="text-blue-700">heaven</span>
-                          </h1>
+                          {/* Static Text replaced by TypingHeader above, removed here */}
                           <p className="pointer-events-auto text-base lg:text-xl text-black/80 lg:text-black mb-8 max-w-lg leading-relaxed mix-blend-multiply lg:mix-blend-normal">
-                            Your Photos. Your Eyes Only. End-to-end encrypted storage that lives on your device, not in big tech's cloud.
+                             <span className="font-bold text-gray-400 text-xs uppercase tracking-widest block mb-2">Current Capability</span>
+                             Secure Evidence Locker <span className="text-gray-400">|</span> Client-Side Encrypted <span className="text-gray-400">|</span> Zero Knowledge.
                           </p>
+                          
+                          <div className="mb-8 p-4 bg-blue-50/50 border border-blue-100 rounded-lg">
+                             <span className="font-bold text-blue-600 text-xs uppercase tracking-widest block mb-2">The Mission</span>
+                             <p className="text-sm text-gray-600">
+                               Currently, we protect your photos from cloud leaks. Our next phase is to protect <strong>YOU</strong> from physical device seizure.
+                             </p>
+                          </div>
                           
                           {!isSubmitted ? (
                           <form onSubmit={handleSubmit} className="pointer-events-auto flex flex-col sm:flex-row gap-3 max-w-md w-full">
@@ -295,7 +322,7 @@ export default function ScrollyTellingHero() {
                                 className="bg-white border-gray-200 h-12 shadow-sm focus:border-indigo-500 transition-colors" 
                               />
                               <SketchButton type="submit" disabled={!isValid || isSubmitting} variant="primary" size="md">
-                                Join Beta
+                                Join Beta & Discussion
                               </SketchButton>
                           </form>
                           ) : (
@@ -385,30 +412,61 @@ export default function ScrollyTellingHero() {
                          </div>
                     </motion.div>
 
-                    {/* CONTENT B: VIDEO PLAYER */}
+                    {/* CONTENT B: VIDEO PLAYER + CONTEXT */}
                     <motion.div
-                        className="absolute inset-0 bg-black flex items-center justify-center z-20"
+                        className="absolute inset-0 bg-white z-20 flex items-center justify-center p-8"
                         style={{ opacity: videoOpacity }}
                     >
-                        <div className="w-full h-full relative flex items-center justify-center bg-black group">
-                             <video 
-                                src="/demo-video.mp4" 
-                                className="w-full h-full object-contain"
-                                autoPlay 
-                                muted={isMuted}
-                                loop 
-                                playsInline 
-                             />
-                             <button 
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setIsMuted(!isMuted);
-                                }}
-                                className="absolute bottom-6 left-6 p-3 bg-white/90 backdrop-blur-xl rounded-full text-black shadow-lg hover:bg-white hover:scale-110 active:scale-95 transition-all z-50 flex items-center justify-center border border-gray-100"
-                             >
-                                {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
-                             </button>
+                        <div className="w-full h-full flex flex-col lg:flex-row items-center gap-8 max-w-4xl mx-auto">
+                             {/* Video Container - Smaller & Framed */}
+                             <div className="relative w-full lg:w-1/2 aspect-[9/16] lg:aspect-video bg-black rounded-xl overflow-hidden shadow-2xl ring-1 ring-gray-900/5">
+                                 <video 
+                                    src="/demo-video.mp4" 
+                                    className="w-full h-full object-cover"
+                                    autoPlay 
+                                    muted={isMuted}
+                                    loop 
+                                    playsInline 
+                                 />
+                                 <div className="absolute top-4 left-4 bg-red-600/90 backdrop-blur text-white text-[10px] font-bold px-2 py-1 rounded-sm flex items-center gap-1 animate-pulse">
+                                     <span className="w-1.5 h-1.5 bg-white rounded-full block"></span> LIVE DEMO
+                                 </div>
+                             </div>
+
+                             {/* Side Text: Current Capabilities */}
+                             <div className="w-full lg:w-1/2 text-left space-y-4">
+                                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-green-50 border border-green-100 rounded-full">
+                                     <span className="relative flex h-2 w-2">
+                                       <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                       <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                                     </span>
+                                     <span className="text-[10px] font-bold text-green-700 uppercase tracking-widest">Available Now</span>
+                                 </div>
+                                 <h3 className="font-syne text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+                                     Zero-Knowledge Vault
+                                 </h3>
+                                 <p className="font-inter text-sm lg:text-base text-gray-600 leading-relaxed">
+                                     What you see here is <strong className="text-gray-900">real</strong>. Photos are encrypted on your device (client-side) before they ever touch our servers.
+                                 </p>
+                                 <ul className="space-y-2">
+                                     {['XSalsa20 Encryption', 'Local Key Generation', 'No Server Access'].map((item, i) => (
+                                         <li key={i} className="flex items-center gap-2 text-sm text-gray-500 font-medium">
+                                             <Check className="w-4 h-4 text-blue-600" /> {item}
+                                         </li>
+                                     ))}
+                                 </ul>
+                             </div>
                         </div>
+
+                         <button 
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setIsMuted(!isMuted);
+                            }}
+                            className="absolute bottom-6 right-6 p-3 bg-white/90 backdrop-blur-xl rounded-full text-black shadow-lg hover:bg-white hover:scale-110 active:scale-95 transition-all z-50 flex items-center justify-center border border-gray-100"
+                         >
+                            {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+                         </button>
                     </motion.div>
 
                     {/* CONTENT C: LOCKED BACKGROUND */}

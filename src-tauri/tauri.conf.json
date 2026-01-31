@@ -5,7 +5,7 @@
   "identifier": "com.saecretheaven.app",
   "build": {
     "devUrl": "http://localhost:3000",
-    "frontendDist": "../out",
+    "frontendDist": "https://saecretheaven.com",
     "beforeDevCommand": "npm run dev",
     "beforeBuildCommand": ""
   },
