@@ -9,6 +9,8 @@ import { LoadingScreen } from "@/components/ui/loading-spinner";
 import Navigation from "@/components/landing/landing/Navigation";
 import ScrollyTellingHero from "@/components/landing/landing/ScrollyTellingHero";
 import SecurityGrid from "@/components/landing/landing/SecurityGrid";
+import SecurityBadges from "@/components/landing/landing/SecurityBadges";
+import PressSection from "@/components/landing/landing/PressSection";
 import TechnicalAccordion from "@/components/landing/landing/TechnicalAccordion";
 import LandingComments from "@/components/landing/landing/LandingComments";
 import Footer from "@/components/landing/landing/Footer";
@@ -41,6 +43,9 @@ export default function LandingPage() {
         <main id="main-content" role="main">
           {/* 1. ScrollyTelling Hero (Hero + Video + Split) */}
           <ScrollyTellingHero />
+          
+          <PressSection />
+          <SecurityBadges />
 
           {/* 2. Feature Overview */}
           <SecurityGrid />

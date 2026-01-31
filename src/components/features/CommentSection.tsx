@@ -1,19 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { createClient } from "@supabase/supabase-js";
 import { ArrowBigUp, Loader2, MessageSquare, Send } from "lucide-react";
 import { Filter } from "bad-words";
 import { germanBadWords } from "@/lib/badWordsList";
+import { supabase } from "@/lib/supabase";
 
 // ... imports
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
-const supabase = createClient(supabaseUrl, supabaseKey);
+import { Textarea } from "@/components/ui/textarea";  
 
 interface Comment {
   id: string;
