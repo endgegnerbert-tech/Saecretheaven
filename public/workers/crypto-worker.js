@@ -68,7 +68,7 @@ function encrypt(data, secretKey) {
 /**
  * Handle encryption requests from main thread
  */
-self.onmessage = async function(e) {
+self.onmessage = async function (e) {
     const { id, type, arrayBuffer, secretKey } = e.data;
 
     if (type !== 'encrypt') {
@@ -97,13 +97,18 @@ self.onmessage = async function(e) {
         const endTime = performance.now();
         console.log('[Crypto Worker] Encryption complete in', Math.round(endTime - startTime), 'ms');
 
+        // Ensure we send ONLY the active bytes, not the whole underlying buffer if it's larger
+        // nacl.secretbox might return a view on a larger buffer
+        const resultBytes = new Uint8Array(ciphertext);
+        const resultBuffer = resultBytes.buffer;
+
         // Transfer the ciphertext back (transferable for zero-copy)
         self.postMessage({
             id,
             success: true,
-            ciphertext: ciphertext.buffer,
+            ciphertext: resultBuffer,
             nonce: nonce
-        }, [ciphertext.buffer]);
+        }, [resultBuffer]);
 
     } catch (error) {
         console.error('[Crypto Worker] Encryption failed:', error);
