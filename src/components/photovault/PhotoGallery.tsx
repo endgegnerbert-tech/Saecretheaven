@@ -32,7 +32,10 @@ import {
   Lock,
   Info,
   ChevronLeft,
+  Link2,
 } from "lucide-react";
+
+
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { AlertTriangle } from "lucide-react";
@@ -44,7 +47,9 @@ import { getPhotoBlob, type PhotoMetadata } from "@/lib/storage/local-db";
 interface PhotoGalleryProps {
   photosCount?: number;
   authUser: { id: string; email: string } | null;
+  onNavigateToBurnerLinks?: () => void;
 }
+
 
 // Allowed MIME types for upload
 const ALLOWED_MIME_TYPES = [
@@ -138,7 +143,8 @@ const formatDateLabel = (dateStr: string) => {
   }
 };
 
-export function PhotoGallery({ photosCount = 0, authUser }: PhotoGalleryProps) {
+export function PhotoGallery({ photosCount = 0, authUser, onNavigateToBurnerLinks }: PhotoGalleryProps) {
+
   const queryClient = useQueryClient();
   const [showShareDialog, setShowShareDialog] = useState(false);
   const [photoToShare, setPhotoToShare] = useState<any>(null);
@@ -500,7 +506,17 @@ export function PhotoGallery({ photosCount = 0, authUser }: PhotoGalleryProps) {
             >
               <Search className="w-5 h-5" />
             </button>
+            {onNavigateToBurnerLinks && (
+              <button
+                onClick={onNavigateToBurnerLinks}
+                className="p-2.5 rounded-full transition-all duration-200 text-gray-500 hover:bg-gray-100"
+                title="Burner Links"
+              >
+                <Link2 className="w-5 h-5" />
+              </button>
+            )}
             <Button
+
               onClick={handleUploadClick}
               size="sm"
               className="bg-blue-600 hover:bg-blue-700 text-white rounded-full px-4 py-2 text-sm font-medium shadow-sm"

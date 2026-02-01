@@ -172,7 +172,7 @@ export function SecureShareDialog({
   
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="sm:max-w-md bg-white rounded-2xl p-0 overflow-hidden">
+      <DialogContent className="sm:max-w-md bg-white rounded-2xl p-0 overflow-hidden z-[200]">
         {step === "config" && (
             <div className="p-6">
                 <DialogHeader className="mb-4">

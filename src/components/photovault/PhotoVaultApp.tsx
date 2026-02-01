@@ -13,6 +13,8 @@ import { UnlockVaultScreen } from "./UnlockVaultScreen";
 import { VaultSetupScreen } from "./VaultSetupScreen";
 import { SettingsPanel } from "./SettingsPanel";
 import { PhotoGallery } from "./PhotoGallery";
+import { BurnerLinksPanel } from "./BurnerLinksPanel";
+
 
 // Auth
 import { useSession, signOut } from "@/lib/auth-client";
@@ -162,7 +164,8 @@ const defaultState: AppState = {
     photoSource: "photos-app",
 };
 
-export type Screen = "gallery" | "settings";
+export type Screen = "gallery" | "settings" | "burner-links";
+
 
 type AppPhase =
     | "loading"
@@ -505,6 +508,7 @@ export function PhotoVaultApp() {
                         <PhotoGallery
                             photosCount={state.photosCount}
                             authUser={authUser}
+                            onNavigateToBurnerLinks={() => navigateTo("burner-links")}
                         />
                     )}
                     {currentScreen === "settings" && (
@@ -515,6 +519,14 @@ export function PhotoVaultApp() {
                             authUser={authUser}
                         />
                     )}
+                    {currentScreen === "burner-links" && authUser && (
+                        <BurnerLinksPanel
+                            userId={authUser.id}
+                            vaultKeyHash={authUser.vaultKeyHash || ""} // Should be set if main phase
+                            onBack={() => navigateTo("gallery")}
+                        />
+                    )}
+
                 </div>
 
                 {/* Bottom Navigation */}

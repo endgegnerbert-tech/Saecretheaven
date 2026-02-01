@@ -2,8 +2,8 @@
   "[project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript, next/dynamic entry)": {
     "id": "[project]/node_modules/qrcode.react/lib/esm/index.js [app-client] (ecmascript, next/dynamic entry)",
     "files": [
-      "static/chunks/node_modules_qrcode_react_lib_esm_index_2151f5ab.js",
-      "static/chunks/node_modules_qrcode_react_lib_esm_index_6a9b3b11.js"
+      "static/chunks/node_modules_qrcode_react_lib_esm_index_0cd4f110.js",
+      "static/chunks/node_modules_qrcode_react_lib_esm_index_9ccee1b5.js"
     ]
   }
 }

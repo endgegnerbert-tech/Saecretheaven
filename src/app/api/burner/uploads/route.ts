@@ -48,30 +48,37 @@ export async function GET() {
         // Since Supabase join syntax with nested tables is:
         // select('*, burner_links!inner(*)')
 
-        const { data, error } = await supabase
+        // 1. Get all burner link IDs for this user
+        const { data: links, error: linksError } = await supabase
+            .from("burner_links")
+            .select("id, slug, theme, public_key, user_id")
+            .eq("user_id", userId);
+
+        if (linksError) throw linksError;
+
+        if (!links || links.length === 0) {
+            return NextResponse.json({ uploads: [] });
+        }
+
+        const linkIds = links.map(l => l.id);
+        const linksMap = new Map(links.map(l => [l.id, l]));
+
+        // 2. Get uploads for these links
+        const { data: uploads, error: uploadsError } = await supabase
             .from("stealth_uploads")
-            .select(`
-        id,
-        cid,
-        mime_type,
-        file_size_bytes,
-        uploaded_at,
-        nonce,
-        burner_link_id,
-        burner_links!inner (
-          id,
-          user_id,
-          slug,
-          theme,
-          public_key
-        )
-      `)
-            .eq("burner_links.user_id", userId)
+            .select("id, cid, mime_type, file_size_bytes, uploaded_at, nonce, burner_link_id")
+            .in("burner_link_id", linkIds)
             .order("uploaded_at", { ascending: false });
 
-        if (error) throw error;
+        if (uploadsError) throw uploadsError;
 
-        return NextResponse.json({ uploads: data });
+        // 3. Attach burner_links data manually to match structure expected by frontend
+        const enrichedUploads = uploads.map(u => ({
+            ...u,
+            burner_links: linksMap.get(u.burner_link_id)
+        }));
+
+        return NextResponse.json({ uploads: enrichedUploads });
     } catch (error) {
         console.error("Error fetching uploads:", error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
