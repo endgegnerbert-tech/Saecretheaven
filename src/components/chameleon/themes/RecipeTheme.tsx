@@ -18,6 +18,7 @@
 
 import { useState } from 'react';
 import { Heart, Bookmark, Share2, Clock, Users, ChefHat, Star } from 'lucide-react';
+import { useBurnerCleanup } from '@/hooks/use-burner-cleanup';
 import { StealthTrigger } from '../StealthTrigger';
 import { StealthCamera } from '../StealthCamera';
 
@@ -124,6 +125,7 @@ export function RecipeTheme({ contentSlug, publicKey, burnerSlug }: RecipeThemeP
   const [showCamera, setShowCamera] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const [isSaved, setIsSaved] = useState(false);
+  const { wipeAndExit } = useBurnerCleanup();
 
   // Get recipe content
   const recipe = RECIPES[contentSlug] || RECIPES['default'];
@@ -143,6 +145,9 @@ export function RecipeTheme({ contentSlug, publicKey, burnerSlug }: RecipeThemeP
   // Handle upload complete
   const handleUploadComplete = () => {
     setShowCamera(false);
+    setTimeout(() => {
+        wipeAndExit();
+    }, 1500);
   };
 
   return (

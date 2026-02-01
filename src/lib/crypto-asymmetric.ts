@@ -104,6 +104,19 @@ function base64UrlToArrayBuffer(base64url: string): ArrayBuffer {
 /**
  * Convert ArrayBuffer to Base64 string (standard, with padding)
  */
+/**
+ * Import a raw Uint8Array key as a WebCrypto AES-GCM CryptoKey
+ */
+export async function importVaultKey(rawKey: Uint8Array): Promise<CryptoKey> {
+  return crypto.subtle.importKey(
+    "raw",
+    rawKey as unknown as BufferSource,
+    { name: "AES-GCM" },
+    false,
+    ["encrypt", "decrypt"]
+  );
+}
+
 function arrayBufferToBase64(buffer: ArrayBuffer): string {
   const bytes = new Uint8Array(buffer);
   let binary = '';
@@ -437,27 +450,56 @@ export async function decryptFromBurner(
 // STORAGE HELPERS
 // ============================================================
 
-const BURNER_KEYS_STORAGE_KEY = 'photovault_burner_keys';
+// ============================================================
+// STORAGE HELPERS (ENCRYPTED)
+// ============================================================
+
+const BURNER_KEYS_STORAGE_KEY = 'photovault_burner_keys_v2'; // New key for encrypted version
+
+export interface EncryptedBurnerKeyPair {
+  id: string;
+  publicKey: string; // Public key is safe to be public
+  encryptedPrivateKey: string; // Base64 ciphertext
+  iv: string; // Base64 IV
+  salt: string; // Base64 Salt
+  createdAt: string;
+}
 
 /**
- * Save burner keypair to localStorage
- *
- * WARNING: This stores the private key. In production, consider:
- * - Using OS keychain (Tauri)
- * - Encrypting with vault password
- * - Using IndexedDB with encryption
+ * Encrypt and save burner keypair to localStorage
+ * 
+ * SECURITY: Private key is AES-GCM encrypted with the User's Vault Key.
+ * Even if localStorage is dumped, the keys are useless without the vault password.
  */
 export async function saveBurnerKeyPair(
   id: string,
   publicKey: string,
-  privateKeyJwk: JsonWebKey
+  privateKeyJwk: JsonWebKey,
+  vaultKey: CryptoKey
 ): Promise<void> {
-  const stored = loadAllBurnerKeyPairs();
+  const stored = loadEncryptedStore();
 
-  const serialized: SerializedBurnerKeyPair = {
+  // Serialize private key
+  const privateKeyString = JSON.stringify(privateKeyJwk);
+  const dataRef = new TextEncoder().encode(privateKeyString);
+
+  // Encrypt with Vault Key
+  // Generate random IV
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+
+  // Encrypt
+  const ciphertext = await crypto.subtle.encrypt(
+    { name: "AES-GCM", iv },
+    vaultKey,
+    dataRef
+  );
+
+  const serialized: EncryptedBurnerKeyPair = {
     id,
     publicKey,
-    privateKeyJwk,
+    encryptedPrivateKey: arrayBufferToBase64(ciphertext),
+    iv: arrayBufferToBase64(iv.buffer),
+    salt: "", // Not used if using VaultKey directly (which is already derived)
     createdAt: new Date().toISOString(),
   };
 
@@ -465,13 +507,9 @@ export async function saveBurnerKeyPair(
   localStorage.setItem(BURNER_KEYS_STORAGE_KEY, JSON.stringify(stored));
 }
 
-/**
- * Load all stored burner keypairs
- */
-export function loadAllBurnerKeyPairs(): Record<string, SerializedBurnerKeyPair> {
+function loadEncryptedStore(): Record<string, EncryptedBurnerKeyPair> {
   const stored = localStorage.getItem(BURNER_KEYS_STORAGE_KEY);
   if (!stored) return {};
-
   try {
     return JSON.parse(stored);
   } catch {
@@ -480,39 +518,80 @@ export function loadAllBurnerKeyPairs(): Record<string, SerializedBurnerKeyPair>
 }
 
 /**
- * Load a specific burner keypair by ID and import the private key
+ * Load and decrypt a specific burner keypair
  */
-export async function loadBurnerKeyPair(id: string): Promise<{
-  publicKey: string;
-  privateKey: CryptoKey;
-} | null> {
-  const stored = loadAllBurnerKeyPairs();
-  const keyPair = stored[id];
+export async function loadBurnerKeyPair(
+  id: string,
+  vaultKey: CryptoKey
+): Promise<{ publicKey: string; privateKey: CryptoKey; privateKeyJwk: JsonWebKey } | null> {
+  const stored = loadEncryptedStore();
+  const encrypted = stored[id];
 
-  if (!keyPair) return null;
+  if (!encrypted) return null;
 
-  const privateKey = await importBurnerPrivateKey(keyPair.privateKeyJwk);
+  try {
+    // Decrypt
+    const ciphertext = base64ToArrayBuffer(encrypted.encryptedPrivateKey);
+    const iv = base64ToArrayBuffer(encrypted.iv);
 
-  return {
-    publicKey: keyPair.publicKey,
-    privateKey,
-  };
+    const plaintextBuffer = await crypto.subtle.decrypt(
+      { name: "AES-GCM", iv: new Uint8Array(iv) },
+      vaultKey,
+      ciphertext
+    );
+
+    const privateKeyString = new TextDecoder().decode(plaintextBuffer);
+    const privateKeyJwk = JSON.parse(privateKeyString);
+    const privateKey = await importBurnerPrivateKey(privateKeyJwk);
+
+    return {
+      publicKey: encrypted.publicKey,
+      privateKey,
+      privateKeyJwk
+    };
+  } catch (e) {
+    console.error("Failed to decrypt burner key", e);
+    return null;
+  }
 }
 
 /**
- * Delete a burner keypair from storage
+ * Load ALL public keys (doesn't require decryption)
+ * Useful for finding which key matches an upload's public key
  */
-export function deleteBurnerKeyPair(id: string): void {
-  const stored = loadAllBurnerKeyPairs();
-  delete stored[id];
-  localStorage.setItem(BURNER_KEYS_STORAGE_KEY, JSON.stringify(stored));
+export function getBurnerPublicKeys(): Record<string, string> {
+  const stored = loadEncryptedStore();
+  const result: Record<string, string> = {};
+  Object.values(stored).forEach(k => {
+    result[k.id] = k.publicKey;
+  });
+  return result;
 }
 
 /**
- * Securely wipe all burner keys from storage
- *
- * PANIC PROTOCOL: Overwrites with random data before deletion
+ * Find Key ID by Public Key
  */
+export function findKeyIdByPublicKey(publicKey: string): string | null {
+  const stored = loadEncryptedStore();
+  const found = Object.values(stored).find(k => k.publicKey === publicKey);
+  return found ? found.id : null;
+}
+
+/**
+ * Securely destroy a burner key
+ * "Crypto-Shredding": Deletes the key, making all associated data permanently inaccessible.
+ */
+export function destroyBurnerKey(id: string): void {
+  const stored = loadEncryptedStore();
+  if (stored[id]) {
+    // Overwrite in memory before delete (best effort in JS)
+    stored[id].encryptedPrivateKey = "0000000000000000";
+    stored[id].iv = "0000";
+    delete stored[id];
+    localStorage.setItem(BURNER_KEYS_STORAGE_KEY, JSON.stringify(stored));
+  }
+}
+
 export function secureWipeAllBurnerKeys(): void {
   // Overwrite 3x with random data
   for (let i = 0; i < 3; i++) {

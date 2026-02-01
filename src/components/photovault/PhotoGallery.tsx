@@ -12,9 +12,9 @@ import {
   Plus,
   Search,
   Filter,
-  Camera,
   Image as ImageIcon,
   LayoutGrid,
+
   Calendar,
   MoreVertical,
   X,
@@ -43,12 +43,16 @@ import { remoteStorage, isRealIPFSCID } from "@/lib/storage/remote-storage";
 import { decryptFile } from "@/lib/crypto";
 import { getPhotoBlob, type PhotoMetadata } from "@/lib/storage/local-db";
 
+import { CreateBurnerLinkDialog } from "./CreateBurnerLinkDialog";
+import { BurnerGallerySection } from "./BurnerGallerySection";
+
 
 interface PhotoGalleryProps {
   photosCount?: number;
   authUser: { id: string; email: string } | null;
   onNavigateToBurnerLinks?: () => void;
 }
+
 
 
 // Allowed MIME types for upload
@@ -143,11 +147,12 @@ const formatDateLabel = (dateStr: string) => {
   }
 };
 
-export function PhotoGallery({ photosCount = 0, authUser, onNavigateToBurnerLinks }: PhotoGalleryProps) {
-
+export function PhotoGallery({ photosCount = 0, authUser }: PhotoGalleryProps) {
   const queryClient = useQueryClient();
   const [showShareDialog, setShowShareDialog] = useState(false);
+  const [showBurnerDialog, setShowBurnerDialog] = useState(false);
   const [photoToShare, setPhotoToShare] = useState<any>(null);
+
 
   const handleShareClick = (photo: any) => {
     setPhotoToShare(photo);
@@ -506,16 +511,16 @@ export function PhotoGallery({ photosCount = 0, authUser, onNavigateToBurnerLink
             >
               <Search className="w-5 h-5" />
             </button>
-            {onNavigateToBurnerLinks && (
-              <button
-                onClick={onNavigateToBurnerLinks}
+
+            <button
+                onClick={() => setShowBurnerDialog(true)}
                 className="p-2.5 rounded-full transition-all duration-200 text-gray-500 hover:bg-gray-100"
                 title="Burner Links"
               >
                 <Link2 className="w-5 h-5" />
-              </button>
-            )}
+            </button>
             <Button
+
 
               onClick={handleUploadClick}
               size="sm"
@@ -574,7 +579,15 @@ export function PhotoGallery({ photosCount = 0, authUser, onNavigateToBurnerLink
 
       {/* Gallery Grid */}
       <main className="flex-1 overflow-y-auto pb-[100px]">
+        {authUser && (
+            <BurnerGallerySection 
+                userId={authUser.id} 
+                vaultKeyBytes={secretKey}
+            />
+        )}
+        
         {filteredGroups.length === 0 ? (
+
           <div className="pt-20 text-center px-10">
             <div className="w-20 h-20 mx-auto mb-5 rounded-full bg-gray-100 flex items-center justify-center">
               <ImageIcon className="w-10 h-10 text-gray-300" />
@@ -847,6 +860,15 @@ export function PhotoGallery({ photosCount = 0, authUser, onNavigateToBurnerLink
           </div>
         </div>
       )}
+
+      <CreateBurnerLinkDialog 
+        isOpen={showBurnerDialog}
+        onClose={() => setShowBurnerDialog(false)}
+        onLinkCreated={() => {
+            // Optional: refresh something explicitly if needed, but react-query should handle it
+        }}
+        vaultKeyBytes={secretKey}
+      />
 
       {/* Share Dialog */}
       <SecureShareDialog 

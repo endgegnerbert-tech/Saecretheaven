@@ -10,10 +10,14 @@ import { Input } from "@/components/ui/input";
 import ShieldLoader from "@/components/ui/shield-loader";
 import { remoteStorage } from "@/lib/storage/remote-storage";
 import { decryptFile } from "@/lib/crypto";
+import { useBurnerCleanup } from "@/hooks/use-burner-cleanup";
+import { IncognitoGuard } from "@/components/security/IncognitoGuard";
+import { StealthShield } from "@/components/security/StealthShield";
 
 export default function SharedLinkPage() {
     const params = useParams();
     const id = params?.id as string;
+    const { wipeAndExit } = useBurnerCleanup();
     
     // States
     const [phase, setPhase] = useState<"locked" | "unlocking" | "viewing" | "error" | "expired">("locked");
@@ -153,7 +157,10 @@ export default function SharedLinkPage() {
 
     if (phase === "locked" || phase === "unlocking") {
         return (
+            <IncognitoGuard>
+            <StealthShield>
             <div className="min-h-screen bg-black flex items-center justify-center p-6">
+                {/* ... existing content ... */}
                 <div className="max-w-md w-full bg-zinc-900 rounded-2xl p-8 border border-zinc-800 shadow-2xl">
                     <div className="text-center mb-8">
                         <div className="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -194,11 +201,14 @@ export default function SharedLinkPage() {
                     </form>
                 </div>
             </div>
+            </StealthShield>
+            </IncognitoGuard>
         );
     }
 
     if (phase === "expired" || phase === "error") {
         return (
+            <IncognitoGuard>
             <div className="min-h-screen bg-black flex items-center justify-center p-6">
                 <div className="text-center max-w-sm">
                     <div className="w-20 h-20 bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -211,11 +221,14 @@ export default function SharedLinkPage() {
                     </p>
                 </div>
             </div>
+            </IncognitoGuard>
         );
     }
 
     // Viewing Phase
     return (
+        <IncognitoGuard>
+        <StealthShield>
         <div className="min-h-screen bg-black flex flex-col items-center justify-center relative">
             {isLoadingImage ? (
                 <div className="text-center">
@@ -237,7 +250,7 @@ export default function SharedLinkPage() {
                          </span>
                     </div>
 
-                    <div className="fixed bottom-8 gap-4 flex">
+                    <div className="fixed bottom-8 gap-4 flex items-center">
                          <Button
                             onClick={() => {
                                 const a = document.createElement('a');
@@ -250,12 +263,23 @@ export default function SharedLinkPage() {
                             <Download className="w-4 h-4 mr-2" />
                             Bild Speichern
                         </Button>
+
+                        <Button 
+                            variant="destructive"
+                            className="bg-red-500/80 hover:bg-red-600 backdrop-blur-md"
+                            onClick={wipeAndExit}
+                        >
+                            <Shield className="w-4 h-4 mr-2" />
+                            Wipe & Exit
+                        </Button>
                     </div>
                 </div>
             ) : (
                 <div className="text-red-500">Fehler beim Laden des Bildes</div>
             )}
         </div>
+        </StealthShield>
+        </IncognitoGuard>
     );
 }
 

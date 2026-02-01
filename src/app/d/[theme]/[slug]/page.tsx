@@ -24,6 +24,10 @@ import { RecipeTheme } from '@/components/chameleon/themes/RecipeTheme';
 import { WeatherTheme } from '@/components/chameleon/themes/WeatherTheme';
 import { GardenTheme } from '@/components/chameleon/themes/GardenTheme';
 import { DirectCameraTheme } from '@/components/chameleon/themes/DirectCameraTheme';
+import { EyeOff, Shield, X } from 'lucide-react';
+import { useBurnerCleanup } from '@/hooks/use-burner-cleanup';
+import { IncognitoGuard } from '@/components/security/IncognitoGuard';
+import { StealthShield } from '@/components/security/StealthShield';
 
 interface ChameleonPageProps {
   params: Promise<{
@@ -47,6 +51,8 @@ export default function ChameleonPage({ params }: ChameleonPageProps) {
   const [burnerSlug, setBurnerSlug] = useState<string | null>(null);
   const [isValidating, setIsValidating] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const { wipeAndExit } = useBurnerCleanup();
+  const [showWarning, setShowWarning] = useState(true);
 
   // Resolve params
   useEffect(() => {
@@ -201,5 +207,37 @@ export default function ChameleonPage({ params }: ChameleonPageProps) {
     }
   };
 
-  return renderTheme();
+  return (
+    <IncognitoGuard>
+    <StealthShield>
+    <div className="relative">
+      {/* Incognito Warning - Keep as reminder even after unlock */}
+      {showWarning && (
+        <div className="fixed top-0 left-0 right-0 z-50 bg-yellow-400 text-yellow-900 px-4 py-2 text-xs font-medium flex items-center justify-between shadow-md">
+            <div className="flex items-center gap-2">
+                <Shield className="w-4 h-4" />
+                <span>Security Note: Incognito Mode is recommended.</span>
+            </div>
+            <button onClick={() => setShowWarning(false)}>
+                <X className="w-4 h-4" />
+            </button>
+        </div>
+      )}
+
+      {/* Main Content */}
+      {renderTheme()}
+
+      {/* Panic Exit Button */}
+      <button 
+        onClick={wipeAndExit}
+        className="fixed bottom-4 right-4 z-50 bg-red-600 hover:bg-red-700 text-white rounded-full p-3 shadow-xl border-2 border-white/20 transition-transform active:scale-95 flex items-center gap-2"
+        title="Panic Exit (Wipe & Close)"
+      >
+        <Shield className="w-5 h-5" />
+        <span className="font-bold text-xs uppercase pr-1">Panic</span>
+      </button>
+    </div>
+    </StealthShield>
+    </IncognitoGuard>
+  );
 }

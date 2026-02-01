@@ -1,0 +1,381 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
+import {
+  Loader2,
+  Copy,
+  Check,
+  Plus,
+  ExternalLink,
+  Camera,
+  Utensils,
+  CloudSun,
+  Leaf,
+  Dumbbell,
+  FileText,
+  AlertTriangle,
+} from "lucide-react";
+import { QRCodeSVG } from "qrcode.react";
+import {
+  generateStorableBurnerKeyPair,
+  saveBurnerKeyPair,
+  buildBurnerLinkUrl,
+  importVaultKey,
+} from "@/lib/crypto-asymmetric";
+
+// Theme configuration (duplicated from Panel for now, ideally shared config)
+interface ThemeConfig {
+  id: string;
+  name: string;
+  description: string;
+  icon: typeof Camera;
+  color: string;
+  disabled?: boolean;
+}
+
+const THEMES: ThemeConfig[] = [
+  {
+    id: "direct",
+    name: "Direct Camera",
+    description: "Öffnet direkt die Kamera",
+    icon: Camera,
+    color: "bg-blue-500",
+  },
+  {
+    id: "recipes",
+    name: "Rezept Blog",
+    description: "Sieht aus wie ein Food Blog",
+    icon: Utensils,
+    color: "bg-orange-500",
+  },
+  {
+    id: "weather",
+    name: "Wetter App",
+    description: "Sieht aus wie eine Wetter App",
+    icon: CloudSun,
+    color: "bg-sky-500",
+  },
+  {
+    id: "garden",
+    name: "Garten Tipps",
+    description: "Sieht aus wie Pflanzen-Pflege App",
+    icon: Leaf,
+    color: "bg-green-500",
+  },
+  {
+    id: "fitness",
+    name: "Fitness Tracker",
+    description: "Sieht aus wie Sport App",
+    icon: Dumbbell,
+    color: "bg-purple-500",
+    disabled: true,
+  },
+  {
+    id: "notes",
+    name: "Notizen",
+    description: "Sieht aus wie Notiz App",
+    icon: FileText,
+    color: "bg-yellow-500",
+    disabled: true,
+  },
+];
+
+const CONTENT_SLUGS: Record<string, { slug: string; name: string }[]> = {
+  direct: [{ slug: "capture", name: "Schnell-Upload" }],
+  recipes: [
+    { slug: "apple-pie", name: "Apfelkuchen" },
+    { slug: "chocolate-cake", name: "Schoko-Torte" },
+  ],
+  weather: [
+    { slug: "sunny-forecast", name: "Sonnig" },
+    { slug: "cloudy-day", name: "Bewölkt" },
+  ],
+  garden: [
+    { slug: "monstera-care", name: "Monstera Pflege" },
+    { slug: "succulent-guide", name: "Sukkulenten" },
+  ],
+  fitness: [{ slug: "workout", name: "Training" }],
+  notes: [{ slug: "quick-note", name: "Schnelle Notiz" }],
+};
+
+interface CreateBurnerLinkDialogProps {
+  isOpen: boolean;
+  onClose: () => void;
+  onLinkCreated?: () => void; // Callback to refresh list
+  vaultKeyBytes: Uint8Array | null;
+}
+
+export function CreateBurnerLinkDialog({
+  isOpen,
+  onClose,
+  onLinkCreated,
+  vaultKeyBytes,
+}: CreateBurnerLinkDialogProps) {
+  const [selectedTheme, setSelectedTheme] = useState<string>("direct");
+  const [selectedContent, setSelectedContent] = useState<string>("");
+  const [maxUploads, setMaxUploads] = useState<number | null>(null);
+  const [expiresIn, setExpiresIn] = useState<number | null>(null);
+  const [isCreating, setIsCreating] = useState(false);
+  const [createdLink, setCreatedLink] = useState<{ url: string; slug: string } | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const [vaultKey, setVaultKey] = useState<CryptoKey | null>(null);
+
+  useEffect(() => {
+    if (vaultKeyBytes) {
+      importVaultKey(vaultKeyBytes).then(setVaultKey).catch(console.error);
+    } else {
+      setVaultKey(null);
+    }
+  }, [vaultKeyBytes]);
+
+  // Set default content when theme changes
+  useEffect(() => {
+    const contents = CONTENT_SLUGS[selectedTheme];
+    if (contents && contents.length > 0) {
+      setSelectedContent(contents[0].slug);
+    }
+  }, [selectedTheme]);
+
+  // Reset state when closed
+  useEffect(() => {
+    if (!isOpen) {
+      setCreatedLink(null);
+      setSelectedTheme("direct");
+      setIsCreating(false);
+      setError(null);
+    }
+  }, [isOpen]);
+
+  const handleCreate = async () => {
+    setIsCreating(true);
+    setError(null);
+
+    try {
+        if (!vaultKey) throw new Error("Vault locked");
+
+      // Generate keypair
+      const keyPair = await generateStorableBurnerKeyPair();
+
+      // Save keypair locally (Encrypted with Vault Key)
+      await saveBurnerKeyPair(keyPair.id, keyPair.publicKey, keyPair.privateKeyJwk, vaultKey);
+
+      // Create burner link via API
+      const response = await fetch("/api/burner/create", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          publicKey: keyPair.publicKey,
+          theme: selectedTheme,
+          contentSlug: selectedContent || "default",
+          maxUploads: maxUploads || undefined,
+          expiresIn: expiresIn || undefined,
+        }),
+      });
+
+      if (!response.ok) {
+        const data = await response.json();
+        throw new Error(data.error || "Failed to create link");
+      }
+
+      const data = await response.json();
+
+      // Build full URL with public key in fragment
+      const baseUrl = window.location.origin;
+      const fullUrl = buildBurnerLinkUrl(
+        baseUrl,
+        selectedTheme,
+        selectedContent || "default",
+        data.slug,
+        keyPair.publicKey
+      );
+
+      setCreatedLink({ url: fullUrl, slug: data.slug });
+      if (onLinkCreated) onLinkCreated();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Failed to create link");
+    } finally {
+      setIsCreating(false);
+    }
+  };
+
+  return (
+    <Dialog open={isOpen} onOpenChange={onClose}>
+      <DialogContent className="sm:max-w-md bg-white rounded-2xl p-0 overflow-hidden max-h-[90vh] overflow-y-auto z-[200]">
+        <div className="p-6">
+          <DialogHeader className="mb-4">
+            <div className="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-2">
+              <Plus className="w-6 h-6 text-blue-600" />
+            </div>
+            <DialogTitle className="text-center text-xl">Neuer Burner Link</DialogTitle>
+            <DialogDescription className="text-center">
+              Erstelle einen anonymen Upload-Link.
+            </DialogDescription>
+          </DialogHeader>
+
+          {createdLink ? (
+            <div className="space-y-6">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
+                  <Check className="w-8 h-8 text-green-600" />
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-1">Link erstellt!</h2>
+                <p className="text-sm text-gray-500">Teile diesen Link mit deinem Kontakt</p>
+              </div>
+
+              {/* QR Code */}
+              <div className="bg-white rounded-2xl p-6 flex flex-col items-center border border-gray-100">
+                <QRCodeSVG value={createdLink.url} size={200} level="M" />
+                <p className="text-xs text-gray-400 mt-4 text-center break-all">
+                  {createdLink.url.slice(0, 50)}...
+                </p>
+              </div>
+
+              {/* Actions */}
+              <div className="space-y-3">
+                <Button
+                  onClick={async () => {
+                    await navigator.clipboard.writeText(createdLink.url);
+                  }}
+                  className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 rounded-xl flex items-center justify-center gap-2"
+                >
+                  <Copy className="w-5 h-5" />
+                  Link kopieren
+                </Button>
+
+                <Button
+                  onClick={() => window.open(createdLink.url, "_blank")}
+                  variant="outline"
+                  className="w-full h-12 rounded-xl flex items-center justify-center gap-2"
+                >
+                  <ExternalLink className="w-5 h-5" />
+                  Link öffnen
+                </Button>
+
+                <Button
+                  onClick={onClose}
+                  variant="ghost"
+                  className="w-full h-12 rounded-xl"
+                >
+                  Fertig
+                </Button>
+              </div>
+
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+                <div className="flex gap-3">
+                  <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <div>
+                    <p className="text-sm font-medium text-amber-800">Wichtig</p>
+                    <p className="text-xs text-amber-700 mt-1">
+                      Der private Schlüssel ist nur auf diesem Gerät gespeichert.
+                      Nur du kannst die empfangenen Fotos entschlüsseln.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="space-y-6">
+              {/* Theme Selection */}
+              <div>
+                <h3 className="text-sm font-semibold text-gray-700 mb-3">Tarnung wählen</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  {THEMES.map((theme) => {
+                    const Icon = theme.icon;
+                    return (
+                      <button
+                        key={theme.id}
+                        onClick={() => !theme.disabled && setSelectedTheme(theme.id)}
+                        disabled={theme.disabled}
+                        className={`p-4 rounded-xl text-left transition-all ${
+                          theme.disabled
+                            ? "bg-gray-100 opacity-50 cursor-not-allowed"
+                            : selectedTheme === theme.id
+                            ? "bg-blue-50 ring-2 ring-blue-500"
+                            : "bg-white hover:bg-gray-50 border border-gray-100"
+                        }`}
+                      >
+                        <div
+                          className={`w-10 h-10 rounded-xl ${theme.color} flex items-center justify-center mb-2`}
+                        >
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
+                        <p className="font-medium text-gray-900 text-sm">{theme.name}</p>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Options */}
+              <div>
+                <h3 className="text-sm font-semibold text-gray-700 mb-3">Optionen</h3>
+                <div className="space-y-3">
+                  <div className="bg-white rounded-xl border border-gray-100 p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <p className="font-medium text-gray-900">Max. Uploads</p>
+                        <p className="text-xs text-gray-500">Begrenzt die Anzahl</p>
+                      </div>
+                      <select
+                        value={maxUploads || ""}
+                        onChange={(e) =>
+                          setMaxUploads(e.target.value ? parseInt(e.target.value) : null)
+                        }
+                        className="bg-gray-100 rounded-lg px-3 py-2 text-sm"
+                      >
+                        <option value="">Unbegrenzt</option>
+                        <option value="1">1 Upload</option>
+                        <option value="5">5 Uploads</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Error */}
+              {error && (
+                <div className="bg-red-50 border border-red-200 rounded-xl p-4 flex items-center gap-3">
+                  <AlertTriangle className="w-5 h-5 text-red-500" />
+                  <p className="text-sm text-red-700">{error}</p>
+                </div>
+              )}
+
+              {/* Actions */}
+              <div className="flex gap-3">
+                <Button
+                  onClick={onClose}
+                  variant="outline"
+                  className="flex-1 h-12 rounded-xl"
+                >
+                  Abbrechen
+                </Button>
+                <Button
+                  onClick={handleCreate}
+                  disabled={isCreating}
+                  className="flex-1 bg-blue-600 hover:bg-blue-700 text-white h-12 rounded-xl"
+                >
+                  {isCreating ? (
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                  ) : (
+                    <>
+                      <Plus className="w-5 h-5 mr-2" />
+                      Erstellen
+                    </>
+                  )}
+                </Button>
+              </div>
+            </div>
+          )}
+        </div>
+      </DialogContent>
+    </Dialog>
+  );
+}
