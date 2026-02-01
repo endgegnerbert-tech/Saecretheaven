@@ -76,6 +76,63 @@ export function decrypt(
     return decrypted;
 }
 
+// Magic Header: "PAD1" (0x50 0x41 0x44 0x31) to identify padded files
+const MAGIC_HEADER = new Uint8Array([0x50, 0x41, 0x44, 0x31]);
+
+/**
+ * Pad data to ISO 7816-4 (0x80 ... 0x00) and align to 64KB blocks
+ * Uses a Magic Header to distinguish padded files from legacy data.
+ * This masks the exact file size to mitigate traffic analysis.
+ */
+export function padData(data: Uint8Array): Uint8Array {
+    const BLOCK_SIZE = 64 * 1024; // 64KB
+
+    // Prepend Magic Header
+    const content = new Uint8Array(MAGIC_HEADER.length + data.length);
+    content.set(MAGIC_HEADER);
+    content.set(data, MAGIC_HEADER.length);
+
+    // Calculate padded size
+    const targetSize = Math.ceil((content.length + 1) / BLOCK_SIZE) * BLOCK_SIZE;
+
+    const padded = new Uint8Array(targetSize);
+    padded.set(content);
+    padded[content.length] = 0x80; // Mark start of padding
+    // Remaining bytes are 0x00 by default in new Uint8Array
+    return padded;
+}
+
+/**
+ * Remove ISO 7816-4 padding
+ * Checks for Magic Header to maintain backward compatibility with legacy files.
+ */
+export function unpadData(data: Uint8Array): Uint8Array {
+    // 1. Check for Magic Header (Legacy Compatibility)
+    if (data.length < MAGIC_HEADER.length) return data;
+
+    for (let j = 0; j < MAGIC_HEADER.length; j++) {
+        if (data[j] !== MAGIC_HEADER[j]) {
+            // No magic header -> Legacy unpadded file
+            return data;
+        }
+    }
+
+    // 2. Unpad (ISO 7816-4)
+    let i = data.length - 1;
+    while (i >= MAGIC_HEADER.length && data[i] === 0x00) {
+        i--;
+    }
+
+    if (i >= MAGIC_HEADER.length && data[i] === 0x80) {
+        // Return data stripped of Header and Padding
+        return data.slice(MAGIC_HEADER.length, i);
+    }
+
+    // Header found but padding broken?
+    // Return content without header as a fallback, though likely corrupted.
+    return data.slice(MAGIC_HEADER.length);
+}
+
 /**
  * Verschlüsselt ein File (Blob/File) und gibt encrypted Blob zurück
  */
@@ -85,8 +142,9 @@ export async function encryptFile(
 ): Promise<{ encrypted: Blob; nonce: string }> {
     const arrayBuffer = await file.arrayBuffer();
     const data = new Uint8Array(arrayBuffer);
+    const padded = padData(data);
 
-    const encrypted = encrypt(data, secretKey);
+    const encrypted = encrypt(padded, secretKey);
 
     // Konvertiere Base64 zurück zu Blob für Storage
     const ciphertextBytes = decodeBase64(encrypted.ciphertext);
@@ -118,7 +176,8 @@ export async function decryptFile(
     const decrypted = decrypt(encrypted, secretKey);
     if (!decrypted) return null;
 
-    return new Blob([decrypted as any], { type: originalMimeType });
+    const unpadded = unpadData(decrypted);
+    return new Blob([unpadded as any], { type: originalMimeType });
 }
 
 /**

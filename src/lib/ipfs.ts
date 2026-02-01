@@ -115,9 +115,11 @@ export async function uploadToIPFS(
         const formData = new FormData();
         formData.append('file', blob, fileName || 'encrypted-photo.bin');
 
+        // SECURITY: Do not include specific app/type metadata to prevent indexing
+        // by the storage provider or "Eye in the Sky" adversaries.
         const metadata = JSON.stringify({
-            name: fileName || 'photovault-encrypted',
-            keyvalues: { app: 'photovault', type: 'encrypted-photo' }
+            name: 'blob',
+            keyvalues: { type: 'blob' }
         });
         formData.append('pinataMetadata', metadata);
 
