@@ -569,6 +569,13 @@ export function getBurnerPublicKeys(): Record<string, string> {
 }
 
 /**
+ * Load all encrypted burner keypairs (without decrypting private keys)
+ */
+export function loadAllBurnerKeyPairs(): Record<string, EncryptedBurnerKeyPair> {
+  return loadEncryptedStore();
+}
+
+/**
  * Find Key ID by Public Key
  */
 export function findKeyIdByPublicKey(publicKey: string): string | null {
