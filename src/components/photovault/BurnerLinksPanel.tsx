@@ -39,6 +39,7 @@ import {
 } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
 import { Button } from '@/components/ui/button';
+import { loadKeyFromStorage } from '@/lib/crypto';
 import {
   generateStorableBurnerKeyPair,
   saveBurnerKeyPair,
@@ -46,6 +47,7 @@ import {
   loadAllBurnerKeyPairs,
   decryptFileFromBurner,
   buildBurnerLinkUrl,
+  importVaultKey,
 } from '@/lib/crypto-asymmetric';
 import type { BurnerLink, StealthUpload } from '@/lib/supabase';
 
@@ -431,8 +433,13 @@ function CreateBurnerLink({
       // Generate keypair
       const keyPair = await generateStorableBurnerKeyPair();
 
-      // Save keypair locally
-      await saveBurnerKeyPair(keyPair.id, keyPair.publicKey, keyPair.privateKeyJwk);
+      // Load vault key for encryption
+      const rawVaultKey = loadKeyFromStorage();
+      if (!rawVaultKey) throw new Error('Vault is locked');
+      const vaultKey = await importVaultKey(rawVaultKey);
+
+      // Save keypair locally (encrypted)
+      await saveBurnerKeyPair(keyPair.id, keyPair.publicKey, keyPair.privateKeyJwk, vaultKey);
 
       // Create burner link via API
       const response = await fetch('/api/burner/create', {
