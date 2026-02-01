@@ -43,20 +43,25 @@ function padData(data) {
  */
 function encrypt(data, secretKey) {
     const nonce = nacl.randomBytes(nacl.secretbox.nonceLength);
+    const nonceBase64 = naclUtil.encodeBase64(nonce);
 
-    // Debug: Log encryption parameters (compare with main thread decrypt)
+    // Debug: Log encryption parameters INCLUDING nonce (compare with main thread decrypt)
     console.log('[Crypto Worker] encrypt params:', {
         keyLength: secretKey.length,
         keyFirst4: Array.from(secretKey.slice(0, 4)),
         nonceLength: nonce.length,
+        nonceFirst4: Array.from(nonce.slice(0, 4)),
+        nonceBase64: nonceBase64,
         dataLength: data.length,
     });
 
     const ciphertext = nacl.secretbox(data, nonce, secretKey);
 
+    console.log('[Crypto Worker] ciphertext created, length:', ciphertext.length);
+
     return {
         ciphertext: ciphertext,
-        nonce: naclUtil.encodeBase64(nonce)
+        nonce: nonceBase64
     };
 }
 

@@ -30,7 +30,7 @@ function getCryptoWorker(): Worker | null {
 
     if (!cryptoWorker) {
         try {
-            cryptoWorker = new Worker('/workers/crypto-worker.js');
+            cryptoWorker = new Worker('/workers/crypto-worker.js?v=' + Date.now());
             cryptoWorker.onmessage = handleCryptoWorkerMessage;
             cryptoWorker.onerror = handleCryptoWorkerError;
             console.log('[Crypto] Worker initialized');
