@@ -173,6 +173,15 @@ export function encrypt(
     secretKey: Uint8Array
 ): EncryptedData {
     const nonce = nacl.randomBytes(nacl.secretbox.nonceLength);
+
+    // Debug: Log encryption parameters
+    console.log('[Crypto] encrypt params:', {
+        keyLength: secretKey.length,
+        keyFirst4: Array.from(secretKey.slice(0, 4)),
+        nonceLength: nonce.length,
+        dataLength: data.length,
+    });
+
     const ciphertext = nacl.secretbox(data, nonce, secretKey);
 
     return {
@@ -191,7 +200,21 @@ export function decrypt(
     const ciphertext = decodeBase64(encrypted.ciphertext);
     const nonce = decodeBase64(encrypted.nonce);
 
+    // Debug: Log all parameters for troubleshooting
+    console.log('[Crypto] decrypt params:', {
+        keyLength: secretKey.length,
+        keyFirst4: Array.from(secretKey.slice(0, 4)),
+        nonceLength: nonce.length,
+        nonceFirst4: Array.from(nonce.slice(0, 4)),
+        ciphertextLength: ciphertext.length,
+        expectedNonceLength: nacl.secretbox.nonceLength,
+        expectedKeyLength: nacl.secretbox.keyLength,
+    });
+
     const decrypted = nacl.secretbox.open(ciphertext, nonce, secretKey);
+    if (!decrypted) {
+        console.error('[Crypto] decrypt FAILED - secretbox.open returned null');
+    }
     return decrypted;
 }
 
@@ -268,6 +291,7 @@ export async function encryptFile(
     const arrayBuffer = await file.arrayBuffer();
 
     // Try to use Web Worker for non-blocking encryption
+    // Note: public/js/nacl*.js must match npm tweetnacl@1.0.3 for compatibility
     const worker = getCryptoWorker();
 
     if (worker) {

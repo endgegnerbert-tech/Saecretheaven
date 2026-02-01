@@ -43,6 +43,15 @@ function padData(data) {
  */
 function encrypt(data, secretKey) {
     const nonce = nacl.randomBytes(nacl.secretbox.nonceLength);
+
+    // Debug: Log encryption parameters (compare with main thread decrypt)
+    console.log('[Crypto Worker] encrypt params:', {
+        keyLength: secretKey.length,
+        keyFirst4: Array.from(secretKey.slice(0, 4)),
+        nonceLength: nonce.length,
+        dataLength: data.length,
+    });
+
     const ciphertext = nacl.secretbox(data, nonce, secretKey);
 
     return {
