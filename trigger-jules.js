@@ -1,6 +1,6 @@
 
 const supabaseUrl = 'https://jextayidnmtsoofugnig.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImpleHRheWlkbm10c29vZnVnbmlnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjkwODM1MDAsImV4cCI6MjA4NDY1OTUwMH0.vxRq32MPWyO_znst5nFCiQ7AWJtlJeOFWMY-RlZmjrs';
+const supabaseKey = 'AQ.Ab8RN6IV-RWykJG9XwaaOO4VaZRRkqXQHQ4KBpkYh5yxFXAXqg';
 const batchUrl = `${supabaseUrl}/functions/v1/moderate-batch`;
 
 async function triggerJules() {

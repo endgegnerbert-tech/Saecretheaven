@@ -20,6 +20,7 @@ import {
   Send,
   CheckCircle2,
   Calendar,
+  Link2,
 } from "lucide-react";
 import type { AppState } from "./PhotoVaultApp";
 import { useEncryption } from "@/hooks/use-encryption";
@@ -31,6 +32,7 @@ import { Switch } from "@/components/ui/switch";
 import { useSettingsStore } from "@/lib/storage/settings-store";
 import { useGalleryData } from "@/hooks/use-gallery-data";
 import { DevicePairing } from "@/components/features/settings/DevicePairing";
+import { BurnerLinksPanel } from "./BurnerLinksPanel";
 
 // Helper to format date
 function formatDate(dateStr?: string): string {
@@ -86,6 +88,7 @@ export function SettingsPanel({ state: appState, setState: setAppState, onRestar
   const [showClearCacheWarning, setShowClearCacheWarning] = useState(false);
   const [showPairingFromSettings, setShowPairingFromSettings] = useState(false);
   const [showFeedbackModal, setShowFeedbackModal] = useState(false);
+  const [showBurnerLinks, setShowBurnerLinks] = useState(false);
 
   // Fetch devices
   const { data: realDevices = [] } = useQuery({
@@ -163,6 +166,16 @@ export function SettingsPanel({ state: appState, setState: setAppState, onRestar
         devices={displayDevices}
         onBack={() => setShowDevices(false)}
         onAddDevice={() => setShowPairingFromSettings(true)}
+      />
+    );
+  }
+
+  if (showBurnerLinks && authUser?.id && authUser?.vaultKeyHash) {
+    return (
+      <BurnerLinksPanel
+        userId={authUser.id}
+        vaultKeyHash={authUser.vaultKeyHash}
+        onBack={() => setShowBurnerLinks(false)}
       />
     );
   }
@@ -263,6 +276,24 @@ export function SettingsPanel({ state: appState, setState: setAppState, onRestar
               </div>
             </button>
           </div>
+        </section>
+
+        {/* Stealth Drop */}
+        <section>
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-gray-500 px-1 mb-2">Stealth Drop</h2>
+          <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
+            <button onClick={() => setShowBurnerLinks(true)} className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors">
+              <div className="flex items-center gap-3">
+                <Link2 className="w-5 h-5 text-blue-500" />
+                <div className="text-left">
+                  <span className="text-base font-medium text-gray-900 block">Burner Links</span>
+                  <span className="text-sm text-gray-500">Empfange anonyme Uploads</span>
+                </div>
+              </div>
+              <ChevronRight className="w-4 h-4 text-gray-400" />
+            </button>
+          </div>
+          <p className="text-xs text-gray-500 px-1 mt-2">Erstelle Links für sichere, verschlüsselte Übertragungen.</p>
         </section>
 
         {/* Security */}

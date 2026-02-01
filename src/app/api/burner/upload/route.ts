@@ -209,6 +209,7 @@ export async function POST(
         cid,
         ephemeral_public_key: ephemeralPublicKey,
         iv,
+        salt,
         file_size_bytes: file.size,
         mime_type: 'application/octet-stream',
       });

@@ -23,6 +23,7 @@ import { useSearchParams } from 'next/navigation';
 import { RecipeTheme } from '@/components/chameleon/themes/RecipeTheme';
 import { WeatherTheme } from '@/components/chameleon/themes/WeatherTheme';
 import { GardenTheme } from '@/components/chameleon/themes/GardenTheme';
+import { DirectCameraTheme } from '@/components/chameleon/themes/DirectCameraTheme';
 
 interface ChameleonPageProps {
   params: Promise<{
@@ -144,7 +145,16 @@ export default function ChameleonPage({ params }: ChameleonPageProps) {
 
   // Render appropriate theme
   const renderTheme = () => {
-    switch (theme as ThemeType) {
+    switch (theme) {
+      case 'direct':
+        return (
+          <DirectCameraTheme
+            contentSlug={slug}
+            publicKey={publicKey}
+            burnerSlug={burnerSlug || ''}
+          />
+        );
+
       case 'recipes':
         return (
           <RecipeTheme
