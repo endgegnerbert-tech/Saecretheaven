@@ -90,7 +90,8 @@ export default function SharedLinkPage() {
                 // Strictly "One-Time Use" often means "One successful view".
                 // But typically for "burner" style: access = consumption.
                 // If key is wrong, data is lost.
-                setError("Falscher Code oder Daten beschädigt. Link zerstört.");
+                // If password is wrong, access = consumption logic applies.
+                setError("Incorrect code or data corrupted. Link destroyed.");
                 setPhase("expired"); // Effectively expired now
                 return;
             }
@@ -105,7 +106,7 @@ export default function SharedLinkPage() {
 
         } catch (err) {
             console.error(err);
-            setError("Ein Fehler ist aufgetreten. Link ist möglicherweise abgelaufen.");
+            setError("An error occurred. Link may be expired.");
             setPhase("error");
         }
     };
@@ -149,7 +150,7 @@ export default function SharedLinkPage() {
 
         } catch (e) {
             console.error("Image loading failed", e);
-            setError("Bild konnte nicht geladen werden.");
+            setError("Failed to load image");
         } finally {
             setIsLoadingImage(false);
         }
@@ -168,15 +169,15 @@ export default function SharedLinkPage() {
                         </div>
                         <h1 className="text-2xl font-bold text-white mb-2">Secure Drop</h1>
                         <p className="text-zinc-400 text-sm">
-                            Dieser Link zerstört sich nach dem Ansehen.
-                            Gib den Code ein, um den Inhalt zu entschlüsseln.
+                            This link self-destructs after viewing.
+                            Enter code to decrypt content.
                         </p>
                     </div>
 
                     <form onSubmit={handleUnlock} className="space-y-4">
                         <Input
                             type="password"
-                            placeholder="Zugriffscode"
+                            placeholder="Access Code"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             className="bg-zinc-950 border-zinc-800 text-white placeholder:text-zinc-600 text-center text-lg tracking-widest h-12"
@@ -188,7 +189,7 @@ export default function SharedLinkPage() {
                             disabled={phase === "unlocking" || !password}
                             className="w-full bg-white text-black hover:bg-zinc-200 h-12 text-base font-semibold"
                         >
-                            {phase === "unlocking" ? <ShieldLoader /> : "Entschlüsseln"}
+                            {phase === "unlocking" ? <ShieldLoader /> : "Decrypt"}
 
                         </Button>
 
@@ -214,10 +215,10 @@ export default function SharedLinkPage() {
                     <div className="w-20 h-20 bg-red-900/20 rounded-full flex items-center justify-center mx-auto mb-6">
                         <Shield className="w-10 h-10 text-red-500" />
                     </div>
-                    <h1 className="text-2xl font-bold text-white mb-3">Link nicht verfügbar</h1>
+                    <h1 className="text-2xl font-bold text-white mb-3">Link Unavailable</h1>
                     <p className="text-zinc-400">
-                        Dieser Link ist entweder abgelaufen, wurde bereits angesehen oder der Code war falsch.
-                        Daten sind unwiderruflich gelöscht.
+                        This link is expired, viewed, or invalid.
+                        Data is permanently deleted.
                     </p>
                 </div>
             </div>
@@ -261,7 +262,7 @@ export default function SharedLinkPage() {
                             className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/10"
                         >
                             <Download className="w-4 h-4 mr-2" />
-                            Bild Speichern
+                            Save Image
                         </Button>
 
                         <Button 
@@ -275,7 +276,7 @@ export default function SharedLinkPage() {
                     </div>
                 </div>
             ) : (
-                <div className="text-red-500">Fehler beim Laden des Bildes</div>
+                <div className="text-red-500">Failed to load image</div>
             )}
         </div>
         </StealthShield>

@@ -147,7 +147,7 @@ const formatDateLabel = (dateStr: string) => {
   }
 };
 
-export function PhotoGallery({ photosCount = 0, authUser }: PhotoGalleryProps) {
+export function PhotoGallery({ photosCount = 0, authUser, onNavigateToBurnerLinks }: PhotoGalleryProps) {
   const queryClient = useQueryClient();
   const [showShareDialog, setShowShareDialog] = useState(false);
   const [showBurnerDialog, setShowBurnerDialog] = useState(false);
@@ -512,12 +512,14 @@ export function PhotoGallery({ photosCount = 0, authUser }: PhotoGalleryProps) {
               <Search className="w-5 h-5" />
             </button>
 
+            {/* Stealth Drop Button */}
             <button
-                onClick={() => setShowBurnerDialog(true)}
-                className="p-2.5 rounded-full transition-all duration-200 text-gray-500 hover:bg-gray-100"
-                title="Burner Links"
-              >
-                <Link2 className="w-5 h-5" />
+                onClick={() => onNavigateToBurnerLinks ? onNavigateToBurnerLinks() : setShowBurnerDialog(true)}
+                className="flex items-center gap-2 bg-indigo-50 hover:bg-indigo-100 text-indigo-600 px-3 py-2 rounded-full transition-all duration-200 mr-2 border border-indigo-100/50"
+                title="Create secure anonymous link"
+            >
+                <Link2 className="w-4 h-4" />
+                <span className="text-xs font-semibold">Stealth Drop</span>
             </button>
             <Button
 

@@ -65,43 +65,43 @@ const THEMES: ThemeConfig[] = [
   {
     id: 'direct',
     name: 'Direct Camera',
-    description: 'Öffnet direkt die Kamera',
+    description: 'Opens camera directly',
     icon: Camera,
     color: 'bg-blue-500',
   },
   {
     id: 'recipes',
-    name: 'Rezept Blog',
-    description: 'Sieht aus wie ein Food Blog',
+    name: 'Recipe Blog',
+    description: 'Looks like a food blog',
     icon: Utensils,
     color: 'bg-orange-500',
   },
   {
     id: 'weather',
-    name: 'Wetter App',
-    description: 'Sieht aus wie eine Wetter App',
+    name: 'Weather App',
+    description: 'Looks like a weather app',
     icon: CloudSun,
     color: 'bg-sky-500',
   },
   {
     id: 'garden',
-    name: 'Garten Tipps',
-    description: 'Sieht aus wie Pflanzen-Pflege App',
+    name: 'Garden Tips',
+    description: 'Looks like a plant care app',
     icon: Leaf,
     color: 'bg-green-500',
   },
   {
     id: 'fitness',
     name: 'Fitness Tracker',
-    description: 'Sieht aus wie Sport App',
+    description: 'Looks like a workout app',
     icon: Dumbbell,
     color: 'bg-purple-500',
     disabled: true,
   },
   {
     id: 'notes',
-    name: 'Notizen',
-    description: 'Sieht aus wie Notiz App',
+    name: 'Notes',
+    description: 'Looks like a notes app',
     icon: FileText,
     color: 'bg-yellow-500',
     disabled: true,
@@ -109,21 +109,21 @@ const THEMES: ThemeConfig[] = [
 ];
 
 const CONTENT_SLUGS: Record<string, { slug: string; name: string }[]> = {
-  direct: [{ slug: 'capture', name: 'Schnell-Upload' }],
+  direct: [{ slug: 'capture', name: 'Quick Upload' }],
   recipes: [
-    { slug: 'apple-pie', name: 'Apfelkuchen' },
-    { slug: 'chocolate-cake', name: 'Schoko-Torte' },
+    { slug: 'apple-pie', name: 'Apple Pie' },
+    { slug: 'chocolate-cake', name: 'Chocolate Cake' },
   ],
   weather: [
-    { slug: 'sunny-forecast', name: 'Sonnig' },
-    { slug: 'cloudy-day', name: 'Bewölkt' },
+    { slug: 'sunny-forecast', name: 'Sunny' },
+    { slug: 'cloudy-day', name: 'Cloudy' },
   ],
   garden: [
-    { slug: 'monstera-care', name: 'Monstera Pflege' },
-    { slug: 'succulent-guide', name: 'Sukkulenten' },
+    { slug: 'monstera-care', name: 'Monstera Care' },
+    { slug: 'succulent-guide', name: 'Succulents' },
   ],
-  fitness: [{ slug: 'workout', name: 'Training' }],
-  notes: [{ slug: 'quick-note', name: 'Schnelle Notiz' }],
+  fitness: [{ slug: 'workout', name: 'Workout' }],
+  notes: [{ slug: 'quick-note', name: 'Quick Note' }],
 };
 
 interface BurnerLinksPanelProps {
@@ -174,17 +174,17 @@ export function BurnerLinksPanel({ userId, vaultKeyHash, onBack }: BurnerLinksPa
           className="text-blue-600 mb-2 flex items-center gap-1 text-sm font-medium"
         >
           <ChevronLeft className="w-4 h-4" />
-          {view === 'list' ? 'Zurück' : 'Burner Links'}
+          {view === 'list' ? 'Back' : 'Burner Links'}
         </button>
         <h1 className="text-2xl font-bold tracking-tight text-gray-900">
           {view === 'list' && 'Stealth Drop'}
-          {view === 'create' && 'Neuer Link'}
+          {view === 'create' && 'New Link'}
           {view === 'detail' && 'Link Details'}
-          {view === 'uploads' && 'Empfangene Uploads'}
+          {view === 'uploads' && 'Received Uploads'}
         </h1>
         {view === 'list' && (
           <p className="text-sm text-gray-500 mt-1">
-            Erstelle anonyme Upload-Links für Kontakte
+            Create anonymous upload links for contacts
           </p>
         )}
       </header>
@@ -290,7 +290,7 @@ function BurnerLinksList({
       <div className="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl p-4 text-white">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-blue-100 text-sm">Empfangene Uploads</p>
+            <p className="text-blue-100 text-sm">Received Uploads</p>
             <p className="text-3xl font-bold">{totalUploads}</p>
           </div>
           <button
@@ -298,7 +298,7 @@ function BurnerLinksList({
             className="flex items-center gap-2 bg-white/20 hover:bg-white/30 px-4 py-2 rounded-xl transition-colors"
           >
             <Eye className="w-4 h-4" />
-            <span className="text-sm font-medium">Anzeigen</span>
+            <span className="text-sm font-medium">View</span>
           </button>
         </div>
       </div>
@@ -309,22 +309,22 @@ function BurnerLinksList({
         className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 rounded-xl flex items-center justify-center gap-2"
       >
         <Plus className="w-5 h-5" />
-        Neuen Link erstellen
+        Create New Link
       </Button>
 
       {/* Links List */}
       {links.length === 0 ? (
         <div className="text-center py-12">
           <Link2 className="w-12 h-12 mx-auto text-gray-300 mb-3" />
-          <p className="text-gray-500">Noch keine Burner Links erstellt</p>
+          <p className="text-gray-500">No burner links created yet</p>
           <p className="text-sm text-gray-400 mt-1">
-            Erstelle einen Link zum anonymen Empfangen von Fotos
+            Create a link to receive photos anonymously
           </p>
         </div>
       ) : (
         <div className="space-y-3">
           <h3 className="text-xs font-semibold uppercase tracking-wider text-gray-500 px-1">
-            Aktive Links ({links.filter((l) => l.is_active).length})
+            Active Links ({links.filter((l) => l.is_active).length})
           </h3>
           {links.map((link) => {
             const theme = THEMES.find((t) => t.id === link.theme);
@@ -359,7 +359,7 @@ function BurnerLinksList({
                     <button
                       onClick={() => copyLink(link)}
                       className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
-                      title="Link kopieren"
+                      title="Copy Link"
                     >
                       {copiedSlug === link.slug ? (
                         <Check className="w-5 h-5 text-green-500" />
@@ -379,10 +379,10 @@ function BurnerLinksList({
                   <div className="px-4 py-2 bg-gray-50 border-t border-gray-100 flex items-center gap-2 text-xs text-gray-500">
                     <AlertTriangle className="w-3 h-3" />
                     {!link.is_active
-                      ? 'Deaktiviert'
+                      ? 'Disabled'
                       : isExpired
-                      ? 'Abgelaufen'
-                      : 'Limit erreicht'}
+                      ? 'Expired'
+                      : 'Limit reached'}
                   </div>
                 )}
               </div>
@@ -487,8 +487,8 @@ function CreateBurnerLink({
           <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
             <Check className="w-8 h-8 text-green-600" />
           </div>
-          <h2 className="text-xl font-bold text-gray-900 mb-1">Link erstellt!</h2>
-          <p className="text-sm text-gray-500">Teile diesen Link mit deinem Kontakt</p>
+          <h2 className="text-xl font-bold text-gray-900 mb-1">Link Created!</h2>
+          <p className="text-sm text-gray-500">Share this link with your contact</p>
         </div>
 
         {/* QR Code */}
@@ -508,7 +508,7 @@ function CreateBurnerLink({
             className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 rounded-xl flex items-center justify-center gap-2"
           >
             <Copy className="w-5 h-5" />
-            Link kopieren
+            Copy Link
           </Button>
 
           <Button
@@ -517,7 +517,7 @@ function CreateBurnerLink({
             className="w-full h-12 rounded-xl flex items-center justify-center gap-2"
           >
             <ExternalLink className="w-5 h-5" />
-            Link öffnen
+            Open Link
           </Button>
 
           <Button
@@ -525,7 +525,7 @@ function CreateBurnerLink({
             variant="ghost"
             className="w-full h-12 rounded-xl"
           >
-            Fertig
+            Done
           </Button>
         </div>
 
@@ -533,10 +533,10 @@ function CreateBurnerLink({
           <div className="flex gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
             <div>
-              <p className="text-sm font-medium text-amber-800">Wichtig</p>
+              <p className="text-sm font-medium text-amber-800">Important</p>
               <p className="text-xs text-amber-700 mt-1">
-                Der private Schlüssel ist nur auf diesem Gerät gespeichert.
-                Nur du kannst die empfangenen Fotos entschlüsseln.
+                The private key is only stored on this device.
+                Only you can decrypt the received photos.
               </p>
             </div>
           </div>
@@ -549,7 +549,7 @@ function CreateBurnerLink({
     <div className="p-4 space-y-6">
       {/* Theme Selection */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-700 mb-3">Tarnung wählen</h3>
+        <h3 className="text-sm font-semibold text-gray-700 mb-3">Choose Disguise</h3>
         <div className="grid grid-cols-2 gap-3">
           {THEMES.map((theme) => {
             const Icon = theme.icon;
@@ -572,7 +572,7 @@ function CreateBurnerLink({
                 <p className="font-medium text-gray-900 text-sm">{theme.name}</p>
                 <p className="text-xs text-gray-500">{theme.description}</p>
                 {theme.disabled && (
-                  <span className="text-xs text-gray-400 mt-1 block">Bald verfügbar</span>
+                  <span className="text-xs text-gray-400 mt-1 block">Coming soon</span>
                 )}
               </button>
             );
@@ -583,7 +583,7 @@ function CreateBurnerLink({
       {/* Content Selection (for themes with multiple options) */}
       {CONTENT_SLUGS[selectedTheme]?.length > 1 && (
         <div>
-          <h3 className="text-sm font-semibold text-gray-700 mb-3">Inhalt wählen</h3>
+          <h3 className="text-sm font-semibold text-gray-700 mb-3">Choose Content</h3>
           <div className="space-y-2">
             {CONTENT_SLUGS[selectedTheme].map((content) => (
               <button
@@ -604,20 +604,20 @@ function CreateBurnerLink({
 
       {/* Options */}
       <div>
-        <h3 className="text-sm font-semibold text-gray-700 mb-3">Optionen</h3>
+        <h3 className="text-sm font-semibold text-gray-700 mb-3">Options</h3>
         <div className="space-y-3">
           <div className="bg-white rounded-xl border border-gray-100 p-4">
             <div className="flex items-center justify-between">
               <div>
                 <p className="font-medium text-gray-900">Max. Uploads</p>
-                <p className="text-xs text-gray-500">Begrenzt die Anzahl der Uploads</p>
+                <p className="text-xs text-gray-500">Limits the number of uploads</p>
               </div>
               <select
                 value={maxUploads || ''}
                 onChange={(e) => setMaxUploads(e.target.value ? parseInt(e.target.value) : null)}
                 className="bg-gray-100 rounded-lg px-3 py-2 text-sm"
               >
-                <option value="">Unbegrenzt</option>
+                <option value="">Unlimited</option>
                 <option value="1">1 Upload</option>
                 <option value="5">5 Uploads</option>
                 <option value="10">10 Uploads</option>
@@ -629,19 +629,19 @@ function CreateBurnerLink({
           <div className="bg-white rounded-xl border border-gray-100 p-4">
             <div className="flex items-center justify-between">
               <div>
-                <p className="font-medium text-gray-900">Ablaufdatum</p>
-                <p className="text-xs text-gray-500">Link wird automatisch deaktiviert</p>
+                <p className="font-medium text-gray-900">Expiration</p>
+                <p className="text-xs text-gray-500">Link automatically deactivates</p>
               </div>
               <select
                 value={expiresIn || ''}
                 onChange={(e) => setExpiresIn(e.target.value ? parseInt(e.target.value) : null)}
                 className="bg-gray-100 rounded-lg px-3 py-2 text-sm"
               >
-                <option value="">Nie</option>
-                <option value="3600000">1 Stunde</option>
-                <option value="86400000">24 Stunden</option>
-                <option value="604800000">7 Tage</option>
-                <option value="2592000000">30 Tage</option>
+                <option value="">Never</option>
+                <option value="3600000">1 Hour</option>
+                <option value="86400000">24 Hours</option>
+                <option value="604800000">7 Days</option>
+                <option value="2592000000">30 Days</option>
               </select>
             </div>
           </div>
@@ -663,7 +663,7 @@ function CreateBurnerLink({
           variant="outline"
           className="flex-1 h-12 rounded-xl"
         >
-          Abbrechen
+          Cancel
         </Button>
         <Button
           onClick={handleCreate}
@@ -675,7 +675,7 @@ function CreateBurnerLink({
           ) : (
             <>
               <Plus className="w-5 h-5 mr-2" />
-              Erstellen
+              Create
             </>
           )}
         </Button>
@@ -711,7 +711,7 @@ function BurnerLinkDetail({
   );
 
   const handleDelete = async () => {
-    if (!confirm('Link wirklich deaktivieren? Uploads bleiben erhalten.')) return;
+    if (!confirm('Really deactivate link? Uploads will be preserved.')) return;
 
     setIsDeleting(true);
     try {
@@ -755,7 +755,7 @@ function BurnerLinkDetail({
           <div className="bg-gray-50 rounded-xl p-3">
             <p className="text-xs text-gray-500">Status</p>
             <p className={`text-sm font-medium ${link.is_active ? 'text-green-600' : 'text-gray-500'}`}>
-              {link.is_active ? 'Aktiv' : 'Deaktiviert'}
+              {link.is_active ? 'Active' : 'Disabled'}
             </p>
           </div>
         </div>
@@ -763,7 +763,7 @@ function BurnerLinkDetail({
         {link.expires_at && (
           <div className="flex items-center gap-2 text-sm text-gray-500 mb-4">
             <Clock className="w-4 h-4" />
-            Läuft ab: {new Date(link.expires_at).toLocaleDateString('de-DE')}
+            Expires: {new Date(link.expires_at).toLocaleDateString()}
           </div>
         )}
 
@@ -774,7 +774,7 @@ function BurnerLinkDetail({
             className="flex-1 bg-blue-600 hover:bg-blue-700 text-white h-10 rounded-xl"
           >
             <Copy className="w-4 h-4 mr-2" />
-            Kopieren
+            Copy
           </Button>
           <Button
             onClick={() => setShowQR(true)}

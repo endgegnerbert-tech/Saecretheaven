@@ -45,43 +45,43 @@ const THEMES: ThemeConfig[] = [
   {
     id: "direct",
     name: "Direct Camera",
-    description: "Öffnet direkt die Kamera",
+    description: "Opens camera directly",
     icon: Camera,
     color: "bg-blue-500",
   },
   {
     id: "recipes",
-    name: "Rezept Blog",
-    description: "Sieht aus wie ein Food Blog",
+    name: "Recipe Blog",
+    description: "Looks like a food blog",
     icon: Utensils,
     color: "bg-orange-500",
   },
   {
     id: "weather",
-    name: "Wetter App",
-    description: "Sieht aus wie eine Wetter App",
+    name: "Weather App",
+    description: "Looks like a weather app",
     icon: CloudSun,
     color: "bg-sky-500",
   },
   {
     id: "garden",
-    name: "Garten Tipps",
-    description: "Sieht aus wie Pflanzen-Pflege App",
+    name: "Garden Tips",
+    description: "Looks like a plant care app",
     icon: Leaf,
     color: "bg-green-500",
   },
   {
     id: "fitness",
     name: "Fitness Tracker",
-    description: "Sieht aus wie Sport App",
+    description: "Looks like a workout app",
     icon: Dumbbell,
     color: "bg-purple-500",
     disabled: true,
   },
   {
     id: "notes",
-    name: "Notizen",
-    description: "Sieht aus wie Notiz App",
+    name: "Notes",
+    description: "Looks like a notes app",
     icon: FileText,
     color: "bg-yellow-500",
     disabled: true,
@@ -89,21 +89,21 @@ const THEMES: ThemeConfig[] = [
 ];
 
 const CONTENT_SLUGS: Record<string, { slug: string; name: string }[]> = {
-  direct: [{ slug: "capture", name: "Schnell-Upload" }],
+  direct: [{ slug: "capture", name: "Quick Upload" }],
   recipes: [
-    { slug: "apple-pie", name: "Apfelkuchen" },
-    { slug: "chocolate-cake", name: "Schoko-Torte" },
+    { slug: "apple-pie", name: "Apple Pie" },
+    { slug: "chocolate-cake", name: "Chocolate Cake" },
   ],
   weather: [
-    { slug: "sunny-forecast", name: "Sonnig" },
-    { slug: "cloudy-day", name: "Bewölkt" },
+    { slug: "sunny-forecast", name: "Sunny" },
+    { slug: "cloudy-day", name: "Cloudy" },
   ],
   garden: [
-    { slug: "monstera-care", name: "Monstera Pflege" },
-    { slug: "succulent-guide", name: "Sukkulenten" },
+    { slug: "monstera-care", name: "Monstera Care" },
+    { slug: "succulent-guide", name: "Succulents" },
   ],
-  fitness: [{ slug: "workout", name: "Training" }],
-  notes: [{ slug: "quick-note", name: "Schnelle Notiz" }],
+  fitness: [{ slug: "workout", name: "Workout" }],
+  notes: [{ slug: "quick-note", name: "Quick Note" }],
 };
 
 interface CreateBurnerLinkDialogProps {
@@ -214,9 +214,9 @@ export function CreateBurnerLinkDialog({
             <div className="mx-auto w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-2">
               <Plus className="w-6 h-6 text-blue-600" />
             </div>
-            <DialogTitle className="text-center text-xl">Neuer Burner Link</DialogTitle>
+            <DialogTitle className="text-center text-xl">New Burner Link</DialogTitle>
             <DialogDescription className="text-center">
-              Erstelle einen anonymen Upload-Link.
+              Create an anonymous upload link.
             </DialogDescription>
           </DialogHeader>
 
@@ -226,8 +226,8 @@ export function CreateBurnerLinkDialog({
                 <div className="w-16 h-16 mx-auto mb-4 rounded-full bg-green-100 flex items-center justify-center">
                   <Check className="w-8 h-8 text-green-600" />
                 </div>
-                <h2 className="text-xl font-bold text-gray-900 mb-1">Link erstellt!</h2>
-                <p className="text-sm text-gray-500">Teile diesen Link mit deinem Kontakt</p>
+                <h2 className="text-xl font-bold text-gray-900 mb-1">Link Created!</h2>
+                <p className="text-sm text-gray-500">Share this link with your contact</p>
               </div>
 
               {/* QR Code */}
@@ -247,7 +247,7 @@ export function CreateBurnerLinkDialog({
                   className="w-full bg-blue-600 hover:bg-blue-700 text-white h-12 rounded-xl flex items-center justify-center gap-2"
                 >
                   <Copy className="w-5 h-5" />
-                  Link kopieren
+                  Copy Link
                 </Button>
 
                 <Button
@@ -256,7 +256,7 @@ export function CreateBurnerLinkDialog({
                   className="w-full h-12 rounded-xl flex items-center justify-center gap-2"
                 >
                   <ExternalLink className="w-5 h-5" />
-                  Link öffnen
+                  Open Link
                 </Button>
 
                 <Button
@@ -264,7 +264,7 @@ export function CreateBurnerLinkDialog({
                   variant="ghost"
                   className="w-full h-12 rounded-xl"
                 >
-                  Fertig
+                  Done
                 </Button>
               </div>
 
@@ -272,10 +272,10 @@ export function CreateBurnerLinkDialog({
                 <div className="flex gap-3">
                   <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-medium text-amber-800">Wichtig</p>
+                    <p className="text-sm font-medium text-amber-800">Important</p>
                     <p className="text-xs text-amber-700 mt-1">
-                      Der private Schlüssel ist nur auf diesem Gerät gespeichert.
-                      Nur du kannst die empfangenen Fotos entschlüsseln.
+                      The private key is only stored on this device.
+                      Only you can decrypt the received photos.
                     </p>
                   </div>
                 </div>
@@ -285,7 +285,7 @@ export function CreateBurnerLinkDialog({
             <div className="space-y-6">
               {/* Theme Selection */}
               <div>
-                <h3 className="text-sm font-semibold text-gray-700 mb-3">Tarnung wählen</h3>
+                <h3 className="text-sm font-semibold text-gray-700 mb-3">Choose Disguise</h3>
                 <div className="grid grid-cols-2 gap-3">
                   {THEMES.map((theme) => {
                     const Icon = theme.icon;
@@ -316,13 +316,13 @@ export function CreateBurnerLinkDialog({
 
               {/* Options */}
               <div>
-                <h3 className="text-sm font-semibold text-gray-700 mb-3">Optionen</h3>
+                <h3 className="text-sm font-semibold text-gray-700 mb-3">Options</h3>
                 <div className="space-y-3">
                   <div className="bg-white rounded-xl border border-gray-100 p-4">
                     <div className="flex items-center justify-between">
                       <div>
                         <p className="font-medium text-gray-900">Max. Uploads</p>
-                        <p className="text-xs text-gray-500">Begrenzt die Anzahl</p>
+                        <p className="text-xs text-gray-500">Limits the number</p>
                       </div>
                       <select
                         value={maxUploads || ""}
@@ -331,7 +331,7 @@ export function CreateBurnerLinkDialog({
                         }
                         className="bg-gray-100 rounded-lg px-3 py-2 text-sm"
                       >
-                        <option value="">Unbegrenzt</option>
+                        <option value="">Unlimited</option>
                         <option value="1">1 Upload</option>
                         <option value="5">5 Uploads</option>
                       </select>
@@ -355,7 +355,7 @@ export function CreateBurnerLinkDialog({
                   variant="outline"
                   className="flex-1 h-12 rounded-xl"
                 >
-                  Abbrechen
+                  Cancel
                 </Button>
                 <Button
                   onClick={handleCreate}
@@ -367,7 +367,7 @@ export function CreateBurnerLinkDialog({
                   ) : (
                     <>
                       <Plus className="w-5 h-5 mr-2" />
-                      Erstellen
+                      Create
                     </>
                   )}
                 </Button>
