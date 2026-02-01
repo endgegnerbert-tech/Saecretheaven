@@ -261,6 +261,10 @@ export async function encryptFile(
     file: File,
     secretKey: Uint8Array
 ): Promise<{ encrypted: Blob; nonce: string }> {
+    // Debug: Log key hash for encryption
+    const keyHash = await getUserKeyHash(secretKey);
+    console.log('[Crypto] encryptFile using key hash:', keyHash, 'key length:', secretKey.length);
+
     const arrayBuffer = await file.arrayBuffer();
 
     // Try to use Web Worker for non-blocking encryption
@@ -334,6 +338,10 @@ export async function decryptFile(
     secretKey: Uint8Array,
     originalMimeType: string
 ): Promise<Blob | null> {
+    // Debug: Log key hash for decryption
+    const keyHash = await getUserKeyHash(secretKey);
+    console.log('[Crypto] decryptFile using key hash:', keyHash, 'key length:', secretKey.length, 'nonce:', nonce.slice(0, 10) + '...');
+
     const arrayBuffer = await encryptedBlob.arrayBuffer();
     const ciphertext = new Uint8Array(arrayBuffer);
 
@@ -343,7 +351,10 @@ export async function decryptFile(
     };
 
     const decrypted = decrypt(encrypted, secretKey);
-    if (!decrypted) return null;
+    if (!decrypted) {
+        console.error('[Crypto] decryptFile FAILED - nacl.secretbox.open returned null');
+        return null;
+    }
 
     const unpadded = unpadData(decrypted);
     return new Blob([unpadded as any], { type: originalMimeType });

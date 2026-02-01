@@ -32,7 +32,7 @@ interface ChameleonPageProps {
   }>;
 }
 
-type ThemeType = 'recipes' | 'weather' | 'garden' | 'fitness' | 'notes';
+type ThemeType = 'direct' | 'recipes' | 'weather' | 'garden' | 'fitness' | 'notes';
 
 interface BurnerLinkData {
   publicKey: string;

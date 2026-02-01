@@ -32,7 +32,7 @@ const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
 
 // Valid themes for chameleon routing
-const VALID_THEMES = ['recipes', 'weather', 'garden', 'fitness', 'notes'] as const;
+const VALID_THEMES = ['direct', 'recipes', 'weather', 'garden', 'fitness', 'notes'] as const;
 type Theme = typeof VALID_THEMES[number];
 
 interface CreateBurnerRequest {
