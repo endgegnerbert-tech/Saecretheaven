@@ -31,17 +31,26 @@ export function DecryptedThumbnail({
 
     useEffect(() => {
         // Skip if no key or already have URL
-        if (!secretKey || imageUrl) return;
+        if (!secretKey) {
+            console.log('[Thumbnail] No secretKey available for:', photo.cid);
+            return;
+        }
+        if (imageUrl) return;
 
         const loadAndDecrypt = async () => {
             setIsDecrypting(true);
+            console.log('[Thumbnail] Starting decrypt for:', photo.cid, { id: photo.id, hasBlob: !!photo.encryptedBlob, hasKey: !!secretKey });
 
             try {
                 let blobToDecrypt: Blob | undefined = photo.encryptedBlob;
 
                 // If no blob in memory, try to lazy-load from local IndexedDB first
                 if (!blobToDecrypt && photo.id) {
+                    console.log('[Thumbnail] Loading from IndexedDB, id:', photo.id);
                     blobToDecrypt = await getPhotoBlob(photo.id);
+                    console.log('[Thumbnail] IndexedDB result:', blobToDecrypt ? `${blobToDecrypt.size} bytes` : 'null');
+                } else if (!blobToDecrypt && !photo.id) {
+                    console.log('[Thumbnail] No photo.id - cannot load from IndexedDB:', photo.cid);
                 }
 
                 // If still no local blob, try to fetch from IPFS (cloud)
@@ -64,13 +73,14 @@ export function DecryptedThumbnail({
 
                 // If still no blob, show error
                 if (!blobToDecrypt) {
-                    console.log('No blob available for:', photo.cid);
+                    console.log('[Thumbnail] No blob available for:', photo.cid, '- showing as cloud photo');
                     // Don't set error - this might be a cloud-only photo not yet fetched
                     setIsCloudPhoto(true);
                     return;
                 }
 
                 // Decrypt the blob
+                console.log('[Thumbnail] Decrypting:', { blobSize: blobToDecrypt.size, nonce: photo.nonce?.slice(0, 10) + '...', mimeType: photo.mimeType });
                 const decrypted = await decryptFile(
                     blobToDecrypt,
                     photo.nonce,
@@ -79,10 +89,12 @@ export function DecryptedThumbnail({
                 );
 
                 if (decrypted) {
+                    console.log('[Thumbnail] Decryption success:', decrypted.size, 'bytes');
                     const url = URL.createObjectURL(decrypted);
                     currentUrlRef.current = url;
                     setImageUrl(url);
                 } else {
+                    console.error('[Thumbnail] Decryption returned null - key/nonce mismatch?', photo.cid);
                     setError(true);
                 }
             } catch (err) {

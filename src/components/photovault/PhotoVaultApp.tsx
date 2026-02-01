@@ -433,14 +433,22 @@ export function PhotoVaultApp() {
     if (appPhase === "auth") {
         // Check if we have an unverified session to show the correct initial screen
         const isUnverified = session?.user && !(session.user as any).emailVerified;
-        
+
+        // Also check localStorage for pending verification (signUp without session)
+        const pendingVerificationEmail = typeof window !== "undefined"
+            ? localStorage.getItem("saecretheaven_pending_verification")
+            : null;
+
+        const showVerificationSent = isUnverified || !!pendingVerificationEmail;
+        const verificationEmail = session?.user?.email || pendingVerificationEmail || undefined;
+
         return (
             <div className="min-h-screen ios-bg-gray">
                 <div className="max-w-[1200px] mx-auto min-h-screen bg-[#F2F2F7]">
-                    <AuthScreen 
-                        onSuccess={handleAuthSuccess} 
-                        initialMode={isUnverified ? "verification-sent" : "welcome"}
-                        userEmail={session?.user?.email || undefined}
+                    <AuthScreen
+                        onSuccess={handleAuthSuccess}
+                        initialMode={showVerificationSent ? "verification-sent" : "welcome"}
+                        userEmail={verificationEmail}
                     />
                 </div>
             </div>

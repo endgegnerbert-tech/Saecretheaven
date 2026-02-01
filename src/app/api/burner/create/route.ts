@@ -83,8 +83,25 @@ export async function POST(
       );
     }
 
-    // Get user's vault_key_hash
-    const vaultKeyHash = (session.user as { vaultKeyHash?: string }).vaultKeyHash;
+    // Get user's vault_key_hash - try session first, fallback to DB query
+    let vaultKeyHash = (session.user as { vault_key_hash?: string }).vault_key_hash;
+
+    // If not in session, fetch from database (Better Auth might not include additionalFields in session)
+    if (!vaultKeyHash) {
+      const supabaseAdmin = createClient(supabaseUrl, supabaseServiceKey);
+      const { data: userData, error: userError } = await supabaseAdmin
+        .from('user')
+        .select('vault_key_hash')
+        .eq('id', session.user.id)
+        .single();
+
+      if (!userError && userData?.vault_key_hash) {
+        vaultKeyHash = userData.vault_key_hash;
+        console.log('[Burner Create] vault_key_hash fetched from DB');
+      }
+    }
+
+    console.log('[Burner Create] User:', session.user.id, 'vault_key_hash:', vaultKeyHash ? 'present' : 'MISSING');
 
     if (!vaultKeyHash) {
       return NextResponse.json(

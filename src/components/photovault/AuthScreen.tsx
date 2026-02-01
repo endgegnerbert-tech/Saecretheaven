@@ -108,6 +108,8 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
       }
 
       if (result.data?.user) {
+        // Clear pending verification on successful login
+        localStorage.removeItem("saecretheaven_pending_verification");
         onSuccess({
           id: result.data.user.id,
           email: result.data.user.email,
@@ -162,7 +164,8 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
         return;
       }
 
-      // 3. Success! Show email popup modal
+      // 3. Success! Store pending verification in localStorage and show modal
+      localStorage.setItem("saecretheaven_pending_verification", email);
       setShowEmailModal(true);
     } catch (err) {
       console.error("Registration error:", err);
@@ -179,6 +182,12 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
   const handleEmailModalClose = () => {
     setShowEmailModal(false);
     setMode("verification-sent");
+  };
+
+  const handleBackToWelcome = () => {
+    // Clear pending verification when user explicitly goes back
+    localStorage.removeItem("saecretheaven_pending_verification");
+    setMode("welcome");
   };
 
   // Email check modal (shown immediately after registration)
@@ -226,14 +235,17 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
 
         <div className="space-y-4">
           <Button
-            onClick={() => setMode("login")}
+            onClick={() => {
+              localStorage.removeItem("saecretheaven_pending_verification");
+              setMode("login");
+            }}
             className="w-full bg-blue-600 hover:bg-blue-700 text-white rounded-xl h-14 text-lg font-semibold shadow-lg shadow-blue-500/20"
             size="lg"
           >
             Go to Login
           </Button>
           <Button
-            onClick={() => setMode("welcome")}
+            onClick={handleBackToWelcome}
             variant="outline"
             className="w-full border-2 border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-400 rounded-xl h-14 text-lg font-semibold"
             size="lg"

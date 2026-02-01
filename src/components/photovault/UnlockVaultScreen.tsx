@@ -40,11 +40,17 @@ export function UnlockVaultScreen({
         setError(null);
 
         try {
-            // Normalize input
-            const normalizedPhrase = phrase
-                .trim()
-                .replace(/[\s\n]+/g, "-")
-                .replace(/-+/g, "-");
+            // Normalize input - support both BIP39 (space-separated) and legacy (dash-separated)
+            const trimmed = phrase.trim();
+
+            // Check if it looks like BIP39 (words separated by spaces/newlines)
+            const wordCount = trimmed.split(/[\s\n]+/).length;
+            const isBIP39 = wordCount >= 12 && !trimmed.includes('-');
+
+            // Normalize: BIP39 uses spaces, legacy uses dashes
+            const normalizedPhrase = isBIP39
+                ? trimmed.replace(/[\s\n]+/g, ' ').toLowerCase()  // BIP39: lowercase, single spaces
+                : trimmed.replace(/[\s\n]+/g, '-').replace(/-+/g, '-');  // Legacy: dashes
 
             // Try to decode the key
             const secretKey = recoveryPhraseToKey(normalizedPhrase);
@@ -122,11 +128,11 @@ export function UnlockVaultScreen({
                             setPhrase(e.target.value);
                             setError(null);
                         }}
-                        placeholder="abc123XY-def456AB-..."
+                        placeholder="abandon ability able about above absent absorb abstract absurd abuse access accident..."
                         className="min-h-[120px] bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700 rounded-xl text-base p-4 resize-none"
                     />
                     <p className="text-[12px] text-gray-400 px-1 text-center">
-                        Separated by hyphens or spaces (12 words)
+                        Enter your 24-word recovery phrase (separated by spaces)
                     </p>
                 </div>
 
