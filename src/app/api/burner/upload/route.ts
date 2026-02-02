@@ -22,6 +22,13 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import {
+  checkRateLimit,
+  getClientIp,
+  RATE_LIMITS,
+  rateLimitResponse,
+  rateLimitHeaders,
+} from '@/lib/rate-limit';
 
 // Use anon key for public access
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -48,8 +55,16 @@ interface ErrorResponse {
 export async function POST(
   request: NextRequest
 ): Promise<NextResponse<UploadResponse | ErrorResponse>> {
-  // SECURITY: Do NOT log any request details
-  // This protects source anonymity
+  // SECURITY: Do NOT log any request details (protects source anonymity)
+  // But we DO rate limit by IP to prevent abuse
+
+  // Rate limiting: 10 uploads per IP per hour
+  const clientIp = getClientIp(request);
+  const rateLimit = checkRateLimit(`burner-upload:${clientIp}`, RATE_LIMITS.BURNER_UPLOAD);
+
+  if (!rateLimit.success) {
+    return rateLimitResponse(rateLimit) as NextResponse<ErrorResponse>;
+  }
 
   try {
     const formData = await request.formData();
@@ -143,9 +158,9 @@ export async function POST(
       });
 
       if (!ipfsResponse.ok) {
-        console.error('[Burner Upload] IPFS upload failed');
+        console.error('[Burner Upload] IPFS upload failed:', ipfsResponse.status);
         return NextResponse.json(
-          { error: 'Upload failed' },
+          { error: 'Upload failed', code: 'IPFS_ERROR' },
           { status: 502 }
         );
       }
@@ -160,41 +175,50 @@ export async function POST(
       } catch {
         console.error('[Burner Upload] Invalid IPFS response');
         return NextResponse.json(
-          { error: 'Upload failed' },
+          { error: 'Upload failed', code: 'IPFS_PARSE_ERROR' },
           { status: 502 }
         );
       }
     } else {
-      // Fallback: Try Pinata if configured
+      // Primary: Try Pinata (more reliable than self-hosted)
       const pinataJwt = process.env.NEXT_PUBLIC_PINATA_JWT;
 
       if (pinataJwt) {
         const pinataFormData = new FormData();
         pinataFormData.append('file', file, 'encrypted-upload.bin');
 
-        const pinataResponse = await fetch('https://api.pinata.cloud/pinning/pinFileToIPFS', {
-          method: 'POST',
-          headers: {
-            'Authorization': `Bearer ${pinataJwt}`,
-          },
-          body: pinataFormData,
-        });
+        try {
+          const pinataResponse = await fetch('https://api.pinata.cloud/pinning/pinFileToIPFS', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer ${pinataJwt}`,
+            },
+            body: pinataFormData,
+          });
 
-        if (!pinataResponse.ok) {
-          console.error('[Burner Upload] Pinata upload failed');
+          if (!pinataResponse.ok) {
+            const errorText = await pinataResponse.text().catch(() => 'Unknown error');
+            console.error('[Burner Upload] Pinata upload failed:', pinataResponse.status, errorText);
+            return NextResponse.json(
+              { error: 'Upload failed', code: 'PINATA_ERROR' },
+              { status: 502 }
+            );
+          }
+
+          const pinataResult = await pinataResponse.json();
+          cid = pinataResult.IpfsHash;
+        } catch (pinataError) {
+          console.error('[Burner Upload] Pinata network error:', pinataError);
           return NextResponse.json(
-            { error: 'Upload failed' },
-            { status: 502 }
+            { error: 'Upload service unavailable', code: 'PINATA_NETWORK_ERROR' },
+            { status: 503 }
           );
         }
-
-        const pinataResult = await pinataResponse.json();
-        cid = pinataResult.IpfsHash;
       } else {
         // No IPFS configured - this is a configuration error
         console.error('[Burner Upload] No IPFS provider configured');
         return NextResponse.json(
-          { error: 'Server configuration error' },
+          { error: 'Server configuration error', code: 'NO_IPFS_PROVIDER' },
           { status: 500 }
         );
       }
@@ -215,10 +239,10 @@ export async function POST(
       });
 
     if (insertError) {
-      // SECURITY: Don't log the error details
-      console.error('[Burner Upload] Metadata insert failed');
+      // Log error code only (not sensitive data)
+      console.error('[Burner Upload] Metadata insert failed:', insertError.code);
       return NextResponse.json(
-        { error: 'Upload failed' },
+        { error: 'Upload failed', code: 'DB_INSERT_ERROR' },
         { status: 500 }
       );
     }

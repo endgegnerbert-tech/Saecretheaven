@@ -163,11 +163,23 @@ export function StealthCamera({
       return;
     }
 
+    if (!publicKey) {
+      setError('Missing encryption key. Please use the complete link.');
+      setState('error');
+      return;
+    }
+
     setState('uploading');
 
     try {
       // Encrypt the photo with the public key
-      const encrypted = await encryptFileForBurner(capturedBlob, publicKey);
+      let encrypted;
+      try {
+        encrypted = await encryptFileForBurner(capturedBlob, publicKey);
+      } catch (encryptError) {
+        console.error('[StealthCamera] Encryption failed:', encryptError);
+        throw new Error('Encryption failed. Invalid link.');
+      }
 
       // Prepare form data for upload
       const formData = new FormData();
@@ -177,15 +189,42 @@ export function StealthCamera({
       formData.append('iv', encrypted.iv);
       formData.append('salt', encrypted.salt);
 
-      // Upload to burner endpoint
-      const response = await fetch('/api/burner/upload', {
-        method: 'POST',
-        body: formData,
-      });
+      // Upload to burner endpoint with retry
+      let response;
+      let retries = 2;
 
-      if (!response.ok) {
-        const result = await response.json();
-        throw new Error(result.error || 'Upload failed');
+      while (retries >= 0) {
+        try {
+          response = await fetch('/api/burner/upload', {
+            method: 'POST',
+            body: formData,
+          });
+          break; // Success, exit retry loop
+        } catch (fetchError) {
+          if (retries === 0) throw fetchError;
+          retries--;
+          // Wait 1 second before retry
+          await new Promise(resolve => setTimeout(resolve, 1000));
+        }
+      }
+
+      if (!response || !response.ok) {
+        const result = response ? await response.json().catch(() => ({})) : {};
+        const errorCode = result.code || 'UNKNOWN';
+
+        // User-friendly error messages based on error code
+        let userMessage = 'Upload failed. Please try again.';
+        if (errorCode === 'RATE_LIMIT_EXCEEDED') {
+          userMessage = 'Too many uploads. Please wait and try again.';
+        } else if (errorCode === 'PINATA_ERROR' || errorCode === 'IPFS_ERROR') {
+          userMessage = 'Upload service temporarily unavailable.';
+        } else if (errorCode === 'LINK_EXPIRED') {
+          userMessage = 'This link has expired.';
+        } else if (errorCode === 'UPLOAD_LIMIT_REACHED') {
+          userMessage = 'Upload limit reached for this link.';
+        }
+
+        throw new Error(userMessage);
       }
 
       // SECURITY: Clear all captured data

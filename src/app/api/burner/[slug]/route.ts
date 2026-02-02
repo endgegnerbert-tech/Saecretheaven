@@ -15,6 +15,12 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@supabase/supabase-js';
+import {
+  checkRateLimit,
+  getClientIp,
+  RATE_LIMITS,
+  rateLimitResponse,
+} from '@/lib/rate-limit';
 
 // Use anon key for public access
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
@@ -37,6 +43,14 @@ export async function GET(
 ): Promise<NextResponse<BurnerLinkPublicData | ErrorResponse>> {
   // SECURITY: Do NOT log the slug or any request details
   // This is intentional to protect source anonymity
+
+  // Rate limiting: 100 lookups per IP per hour
+  const clientIp = getClientIp(request);
+  const rateLimit = checkRateLimit(`burner-lookup:${clientIp}`, RATE_LIMITS.BURNER_LOOKUP);
+
+  if (!rateLimit.success) {
+    return rateLimitResponse(rateLimit) as NextResponse<ErrorResponse>;
+  }
 
   try {
     const { slug } = await params;

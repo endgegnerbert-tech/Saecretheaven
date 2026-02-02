@@ -27,6 +27,11 @@ import { NextRequest, NextResponse } from 'next/server';
 import { headers } from 'next/headers';
 import { auth } from '@/lib/auth';
 import { createClient } from '@supabase/supabase-js';
+import {
+  checkRateLimit,
+  RATE_LIMITS,
+  rateLimitResponse,
+} from '@/lib/rate-limit';
 
 const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
 const supabaseServiceKey = process.env.SUPABASE_SERVICE_ROLE_KEY!;
@@ -81,6 +86,13 @@ export async function POST(
         { error: 'Authentication required', code: 'UNAUTHORIZED' },
         { status: 401 }
       );
+    }
+
+    // Rate limiting: 20 creations per user per hour
+    const rateLimit = checkRateLimit(`burner-create:${session.user.id}`, RATE_LIMITS.BURNER_CREATE);
+
+    if (!rateLimit.success) {
+      return rateLimitResponse(rateLimit) as NextResponse<ErrorResponse>;
     }
 
     // Get user's vault_key_hash - try session first, fallback to DB query
@@ -202,8 +214,9 @@ export async function POST(
         }
 
         // Build URL with new slug
+        // Note: URL doesn't include slug or key - client appends them in fragment
         const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://saecretheaven.com';
-        const url = `${baseUrl}/d/${theme}/${contentSlug}?s=${newSlug}`;
+        const url = `${baseUrl}/d/${theme}/${contentSlug}`;
 
         return NextResponse.json({
           slug: newSlug,
@@ -220,10 +233,11 @@ export async function POST(
     }
 
     // Build URL
-    // Note: Public key goes in fragment (#k=...) for privacy
+    // SECURITY: URL doesn't include slug or public key
+    // Client appends them in fragment: #s={slug}&k={publicKey}
+    // This prevents server/messenger logging of sensitive data
     const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'https://saecretheaven.com';
-    const url = `${baseUrl}/d/${theme}/${contentSlug}?s=${slug}`;
-    // Note: Client should append #k={publicKey} when sharing
+    const url = `${baseUrl}/d/${theme}/${contentSlug}`;
 
     return NextResponse.json({
       slug,

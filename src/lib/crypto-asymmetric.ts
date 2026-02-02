@@ -668,36 +668,78 @@ export async function decryptFileFromBurner(
 // ============================================================
 
 /**
- * Extract public key from a burner link URL
+ * Parse URL fragment manually (URLSearchParams can't handle Base64 correctly)
  *
- * URL format: /d/[theme]/[content]?s=[slug]&k=[publicKey]
- * Or: Fragment-based (more private): /d/[theme]/[content]?s=[slug]#k=[publicKey]
+ * URLSearchParams interprets '=' as key-value separator, which breaks Base64 padding.
+ * This function handles fragments like: #s=abc123&k=eyJhbGc...==
  */
-export function extractPublicKeyFromUrl(url: string): string | null {
+function parseFragment(fragment: string): Record<string, string> {
+  const params: Record<string, string> = {};
+  if (!fragment) return params;
+
+  // Remove leading # if present
+  const clean = fragment.startsWith('#') ? fragment.slice(1) : fragment;
+
+  // Split by & and find first = for each part
+  clean.split('&').forEach(part => {
+    const eqIndex = part.indexOf('=');
+    if (eqIndex > 0) {
+      params[part.slice(0, eqIndex)] = part.slice(eqIndex + 1);
+    }
+  });
+
+  return params;
+}
+
+/**
+ * Extract public key and slug from a burner link URL
+ *
+ * NEW URL format: /d/[theme]/[content]#s=[slug]&k=[publicKey]
+ * Both slug and key are in fragment - never sent to server or logged by messengers
+ *
+ * Backwards compatible with old format: /d/[theme]/[content]?s=[slug]#k=[publicKey]
+ */
+export function extractFromBurnerUrl(url: string): { slug: string | null; publicKey: string | null } {
   try {
     const urlObj = new URL(url, window.location.origin);
 
-    // Check query param first
-    const queryKey = urlObj.searchParams.get('k');
-    if (queryKey) return queryKey;
+    // Parse fragment manually (not URLSearchParams - Base64 issues)
+    const fragmentParams = parseFragment(urlObj.hash);
 
-    // Check fragment (more private - not sent to server)
-    if (urlObj.hash) {
-      const hashParams = new URLSearchParams(urlObj.hash.slice(1));
-      const fragmentKey = hashParams.get('k');
-      if (fragmentKey) return fragmentKey;
+    // Get values from fragment first (preferred - privacy)
+    let publicKey = fragmentParams['k'] || null;
+    let slug = fragmentParams['s'] || null;
+
+    // Backwards compatibility: Check query params if not in fragment
+    if (!slug) {
+      slug = urlObj.searchParams.get('s');
     }
 
-    return null;
+    return { slug, publicKey };
   } catch {
-    return null;
+    return { slug: null, publicKey: null };
   }
+}
+
+/**
+ * Extract public key from a burner link URL
+ * @deprecated Use extractFromBurnerUrl() instead for both slug and key
+ */
+export function extractPublicKeyFromUrl(url: string): string | null {
+  return extractFromBurnerUrl(url).publicKey;
 }
 
 /**
  * Build a burner link URL
  *
- * Uses fragment (#k=...) for public key to avoid sending it to server logs
+ * SECURITY: Both slug and public key are in the URL fragment (#s=...&k=...)
+ * This means they are NEVER sent to the server and NEVER logged by:
+ * - Server logs
+ * - CDN/proxy logs
+ * - Messenger preview crawlers (WhatsApp, Telegram, etc.)
+ * - Browser referrer headers
+ *
+ * WhatsApp/Messenger will only see: https://app.com/d/recipes/apple-pie
  */
 export function buildBurnerLinkUrl(
   baseUrl: string,
@@ -706,8 +748,8 @@ export function buildBurnerLinkUrl(
   slug: string,
   publicKey: string
 ): string {
-  // Use fragment for public key (more private - not in server logs)
-  return `${baseUrl}/d/${theme}/${contentSlug}?s=${slug}#k=${publicKey}`;
+  // Both slug and public key in fragment for maximum privacy
+  return `${baseUrl}/d/${theme}/${contentSlug}#s=${slug}&k=${publicKey}`;
 }
 
 // ============================================================

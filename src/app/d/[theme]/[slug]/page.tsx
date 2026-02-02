@@ -5,17 +5,19 @@
  *
  * Renders the appropriate theme based on URL parameters.
  *
- * URL Format: /d/[theme]/[slug]?s=[burnerSlug]#k=[publicKey]
+ * URL Format: /d/[theme]/[contentSlug]#s=[burnerSlug]&k=[publicKey]
  *
  * - theme: 'recipes', 'weather', 'garden', etc.
- * - slug: Content identifier (e.g., 'apple-pie')
- * - s: Burner link slug (query param)
- * - k: Public key (URL fragment - not sent to server)
+ * - contentSlug: Content identifier (e.g., 'apple-pie')
+ * - s: Burner link slug (URL fragment - not sent to server!)
+ * - k: Public key (URL fragment - not sent to server!)
  *
  * SECURITY:
- * - Public key is in URL fragment (#k=...) so it's never sent to server
- * - Burner slug is used to validate link is active
+ * - BOTH slug and public key are in URL fragment (#s=...&k=...)
+ * - Fragment is NEVER sent to server (HTTP spec)
+ * - WhatsApp/Messenger only see: /d/recipes/apple-pie
  * - All encryption happens client-side
+ * - Public key MUST come from fragment - never trust server fallback
  */
 
 import { useEffect, useState } from 'react';
@@ -59,36 +61,60 @@ export default function ChameleonPage({ params }: ChameleonPageProps) {
     params.then(setResolvedParams);
   }, [params]);
 
-  // Extract public key from URL fragment and validate burner link
+  // Extract slug and public key from URL fragment
+  // SECURITY: Both are in fragment to prevent server/messenger logging
   useEffect(() => {
     if (!resolvedParams) return;
 
-    // Get burner slug from query params
-    const slug = searchParams.get('s');
-    setBurnerSlug(slug);
+    // Parse URL fragment manually - URLSearchParams can't handle Base64 correctly
+    // because it interprets '=' as key-value separator, breaking Base64 padding
+    let fragmentSlug: string | null = null;
+    let fragmentKey: string | null = null;
 
-    // Get public key from URL fragment (client-side only, not sent to server)
     if (typeof window !== 'undefined') {
       const hash = window.location.hash;
-      if (hash) {
-        const hashParams = new URLSearchParams(hash.slice(1));
-        const key = hashParams.get('k');
-        if (key) {
-          setPublicKey(key);
-        }
+      if (hash && hash.length > 1) {
+        const fragment = hash.slice(1); // Remove #
+
+        // Manual parsing: split by & and find first = for each part
+        fragment.split('&').forEach(part => {
+          const eqIndex = part.indexOf('=');
+          if (eqIndex > 0) {
+            const paramKey = part.slice(0, eqIndex);
+            const paramValue = part.slice(eqIndex + 1);
+            if (paramKey === 's') {
+              fragmentSlug = paramValue;
+            } else if (paramKey === 'k') {
+              fragmentKey = paramValue;
+            }
+          }
+        });
       }
     }
 
+    // Backwards compatibility: Check query params if fragment is empty
+    // This supports old links with ?s=slug format
+    const querySlug = searchParams.get('s');
+    const finalSlug = fragmentSlug || querySlug;
+
+    setBurnerSlug(finalSlug);
+
+    // SECURITY: Public key MUST come from fragment only
+    // Never accept it from server - that defeats the purpose of fragment privacy
+    if (fragmentKey) {
+      setPublicKey(fragmentKey);
+    }
+
     // Validate burner link if slug is provided
-    if (slug) {
-      validateBurnerLink(slug);
+    if (finalSlug) {
+      validateBurnerLink(finalSlug, fragmentKey);
     } else {
       setIsValidating(false);
     }
   }, [resolvedParams, searchParams]);
 
   // Validate burner link is active
-  const validateBurnerLink = async (slug: string) => {
+  const validateBurnerLink = async (slug: string, fragmentPublicKey: string | null) => {
     try {
       const response = await fetch(`/api/burner/${slug}`);
 
@@ -104,11 +130,17 @@ export default function ChameleonPage({ params }: ChameleonPageProps) {
         return;
       }
 
-      const data: BurnerLinkData = await response.json();
+      // Parse response but DON'T use publicKey from server
+      await response.json();
 
-      // If we got a public key from the API and don't have one from fragment
-      if (data.publicKey && !publicKey) {
-        setPublicKey(data.publicKey);
+      // SECURITY: Public key MUST come from URL fragment only
+      // The server's publicKey is intentionally ignored to ensure:
+      // 1. Fragment privacy is maintained (server compromise can't leak key)
+      // 2. Man-in-the-middle can't inject wrong key
+      if (!fragmentPublicKey) {
+        setError('Invalid link. Please use the complete link including the encryption key.');
+        setIsValidating(false);
+        return;
       }
 
       setIsValidating(false);

@@ -76,6 +76,35 @@ export function middleware(request: NextRequest) {
 
     // CORS headers are handled by Next.js, but ensure no credentials leak
     response.headers.set('X-Content-Type-Options', 'nosniff');
+
+    // CSRF Protection via Origin header check for mutating operations
+    // Public burner endpoints (upload, lookup) are exempt - they're intentionally anonymous
+    const isMutatingMethod = ['POST', 'PUT', 'DELETE', 'PATCH'].includes(request.method);
+    const isPublicBurnerEndpoint =
+      pathname === '/api/burner/upload' ||
+      pathname.match(/^\/api\/burner\/[^/]+$/) // /api/burner/[slug]
+
+    if (isMutatingMethod && !isPublicBurnerEndpoint) {
+      const origin = request.headers.get('origin');
+      const host = request.headers.get('host');
+
+      // Allow same-origin requests and requests without origin (same-site navigation)
+      if (origin) {
+        const originUrl = new URL(origin);
+        const expectedHost = host?.split(':')[0]; // Remove port if present
+
+        if (originUrl.host.split(':')[0] !== expectedHost) {
+          // CSRF attempt - reject
+          return new NextResponse(
+            JSON.stringify({ error: 'CSRF validation failed', code: 'CSRF_ERROR' }),
+            {
+              status: 403,
+              headers: { 'Content-Type': 'application/json' },
+            }
+          );
+        }
+      }
+    }
   }
 
   // ============================================================
