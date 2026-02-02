@@ -1,10 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import dynamic from "next/dynamic";
-import { X, Check, QrCode } from "lucide-react";
+import { X, QrCode, Key, Lock } from "lucide-react";
 import { useEncryption } from "@/hooks/use-encryption";
 import { SketchButton, SketchCard, SketchTextarea } from "@/sketch-ui";
+import {
+  exportBurnerKeyBundle,
+  importBurnerKeyBundle,
+  getBurnerKeyCount,
+  type BurnerKeyBundle,
+} from "@/lib/crypto-asymmetric";
 
 const QRCodeSVG = dynamic(
   () => import("qrcode.react").then((mod) => mod.QRCodeSVG),
@@ -18,20 +24,47 @@ interface DevicePairingProps {
 
 type PairingMode = "show" | "input";
 
+/**
+ * Signal-style pairing payload
+ * Contains both the vault recovery phrase AND the encrypted burner key bundle
+ */
+interface PairingPayload {
+  v: 1; // Version
+  phrase: string; // Recovery phrase
+  burnerKeys?: BurnerKeyBundle; // Encrypted burner keys (optional if none exist)
+}
+
 export function DevicePairing({ isOpen, onClose }: DevicePairingProps) {
   const [mode, setMode] = useState<PairingMode>("show");
   const [inputKey, setInputKey] = useState("");
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState(false);
+  const [importedKeysCount, setImportedKeysCount] = useState(0);
 
   const { recoveryPhrase, restoreFromPhrase } = useEncryption();
 
+  // Build pairing payload with recovery phrase + burner keys
+  const pairingPayload = useMemo(() => {
+    if (!recoveryPhrase) return null;
+
+    const payload: PairingPayload = {
+      v: 1,
+      phrase: recoveryPhrase,
+      burnerKeys: exportBurnerKeyBundle() || undefined,
+    };
+
+    return JSON.stringify(payload);
+  }, [recoveryPhrase]);
+
+  // Count of burner keys to show in UI
+  const burnerKeyCount = useMemo(() => getBurnerKeyCount(), []);
+
   const handleCopyKey = async () => {
-    if (!recoveryPhrase) return;
+    if (!pairingPayload) return;
 
     try {
-      await navigator.clipboard.writeText(recoveryPhrase);
+      await navigator.clipboard.writeText(pairingPayload);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
@@ -41,15 +74,51 @@ export function DevicePairing({ isOpen, onClose }: DevicePairingProps) {
 
   const handleImportKey = () => {
     setError(null);
+    setImportedKeysCount(0);
 
     if (!inputKey.trim()) {
       setError("Please enter a key");
       return;
     }
 
-    const success = restoreFromPhrase(inputKey.trim());
+    const input = inputKey.trim();
 
-    if (success) {
+    // Try to parse as new JSON payload format
+    try {
+      const payload = JSON.parse(input) as PairingPayload;
+
+      if (payload.v === 1 && payload.phrase) {
+        // New format: restore phrase first
+        const phraseSuccess = restoreFromPhrase(payload.phrase);
+
+        if (!phraseSuccess) {
+          setError("Invalid recovery phrase in payload.");
+          return;
+        }
+
+        // Then import burner keys if present
+        let keysImported = 0;
+        if (payload.burnerKeys) {
+          keysImported = importBurnerKeyBundle(payload.burnerKeys);
+          setImportedKeysCount(keysImported);
+        }
+
+        setSuccess(true);
+        setInputKey("");
+        setTimeout(() => {
+          setSuccess(false);
+          onClose();
+        }, 2000);
+        return;
+      }
+    } catch {
+      // Not JSON, try as plain recovery phrase (backwards compatible)
+    }
+
+    // Fallback: treat as plain recovery phrase
+    const phraseSuccess = restoreFromPhrase(input);
+
+    if (phraseSuccess) {
       setSuccess(true);
       setInputKey("");
       setTimeout(() => {
@@ -109,49 +178,63 @@ export function DevicePairing({ isOpen, onClose }: DevicePairingProps) {
           {mode === "show" ? (
             <div className="flex flex-col items-center">
               <p className="sketch-body text-[14px] text-[#6E6E73] text-center mb-6">
-                Scan the QR code or copy the key.
+                Scan the QR code or copy the key to pair another device.
               </p>
- 
+
               {/* QR Code with Sketch Card */}
-              {recoveryPhrase && (
+              {pairingPayload && (
                 <div className="mb-6">
                   <SketchCard className="p-4 bg-white">
                     <QRCodeSVG
-                      value={recoveryPhrase}
+                      value={pairingPayload}
                       size={180}
-                      level="M"
+                      level="L"
                       includeMargin={false}
                     />
                   </SketchCard>
                 </div>
               )}
- 
-              {/* Key Display with Sketch Card */}
-              <div className="w-full mb-6">
+
+              {/* Bundle Info */}
+              <div className="w-full mb-4">
                 <SketchCard className="bg-[#2563EB]/5 p-3">
-                  <p className="sketch-body text-[11px] text-[#6E6E73] mb-1">Backup Phrase:</p>
-                  <p className="sketch-subheading text-[13px] break-all leading-relaxed">
-                    {recoveryPhrase || "No key"}
-                  </p>
+                  <div className="flex items-center gap-2 mb-2">
+                    <Key className="w-4 h-4 text-[#2563EB]" />
+                    <p className="sketch-subheading text-[12px] text-[#1D1D1F]">
+                      Pairing includes:
+                    </p>
+                  </div>
+                  <ul className="text-[11px] text-[#6E6E73] space-y-1 ml-6">
+                    <li className="flex items-center gap-2">
+                      <Lock className="w-3 h-3" />
+                      Vault Recovery Phrase
+                    </li>
+                    {burnerKeyCount > 0 && (
+                      <li className="flex items-center gap-2">
+                        <Lock className="w-3 h-3" />
+                        {burnerKeyCount} Burner Link Key{burnerKeyCount > 1 ? "s" : ""}
+                      </li>
+                    )}
+                  </ul>
                 </SketchCard>
               </div>
- 
+
               {/* Copy Button */}
               <SketchButton
                 onClick={handleCopyKey}
-                disabled={!recoveryPhrase}
+                disabled={!pairingPayload}
                 className="w-full"
                 size="md"
               >
-                {copied ? "✓ Copied!" : "Copy Phrase"}
+                {copied ? "✓ Copied!" : "Copy Pairing Key"}
               </SketchButton>
             </div>
           ) : (
             <div className="flex flex-col">
               <p className="sketch-body text-[14px] text-[#6E6E73] text-center mb-6">
-                Enter the key from your other device.
+                Enter the pairing key from your other device.
               </p>
- 
+
               {/* Key Input with Sketch UI */}
               <SketchTextarea
                 value={inputKey}
@@ -159,24 +242,31 @@ export function DevicePairing({ isOpen, onClose }: DevicePairingProps) {
                   setInputKey(val);
                   setError(null);
                 }}
-                placeholder="Paste key here..."
-                rows={3}
+                placeholder="Paste pairing key here..."
+                rows={4}
                 className="mb-4"
               />
- 
+
               {/* Messages */}
               {error && (
                 <p className="sketch-body text-[14px] text-[#FF3B30] text-center mb-4 italic">
                   {error}
                 </p>
               )}
- 
+
               {success && (
-                <p className="sketch-body text-[14px] text-[#30D158] text-center mb-4 font-bold">
-                  ✓ Success!
-                </p>
+                <div className="text-center mb-4">
+                  <p className="sketch-body text-[14px] text-[#30D158] font-bold">
+                    ✓ Connected!
+                  </p>
+                  {importedKeysCount > 0 && (
+                    <p className="sketch-body text-[12px] text-[#6E6E73] mt-1">
+                      Imported {importedKeysCount} burner link key{importedKeysCount > 1 ? "s" : ""}
+                    </p>
+                  )}
+                </div>
               )}
- 
+
               {/* Import Button */}
               <SketchButton
                 onClick={handleImportKey}
@@ -186,10 +276,10 @@ export function DevicePairing({ isOpen, onClose }: DevicePairingProps) {
               >
                 {success ? "Connected" : "Connect"}
               </SketchButton>
- 
-              {/* Warning */}
-              <p className="sketch-body text-[11px] text-[#FF9500] text-center mt-6">
-                Warning: This replaces your current key!
+
+              {/* Note */}
+              <p className="sketch-body text-[11px] text-[#6E6E73] text-center mt-6">
+                Note: This replaces your current vault key.
               </p>
             </div>
           )}

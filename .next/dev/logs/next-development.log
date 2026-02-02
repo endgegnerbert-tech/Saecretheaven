@@ -11,3 +11,5 @@
 [00:00:57.497] Server  ERROR   2026-02-01T18:30:27.399Z ERROR [Better Auth]: error error: Tenant or user not found
 [00:00:57.601] Server  ERROR   # SERVER_ERROR:  error: Tenant or user not found
 [00:00:57.602] Server  ERROR   Better Auth Error [500]: (could not parse body)
+[00:21:40.931] Server  LOG     ✓ Compiled in 848ms
+[01:03:30.356] Server  LOG     ✓ Compiled in 355ms

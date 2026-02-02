@@ -257,7 +257,7 @@ export function SecureShareDialog({
                         </Button>
                     </div>
                     
-                    <div className="p-3 bg-amber-50 text-amber-800 rounded-lg text-xs flex gap-2">
+                    <div className="p-3 bg-blue-50 text-blue-800 rounded-lg text-xs flex gap-2">
                          <AlertTriangle className="w-4 h-4 shrink-0" />
                          <p>Vergiss nicht, dem Empfänger den Code <b>{password}</b> zu geben.</p>
                     </div>

@@ -670,7 +670,7 @@ export function PhotoGallery({ photosCount = 0, authUser, onNavigateToBurnerLink
               {syncNotification.includes("received") && <Cloud className="w-4 h-4 text-blue-400" />}
               {syncNotification.includes("saved") && <Check className="w-4 h-4 text-green-400" />}
               {syncNotification.includes("deleted") && <Trash2 className="w-4 h-4 text-red-400" />}
-              {syncNotification.includes("skipped") && <AlertTriangle className="w-4 h-4 text-yellow-400" />}
+              {syncNotification.includes("skipped") && <AlertTriangle className="w-4 h-4 text-gray-400" />}
               {syncNotification}
             </p>
           </div>

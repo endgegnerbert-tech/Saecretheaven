@@ -22,6 +22,7 @@ import {
   Dumbbell,
   FileText,
   AlertTriangle,
+  Lock,
 } from "lucide-react";
 import { QRCodeSVG } from "qrcode.react";
 import {
@@ -83,7 +84,7 @@ const THEMES: ThemeConfig[] = [
     name: "Notes",
     description: "Looks like a notes app",
     icon: FileText,
-    color: "bg-yellow-500",
+    color: "bg-slate-500",
     disabled: true,
   },
 ];
@@ -268,12 +269,12 @@ export function CreateBurnerLinkDialog({
                 </Button>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
                 <div className="flex gap-3">
-                  <AlertTriangle className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
+                  <Lock className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="text-sm font-medium text-amber-800">Important</p>
-                    <p className="text-xs text-amber-700 mt-1">
+                    <p className="text-sm font-medium text-blue-800">Device-Only Key</p>
+                    <p className="text-xs text-blue-700 mt-1">
                       The private key is only stored on this device.
                       Only you can decrypt the received photos.
                     </p>

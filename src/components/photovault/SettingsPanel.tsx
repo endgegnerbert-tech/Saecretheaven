@@ -302,7 +302,7 @@ export function SettingsPanel({ state: appState, setState: setAppState, onRestar
           <div className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden">
             <button onClick={() => setShowPhraseWarning(true)} className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors">
               <div className="flex items-center gap-3">
-                <Key className="w-5 h-5 text-amber-500" />
+                <Key className="w-5 h-5 text-blue-500" />
                 <span className="text-base font-medium text-gray-900">Recovery Phrase</span>
               </div>
               <ChevronRight className="w-4 h-4 text-gray-400" />
@@ -345,11 +345,11 @@ export function SettingsPanel({ state: appState, setState: setAppState, onRestar
         <section className="pb-8">
           <h2 className="text-xs font-semibold uppercase tracking-wider text-red-500 px-1 mb-2">Danger Zone</h2>
           <div className="bg-white rounded-2xl shadow-sm border border-red-100 overflow-hidden">
-            <button onClick={() => setShowClearCacheWarning(true)} className="w-full flex items-center justify-between p-4 hover:bg-orange-50 transition-colors">
+            <button onClick={() => setShowClearCacheWarning(true)} className="w-full flex items-center justify-between p-4 hover:bg-gray-50 transition-colors">
               <div className="flex items-center gap-3">
-                <RotateCcw className="w-5 h-5 text-orange-500" />
+                <RotateCcw className="w-5 h-5 text-gray-500" />
                 <div className="text-left">
-                  <span className="text-base font-medium text-orange-600 block">Clear Local Cache</span>
+                  <span className="text-base font-medium text-gray-600 block">Clear Local Cache</span>
                   <span className="text-xs text-gray-500">Removes thumbnails, keeps cloud data</span>
                 </div>
               </div>
@@ -504,8 +504,8 @@ function BackupPhraseModal({ words, onClose }: { words: string[]; onClose: () =>
             ))}
           </div>
         ) : (
-          <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl mb-6">
-            <p className="text-sm text-amber-700 text-center font-medium">No recovery phrase found.</p>
+          <div className="bg-gray-50 border border-gray-200 p-4 rounded-xl mb-6">
+            <p className="text-sm text-gray-600 text-center font-medium">No recovery phrase found.</p>
           </div>
         )}
         <Button onClick={onClose} className="w-full bg-blue-600 hover:bg-blue-700 text-white h-11 rounded-xl">Done</Button>

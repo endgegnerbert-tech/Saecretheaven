@@ -709,3 +709,105 @@ export function buildBurnerLinkUrl(
   // Use fragment for public key (more private - not in server logs)
   return `${baseUrl}/d/${theme}/${contentSlug}?s=${slug}#k=${publicKey}`;
 }
+
+// ============================================================
+// SIGNAL-STYLE KEY BUNDLE EXPORT/IMPORT
+// ============================================================
+
+/**
+ * Exported bundle format for Signal-style device pairing
+ * Contains all burner keys encrypted with the vault key
+ */
+export interface BurnerKeyBundle {
+  version: 1;
+  keys: Array<{
+    id: string;
+    publicKey: string;
+    encryptedPrivateKey: string;
+    iv: string;
+    createdAt: string;
+  }>;
+  exportedAt: string;
+}
+
+/**
+ * Export all burner keys as a bundle for device pairing
+ *
+ * SECURITY: The bundle is already encrypted with the vault key.
+ * This function just serializes the encrypted store.
+ * The receiving device must have the same vault key to decrypt.
+ */
+export function exportBurnerKeyBundle(): BurnerKeyBundle | null {
+  const stored = loadEncryptedStore();
+  const keys = Object.values(stored);
+
+  if (keys.length === 0) return null;
+
+  return {
+    version: 1,
+    keys: keys.map(k => ({
+      id: k.id,
+      publicKey: k.publicKey,
+      encryptedPrivateKey: k.encryptedPrivateKey,
+      iv: k.iv,
+      createdAt: k.createdAt,
+    })),
+    exportedAt: new Date().toISOString(),
+  };
+}
+
+/**
+ * Import burner keys from a bundle (Signal-style device pairing)
+ *
+ * SECURITY: The bundle keys are already encrypted with the vault key.
+ * This function merges them into the local store, skipping duplicates.
+ *
+ * @returns Number of new keys imported
+ */
+export function importBurnerKeyBundle(bundle: BurnerKeyBundle): number {
+  if (bundle.version !== 1) {
+    console.warn("Unknown bundle version:", bundle.version);
+    return 0;
+  }
+
+  const stored = loadEncryptedStore();
+  let imported = 0;
+
+  for (const key of bundle.keys) {
+    // Skip if we already have this key
+    if (stored[key.id]) {
+      console.log("Skipping duplicate key:", key.id);
+      continue;
+    }
+
+    // Also skip if we have a key with the same public key (different ID)
+    const existingByPublicKey = Object.values(stored).find(k => k.publicKey === key.publicKey);
+    if (existingByPublicKey) {
+      console.log("Skipping key with duplicate public key:", key.id);
+      continue;
+    }
+
+    // Add to store
+    stored[key.id] = {
+      id: key.id,
+      publicKey: key.publicKey,
+      encryptedPrivateKey: key.encryptedPrivateKey,
+      iv: key.iv,
+      salt: "", // Not used for vault key encryption
+      createdAt: key.createdAt,
+    };
+    imported++;
+  }
+
+  localStorage.setItem(BURNER_KEYS_STORAGE_KEY, JSON.stringify(stored));
+  console.log(`Imported ${imported} burner keys`);
+  return imported;
+}
+
+/**
+ * Get count of burner keys in the store
+ */
+export function getBurnerKeyCount(): number {
+  const stored = loadEncryptedStore();
+  return Object.keys(stored).length;
+}
