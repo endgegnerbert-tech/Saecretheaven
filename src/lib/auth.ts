@@ -6,6 +6,7 @@
  */
 
 import { betterAuth } from "better-auth";
+import { APIError } from "better-auth/api";
 import { Pool } from "pg";
 
 // Supabase Postgres connection with SSL
@@ -155,6 +156,68 @@ export const auth = betterAuth({
         "tauri://localhost",  // Tauri desktop app
         "https://tauri.localhost",  // Tauri v2 secure context
     ].filter(Boolean),
+
+    databaseHooks: {
+        user: {
+            create: {
+                before: async (user, ctx) => {
+                    // Bypass for testing if explicitly enabled
+                    if (process.env.TEST_MODE === "true") return;
+
+                    // Ensure context is available
+                    if (!ctx) return;
+
+                    try {
+                        // Extract access code from request body
+                        const body = await ctx.request.clone().json();
+                        const accessCode = body.accessCode;
+
+                        if (!accessCode) {
+                            throw new APIError("FORBIDDEN", "Access code is required");
+                        }
+
+                        // Validate Access Code via Supabase Admin (Direct DB access)
+                        const { getSupabaseAdmin } = await import("@/lib/supabase-admin");
+                        const admin = getSupabaseAdmin();
+
+                        // Check if code exists and is valid
+                        const { data, error } = await admin
+                            .from("access_codes")
+                            .select("id, is_used")
+                            .eq("code", accessCode.trim().toUpperCase())
+                            .single();
+
+                        if (error || !data) {
+                            throw new APIError("FORBIDDEN", "Invalid access code");
+                        }
+
+                        if (data.is_used) {
+                            throw new APIError("FORBIDDEN", "Access code already used");
+                        }
+
+                        // Claim the code atomically
+                        const { error: updateError } = await admin
+                            .from("access_codes")
+                            .update({
+                                is_used: true,
+                                used_at: new Date().toISOString()
+                            })
+                            .eq("id", data.id);
+
+                        if (updateError) {
+                            throw new APIError("INTERNAL_SERVER_ERROR", "Failed to claim access code");
+                        }
+
+                    } catch (error) {
+                         if (error instanceof APIError) throw error;
+                         console.error("Access code validation error:", error);
+                         // Fail secure
+                         throw new APIError("INTERNAL_SERVER_ERROR", "Registration validation failed");
+                    }
+                },
+            },
+        },
+    },
 });
 
 // Type inference for client

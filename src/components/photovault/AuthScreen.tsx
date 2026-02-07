@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Mail, Lock, Eye, EyeOff, Loader2, Key, MailCheck, X, AlertCircle } from "lucide-react";
 import { CustomIcon } from "@/components/ui/custom-icon";
 import { signIn, signUp } from "@/lib/auth-client";
-import { claimAccessCode, releaseAccessCode } from "@/app/actions/access-code";
+// import { claimAccessCode, releaseAccessCode } from "@/app/actions/access-code";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -135,30 +135,16 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
     setIsLoading(true);
     setError(null);
 
-    let claimedCodeId: string | null = null;
-
     try {
-      // 1. ATOMICALLY claim the access code (prevents race conditions & reuse)
-      const claimRes = await claimAccessCode(accessCode);
-      if (!claimRes.success) {
-        setError(claimRes.message || "Invalid or already used access code");
-        setIsLoading(false);
-        return;
-      }
-      claimedCodeId = claimRes.codeId || null;
-
-      // 2. Register the user
+      // Register the user - access code validation is enforced server-side in auth.ts
       const result = await signUp.email({
         email,
         password,
         name: email.split("@")[0], // Default name
-      });
+        accessCode: accessCode, // Pass to server for validation
+      } as any);
 
       if (result.error) {
-        // Registration failed - release the code so it can be used again
-        if (claimedCodeId) {
-          await releaseAccessCode(claimedCodeId);
-        }
         setError(result.error.message || "Registration failed");
         setIsLoading(false);
         return;
@@ -169,10 +155,6 @@ export function AuthScreen({ onSuccess, initialMode = "welcome", userEmail }: Au
       setShowEmailModal(true);
     } catch (err) {
       console.error("Registration error:", err);
-      // Release the code on error
-      if (claimedCodeId) {
-        await releaseAccessCode(claimedCodeId);
-      }
       setError("An error occurred. Please try again.");
     } finally {
       setIsLoading(false);
