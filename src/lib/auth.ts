@@ -165,7 +165,7 @@ export const auth = betterAuth({
                     if (process.env.TEST_MODE === "true") return;
 
                     // Ensure context is available
-                    if (!ctx) return;
+                    if (!ctx || !ctx.request) return;
 
                     try {
                         // Extract access code from request body
@@ -173,7 +173,7 @@ export const auth = betterAuth({
                         const accessCode = body.accessCode;
 
                         if (!accessCode) {
-                            throw new APIError("FORBIDDEN", "Access code is required");
+                            throw new APIError("FORBIDDEN", { message: "Access code is required" });
                         }
 
                         // Validate Access Code via Supabase Admin (Direct DB access)
@@ -188,11 +188,11 @@ export const auth = betterAuth({
                             .single();
 
                         if (error || !data) {
-                            throw new APIError("FORBIDDEN", "Invalid access code");
+                            throw new APIError("FORBIDDEN", { message: "Invalid access code" });
                         }
 
                         if (data.is_used) {
-                            throw new APIError("FORBIDDEN", "Access code already used");
+                            throw new APIError("FORBIDDEN", { message: "Access code already used" });
                         }
 
                         // Claim the code atomically
@@ -205,14 +205,14 @@ export const auth = betterAuth({
                             .eq("id", data.id);
 
                         if (updateError) {
-                            throw new APIError("INTERNAL_SERVER_ERROR", "Failed to claim access code");
+                            throw new APIError("INTERNAL_SERVER_ERROR", { message: "Failed to claim access code" });
                         }
 
                     } catch (error) {
                          if (error instanceof APIError) throw error;
                          console.error("Access code validation error:", error);
                          // Fail secure
-                         throw new APIError("INTERNAL_SERVER_ERROR", "Registration validation failed");
+                         throw new APIError("INTERNAL_SERVER_ERROR", { message: "Registration validation failed" });
                     }
                 },
             },
