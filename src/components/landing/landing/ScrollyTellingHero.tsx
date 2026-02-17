@@ -305,30 +305,37 @@ export default function ScrollyTellingHero() {
                       {/* Text Content with Mobile Backdrop */}
                       <div className="lg:contents flex flex-col items-center text-center lg:text-left bg-white/80 lg:bg-transparent backdrop-blur-lg lg:backdrop-blur-none p-8 lg:p-0 rounded-3xl lg:rounded-none shadow-xl lg:shadow-none border border-white/50 lg:border-none mx-4 lg:mx-0">
                           {/* Static Text replaced by TypingHeader above, removed here */}
-                          <p className="pointer-events-auto text-base lg:text-xl text-black/80 lg:text-black mb-8 max-w-lg leading-relaxed mix-blend-multiply lg:mix-blend-normal">
-                             <span className="font-bold text-gray-400 text-xs uppercase tracking-widest block mb-2">Current Capability</span>
-                             Secure Evidence Locker <span className="text-gray-400">|</span> Client-Side Encrypted <span className="text-gray-400">|</span> Zero Knowledge.
+                         <span className="font-bold text-gray-400 text-xs uppercase tracking-widest block mb-2">Current Status</span>
+                             <span className="inline-block px-3 py-1 rounded-full bg-gray-100 text-gray-500 text-xs font-bold uppercase tracking-wider mb-4">Project Stalled</span>
+                             <p className="pointer-events-auto text-base lg:text-xl text-black/80 lg:text-black mb-8 max-w-lg leading-relaxed mix-blend-multiply lg:mix-blend-normal">
+                             This project has been paused due to lack of market interest. The secure vault technology remains functional but is not currently being distributed.
                           </p>
                           
-                          <div className="mb-8 p-4 bg-blue-50/50 border border-blue-100 rounded-lg">
-                             <span className="font-bold text-blue-600 text-xs uppercase tracking-widest block mb-2">The Mission</span>
+                          <div className="mb-8 p-4 bg-gray-50/50 border border-gray-200 rounded-lg opacity-70">
+                             <span className="font-bold text-gray-500 text-xs uppercase tracking-widest block mb-2">Notice</span>
                              <p className="text-sm text-gray-600">
-                               Currently, we protect your photos from cloud leaks. Our next phase is to protect <strong>YOU</strong> from physical device seizure.
+                                Development is currently on hold. If you are interested in this technology, please reach out directly.
                              </p>
                           </div>
                           
                           {!isSubmitted ? (
-                          <form onSubmit={handleSubmit} className="pointer-events-auto flex flex-col sm:flex-row gap-3 max-w-md w-full">
-                              <Input 
-                                placeholder="Enter your email" 
-                                value={email} 
-                                onChange={handleEmailChange} 
-                                className="bg-white border-gray-200 h-12 shadow-sm focus:border-indigo-500 transition-colors" 
-                              />
-                              <SketchButton type="submit" disabled={!isValid || isSubmitting} variant="primary" size="md">
-                                Join Beta & Discussion
-                              </SketchButton>
-                          </form>
+                          <>
+                            <form onSubmit={handleSubmit} className="pointer-events-none select-none opacity-50 grayscale flex flex-col sm:flex-row gap-3 max-w-md w-full">
+                                <Input 
+                                    placeholder="Waitlist Closed" 
+                                    value={email} 
+                                    onChange={handleEmailChange} 
+                                    disabled={true}
+                                    className="bg-white border-gray-200 h-12 shadow-sm focus:border-indigo-500 transition-colors" 
+                                />
+                                <SketchButton type="submit" disabled={true} variant="primary" size="md">
+                                    Development Paused
+                                </SketchButton>
+                            </form>
+                            <p className="mt-6 text-sm text-gray-500 pointer-events-auto">
+                                Still interested? <a href="mailto:contact@privacyheaven.com" className="text-blue-600 hover:underline">Write me</a> to get notified if development resumes.
+                            </p>
+                          </>
                           ) : (
                           <div className="flex items-center gap-3 p-4 bg-gray-50 rounded-xl border border-gray-200 text-black font-medium w-full justify-center lg:justify-start">
                             <div className="bg-blue-600 text-white p-1 rounded-full"><Check size={14} /></div> 

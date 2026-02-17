@@ -132,3 +132,6 @@ security-audit-*.json
 # Build artifacts (root level only, not public/)
 /Icon.ico
 /SaecretHeavenLogo.svg
+
+# Muninn local cache (not shared)
+.muninn/.local/
