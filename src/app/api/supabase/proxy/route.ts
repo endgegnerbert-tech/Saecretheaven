@@ -3,7 +3,7 @@
  *
  * Proxies Supabase requests to avoid CORS issues on Safari/iOS.
  * Supports device registration, photo metadata operations.
- * 
+ *
  * SECURITY: All operations require authenticated session.
  */
 
@@ -37,7 +37,9 @@ export async function POST(request: NextRequest) {
 
         switch (action) {
             case "registerDevice": {
-                const { id, deviceName, deviceType, userKeyHash, userId } = params;
+                // SECURITY: Trust session userId, not client params
+                const { id, deviceName, deviceType, userKeyHash } = params;
+                const userId = session.user.id;
 
                 if (!userKeyHash || userKeyHash.length === 0) {
                     return NextResponse.json(
@@ -64,7 +66,10 @@ export async function POST(request: NextRequest) {
                             device_type: deviceType,
                             user_key_hash: userKeyHash,
                         })
-                        .eq("id", existingDevice.id);
+                        .eq("id", existingDevice.id)
+                        // RLS should handle user check, but here we are using anon key which might bypass if RLS isn't set up for anon.
+                        // Ideally we should also eq('user_id', userId) to be safe.
+                        .eq("user_id", userId);
 
                     if (updateError) {
                         console.error("[Supabase Proxy] Device Update Error:", updateError);
@@ -82,7 +87,7 @@ export async function POST(request: NextRequest) {
                     device_name: deviceName,
                     device_type: deviceType,
                     user_key_hash: userKeyHash,
-                    user_id: userId,
+                    user_id: userId, // Enforced from session
                 });
 
                 if (error) {
@@ -97,6 +102,21 @@ export async function POST(request: NextRequest) {
 
             case "uploadMetadata": {
                 const { cid, fileSize, deviceId, nonce, mimeType, userKeyHash } = params;
+
+                // SECURITY: Verify userKeyHash belongs to user
+                const { data: validDevice } = await supabase
+                    .from("devices")
+                    .select("id")
+                    .eq("user_id", session.user.id)
+                    .eq("user_key_hash", userKeyHash)
+                    .single();
+
+                if (!validDevice) {
+                    return NextResponse.json(
+                        { error: "Unauthorized - Invalid Key Hash for User" },
+                        { status: 403 }
+                    );
+                }
 
                 const { data, error } = await supabase
                     .from("photos_metadata")
@@ -132,6 +152,21 @@ export async function POST(request: NextRequest) {
                     );
                 }
 
+                // SECURITY: Verify userKeyHash belongs to user
+                const { data: validDevice } = await supabase
+                    .from("devices")
+                    .select("id")
+                    .eq("user_id", session.user.id)
+                    .eq("user_key_hash", userKeyHash)
+                    .single();
+
+                if (!validDevice) {
+                    return NextResponse.json(
+                        { error: "Unauthorized - Invalid Key Hash for User" },
+                        { status: 403 }
+                    );
+                }
+
                 // Debug: Also select user_key_hash to verify it matches
                 const { data, error } = await supabase
                     .from("photos_metadata")
@@ -150,35 +185,34 @@ export async function POST(request: NextRequest) {
                 return NextResponse.json({ success: true, data: data || [] });
             }
 
-            case "debugListHashes": {
-                const { data, error } = await supabase
-                    .from("photos_metadata")
-                    .select("cid, user_key_hash, uploaded_at")
-                    .order("uploaded_at", { ascending: false })
-                    .limit(20);
-
-                if (error) {
-                    return NextResponse.json({ error: error.message }, { status: 500 });
-                }
-
-                // Get unique hashes
-                const hashes = Array.from(new Set(data?.map(d => d.user_key_hash) || []));
-                console.log("[Supabase Proxy] DEBUG - All hashes:", hashes);
-                console.log("[Supabase Proxy] DEBUG - Photos:", data?.map(d => ({ cid: d.cid?.slice(0, 20), hash: d.user_key_hash })));
-
-                return NextResponse.json({
-                    success: true,
-                    hashes,
-                    photos: data?.map(d => ({
-                        cid: d.cid,
-                        hash: d.user_key_hash,
-                        date: d.uploaded_at
-                    }))
-                });
-            }
-
             case "deleteMetadata": {
                 const { cid } = params;
+
+                // SECURITY: Fetch metadata to get user_key_hash
+                const { data: meta } = await supabase
+                    .from("photos_metadata")
+                    .select("user_key_hash")
+                    .eq("cid", cid)
+                    .single();
+
+                if (!meta) {
+                    return NextResponse.json({ success: true }); // Already deleted or not found
+                }
+
+                // SECURITY: Verify user owns this hash
+                const { data: validDevice } = await supabase
+                    .from("devices")
+                    .select("id")
+                    .eq("user_id", session.user.id)
+                    .eq("user_key_hash", meta.user_key_hash)
+                    .single();
+
+                if (!validDevice) {
+                     return NextResponse.json(
+                        { error: "Unauthorized - You do not own this photo" },
+                        { status: 403 }
+                    );
+                }
 
                 const { error } = await supabase
                     .from("photos_metadata")
