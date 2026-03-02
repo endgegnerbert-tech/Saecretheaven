@@ -32,12 +32,29 @@ export async function POST(request: NextRequest) {
             );
         }
 
+        const userId = session.user.id;
+
         const body = await request.json();
         const { action, ...params } = body;
 
+        // Helper to verify userKeyHash ownership
+        const verifyUserKeyHash = async (hash: string) => {
+             if (!hash) return false;
+             // Check if this user has any device registered with this key hash
+             const { data } = await supabase
+                .from("devices")
+                .select("id")
+                .eq("user_id", userId)
+                .eq("user_key_hash", hash)
+                .limit(1);
+
+             return data && data.length > 0;
+        };
+
         switch (action) {
             case "registerDevice": {
-                const { id, deviceName, deviceType, userKeyHash, userId } = params;
+                const { id, deviceName, deviceType, userKeyHash } = params;
+                // SECURITY: params.userId is ignored/overwritten by session.user.id
 
                 if (!userKeyHash || userKeyHash.length === 0) {
                     return NextResponse.json(
@@ -98,6 +115,11 @@ export async function POST(request: NextRequest) {
             case "uploadMetadata": {
                 const { cid, fileSize, deviceId, nonce, mimeType, userKeyHash } = params;
 
+                // SECURITY: Verify user owns the key hash
+                if (!await verifyUserKeyHash(userKeyHash)) {
+                    return NextResponse.json({ error: "Unauthorized: Invalid userKeyHash" }, { status: 403 });
+                }
+
                 const { data, error } = await supabase
                     .from("photos_metadata")
                     .insert([
@@ -132,6 +154,11 @@ export async function POST(request: NextRequest) {
                     );
                 }
 
+                // SECURITY: Verify user owns the key hash
+                if (!await verifyUserKeyHash(userKeyHash)) {
+                    return NextResponse.json({ error: "Unauthorized: Invalid userKeyHash" }, { status: 403 });
+                }
+
                 // Debug: Also select user_key_hash to verify it matches
                 const { data, error } = await supabase
                     .from("photos_metadata")
@@ -151,9 +178,26 @@ export async function POST(request: NextRequest) {
             }
 
             case "debugListHashes": {
+                // SECURITY: Only list hashes/photos belonging to the authenticated user
+                const { data: devices, error: devError } = await supabase
+                    .from("devices")
+                    .select("user_key_hash")
+                    .eq("user_id", userId);
+
+                if (devError) {
+                    return NextResponse.json({ error: devError.message }, { status: 500 });
+                }
+
+                const myHashes = devices?.map(d => d.user_key_hash) || [];
+
+                if (myHashes.length === 0) {
+                     return NextResponse.json({ success: true, hashes: [], photos: [] });
+                }
+
                 const { data, error } = await supabase
                     .from("photos_metadata")
                     .select("cid, user_key_hash, uploaded_at")
+                    .in("user_key_hash", myHashes)
                     .order("uploaded_at", { ascending: false })
                     .limit(20);
 
@@ -163,8 +207,7 @@ export async function POST(request: NextRequest) {
 
                 // Get unique hashes
                 const hashes = Array.from(new Set(data?.map(d => d.user_key_hash) || []));
-                console.log("[Supabase Proxy] DEBUG - All hashes:", hashes);
-                console.log("[Supabase Proxy] DEBUG - Photos:", data?.map(d => ({ cid: d.cid?.slice(0, 20), hash: d.user_key_hash })));
+                console.log("[Supabase Proxy] DEBUG - User hashes:", hashes);
 
                 return NextResponse.json({
                     success: true,
@@ -179,6 +222,23 @@ export async function POST(request: NextRequest) {
 
             case "deleteMetadata": {
                 const { cid } = params;
+
+                // SECURITY: Verify ownership before delete
+                // 1. Get the hash associated with this CID
+                const { data: meta, error: fetchError } = await supabase
+                    .from("photos_metadata")
+                    .select("user_key_hash")
+                    .eq("cid", cid)
+                    .single();
+
+                if (fetchError || !meta) {
+                    return NextResponse.json({ success: true });
+                }
+
+                // 2. Verify user owns this hash
+                if (!await verifyUserKeyHash(meta.user_key_hash)) {
+                    return NextResponse.json({ error: "Unauthorized" }, { status: 403 });
+                }
 
                 const { error } = await supabase
                     .from("photos_metadata")
