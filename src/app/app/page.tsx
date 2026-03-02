@@ -1,5 +1,6 @@
 /**
  * Main Page - Uses existing PhotoVaultApp
+ * SECURITY: Server-side session verification required.
  */
 
 import { PhotoVaultApp } from '@/components/photovault/PhotoVaultApp';
